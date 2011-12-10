@@ -1,4 +1,18 @@
 FiveCBookExchange::Application.routes.draw do
+  get "sessions/new"
+
+  get "sessions/create"
+
+  get "sessions/destroy"
+
+
+  match '/home' => 'pages#home'
+  match '/about' => 'pages#about'
+
+  resources :users
+  match '/signup', :to => 'users#new'
+  root :to => 'pages#home'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
