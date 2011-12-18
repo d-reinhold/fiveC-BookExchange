@@ -1,11 +1,33 @@
-<%= form_tag listings_path do %>
+<%= form_for @listing do %>
+	<% if @listing.errors.any? %>
+	  <div class="error_messages">
+	    <h2>Form is invalid</h2>
+	    <ul>
+	      <% for message in @listing.errors.full_messages %>
+	        <li><%= message %></li>
+	      <% end %>
+	    </ul>
+	  </div>
+	<% end %>
   <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>
+    <%= label_tag :title %>
+    <%= text_field_tag :title, params[:title] %>
   </div>
   <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
+    <%= label_tag :isbn %>
+    <%= text_field_tag :isbn, params[:isbn] %>
   </div>
-  <div class="actions"><%= submit_tag "Log in" %></div>
+  <div class="field">
+    <%= label_tag :price %>
+    <%= text_field_tag :price, params[:price] %>
+  </div>
+  <div class="field">
+    <%= label_tag :description %>
+    <%= text_field_tag :description %>
+  </div>
+  <div class="field">
+    <%= label_tag :condition %>
+    <%= text_field_tag :condition, params[:condition] %>
+  </div>
+  <div class="actions"><%= submit_tag "List Book!" %></div>
 <% end %>
