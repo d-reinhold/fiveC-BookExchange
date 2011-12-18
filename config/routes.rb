@@ -1,16 +1,14 @@
 FiveCBookExchange::Application.routes.draw do
-  get "sessions/new"
 
-  get "sessions/create"
-
-  get "sessions/destroy"
 
 
   match '/home' => 'pages#home'
   match '/about' => 'pages#about'
-
+  resources :sessions, :only => {:new, :create, :destroy}
   resources :users
+  resources :listings
   match '/signup', :to => 'users#new'
+
   root :to => 'pages#home'
   
   # The priority is based upon order of creation:
@@ -60,9 +58,6 @@ FiveCBookExchange::Application.routes.draw do
   #     resources :products
   #   end
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 
