@@ -1,13 +1,14 @@
 FiveCBookExchange::Application.routes.draw do
 
-
-
   match '/home' => 'pages#home'
   match '/about' => 'pages#about'
-  resources :sessions, :only => {:new, :create, :destroy}
+  match '/signup', :to => 'users#new'
+  match '/signin', :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'
+
   resources :users
   resources :listings
-  match '/signup', :to => 'users#new'
+  resources :sessions, :only => [:new, :create, :destroy]
 
   root :to => 'pages#home'
   

@@ -1,0 +1,7 @@
+
+  <%= l.label :author %>:<%= l.text_field :author %>
+  <%= l.label :edition %>:<%= l.text_field :edition %>
+  <label>ISBN</label>:<%= l.text_field :isbn %>
+  <%= l.label :condition %>:<%= l.select( :condition, [['New','New'], ['Lightly Used','Lightly Used'], ['Heavily Used','Heavily Used'], ['Falling Apart','Falling Apart']], :default => 'Lightly Used') %>
+  <%= l.label :description %>:<br>
+  <%= l.text_area :description, :size => "36x6" %>

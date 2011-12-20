@@ -1,0 +1,51 @@
+<%= form_for @user do |f| %>
+	<% if @user.errors.any? %>
+	  <div class="error_messages">
+	    <h2>Form is invalid</h2>
+	    <ul>
+	      <% for message in @user.errors.full_messages %>
+	        <li><%= message %></li>
+	      <% end %>
+	    </ul>
+	  </div>
+	<% end %>
+  <div id="sell-form-required">
+	  <div class="sell-form-divider">
+			<div class="field"><%= f.text_field :email, :placeholder => 'Email Address' %></div>
+			  <%= f.fields_for :listing do |l| %>	
+		  <div class="field"><%= l.text_field :title, :placeholder => 'Book Title' %></div>
+		  <div class="field"><%= l.text_field :author, :placeholder => "Author(s)" %></div>
+			<div class="field">$<%= l.text_field :price_dollars, :id=> :dollas, :placeholder => 'dollas' %>.<%= l.text_field :price_cents, :id => :cents, :placeholder => 'cents' %></div>
+		</div>
+		<div class="sell-form-divider">
+	    <p id="email">Enter your 5-C email address here!</p>
+		  <p id="title">..and the title of the book you're selling...</p>
+		  <p id="author">...the author or authors...</p>
+			<p id="price">...and the price you want to list it for</p>
+		</div>
+			<a class="fancy_button" id="sell-form-required-button" href="#">
+			  <span style="background-color: orange;">Continue</span>
+			</a>
+	</div>
+	<div id="sell-form-optional">
+      <%= render 'shared/sell_form_optional', :l => l %>
+    <% end %>
+		<a class="fancy_button" id="sell-form-optional-button" href="#">
+		  <span style="background-color: orange;">Continue</span>
+		</a>
+  </div>
+	<div id="sell-form-final">
+		<div class="field">
+	    <%= f.label :full_name %>:<%= f.text_field :name %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :password %>:<%= f.password_field :password %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :password_confirmation %>:<%= f.password_field :password_confirmation %>
+	  </div>
+	  <a class="fancy_button" id="sell-form-final-button" href="#">
+		  <span style="background-color: orange;">Sell your Book!</span>
+		</a>
+	</div>
+<% end %>

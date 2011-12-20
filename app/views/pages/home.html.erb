@@ -1,12 +1,23 @@
-<h2>Search for Books - Sell your Books!</h2>
+<div id="search-sell-full">
+	<div id="search-sell-buttons">
+	  <ul>
+		  <li><a href="#" id="buttons-search">Search for Books</a></li>
+			<li><a href="#" id="buttons-sell">Sell your Books!</a></li>
+		</ul>
+	</div>
+	<div id="search-sell-main">
+		<div id="search-for-books">
+			<%= render 'shared/searchbar' %>
+		</div>
 
-<div id="search-for-books">
-	<%= render 'shared/searchbar' %>
+		<div id="sell-your-books">
+			<% if signed_in? %>
+			  <%= render 'shared/sell_form_signed_in' %>
+			<% else %>
+			  <%= render 'shared/sell_form_signed_out' %>
+			<% end %>
+		</div>
+	</div>
 </div>
-<!--
-<div id="sell-your-books">
-  <%= render 'shared/listing_form' %>
-</div>
--->
 
 <h3> Recent Listings: </h3>
