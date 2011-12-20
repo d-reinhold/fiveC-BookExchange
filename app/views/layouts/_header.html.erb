@@ -2,14 +2,11 @@
   <%= link_to '5C Book Exchange', '/' %>
   <nav class="round">
     <ul>
-	    <%=session_name %>
-	    <% current_user%>
-	    <%= @current_user.name %>
-	    <% unless @current_user.nil? %>
+	    <% if signed_in? %>
+		    <li><%= link_to "My Books", @current_user %></li>
 	      <li><%= link_to "Sign Out", signout_path %></li>
 	    <% else %>
-        <li><%= link_to "Sign In", signin_path %></li>
-        <li><%= link_to "Sign Up", signup_path %></li>
+        <li><%= link_to "My Books", signin_path %></li>
       <% end %>
     </ul>
   </nav>

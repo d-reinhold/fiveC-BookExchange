@@ -4,10 +4,12 @@ class CreateListings < ActiveRecord::Migration
       t.integer :user_id
       t.string :title
       t.string :isbn
-      t.float :price
+      t.string :edition
+      t.string :author
+      t.integer :price_dollars
+      t.integer :price_cents
       t.string :description
       t.string :condition
-
       t.timestamps
     end
   end

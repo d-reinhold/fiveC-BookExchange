@@ -1,7 +1,14 @@
 class PagesController < ApplicationController
   def home
     @title = 'Home'
-    @listing = Listing.new
+    if signed_in?
+      @user = @current_user
+      @listing = @current_user.listings.new
+    else
+      @user = User.new
+      @user.listings.new
+    end
+    
   end
 
   def about

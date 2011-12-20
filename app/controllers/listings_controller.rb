@@ -3,11 +3,18 @@ class ListingsController < ApplicationController
   end
 
   def new
-    @listing = Listing.new
   end
 
   def create
-    if 
+    @user = @current_user
+    @listing = Listing.new(params[:listing])
+    if @listing.save
+      flash[:success] = 'Your listing was created!'
+      redirect_to @user
+    else
+      flash[:error] = 'Your listing was not created'
+      redirect_to root_path
+    end
   end
 
   def edit

@@ -5,8 +5,11 @@ gem 'rails', '3.1.0'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
+
+gem 'thin'
 gem 'sqlite3'
 gem "nifty-generators", :group => :development
+gem 'annotate', '~> 2.4.1.beta', :group => :development
 #gem 'haml-rails', '>= 0.3.4', :group => :development
 
 # Gems used only for assets and not required
