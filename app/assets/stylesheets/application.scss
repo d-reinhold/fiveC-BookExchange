@@ -1,0 +1,384 @@
+
+
+.container {
+  width: 710px;
+  min-width: 710px;
+  margin-left:auto;
+	margin-right:auto;
+	width:90%;
+}
+
+body {
+  background: url(image-path('Firefox.png'));
+}
+
+
+header {
+  padding-top: 20px;
+}
+
+header img {
+  padding: 1em;
+  background: #fff;
+}
+
+section {
+  margin-top: 1em;
+  font-size: 120%;
+  padding: 20px;
+  background: #fff;
+}
+
+section h1 {
+  font-size: 200%;
+}
+
+/* Links */
+
+a {
+  color: #09c;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #069;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #069;
+}
+
+
+/* Navigation */
+
+nav {
+  float: right;
+}
+
+nav {
+  background-color: white;
+  padding: 0 0.7em;
+  white-space: nowrap;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0.2em 0;
+}
+
+nav ul li a {
+  padding: 0 5px;
+  font-weight: bold;
+}
+
+nav ul li a:visited {
+  color: #09c;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+
+/* Round corners */
+
+.round {
+  -moz-border-radius:    10px;
+  -webkit-border-radius: 10px;
+  border-radius:         10px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 10px;
+  width: 710px;
+  margin-left:auto;
+	margin-right:auto;
+	width:100%;
+}
+
+footer nav {
+  float: none;
+}
+
+
+
+
+
+/* Home Page */
+
+#search-sell-full {
+	position: relative;
+	/*border: 2px solid blue;*/
+	background-color:#85B1F2;
+	margin-top: 45px;
+	max-width: 660px;
+	min-width: 655px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	-moz-border-radius:    0px 10px 10px 10px;
+  -webkit-border-radius: 0px 10px 10px 10px;
+	border-radius:         0px 10px 10px 10px;
+}
+
+#search-sell-buttons {
+	/*background-color: white;*/
+	max-width: 660px;
+  /*border: 1px solid black;*/
+	
+}
+
+#search-sell-buttons ul {
+	list-style: none;
+	padding:0px;
+	margin:0px;
+	max-width: 660px;
+}
+
+#search-sell-buttons ul li {
+	display: inline;
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
+#search-sell-buttons li a {
+	/*padding: 5px 5px 5px 0.5em;*/
+	position:relative;
+	top:-27px;
+  border-top: 20px solid #11379E;
+	border-left: 40px solid #11379E;
+	border-right: 40px solid #11379E;
+	background-color: #11379E;
+	color: #fff;
+	padding-bottom: 5px;
+	text-decoration: none;
+  -moz-border-radius:    15px 15px 0px 0px;
+  -webkit-border-radius: 15px 15px 0px 0px;
+	border-radius:         15px 15px 0px 0px;
+}
+
+#search-sell-main {
+	/*border: 1px solid red;*/
+	padding-bottom: 15px;
+}
+#search-for-books {
+	display:block;
+}
+
+#sell-your-books {
+	display:none;
+}
+
+#sell-form-required {
+  height: 290px;
+  position: relative;
+	display: block;
+	/*border: 1px solid green;*/
+}
+
+#sell-form-optional {
+  height: 290px;  
+  position: relative;
+	display: none;
+	border: 1px solid green;
+}
+
+#sell-form-final {
+  height: 290px;  
+  position: relative;
+	display: none;
+	/*border: 1px solid green;*/
+}
+
+.sell-form-divider {
+  float:left;
+	width:326px;
+	height: 230px;
+	/*border: 1px solid orange;*/
+}
+
+.sell-form-divider input, textarea {  
+    padding: 9px; 
+    margin-right:0px;
+    margin-top:15px;
+    border: solid 1px #E5E5E5;  
+    outline: 0;  
+    font: normal 15px/100% Verdana, Tahoma, sans-serif;  
+    width: 250px;  
+    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #CCCCCC), to(#FFFFFF));  
+    background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);  
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+}
+
+.sell-form-divider input#dollas {
+    width: 4em; 
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.sell-form-divider input#cents {
+    width: 3em; 
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.sell-form-divider .field {
+  margin-right: 25px;
+  float:right;
+}
+
+.sell-form-divider input:hover, textarea:hover,  
+input:focus, textarea:focus {  
+    border-color: #C9C9C9;  
+    -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;  
+    }
+
+.sell-form-divider p {
+  margin:0px;
+  margin-left:0px;
+  color: #555555;
+}
+
+.sell-form-divider p#email {
+  margin-top:25px;
+}
+.sell-form-divider p#title {
+  display: none;
+  margin-top:33px;
+}
+.sell-form-divider p#author {
+  display: none;
+  margin-top:32px;
+}
+.sell-form-divider p#price {
+  display: none;
+  margin-top:31px;
+}
+
+#sell-form-required a.fancy_button{
+  position:relative;
+  top: 5px;
+  right:-215px;
+}
+
+
+
+/* Error Messages */
+
+
+.field_with_errors {
+  margin-top: 10px;
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+.field_with_errors label {
+  color: #fff;
+}
+
+#error_explanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+
+/******************** FANCY BUTTONS!!! **************************/
+a.fancy_button, button.fancy_button { 
+  background: #555; 
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.4)), to(rgba(77,77,77,0.4)));  
+  background: -moz-linear-gradient(top, rgba(0,0,0,0.4), rgba(77,77,77,0.4)); 
+  float: left; 
+  padding: 4px; 
+  text-decoration: none; 
+  outline: 0; 
+  border-width: 1px; 
+  border-style: solid;
+  width: auto;
+  overflow: visible;
+  border-color: transparent transparent #666 transparent; 
+  border-color: transparent transparent rgba(202,202,202,0.27) transparent;
+  -webkit-border-radius: 12px; -moz-border-radius: 12px; border-radius: 12px;
+  -webkit-background-clip: padding-box;
+}
+
+a.fancy_button span, button.fancy_button span { 
+  display: block; 
+  float: left;
+  letter-spacing: -1px; 
+  border-width: 1px; 
+  border-style: solid; 
+  border-color: #ccc #444 #111 #444; 
+  border-color: rgba(255,255,255,0.7) rgba(0,0,0,0.5) rgba(0,0,0,0.7) rgba(0,0,0,0.5); 
+  font: bold 21px/1em Arial;
+  color: white; 
+  padding: 0.48em 2em; 
+  cursor: pointer; 
+  text-shadow: rgba(0,0,0,0.45) 0 -1px 0; 
+  -webkit-box-shadow: rgba(0,0,0,0.75) 0px 0px 3px; -moz-box-shadow: rgba(0,0,0,0.75) 0px 0px 3px; box-shadow: rgba(0,0,0,0.75) 0px 0px 3px;
+  -webkit-border-radius: 7px; -moz-border-radius: 7px; border-radius: 7px;
+  background: transparent -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.6)), color-stop(0.5, rgba(255,255,255,0.15)), color-stop(0.5, rgba(255,255,255,0.01)), to(transparent)); 
+  background: transparent -moz-linear-gradient(top, rgba(255,255,255,0.6), rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.01) 50%, transparent);
+  filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorstr='#80FFFFFF', EndColorstr='#00FFFFFF'); 
+  -webkit-background-clip: padding-box;
+}
+
+a.fancy_button:hover span, button.fancy_button:hover span {  
+  border-top-color: rgba(255,255,255,0.65); 
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(220,220,220,0.6)), color-stop(0.5, rgba(100,100,100,0.2)), color-stop(0.5, rgba(0,0,0,0.21)), to(rgba(0, 0, 0, 0.20))); 
+  background: -moz-linear-gradient(top, rgba(220,220,220,0.6), rgba(100,100,100,0.2) 50%, rgba(0,0,0,0.21) 50%, rgba(0, 0, 0, 0.20));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr='#99dcdcdc', EndColorStr='#33000000'); 
+  -webkit-background-clip: padding-box;
+}
+
+a.fancy_button:active span, button.fancy_button:active span {  
+  border-top-color: rgba(255,255,255,0.2); 
+  border-left-color: rgba(0,0,0,0.4); 
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(150,150,150,0.6)), color-stop(0.5, rgba(60,60,60,0.6)), color-stop(0.5, rgba(40,40,40,0.6)), to(rgba(20, 20, 20, 0.5))); 
+  background: -moz-linear-gradient(top, rgba(150,150,150,0.6), rgba(60,60,60,0.6) 50%, rgba(40,40,40,0.6) 50%, rgba(20, 20, 20, 0.5));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr='#80969696', EndColorStr='#59000000'); 
+  -webkit-box-shadow: inset 0 0 18px rgba(0,0,0,0.75), rgba(0,0,0,0.75) 0px 0px 3px; -moz-box-shadow: inset 0 0 18px rgba(0,0,0,0.75), rgba(0,0,0,0.75) 0px 0px 3px; box-shadow: inset 0 0 18px rgba(0,0,0,0.75), rgba(0,0,0,0.75) 0px 0px 3px; 
+  -webkit-background-clip: padding-box;
+}
+
+a.fancy_button span:active, button.fancy_button span:active { 
+  border-top-color: rgba(255,255,255,0.2); 
+  border-left-color: rgba(0,0,0,0.4); 
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr='#80969696', EndColorStr='#59000000'); 
+  -webkit-background-clip: padding-box;
+}

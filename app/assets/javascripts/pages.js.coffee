@@ -43,3 +43,9 @@ $(document).ready ->
     $("a#buttons-search").css("border-right", "40px solid #335ED4")
     $("a#buttons-search").css("background-color", "#335ED4")
     event.preventDefault()
+    
+    $("#user_email").blur (event) ->
+      alert "Not a valid email address!"  if @value isnt "@pomona.edu"
+
+
+
