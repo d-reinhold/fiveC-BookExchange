@@ -5,6 +5,7 @@ FiveCBookExchange::Application.routes.draw do
   match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
+  match '/check_email', :to => 'users#check_email'
 
   resources :users
   resources :listings
