@@ -1,26 +1,14 @@
+
+
 <%= form_for @listing do |f| %>
-  <%= render :partial => "shared/error_messages", :locals => { object => @listing} %>
+  <%= render :partial => "shared/error_messages", :locals => { :object => @listing} %>
   <div id="sell-form-required-hidden">
-	  <div class="sell-form-divider">
-			<%= f.text_field :title %>
-			<%= f.text_field :author %>
-			<%= f.text_field :price_dollars %>
-			<%= f.text_field :price_cents %>
-		</div>
+	  <%= render :partial => "shared/sell_form_required", :locals => { :l => f} %>
 	</div>
 	<div id="sell-form-optional">
-	  
+	  <%= render :partial => "shared/sell_form_optional", :locals => { :l => f} %>
 	</div>
 	<% end %>
-	<div class="sell-form-divider">
-    <div class="form-message"><br><p>
-	    None of these fields are required, but they might help your book get sold faster!</p><br><br><br><p> When you're finished, click continue!
-	  </p></div>
-	</div>
-	<a class="fancy_button enabled" id="sell-form-optional-button" href="#">
-	  <span style="background-color: orange;">Continue</span>
-	</a>
-  </div>
 	<div id="sell-form-final">
 		<div class="sell-form-divider">
 			<%= form_tag sessions_path, :id => 'authenticate-form', :remote => true do %>
@@ -44,7 +32,5 @@
 		  <div class="form-message"><p id="password"></p></div>
 		  <div class="form-message"><p id="password-confirm"></p></div>
 		</div>
-	  <a class="fancy_button disabled" id="sell-form-final-signin-button" href="#">
-		  <span style="background-color: orange;">Sell your Book!</span>
-		</a>
+<%= render :partial => "shared/fancy_button", :locals => { :button_id => "sell-form-final-signin-button", :button_class => 'disabled'} %>
 	</div>

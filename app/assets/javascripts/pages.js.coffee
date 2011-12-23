@@ -180,17 +180,18 @@ $(document).ready ->
       $("#sell-form-optional").css("display","none")
       $("#sell-form-final").css("display","block")
 
-  $("body").delegate "a#sell-form-final-button", "click", (event) ->
-    if $("a#sell-form-final-button").hasClass("enabled")
-      $("a#sell-form-final-button").removeClass("enabled")
-      $("a#sell-form-final-button").addClass("disabled")
+  $("body").delegate "a#sell-form-final-signup-button", "click", (event) ->
+    if $("a#sell-form-final-signup-button").hasClass("enabled")
+      $("a#sell-form-final-signup-button").removeClass("enabled")
+      $("a#sell-form-final-signup-button").addClass("disabled")
       $("#new_user input#user_email").val($("#check-email-form input#email_checker").val())
       $("#new_user input#user_listings_attributes_0_title").val($("#check-email-form input#title_checker").val())
       $("#new_user input#user_listings_attributes_0_author").val($("#check-email-form input#author_checker").val())
       $("#new_user input#user_listings_attributes_0_price_dollars").val($("#check-email-form input#price_dollars_checker").val())
       $("#new_user input#user_listings_attributes_0_price_cents").val($("#check-email-form input#price_cents_checker").val())
-      $("#new_user").submit()
       $("#sell-form-final").fadeOut "slow", ->
+        $("#new_user").submit()
+      
         
         
         
@@ -204,9 +205,6 @@ $(document).ready ->
       $("#new_listing input#listing_price_cents").val($("#check-email-form input#price_cents_checker").val())
       $("#authenticate-form input#email").val($("#check-email-form input#email_checker").val())
       $("#authenticate-form").submit()
- 
-      
-      
          
 
 
@@ -266,11 +264,11 @@ check_form = () ->
     $("a#sell-form-required-button").removeClass("enabled")
     $("a#sell-form-required-button").addClass("disabled")
   if NAME_READY and PASSWORD_READY and CPASSWORD_READY
-    $("a#sell-form-final-button").removeClass("disabled") 
-    $("a#sell-form-final-button").addClass("enabled")
+    $("a#sell-form-final-signup-button").removeClass("disabled") 
+    $("a#sell-form-final-signup-button").addClass("enabled")
   else 
-    $("a#sell-form-final-button").removeClass("enabled") 
-    $("a#sell-form-final-button").addClass("disabled")
+    $("a#sell-form-final-signup-button").removeClass("enabled") 
+    $("a#sell-form-final-signup-button").addClass("disabled")
 
 is_int = (value) ->
   if (parseFloat(value) is parseInt(value)) and not isNaN(value)

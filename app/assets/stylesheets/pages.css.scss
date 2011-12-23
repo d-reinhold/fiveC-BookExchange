@@ -2,3 +2,165 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+#search-sell-full {
+	position: relative;
+	/*border: 2px solid blue;*/
+	background-color:#85B1F2;
+	margin-top: 45px;
+	max-width: 680px;
+	min-width: 675px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	-moz-border-radius:    0px 10px 10px 10px;
+  -webkit-border-radius: 0px 10px 10px 10px;
+	border-radius:         0px 10px 10px 10px;
+}
+
+#search-sell-buttons {
+	/*background-color: white;*/
+	max-width: 680px;
+  /*border: 1px solid black;*/
+	
+}
+
+#search-sell-buttons ul {
+	list-style: none;
+	padding:0px;
+	margin:0px;
+	max-width: 680px;
+}
+
+#search-sell-buttons ul li {
+	display: inline;
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
+#search-sell-buttons li a {
+	/*padding: 5px 5px 5px 0.5em;*/
+	position:relative;
+	top:-27px;
+  border-top: 20px solid #11379E;
+	border-left: 40px solid #11379E;
+	border-right: 40px solid #11379E;
+	background-color: #11379E;
+	color: #fff;
+	padding-bottom: 5px;
+	text-decoration: none;
+  -moz-border-radius:    15px 15px 0px 0px;
+  -webkit-border-radius: 15px 15px 0px 0px;
+	border-radius:         15px 15px 0px 0px;
+}
+
+#search-sell-main {
+	/*border: 1px solid red;*/
+	padding-bottom: 15px;
+}
+#search-for-books {
+	display:block;
+}
+
+#sell-your-books {
+	display:none;
+}
+
+#sell-form-required-email {
+  height: 290px;
+  position: relative;
+	display: block;
+	/*border: 1px solid green;*/
+}
+
+
+#sell-form-required-hidden {
+  display:none;
+}
+
+#sell-form-optional {
+  height: 290px;  
+  position: relative;
+	display: block;
+}
+
+#sell-form-final {
+  height: 290px;  
+  position: relative;
+	display: none;
+	/*border: 1px solid green;*/
+}
+
+.sell-form-divider {
+  float:left;
+	width:326px;
+	height: 230px;
+
+}
+
+
+
+.sell-form-divider input, textarea, select {  
+    padding: 9px; 
+    margin-right:0px;
+    margin-top:15px;
+    border: solid 1px #E5E5E5;  
+    outline: 0;  
+    font: normal 15px/100% Verdana, Tahoma, sans-serif;  
+    width: 250px;  
+    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #CCCCCC), to(#FFFFFF));  
+    background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);  
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+}
+
+.sell-form-divider input#price_dollars_checker {
+    width: 4em; 
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.sell-form-divider input#price_cents_checker {
+    width: 3em; 
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.sell-form-divider .field {
+  margin-right: 25px;
+  float:right;
+}
+
+.sell-form-divider input:hover, textarea:hover,  
+input:focus, textarea:focus {  
+    border-color: #C9C9C9;  
+    -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;  
+    }
+
+.sell-form-divider .form-message {
+  padding-top:6px;
+  margin-right:0px;
+  margin-top:15px;
+  height: 31px;  
+  text-align:center;
+}
+
+
+.sell-form-divider p {
+  margin:0px;
+  margin-left:0px;
+  color: #555555;
+}
+
+#sell-form-required-button, #sell-form-optional-button {
+  position:relative;
+  top: 5px;
+  right:-480px;
+}
+
+#sell-form-final-button {
+  position:relative;
+  top: 5px;
+  right:-420px;
+}

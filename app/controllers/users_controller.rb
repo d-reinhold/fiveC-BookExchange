@@ -14,7 +14,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save!
-      flash[:success] = "Welcome!"
+      if @user.listings.empty?
+        flash[:success] = "Welcome to the 5C Book Exchange!"
+      else
+        flash[:success] = "Welcome to the 5C Book Exchange! \n Your listing has been posted"
       session[:user_id] = @user.id
       redirect_to @user
     else
