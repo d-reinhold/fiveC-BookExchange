@@ -1,0 +1,55 @@
+<%= form_for @user do |f| %>
+  <%= render :partial => "shared/error_messages", :locals => { object => @user} %>
+  <div id="sell-form-required-hidden">
+	  <div class="sell-form-divider">
+			<%= f.text_field :email %>
+			<%= f.fields_for :listings do |l| %>	
+			  <%= render :partial => "shared/sell_form_required", :locals => { :l => l} %>
+		</div>
+	</div>
+	<div id="sell-form-optional">
+	  <div class="sell-form-divider">
+    <div class="field"><%= l.text_field :edition, :placeholder => 'Edition' %></div>
+	  <div class="field"><%= l.text_field :isbn, :placeholder => 'ISBN' %></div>
+	  <div class="field"><%= l.select( :condition, [['---Condition---', '--Condition--'],['New','New'], ['Lightly Used','Lightly Used'], ['Heavily Used','Heavily Used'], ['Falling Apart','Falling Apart']], :default => '---Condition---') %></div>
+	  <div class="field"><%= l.text_area :description, :placeholder => 'Give a short description', :size => "36x6" %></div>
+	</div>
+	<div class="sell-form-divider">
+    <div class="form-message"><br><p>
+	    None of these fields are required, but they might help your book get sold faster!</p><br><br><br><p> When you're finished, click continue!
+	  </p></div>
+	</div>
+	<a class="fancy_button enabled" id="sell-form-optional-button" href="#">
+	  <span style="background-color: orange;">Continue</span>
+	</a>
+  </div>
+  <% end %>
+	<div id="sell-form-final">
+		<div class="sell-form-divider">
+			<div class="field">
+		    <%= f.text_field :name, :placeholder => "Full Name" %>
+		  </div>
+		  <div class="field">
+		    <%= f.password_field :password, :placeholder => "Password" %>
+		  </div>
+		  <div class="field">
+		    <%= f.password_field :password_confirmation, :placeholder => "Confirm your password"%>
+		  </div>
+		<br>
+		<br>
+			<div class="form-message">
+				<p id="final-message">
+					Since this is your first time selling on the 5C book exchange, we need this information to set up your account!
+				</p>
+			</div>
+	  </div>
+		<div class="sell-form-divider">
+	    <div class="form-message"><p id="name"></p></div>
+		  <div class="form-message"><p id="password"></p></div>
+		  <div class="form-message"><p id="password-confirm"></p></div>
+		</div>
+	  <a class="fancy_button disabled" id="sell-form-final-button" href="#">
+		  <span style="background-color: orange;">Sell your Book!</span>
+		</a>
+	</div>
+<% end %>

@@ -1,1 +1,9 @@
-alert("finished email check!");
+$("#sell-form-required-email").fadeOut("slow", function() {
+  $("#sell-form-required-email").css("display", "none");
+  $("#sell-form-validated-email").css("display", "block");
+  <% if @user.new_record? %>
+    $("#sell-form-validated-email").html("<%=escape_javascript(render ('shared/sign_up_and_create_listing'))%>");
+  <% else %>
+    $("#sell-form-validated-email").html("<%=escape_javascript(render ('shared/sign_in_and_create_listing'))%>");
+  <% end %>
+});

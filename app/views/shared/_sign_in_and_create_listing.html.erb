@@ -1,0 +1,50 @@
+<%= form_for @listing do |f| %>
+  <%= render :partial => "shared/error_messages", :locals => { object => @listing} %>
+  <div id="sell-form-required-hidden">
+	  <div class="sell-form-divider">
+			<%= f.text_field :title %>
+			<%= f.text_field :author %>
+			<%= f.text_field :price_dollars %>
+			<%= f.text_field :price_cents %>
+		</div>
+	</div>
+	<div id="sell-form-optional">
+	  
+	</div>
+	<% end %>
+	<div class="sell-form-divider">
+    <div class="form-message"><br><p>
+	    None of these fields are required, but they might help your book get sold faster!</p><br><br><br><p> When you're finished, click continue!
+	  </p></div>
+	</div>
+	<a class="fancy_button enabled" id="sell-form-optional-button" href="#">
+	  <span style="background-color: orange;">Continue</span>
+	</a>
+  </div>
+	<div id="sell-form-final">
+		<div class="sell-form-divider">
+			<%= form_tag sessions_path, :id => 'authenticate-form', :remote => true do %>
+			<div class="field" style="display:none">
+		    <%= text_field_tag :email%>
+		  </div>
+		  <div class="field">
+		    <%= password_field_tag :password, nil, :id => :user_password, :placeholder => "Password" %>
+		  </div>
+		<% end %>
+		<br>
+		<br>
+			<div class="form-message">
+				<p id="final-message">
+					We noticed you already have an account at the 5C Book Exchange! All we need now is your password to sell your book!
+				</p>
+			</div>
+	  </div>
+		<div class="sell-form-divider">
+	    <div class="form-message"><p id="name"></p></div>
+		  <div class="form-message"><p id="password"></p></div>
+		  <div class="form-message"><p id="password-confirm"></p></div>
+		</div>
+	  <a class="fancy_button disabled" id="sell-form-final-signin-button" href="#">
+		  <span style="background-color: orange;">Sell your Book!</span>
+		</a>
+	</div>

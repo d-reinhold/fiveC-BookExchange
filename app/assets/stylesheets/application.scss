@@ -179,17 +179,22 @@ footer nav {
 	display:none;
 }
 
-#sell-form-required {
+#sell-form-required-email {
   height: 290px;
   position: relative;
 	display: block;
 	/*border: 1px solid green;*/
 }
 
+
+#sell-form-required-hidden {
+  display:none;
+}
+
 #sell-form-optional {
   height: 290px;  
   position: relative;
-	display: none;
+	display: block;
 }
 
 #sell-form-final {
@@ -206,9 +211,7 @@ footer nav {
 
 }
 
-#check-email {
-  display:none;
-}
+
 
 .sell-form-divider input, textarea, select {  
     padding: 9px; 
@@ -225,13 +228,13 @@ footer nav {
     -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
 }
 
-.sell-form-divider input#dollas {
+.sell-form-divider input#price_dollars_checker {
     width: 4em; 
     margin-left: 0px;
     margin-right: 0px;
 }
 
-.sell-form-divider input#cents {
+.sell-form-divider input#price_cents_checker {
     width: 3em; 
     margin-left: 0px;
     margin-right: 0px;

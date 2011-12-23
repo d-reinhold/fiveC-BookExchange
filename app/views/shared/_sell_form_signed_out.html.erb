@@ -1,29 +1,10 @@
-<div id="check-email">
+<div id="sell-form-required-email">
   <%= form_tag :check_email, :id => "check-email-form", :remote => true do %>
-    <%= text_field_tag :email_address %>
-    <%= submit_tag ''%>
-  <% end %>
-</div>
-
-
-<%= form_for @user do |f| %>
-	<% if @user.errors.any? %>
-	  <div class="error_messages">
-	    <h2>Form is invalid</h2>
-	    <ul>
-	      <% for message in @user.errors.full_messages %>
-	        <li><%= message %></li>
-	      <% end %>
-	    </ul>
-	  </div>
-	<% end %>
-  <div id="sell-form-required">
 	  <div class="sell-form-divider">
-			<div class="field"><%= f.text_field :email, :placeholder => 'Email Address' %></div>
-			  <%= f.fields_for :listings do |l| %>	
-		  <div class="field"><%= l.text_field :title, :placeholder => 'Book Title' %></div>
-		  <div class="field"><%= l.text_field :author, :placeholder => "Author(s)" %></div>
-			<div class="field">$<%= l.text_field :price_dollars, :id=> :dollas, :placeholder => 'dollas' %>.<%= l.text_field :price_cents, :id => :cents, :placeholder => 'cents' %></div>
+			<div class="field"><%= text_field_tag :email_checker, nil, :placeholder => 'Email Address' %></div>	
+		  <div class="field"><%= text_field_tag :title_checker, nil, :placeholder => 'Book Title' %></div>
+		  <div class="field"><%= text_field_tag :author_checker, nil, :placeholder => "Author(s)" %></div>
+			<div class="field">$<%= text_field_tag :price_dollars_checker, nil, :placeholder => 'dollas' %>.<%= text_field_tag :price_cents_checker, nil, :placeholder => 'cents' %></div>
 		</div>
 		<div class="sell-form-divider">
 	    <div class="form-message"><p id="email"></p></div>
@@ -34,51 +15,10 @@
 			<a class="fancy_button disabled" id="sell-form-required-button" href="#">
 			  <span style="background-color: orange;">Continue</span>
 			</a>
-	</div>
-	<div id="sell-form-optional">
-	  <div class="sell-form-divider">
-    <div class="field"><%= l.text_field :edition, :placeholder => 'Edition' %></div>
-	  <div class="field"><%= l.text_field :isbn, :placeholder => 'ISBN' %></div>
-	  <div class="field"><%= l.select( :condition, [['---Condition---', '--Condition--'],['New','New'], ['Lightly Used','Lightly Used'], ['Heavily Used','Heavily Used'], ['Falling Apart','Falling Apart']], :default => '---Condition---') %></div>
-	  <div class="field"><%= l.text_area :description, :placeholder => 'Give a short description', :size => "36x6" %></div>
-	</div>
-	<div class="sell-form-divider">
-    <div class="form-message"><br><p>
-	    None of these fields are required, but they might help your book get sold faster!</p><br><br><br><p> When you're finished, click continue!
-	  </p></div>
-	</div>
-		<a class="fancy_button enabled" id="sell-form-optional-button" href="#">
-		  <span style="background-color: orange;">Continue</span>
-		</a>
-  </div>
   <% end %>
-	<div id="sell-form-final">
-		<div class="sell-form-divider">
-			<div class="field">
-		    <%= f.text_field :name, :placeholder => "Full Name" %>
-		  </div>
-		  <div class="field">
-		    <%= f.password_field :password, :placeholder => "Password" %>
-		  </div>
-		  <div class="field">
-		    <%= f.password_field :password_confirmation, :placeholder => "Confirm your password"%>
-		  </div>
-		<br>
-		<br>
-			<div class="form-message">
-				<p id="final-message">
-					Since this is your first time selling on the 5C book exchange, we need this information to set up your account!
-				</p>
-			</div>
-	  </div>
-		<div class="sell-form-divider">
-	    <div class="form-message"><p id="name"></p></div>
-		  <div class="form-message"><p id="password"></p></div>
-		  <div class="form-message"><p id="password-confirm"></p></div>
-		</div>
-	  <a class="fancy_button disabled" id="sell-form-final-button" href="#">
-		  <span style="background-color: orange;">Sell your Book!</span>
-		</a>
-	</div>
-<% end %>
-<%= form_tag %>
+</div>
+<div id="sell-form-validated-email">
+</div>
+
+
+

@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   def update
     puts 'UPDATE DEBUG!!!!'
     @user = User.find(params[:id])
+    
     if @user.update_attributes!(params[:user])
       flash[:success] = "Account updated!"
       redirect_to @user
@@ -44,16 +45,19 @@ class UsersController < ApplicationController
   
   def check_email
     puts "Checking email now.."
-    @user = User.find_by_email(params[:email_address])
+    puts params[:email_checker]
+    @user = User.find_by_email(params[:email_checker])
     if @user.nil?
       puts "Email not registered, creating a new user"
       @user = User.new
       @user.listings.new
     else
       puts "Email already taken"
+      @listing = @user.listings.new
     end
     respond_to do |format|
       format.js
     end
   end
+
 end
