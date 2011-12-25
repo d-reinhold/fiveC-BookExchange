@@ -1,12 +1,23 @@
+$link-color: #09c;
+$link-visited: #069;
+
+@mixin rounded-corners($upper-left, $upper-right, $bottom-left, $bottom-right) {
+  border-radius: $upper-left $upper-right $bottom-left $bottom-right;
+  -moz-border-radius: $upper-left $upper-right $bottom-left $bottom-right;
+  -webkit-border-radius: $upper-left $upper-right $bottom-left $bottom-right;
+}
+
 .container {
-  width: 730px;
-  min-width: 730px;
+  width: 760px;
+  min-width: 760px;
+  max-width:760px;
   margin-left:auto;
 	margin-right:auto;
-	width:90%;
+
 }
 
 body {
+  font-family: 'Duru Sans', sans-serif;
   background-image: url('/assets/lined_bluesmall.jpg');
   background-repeat: x y;
   background-position: top left;
@@ -17,9 +28,11 @@ header {
   padding-top: 20px;
 }
 
-header img {
-  padding: 1em;
-  background: #fff;
+a.header_text {
+  font-size: 28pt;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 section {
@@ -27,36 +40,30 @@ section {
   font-size: 120%;
   padding: 20px;
   background: #fff;
+  h1 {
+    font-size: 200%;
+  }
 }
 
-section h1 {
-  font-size: 200%;
-}
 
 /* Links */
 
 a {
-  color: #09c;
+  color: $link-color;
   text-decoration: none;
+  &:hover {
+    color: $link-visited;
+    text-decoration: underline;
+  }
+  &:visited {
+    color: $link-visited;
+  }
 }
-
-a:hover {
-  color: #069;
-  text-decoration: underline;
-}
-
-a:visited {
-  color: #069;
-}
-
 
 /* Navigation */
 
 nav {
   float: right;
-}
-
-nav {
   background-color: white;
   padding: 0 0.7em;
   white-space: nowrap;
@@ -65,25 +72,15 @@ nav {
 nav ul {
   margin: 0;
   padding: 0;
-}
-
-nav ul li {
-  list-style-type: none;
-  display: inline-block;
-  padding: 0.2em 0;
-}
-
-nav ul li a {
-  padding: 0 5px;
-  font-weight: bold;
-}
-
-nav ul li a:visited {
-  color: #09c;
-}
-
-nav ul li a:hover {
-  text-decoration: underline;
+  li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 0.2em 0;
+    a {
+      padding: 0 5px;
+      font-weight: bold;
+    }
+  }
 }
 
 
@@ -98,10 +95,9 @@ nav ul li a:hover {
 footer {
   text-align: center;
   margin-top: 10px;
-  width: 730px;
-  margin-left:auto;
-	margin-right:auto;
-	width:100%;
+  width: 760px;
+  min-width: 760px;
+  max-width:760px;
 }
 
 footer nav {
@@ -151,6 +147,22 @@ footer nav {
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
+}
+
+
+
+input, select, textarea {  
+    padding: 9px; 
+    margin-right:0px;
+    margin-top:15px;
+    border: solid 1px #E5E5E5;  
+    outline: 0;  
+    font: normal 15px/100% Verdana, Tahoma, sans-serif;  
+    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #CCCCCC), to(#FFFFFF));  
+    background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);  
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
 }
 
 

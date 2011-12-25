@@ -1,0 +1,17 @@
+<h3> <%= header %> </h3>
+<table class="listings-search">
+  <thead>
+	  <tr>
+		  <th>Title</th>
+		  <th>Author</th>
+		  <th>Price</th>
+	  </tr>
+	</thead>
+  <% relation.each do |listing|%>
+    <tr id="<%= listing.id %>">
+	    <td><%= listing.title %></td>
+    	<td> <%= listing.author %></td>
+      <td> $<%= listing.price_dollars %>.<%= listing.price_cents %></td>
+    </tr>
+	<% end %>
+</table>

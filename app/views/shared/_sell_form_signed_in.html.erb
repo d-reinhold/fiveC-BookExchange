@@ -1,20 +1,13 @@
-<%= form_for @listing do |f| %>
-	<% if @listing.errors.any? %>
-	  <div class="error_messages">
-	    <h2>Form is invalid</h2>
-	    <ul>
-	      <% for message in @listing.errors.full_messages %>
-	        <li><%= message %></li>
-	      <% end %>
-	    </ul>
-	  </div>
+<div id="sell-form-signed-in">
+	<%= form_for @listing do |f| %>
+	  <%= render :partial => "shared/error_messages", :locals => { :object => @listing} %>
+	  <div id="sell-form-required">
+	    <%= render 'shared/sell_form_required', :l => f %>
+			<%= render :partial => "shared/fancy_button", :locals => { :button_id => "sell-form-signed-in-required-button", :button_class => 'disabled', :text => "Continue!"} %>
+		</div>
+		<div id="sell-form-optional">
+	    <%= render 'shared/sell_form_optional', :l => f %>
+			<%= render :partial => "shared/fancy_button", :locals => { :button_id => "sell-form-signed-in-final-button", :button_class => 'enabled', :text => "Post Your Book!"} %>
+		</div>
 	<% end %>
-  <div id="sell-form-required">
-    <%= render 'shared/sell_form_required', :l => f %>
-	  <button id="sell-form-required-button">Continue</button>
-	</div>
-	<div id="sell-form-optional">
-    <%= render 'shared/sell_form_optional', :l => f %>
-	  <button id="sell-form-final-button"><%= f.submit 'List your book!'%></button>
-	</div>
-<% end %>
+</idv>

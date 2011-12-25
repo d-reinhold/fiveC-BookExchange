@@ -2,13 +2,12 @@
 	<div class="field"><%= l.text_field :edition, :placeholder => 'Edition' %></div>
 	<div class="field"><%= l.text_field :isbn, :placeholder => 'ISBN' %></div>
 	<div class="field"><%= l.select( :condition, [['---Condition---', '--Condition--'],['New','New'], ['Lightly Used','Lightly Used'], ['Heavily Used','Heavily Used'], ['Falling Apart','Falling Apart']], :default => '---Condition---') %></div>
-	<div class="field"><%= l.text_area :description, :placeholder => 'Give a short description', :size => "36x6" %></div>
+	<div class="field"><%= l.text_area :description, :placeholder => 'Give a short description' %></div>
 </div>
 <div class="sell-form-divider">
   <div class="form-message"><br>
 	  <p>
-    None of these fields are required, but they might help your book get sold faster!</p><br><br><br><p> When you're finished, click continue!
+    None of these fields are required, but they might help your book get sold faster!</p><br><br><p> When you're finished, click continue!
     </p>
   </div>
 </div>
-<%= render :partial => "shared/fancy_button", :locals => { :button_id => "sell-form-optional-button", :button_class => 'enabled'} %>

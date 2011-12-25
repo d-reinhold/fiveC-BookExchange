@@ -1,3 +1,44 @@
 // Place all the styles related to the listings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+#results {
+  h1,h2,h3,p{
+    text-align:left;
+  }
+}
+
+#listing {
+  position:relative;
+  min-height:350px;
+}
+
+#listing-details {
+  float:left;
+  padding:12px;
+  min-height: 300px;
+  min-width: 300px;
+  max-width:300px;
+}
+
+#seller-details {
+  float:left;
+  padding:12px;
+  min-height: 300px;
+  min-width: 370px;  
+  max-width:370px;
+  border-left: 1px dashed gray;
+}
+
+#buy-this-book {
+  position:relative;
+  left: 23px;
+}
+
+
+#edit-listing {
+  position:relative;
+  min-height:350px;
+}

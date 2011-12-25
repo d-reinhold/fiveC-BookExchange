@@ -1,2 +1,21 @@
-<h1>Listings#edit</h1>
-<p>Find me in app/views/listings/edit.html.erb</p>
+<div id="top">
+	  <%= link_to "back to my books", @current_user %>
+
+</div>
+<h2>Edit Listing</h2>
+<%= form_for @listing do |l| %>
+	<div id='edit-listing'>
+		<div class="sell-form-divider">
+			<div class="field"><%= l.text_field :title, :placeholder => 'Book Title', :class => 'book_title' %></div>
+			<div class="field"><%= l.text_field :author, :placeholder => "Author(s)", :class => 'book_author '%></div>
+			<div class="field">$<%= l.text_field :price_dollars, :placeholder => 'dollas', :class => 'price_dollars' %>.<%= l.text_field :price_cents, :placeholder => 'cents', :class => 'price_cents' %></div>
+						<div class="field"><%= l.select( :condition, [['---Condition---', '--Condition--'],['New','New'], ['Lightly Used','Lightly Used'], ['Heavily Used','Heavily Used'], ['Falling Apart','Falling Apart']], :default => '---Condition---') %></div>
+		</div>
+		<div class="sell-form-divider">
+			<div class="field"><%= l.text_field :edition, :placeholder => 'Edition' %></div>
+			<div class="field"><%= l.text_field :isbn, :placeholder => 'ISBN' %></div>
+			<div class="field"><%= l.text_area :description, :placeholder => 'Give a short description' %></div>
+		</div>
+	</div>
+<%end%>
+		<%= render :partial => "shared/fancy_button", :locals => { :button_id => "edit-listing", :button_class => 'enabled', :text => "Edit Listing!"} %>

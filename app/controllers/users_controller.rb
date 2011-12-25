@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
-  
+  before_filter :authenticate_user, :only => [:show, :edit, :update] 
+  before_filter :correct_user, :only => [:show, :edit, :update]  
+   
   def show
-    @user = User.find(params[:id])
     @title = @user.name
+    @listings = @user.listings
   end 
       
   def new
@@ -18,6 +20,7 @@ class UsersController < ApplicationController
         flash[:success] = "Welcome to the 5C Book Exchange!"
       else
         flash[:success] = "Welcome to the 5C Book Exchange! \n Your listing has been posted"
+      end
       session[:user_id] = @user.id
       redirect_to @user
     else
@@ -62,5 +65,25 @@ class UsersController < ApplicationController
       format.js
     end
   end
+  
+  private
+  
+    def authenticate_user
+      deny_access unless signed_in?
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
+    end  
+    
+    def current_user?(user)
+      user == current_user
+    end
+
+    def deny_access
+      redirect_to '/', :notice => "Please sign in to access this page."
+    end
+  
 
 end

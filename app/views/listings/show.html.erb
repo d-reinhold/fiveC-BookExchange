@@ -1,2 +1,44 @@
-<h1>Listings#show</h1>
-<p>Find me in app/views/listings/show.html.erb</p>
+<div id="top">
+	  <%= link_to "back to search results", listings_path %>
+
+</div>
+<div id="listing">
+	<div id="listing-details">
+		<h3>Listing Details</h3>
+		<p>Title: <b><%=@listing.title%></b><br>
+		Author: <b><%=@listing.author%></b><br>
+
+		Edition: 
+		<% if @listing.edition == '' %>
+		  <%= 'Not Provided' %>
+		<% else %>
+		  <%=@listing.edition%>
+		<% end %><br>
+
+		Condition:
+		<% if @listing.condition == '--Condition--' %>
+		  <%= 'Not Provided' %>
+		<% else %>
+		  <%=@listing.condition%>
+		<% end %><br>
+
+		Description: 
+		<% if @listing.description == '' %>
+		  <%= 'Not Provided' %>
+		<% else %>
+		  <%=@listing.description%>
+		<% end %><br>
+
+		Price: <b>$<%=@listing.price_dollars%>.<%=@listing.price_cents%></b>
+		
+		<br><br><br><br>
+		<%= render :partial => "shared/fancy_button", :locals => { :button_id => "buy-this-book", :button_class => 'enabled', :text => "Buy this Book!"} %>
+		</p>
+	</div>
+	<div id="seller-details">
+		<h3>Seller Details</h3>
+		<p>Name: <b><%=@listing.user.name%></b><br>
+		Email Address: <b><%=@listing.user.email%></b><br><br><br>
+		<p>Note: Clicking 'Buy this Book!' will remove this listing from the search engine, and send an email to you and to the seller so you can work out a time to meet. This is not a binding contract, and either party can cancel the deal at any time. If the deal gets cancelled, the listing will be reposted. If the deal goes through, it is up to the seller to mark the transaction as final. Thanks for reading! </p>
+	</div>
+</div>

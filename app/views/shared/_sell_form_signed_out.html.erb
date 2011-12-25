@@ -2,19 +2,18 @@
   <%= form_tag :check_email, :id => "check-email-form", :remote => true do %>
 	  <div class="sell-form-divider">
 			<div class="field"><%= text_field_tag :email_checker, nil, :placeholder => 'Email Address' %></div>	
-		  <div class="field"><%= text_field_tag :title_checker, nil, :placeholder => 'Book Title' %></div>
-		  <div class="field"><%= text_field_tag :author_checker, nil, :placeholder => "Author(s)" %></div>
-			<div class="field">$<%= text_field_tag :price_dollars_checker, nil, :placeholder => 'dollas' %>.<%= text_field_tag :price_cents_checker, nil, :placeholder => 'cents' %></div>
+		  <div class="field"><%= text_field_tag :title_checker, nil, :placeholder => 'Book Title', :class => 'book_title' %></div>
+		  <div class="field"><%= text_field_tag :author_checker, nil, :placeholder => "Author(s)", :class => 'book_author' %></div>
+			<div class="field">$<%= text_field_tag :price_dollars_checker, nil, :placeholder => 'dollas', :class => 'price_dollars' %>.<%= text_field_tag :price_cents_checker, nil, :placeholder => 'cents', :class => 'price_cents' %></div>
 		</div>
 		<div class="sell-form-divider">
-	    <div class="form-message"><p id="email"></p></div>
-		  <div class="form-message"><p id="title"></p></div>
-		  <div class="form-message"><p id="author"></p></div>
-			<div class="form-message"><p id="price"></p></div>
+	    <div class="form-message"><p id="email">What's your 5C email address?</p></div>
+		  <div class="form-message"><p id="title">Enter the title of your book here!</p></div>
+		  <div class="form-message"><p id="author">Who's the author?</p></div>
+			<div class="form-message"><p id="price_dollars">How much are you asking for?</p></div>
+			<div class="form-message" style="display:none;"><p id="price_cents"></p></div>
 		</div>
-			<a class="fancy_button disabled" id="sell-form-required-button" href="#">
-			  <span style="background-color: orange;">Continue</span>
-			</a>
+		<%= render :partial => "shared/fancy_button", :locals => { :button_id => "sell-form-required-button", :button_class => 'disabled', :text => "Continue!"} %>
   <% end %>
 </div>
 <div id="sell-form-validated-email">

@@ -1,12 +1,13 @@
 <header>
-  <%= link_to '5C Book Exchange', '/' %>
+  <%= link_to '5C Book Exchange', '/', :class => "header_text" %>
   <nav class="round">
     <ul>
+	    <li><%= link_to "Search/Sell Books!", '/' %></li>
 	    <% if signed_in? %>
 		    <li><%= link_to "My Books", @current_user %></li>
 	      <li><%= link_to "Sign Out", signout_path %></li>
 	    <% else %>
-        <li><%= link_to "My Books", signin_path %></li>
+        <li><%= link_to "Sign Up or Sign In!", signin_path %></li>
       <% end %>
     </ul>
   </nav>

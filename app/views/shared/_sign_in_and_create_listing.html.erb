@@ -1,5 +1,3 @@
-
-
 <%= form_for @listing do |f| %>
   <%= render :partial => "shared/error_messages", :locals => { :object => @listing} %>
   <div id="sell-form-required-hidden">
@@ -7,6 +5,7 @@
 	</div>
 	<div id="sell-form-optional">
 	  <%= render :partial => "shared/sell_form_optional", :locals => { :l => f} %>
+		<%= render :partial => "shared/fancy_button", :locals => { :button_id => "sell-form-optional-button", :button_class => 'enabled', :text => "Continue!"} %>
 	</div>
 	<% end %>
 	<div id="sell-form-final">
@@ -32,5 +31,5 @@
 		  <div class="form-message"><p id="password"></p></div>
 		  <div class="form-message"><p id="password-confirm"></p></div>
 		</div>
-<%= render :partial => "shared/fancy_button", :locals => { :button_id => "sell-form-final-signin-button", :button_class => 'disabled'} %>
+<%= render :partial => "shared/fancy_button", :locals => { :button_id => "sell-form-final-signin-button", :button_class => 'disabled', :text => "Post Your Book!"} %>
 	</div>

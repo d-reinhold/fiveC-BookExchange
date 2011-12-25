@@ -1,0 +1,21 @@
+<br>
+<br>
+<br>
+<h2> Search Results </h2>
+
+
+<% if @keyword.blank? %>
+  <%= render :partial => 'shared/listings_table', :locals => { :header => "All Books", :relation => @listings } %>
+<% elsif @listings_title.empty? and @listings_author.empty? and @listings_isbn.empty?  %>
+  <p> Sorry, no books matched your search! Please try another query.</p>
+<% else %>
+  <% unless @listings_title.empty? %>
+  	<%= render :partial => 'shared/listings_table', :locals => { :header => "Matching Title", :relation => @listings_title } %>
+  <% end %>
+  <% unless @listings_author.empty? %>
+  	<%= render :partial => 'shared/listings_table', :locals => { :header => "Matching Author", :relation => @listings_author } %>
+  <% end %>
+  <% unless @listings_isbn.empty? %>
+  	<%= render :partial => 'shared/listings_table', :locals => { :header => "Matching ISBN", :relation => @listings_isbn } %>
+  <% end %>
+<% end %>
