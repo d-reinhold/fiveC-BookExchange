@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+dom = User.create!(:name => 'Dominick Reinhold', :email => 'dfr12009@pomona.edu', :password => 'XCStar2013')
+#dom.listings.create!(:title)

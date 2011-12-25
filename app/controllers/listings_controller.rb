@@ -34,7 +34,6 @@ class ListingsController < ApplicationController
   end
 
   def index
-    @listing = @current_user.listings.new
     puts "hit index" 
     if params[:search] == ''
       puts 'search params blank'

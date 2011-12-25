@@ -18,6 +18,7 @@ TODO:
 Make signup/signin page pretty
 Finish CRUD for listings (edit is almost done, update, destroy)
 Create transaction model, controller, etc (emails!)
+set up a postgres server for this app
 Get some sample data loaded
 Fix bugs, write tests, talk to friends
 

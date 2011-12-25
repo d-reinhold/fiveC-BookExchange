@@ -7,7 +7,6 @@ gem 'rails', '3.1.0'
 
 gem 'pg'
 gem 'thin'
-gem 'sqlite3'
 gem "nifty-generators", :group => :development
 gem 'annotate', '~> 2.4.1.beta', :group => :development
 #gem 'haml-rails', '>= 0.3.4', :group => :development

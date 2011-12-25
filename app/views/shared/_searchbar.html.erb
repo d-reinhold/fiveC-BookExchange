@@ -1,6 +1,6 @@
 <%= form_tag listings_path, :id => "search", :method => 'get', :remote => true do %>
   <p id="searchbar">
-    <%= text_field_tag :search, params[:search], :placeholder => "Enter a title, author, or ISBN!", :value => session[:last_search] %> </p>
+    <%= text_field_tag :search, params[:search], :placeholder => "Enter a title, author, or ISBN!" %> </p>
 
     <%= render :partial => "shared/fancy_button", :locals => { :button_id => "search-button", :button_class => 'enabled', :text => "Search!"} %>
 <% end %>
