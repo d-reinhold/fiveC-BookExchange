@@ -37,7 +37,7 @@ class ListingsController < ApplicationController
     puts "hit index" 
     if params[:search] == ''
       puts 'search params blank'
-      @listings = Listing.all
+      @listings = Listing.order("title")
       session[:last_search] = nil
     elsif params[:search].present?
       puts "got search params: #{params[:search]}"
@@ -46,7 +46,7 @@ class ListingsController < ApplicationController
       puts "didnt get search params, but had a last search"
       gen_search_arrays(session[:last_search])
     else
-      @listings = Listing.all
+      @listings = Listing.order("title")
     end
     respond_to do |format|
       format.js
@@ -57,10 +57,10 @@ class ListingsController < ApplicationController
   private
   
     def gen_search_arrays(keyword)
-      @keyword = keyword
-      @listings_title = Listing.where("title LIKE ?", "%#{@keyword}%")
-      @listings_author = Listing.where("author LIKE ?", "%#{@keyword}%")
-      @listings_isbn = Listing.where("isbn LIKE ?", "%#{@keyword}%")
+      @keyword = keyword.downcase
+      @listings_title = Listing.where("lower(title) LIKE ?", "%#{@keyword}%").order("title")
+      @listings_author = Listing.where("lower(author) LIKE ?", "%#{@keyword}%").order("title")
+      @listings_isbn = Listing.where("lower(isbn) LIKE ?", "%#{@keyword}%").order("title")
       session[:last_search] = @keyword
       puts "Last Search: #{session[:last_search]}"
     end
