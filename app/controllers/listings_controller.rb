@@ -1,15 +1,17 @@
 class ListingsController < ApplicationController
-  before_filter :authenticate_user, :only => [:new, :create] 
+  before_filter :authenticate_user, :only => [ :create, :edit, :update] 
   before_filter :correct_user, :only => [ :edit, :update]
   
   
   def show
     @listing = Listing.find(params[:id])
-    @title = @listing.title
-    @transaction = @listing.transaction
-  end
-
-  def new
+    if @listing.transaction.status != "available"
+      flash[:error] = 'That listing is not available at this time.'
+      redirect_to root_path
+    else
+      @title = @listing.title
+      @transaction = @listing.transaction
+    end
   end
 
   def create

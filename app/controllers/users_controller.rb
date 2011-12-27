@@ -6,12 +6,16 @@ class UsersController < ApplicationController
     @title = @current_user.name
     @listings = @current_user.listings
     @seller_transactions = Array.new
+    @seller_transactions_final = Array.new
     @current_user.listings.each do |l|
       if l.transaction.status == 'unavailable'
         @seller_transactions << l.transaction
+      elsif l.transaction.status == 'sold'
+        @seller_transactions_final << l.transaction
       end
     end  
-    @buyer_transactions = Transaction.where('buyer_email = ?', @current_user.email)
+    @buyer_transactions = Transaction.where('buyer_email = ? AND status = ?', @current_user.email, 'unavailable')    
+    @buyer_transactions_final = Transaction.where('buyer_email = ? AND status = ?', @current_user.email, 'sold')
   end 
       
   def new

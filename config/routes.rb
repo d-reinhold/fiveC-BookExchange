@@ -2,6 +2,7 @@ FiveCBookExchange::Application.routes.draw do
 
   get "transactions/request_book"
   get "transactions/cancel_request"
+  get "transactions/sold"
 
 
   match '/home' => 'pages#home'

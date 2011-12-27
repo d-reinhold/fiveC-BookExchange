@@ -5,6 +5,7 @@ class CreateTransactions < ActiveRecord::Migration
       t.string :buyer_email, :default => "not set"
       t.string :buyer_name, :default => "not set"
       t.string :status, :default => "available"
+      t.string :sell_date, :default => 'not sold'
 
       t.timestamps
     end

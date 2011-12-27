@@ -8,4 +8,9 @@ $(document).ready ->
   $("#cancel-transaction").click (event) ->
     $("#cancel-request-form").submit()
     $("#listing").fadeOut "slow", (event) ->
+      
+      
+  $("#complete-transaction").click (event) ->
+    $("#book-sold-form").submit()
+    $("#listing").fadeOut "slow", (event) ->
 

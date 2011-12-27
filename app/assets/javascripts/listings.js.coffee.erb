@@ -8,9 +8,10 @@ $(document).ready ->
     location.href= '/listings/' + @.id
     
   $("body").delegate "#tell-me-more", "click", (event) ->
-    $("#listing").fadeOut (event) ->
-      $("#listing").css "display", "none"
-      $("#new-transaction").css "display", "block"
+    if $("#tell-me-more").hasClass "enabled"
+      $("#listing").fadeOut (event) ->
+        $("#listing").css "display", "none"
+        $("#new-transaction").css "display", "block"
 
   $("body").delegate "#back-to-listing-details", "click", (event) ->
     $("#new-transaction").fadeOut (event) ->

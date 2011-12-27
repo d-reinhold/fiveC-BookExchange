@@ -1,12 +1,19 @@
 class TransactionsController < ApplicationController
-  before_filter :authenticate_user, :only => [:show, :cancel_request] 
-  before_filter :correct_user, :only => [:show, :cancel_request]
+
+  before_filter :authenticate_user, :only => [:show, :cancel_request, :sold] 
+  before_filter :buyer_or_seller, :only => [:show, :cancel_request]
+  before_filter :seller, :only => [:sold]
   
   
   def show
-    @title = 'Transactions'
     @transaction = Transaction.find(params[:id])
-    @listing = @transaction.listing
+    if @transaction.status == 'available'
+      flash[:success] = "You don't have permission to view that page."
+      redirect_to @current_user
+    else
+      @title = 'Transactions'
+      @listing = @transaction.listing
+    end
   end
   
   
@@ -59,20 +66,55 @@ class TransactionsController < ApplicationController
       redirect_to root_path
     end 
   end
+  
+
+  def sold
+    puts params
+    @transaction = Transaction.find(params[:id])
+    if @transaction.status == 'unavailable'
+      @transaction.status = 'sold'
+      if @transaction.save
+        flash[:success] = "Transaction complete! Thanks for selling your book on the 5C Book Exchange!"
+          redirect_to @current_user
+      else
+        message = @transaction.errors.full_messages
+        flash[:error] = message
+        redirect_to root_path
+      end
+    else 
+      flash[:error] = "That listing is not currently requested."
+      redirect_to root_path
+    end 
+  end
  
   private
 
-    def correct_user
+
+    def buyer_or_seller
+      if is_buyer? or is_seller?
+        return true
+      else
+        redirect_to '/', :notice => "You don't have permission to view that page!"
+      end
+    end
+    
+    def seller
+      redirect_to '/', :notice => "You don't have permission to view that page!" unless is_seller?
+    end
+        
+    def is_buyer?
+      @transaction = Transaction.find(params[:id])
+      @transaction.buyer_email == @current_user.email ? true : false
+    end
+    
+    def is_seller?
       @transaction = Transaction.find(params[:id])
       @listing = @transaction.listing
-      puts @listing.id
       @current_user.listings.each do |l|
-        puts l.id
         if l.id == @listing.id
-          return
+          return true
         end
       end
-      redirect_to '/', :notice => "You don't have permission to view that page!"
+      return false
     end
-
 end

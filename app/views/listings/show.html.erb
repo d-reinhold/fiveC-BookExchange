@@ -39,8 +39,13 @@
 		<p style="line-height: 1.75em">Name: <b><%=@listing.user.name%></b><br>
 		Email Address: <b><%=@listing.user.email%></b><br>
 		<br>-------------------------------------------------------------<br>
-		<p style="text-align:center;">Click 'Tell me more!' for information on how to purchase this book.<br><br>
-		<%= render :partial => "shared/fancy_button", :locals => { :button_id => "tell-me-more", :button_class => 'enabled', :text => "Tell me more!"} %>
+		<% if signed_in? and @listing.user.id == @current_user.id %>	
+				<p class="centered">This is your book, so you can't buy it!<br><br>
+			<%= render :partial => "shared/fancy_button", :locals => { :button_id => "tell-me-more", :button_class => 'disabled', :text => "Tell me more!"} %>
+		<% else%>
+			<p class="centered">Click 'Tell me more!' for information on how to purchase this book.<br><br>
+			<%= render :partial => "shared/fancy_button", :locals => { :button_id => "tell-me-more", :button_class => 'enabled', :text => "Tell me more!"} %>
+		<% end %>
 		</p>
 	</div>
   <div class="clear"></div>

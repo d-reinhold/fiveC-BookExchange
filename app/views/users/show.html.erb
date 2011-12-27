@@ -43,6 +43,28 @@
 	       </div>
 	     <% end %>
 	   <% end %>
+	  <h1>History</h1>
+	  <p><b>You bought:</b></p>
+	   <% if @buyer_transactions_final.empty? %>
+	     <p class="centered">You haven't bought any books yet!</p>
+     <% else %>	
+	     <% @buyer_transactions_final.each do |t| %>
+         <div class="buyer-transaction-complete" id="<%=t.id%>">
+	         <p class='centered'>You bought <b><%= t.listing.title %></b> from <b><%= t.listing.user.name%></b> for <b>$<%=t.listing.price_dollars%>.<%=t.listing.price_cents%></b> on <b><%=t.sell_date%></b>.</p>
+	       </div>
+	     <% end %>
+    <% end %>
+	  <br>
+	  <p><b>You sold:</b></p>
+	   <% if @seller_transactions_final.empty? %>
+	     <p class="centered">You haven't sold any books yet!</p>
+     <% else %>
+	   	<% @seller_transactions_final.each do |t| %>
+		     <div class="seller-transaction-complete" id="<%=t.id%>">
+	         <p class="centered"><b><%=t.buyer_name%></b> bought <b><%= t.listing.title %></b> for <b>$<%=t.listing.price_dollars%>.<%=t.listing.price_cents%></b> on <b><%=t.sell_date%></b>.</p>
+	       </div>
+	     <% end %>
+	   <% end %>
 	</div>
   <div class="clear"></div>
 </div>
