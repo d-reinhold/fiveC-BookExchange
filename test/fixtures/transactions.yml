@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  listing_id: 1
+  buyer_email: MyString
+  status: MyString
+
+two:
+  listing_id: 1
+  buyer_email: MyString
+  status: MyString

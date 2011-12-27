@@ -1,11 +1,5 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
 
 r = Random.new
 
@@ -72,7 +66,7 @@ dom.listings.create!(:title => "Lord of the Flies", :author => "William Golding"
 dom.listings.create!(:title => "The Monster At The End Of This Book", :author => "Jon Stone and Michael Smollin", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
 dom.listings.create!(:title => "Fear and Loathing in Las Vegas", :author => "Hunter S. Thompson", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
 dom.listings.create!(:title => "A Short History of Nearly Everything", :author => "Bill Bryson", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
-dom.listings.create!(:title => "Do Androids Dream of Electric Sheep", :author => "Phillip K. Dick", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
+dom.listings.create!(:title => "Do Androids Dream of Electric Sheep?", :author => "Phillip K. Dick", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
 dom.listings.create!(:title => "A Hundred Years of Solitude", :author => "Gabriel Garcia Marquez", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
 dom.listings.create!(:title => "The Art of War", :author => "Sun Tzu", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
 dom.listings.create!(:title => "How to Win Friends and Influence People", :author => "Dale Carnegie", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )

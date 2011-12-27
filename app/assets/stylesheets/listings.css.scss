@@ -32,9 +32,8 @@
   border-left: 1px dashed gray;
 }
 
-#buy-this-book {
-  position:relative;
-  left: 23px;
+#buy-this-book1 {
+
 }
 
 
@@ -46,5 +45,16 @@
 #index-background{
   background-color: #85B1F2;
   padding: 9px;
-  
 }
+
+#new-transaction{
+  display:none;
+}
+
+#transaction-form{
+  display: block;
+  padding:12px;
+  min-height: 300px;
+  min-width: 300px;
+}
+

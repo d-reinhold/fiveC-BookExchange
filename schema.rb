@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111227024038) do
+ActiveRecord::Schema.define(:version => 20111226040903) do
 
   create_table "listings", :force => true do |t|
     t.integer  "user_id"
@@ -28,9 +28,8 @@ ActiveRecord::Schema.define(:version => 20111227024038) do
   end
 
   create_table "transactions", :force => true do |t|
-    t.integer  "listing_id"
-    t.string   "buyer_email", :default => "not set"
-    t.string   "status",      :default => "available"
+    t.string   "buyer_email"
+    t.boolean  "complete"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

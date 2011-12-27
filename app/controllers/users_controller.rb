@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
-    if @user.save!
+    if @user.save
       if @user.listings.empty?
         flash[:success] = "Welcome to the 5C Book Exchange!"
       else
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     else
       message = 'Your account could not be created!'
       flash[:error] = message
-      redirect_to root_path
+      redirect_to signup_path
     end
   end
   
@@ -38,7 +38,6 @@ class UsersController < ApplicationController
   def update
     puts 'UPDATE DEBUG!!!!'
     @user = User.find(params[:id])
-    
     if @user.update_attributes!(params[:user])
       flash[:success] = "Account updated!"
       redirect_to @user

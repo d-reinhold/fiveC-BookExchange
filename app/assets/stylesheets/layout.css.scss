@@ -29,7 +29,9 @@ header {
 }
 
 a.header_text {
-  font-size: 28pt;
+  position:relative;
+  top: -6px;
+  font-size: 32pt;
   &:hover {
     text-decoration: none;
   }
@@ -82,7 +84,6 @@ nav ul {
     }
   }
 }
-
 
 /* Round corners */
 
@@ -152,6 +153,7 @@ footer nav {
 
 
 input, select, textarea {  
+    @include rounded-corners(5px, 5px, 5px, 5px);
     padding: 9px; 
     margin-right:0px;
     margin-top:15px;
@@ -165,85 +167,60 @@ input, select, textarea {
     -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
 }
 
-
-/******************** FANCY BUTTONS!!! **************************/
-a.fancy_button, button.fancy_button { 
-  background: #555; 
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.4)), to(rgba(77,77,77,0.4)));  
-  background: -moz-linear-gradient(top, rgba(0,0,0,0.4), rgba(77,77,77,0.4)); 
-  float: left; 
-  padding: 4px; 
-  text-decoration: none; 
-  outline: 0; 
-  border-width: 1px; 
-  border-style: solid;
-  width: auto;
-  overflow: visible;
-  border-color: transparent transparent #666 transparent; 
-  border-color: transparent transparent rgba(202,202,202,0.27) transparent;
-  -webkit-border-radius: 12px; -moz-border-radius: 12px; border-radius: 12px;
-  -webkit-background-clip: padding-box;
-}
-
-a.fancy_button span, button.fancy_button span { 
-  display: block; 
-  float: left;
-  letter-spacing: -1px; 
-  border-width: 1px; 
-  border-style: solid; 
-  border-color: #ccc #444 #111 #444; 
-  border-color: rgba(255,255,255,0.7) rgba(0,0,0,0.5) rgba(0,0,0,0.7) rgba(0,0,0,0.5); 
-  font: bold 21px/1em Arial;
-  color: white; 
-  padding: 0.48em 2em; 
-  cursor: pointer; 
-  text-shadow: rgba(0,0,0,0.45) 0 -1px 0; 
-  -webkit-box-shadow: rgba(0,0,0,0.75) 0px 0px 3px; -moz-box-shadow: rgba(0,0,0,0.75) 0px 0px 3px; box-shadow: rgba(0,0,0,0.75) 0px 0px 3px;
-  -webkit-border-radius: 7px; -moz-border-radius: 7px; border-radius: 7px;
-  background: transparent -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.6)), color-stop(0.5, rgba(255,255,255,0.15)), color-stop(0.5, rgba(255,255,255,0.01)), to(transparent)); 
-  background: transparent -moz-linear-gradient(top, rgba(255,255,255,0.6), rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.01) 50%, transparent);
-  filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorstr='#80FFFFFF', EndColorstr='#00FFFFFF'); 
-  -webkit-background-clip: padding-box;
-}
-
-a.fancy_button.disabled span{
-  opacity: .4;
-}
-
-a.fancy_button.disabled span:hover{
-  cursor:default;
-}
-
-a.fancy_button.disabled:hover{
-  cursor:default;
-}
-
-
-a.fancy_button.enabled:hover span, button.enabled.fancy_button:hover span {  
-  border-top-color: rgba(255,255,255,0.65); 
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(220,220,220,0.6)), color-stop(0.5, rgba(100,100,100,0.2)), color-stop(0.5, rgba(0,0,0,0.21)), to(rgba(0, 0, 0, 0.20))); 
-  background: -moz-linear-gradient(top, rgba(220,220,220,0.6), rgba(100,100,100,0.2) 50%, rgba(0,0,0,0.21) 50%, rgba(0, 0, 0, 0.20));
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr='#99dcdcdc', EndColorStr='#33000000'); 
-  -webkit-background-clip: padding-box;
-}
-
-a.fancy_button.enabled:active span, button.fancy_button.enabled:active span {  
-  border-top-color: rgba(255,255,255,0.2); 
-  border-left-color: rgba(0,0,0,0.4); 
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(150,150,150,0.6)), color-stop(0.5, rgba(60,60,60,0.6)), color-stop(0.5, rgba(40,40,40,0.6)), to(rgba(20, 20, 20, 0.5))); 
-  background: -moz-linear-gradient(top, rgba(150,150,150,0.6), rgba(60,60,60,0.6) 50%, rgba(40,40,40,0.6) 50%, rgba(20, 20, 20, 0.5));
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr='#80969696', EndColorStr='#59000000'); 
-  -webkit-box-shadow: inset 0 0 18px rgba(0,0,0,0.75), rgba(0,0,0,0.75) 0px 0px 3px; -moz-box-shadow: inset 0 0 18px rgba(0,0,0,0.75), rgba(0,0,0,0.75) 0px 0px 3px; box-shadow: inset 0 0 18px rgba(0,0,0,0.75), rgba(0,0,0,0.75) 0px 0px 3px; 
-  -webkit-background-clip: padding-box;
-}
-
-a.fancy_button.enabled span:active, button.fancy_button.enabled span:active { 
-  border-top-color: rgba(255,255,255,0.2); 
-  border-left-color: rgba(0,0,0,0.4); 
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr='#80969696', EndColorStr='#59000000'); 
-  -webkit-background-clip: padding-box;
-}
-
-
-
-
+button.fancy_button {
+  background-color: #eeeeee;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#eeeeee), to(#cccccc));
+  /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: linear-gradient(top, #eeeeee, #cccccc);
+  border: 1px solid #ccc;
+  border-bottom: 1px solid #bbb;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  color: #333;
+  font: bold 16px 'Duru Sans', sans-serif;
+  line-height: 2;
+  padding: 8px 0;
+  text-align: center;
+  text-shadow: 0 1px 0 #eee;
+  width: 150px; }
+  
+  
+  button.fancy_button.enabled{
+    opacity: 1;
+  }
+  
+  button.fancy_button.disabled{
+    opacity: .3;
+    &:hover{
+      cursor:default;
+    }
+  }
+  
+  button.fancy_button.enabled:hover {
+    background-color: #dddddd;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#dddddd), to(#bbbbbb));
+    /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, #dddddd, #bbbbbb);
+    background-image: -moz-linear-gradient(top, #dddddd, #bbbbbb);
+    background-image: -ms-linear-gradient(top, #dddddd, #bbbbbb);
+    background-image: -o-linear-gradient(top, #dddddd, #bbbbbb);
+    background-image: linear-gradient(top, #dddddd, #bbbbbb);
+    border: 1px solid #bbb;
+    border-bottom: 1px solid #999;
+    cursor: pointer;
+    text-shadow: 0 1px 0 #ddd; }
+  button.fancy_button.enabled:active {
+    border: 1px solid #aaa;
+    border-bottom: 1px solid #888;
+    -webkit-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+    -moz-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+    -ms-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+    -o-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+    box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee; }

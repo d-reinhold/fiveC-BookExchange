@@ -18,11 +18,12 @@ TODO:
 Make signup/signin page pretty
 Finish CRUD for listings (edit is almost done, update, destroy)
 Create transaction model, controller, etc (emails!)
-set up a postgres server for this app
-Get some sample data loaded
+DONE - Get some sample data loaded
+Make favicon (mac software?)
 Fix bugs, write tests, talk to friends
 
 
 BUG LIST:
 Check both dollars and cents whenever either blurs
 Reduce code duplication created by index and home, make sure signup isn't broken
+Should listing id be attr_accessible?

@@ -1,18 +1,20 @@
 class ListingsController < ApplicationController
-  before_filter :authenticate_user, :only => [:new, :create, :edit, :update] 
+  before_filter :authenticate_user, :only => [:new, :create] 
   before_filter :correct_user, :only => [ :edit, :update]
   
   
   def show
     @listing = Listing.find(params[:id])
     @title = @listing.title
+    @transaction = @listing.transaction
   end
 
   def new
   end
 
   def create
-    @user = @current_user
+    puts params
+    @user = current_user
     @listing = @user.listings.new(params[:listing])
     if @listing.save
       flash[:success] = 'Your listing was created!'
@@ -28,13 +30,28 @@ class ListingsController < ApplicationController
   end
 
   def update
+    puts params
+
+    
+    @listing = Listing.find(params[:id])
+    if @listing.update_attributes!(params[:listing])
+      flash[:success] = 'Check your email for further instructions!'
+      if signed_in?
+        redirect_to @current_user 
+      else
+        redirect_to '/'
+      end
+    else
+      flash[:error] = 'Sorry, something went wrong!'
+      redirect_to '/'
+    end
   end
 
   def destroy
   end
 
   def index
-    puts "hit index" 
+    puts params
     if params[:search] == ''
       puts 'search params blank'
       @listings = Listing.order("title")
@@ -71,13 +88,13 @@ class ListingsController < ApplicationController
 
     def correct_user
       @listing = Listing.find(params[:id])
-      redirect_to '/', :notice => "You don't have permission to access that page!" unless @listing.user.id == current_user.id
+      unless params[:listing].nil?
+        redirect_to '/', :notice => "You don't have permission to access that page!" unless signed_in? and @listing.user.id == current_user.id   
+      end
     end  
 
     def deny_access
       redirect_to '/', :notice => "Please sign in to access this page."
     end
-  
-  
 
 end

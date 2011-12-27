@@ -1,0 +1,22 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+
+
+$(document).ready ->
+  $("body").delegate "table.listings-search tbody tr", "click", (event) ->
+    location.href= '/listings/' + @.id
+    
+  $("body").delegate "#tell-me-more", "click", (event) ->
+    $("#listing").fadeOut (event) ->
+      $("#listing").css "display", "none"
+      $("#new-transaction").css "display", "block"
+
+  $("body").delegate "#back-to-listing-details", "click", (event) ->
+    $("#new-transaction").fadeOut (event) ->
+      $("#new-transaction").css "display", "none"
+      $("#listing").css "display", "block"    
+  
+  $("body").delegate "#buy-this-book", "click", (event) ->
+    $("form#request-book-form").submit()
+    #$("#new-transaction").fadeOut (event) ->

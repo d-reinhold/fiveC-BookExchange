@@ -30,16 +30,7 @@ $(document).ready ->
   $("#user_listings_attributes_0_description").val("")
   $("#user_listings_attributes_0_condition").val("---Condition---")
   check_form()
-  
-  #this goes in scss
-  $("a#buttons-search").css("border-top", "20px solid #335ED4")
-  $("a#buttons-search").css("border-left", "40px solid #335ED4")
-  $("a#buttons-search").css("border-right", "40px solid #335ED4")
-  $("a#buttons-search").css("background-color", "#335ED4")
-  $("a#buttons-sell").css("border-top", "20px solid #11379E") 
-  $("a#buttons-sell").css("border-left", "40px solid #11379E")
-  $("a#buttons-sell").css("border-right", "40px solid #11379E")
-  $("a#buttons-sell").css("background-color", "#11379E")
+
 
   $("a#buttons-sell").click (event) ->
     $("#search-for-books").css("display","none")
@@ -48,10 +39,10 @@ $(document).ready ->
     $("a#buttons-search").css("border-left", "40px solid #11379E")
     $("a#buttons-search").css("border-right", "40px solid #11379E")
     $("a#buttons-search").css("background-color", "#11379E")
-    $("a#buttons-sell").css("border-top", "20px solid #335ED4")
-    $("a#buttons-sell").css("border-left", "40px solid #335ED4")
-    $("a#buttons-sell").css("border-right", "40px solid #335ED4")
-    $("a#buttons-sell").css("background-color", "#335ED4")
+    $("a#buttons-sell").css("border-top", "20px solid #578BF2")
+    $("a#buttons-sell").css("border-left", "40px solid #578BF2")
+    $("a#buttons-sell").css("border-right", "40px solid #578BF2")
+    $("a#buttons-sell").css("background-color", "#578BF2")
     event.preventDefault()
 
   $("a#buttons-search").click (event) ->
@@ -61,17 +52,17 @@ $(document).ready ->
     $("a#buttons-sell").css("border-left", "40px solid #11379E")
     $("a#buttons-sell").css("border-right", "40px solid #11379E")
     $("a#buttons-sell").css("background-color", "#11379E")
-    $("a#buttons-search").css("border-top", "20px solid #335ED4")
-    $("a#buttons-search").css("border-left", "40px solid #335ED4")
-    $("a#buttons-search").css("border-right", "40px solid #335ED4")
-    $("a#buttons-search").css("background-color", "#335ED4")
+    $("a#buttons-search").css("border-top", "20px solid #578BF2")
+    $("a#buttons-search").css("border-left", "40px solid #578BF2")
+    $("a#buttons-search").css("border-right", "40px solid #578BF2")
+    $("a#buttons-search").css("background-color", "#578BF2")
     event.preventDefault()
     
     
-  $("body").delegate "a.fancy_button", "click", (event) ->
+  $("body").delegate "button.fancy_button", "click", (event) ->
     event.preventDefault()
     
-  $("body").delegate "a#search-button", "click", (event) ->
+  $("body").delegate "button#search-button", "click", (event) ->
     $("form#search").submit()
   
 
@@ -120,12 +111,12 @@ $(document).ready ->
     check_cents_field(@value)      
 
       
-  $("a#sell-form-required-button").click (event) -> 
-    if $("a#sell-form-required-button").hasClass("enabled")
+  $("button#sell-form-required-button").click (event) -> 
+    if $("button#sell-form-required-button").hasClass("enabled")
       $("#check-email-form").submit() 
       
-  $("a#sell-form-signed-in-required-button").click (event) -> 
-    if $("a#sell-form-signed-in-required-button").hasClass("enabled")
+  $("button#sell-form-signed-in-required-button").click (event) -> 
+    if $("button#sell-form-signed-in-required-button").hasClass("enabled")
       $("#sell-form-required").fadeOut "slow", ->
         $("#sell-form-required").css("display","none")
         $("#sell-form-optional").css("display","block")
@@ -148,10 +139,12 @@ $(document).ready ->
     remove_status("p#password","Enter a secure password.")
 
   $("body").delegate "#user_password", "blur", (event) ->
+    if @value == ''
+      add_error("p#password","Password can't be blank!")       
     if @value.length > 5
       add_success("p#password","Looks good!")
     else
-      add_error("p#password","Sorry, passwords must be at least 6 characters long!") 
+      add_error("p#password","Passwords must be at least 6 characters long!") 
 
   $("body").delegate "#user_password_confirmation", "focus", (event) ->
     remove_status("p#password-confirm","Retype your password.")
@@ -162,34 +155,35 @@ $(document).ready ->
     else
       add_error("p#password-confirm","The passwords don't seem to match!")
 
-  $("body").delegate "a#sell-form-optional-button", "click", (event) ->
+  $("body").delegate "button#sell-form-optional-button", "click", (event) ->
     $("#sell-form-optional").fadeOut "slow", ->
       $("#sell-form-optional").css("display","none")
       $("#sell-form-final").css("display","block")
 
-  $("body").delegate "a#sell-form-final-signup-button", "click", (event) ->
-    if $("a#sell-form-final-signup-button").hasClass("enabled")
-      $("a#sell-form-final-signup-button").removeClass("enabled")
-      $("a#sell-form-final-signup-button").addClass("disabled")
+  $("body").delegate "button#sell-form-final-signup-button", "click", (event) ->
+    if $("button#sell-form-final-signup-button").hasClass("enabled")
+      $("button#sell-form-final-signup-button").removeClass("enabled")
+      $("button#sell-form-final-signup-button").addClass("disabled")
       $("#new_user input#user_email").val($("#check-email-form input#email_checker").val())
       $("#new_user input#user_listings_attributes_0_title").val($("#check-email-form input#title_checker").val())
       $("#new_user input#user_listings_attributes_0_author").val($("#check-email-form input#author_checker").val())
       $("#new_user input#user_listings_attributes_0_price_dollars").val($("#check-email-form input#price_dollars_checker").val())
       $("#new_user input#user_listings_attributes_0_price_cents").val($("#check-email-form input#price_cents_checker").val())
+      $("#new_user").submit()
       $("#sell-form-final").fadeOut "slow", ->
-        $("#new_user").submit()
+        
       
-  $("body").delegate "a#sell-form-signed-in-final-button", "click", (event) ->
-    if $("a#sell-form-signed-in-final-button").hasClass("enabled")
-      $("a#sell-form-signed-in-final-button").removeClass("enabled")
-      $("a#sell-form-signed-in-final-button").addClass("disabled")
+  $("body").delegate "button#sell-form-signed-in-final-button", "click", (event) ->
+    if $("button#sell-form-signed-in-final-button").hasClass("enabled")
+      $("button#sell-form-signed-in-final-button").removeClass("enabled")
+      $("button#sell-form-signed-in-final-button").addClass("disabled")
       $("#sell-form-optional").fadeOut "slow", ->
         $("#new_listing").submit()
 
         
         
-  $("body").delegate "a#sell-form-final-signin-button", "click", (event) ->
-    if $("a#sell-form-final-signin-button").hasClass("enabled")
+  $("body").delegate "button#sell-form-final-signin-button", "click", (event) ->
+    if $("button#sell-form-final-signin-button").hasClass("enabled")
       #$("a#sell-form-final-signin-button").removeClass("enabled")
       #$("a#sell-form-final-signin-button").addClass("disabled")
       $("#new_listing input#listing_title").val($("#check-email-form input#title_checker").val())
@@ -288,28 +282,28 @@ remove_status = (element,message) ->
   
 check_form = () ->
   if PASSWORD_READY
-    $("a#sell-form-final-signin-button").removeClass("disabled") 
-    $("a#sell-form-final-signin-button").addClass("enabled")
+    $("button#sell-form-final-signin-button").removeClass("disabled") 
+    $("button#sell-form-final-signin-button").addClass("enabled")
   if TITLE_READY and AUTHOR_READY and PRICE_DOLLARS_READY and PRICE_CENTS_READY
-    $("a#sell-form-signed-in-required-button").removeClass("disabled") 
-    $("a#sell-form-signed-in-required-button").addClass("enabled")
+    $("button#sell-form-signed-in-required-button").removeClass("disabled") 
+    $("button#sell-form-signed-in-required-button").addClass("enabled")
     if EMAIL_READY
-      $("a#sell-form-required-button").removeClass("disabled") 
-      $("a#sell-form-required-button").addClass("enabled")
+      $("button#sell-form-required-button").removeClass("disabled") 
+      $("button#sell-form-required-button").addClass("enabled")
     else 
-      $("a#sell-form-required-button").removeClass("enabled")
-      $("a#sell-form-required-button").addClass("disabled")
+      $("button#sell-form-required-button").removeClass("enabled")
+      $("button#sell-form-required-button").addClass("disabled")
   else
-    $("a#sell-form-required-button").removeClass("enabled")
-    $("a#sell-form-required-button").addClass("disabled")
-    $("a#sell-form-signed-in-required-button").removeClass("enabled") 
-    $("a#sell-form-signed-in-required-button").addClass("disabled")
+    $("button#sell-form-required-button").removeClass("enabled")
+    $("button#sell-form-required-button").addClass("disabled")
+    $("button#sell-form-signed-in-required-button").removeClass("enabled") 
+    $("button#sell-form-signed-in-required-button").addClass("disabled")
   if NAME_READY and PASSWORD_READY and CPASSWORD_READY
-    $("a#sell-form-final-signup-button").removeClass("disabled") 
-    $("a#sell-form-final-signup-button").addClass("enabled")
+    $("button#sell-form-final-signup-button").removeClass("disabled") 
+    $("button#sell-form-final-signup-button").addClass("enabled")
   else 
-    $("a#sell-form-final-signup-button").removeClass("enabled") 
-    $("a#sell-form-final-signup-button").addClass("disabled")
+    $("button#sell-form-final-signup-button").removeClass("enabled") 
+    $("button#sell-form-final-signup-button").addClass("disabled")
 
 is_int = (value) ->
   if (parseFloat(value) is parseInt(value)) and not isNaN(value)

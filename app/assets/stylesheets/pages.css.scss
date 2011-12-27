@@ -2,13 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$search-sell-background-blue: #85B1F2;
-$search-sell-buttons-inactive-blue:#11379E;
+$search-sell-background-blue: #578BF2;
+$search-sell-buttons-inactive-blue: #11379E;
 
 p.about {
   text-indent: 12px;
 }
 
+
+#search-sell-container{
+  position:relative;
+  padding: 8px;
+  border: 1px solid gray;
+}
 
 #search-sell-full {
 	position: relative;
@@ -41,22 +47,31 @@ p.about {
 }
 
 #search-sell-buttons li a {
-	/*padding: 5px 5px 5px 0.5em;*/
 	font-size: 20px;
 	position:relative;
 	top:-34px;
-  border-top: 20px solid $search-sell-buttons-inactive-blue;
-	border-left: 40px solid $search-sell-buttons-inactive-blue;
-	border-right: 40px solid $search-sell-buttons-inactive-blue;
-	background-color: $search-sell-buttons-inactive-blue;
 	color: #fff;
 	padding-bottom: 8px;
 	text-decoration: none;
   @include rounded-corners(10px, 10px, 0px, 0px)
 }
 
+#search-sell-buttons li a#buttons-search {
+  border-top: 20px solid $search-sell-background-blue;
+  border-left: 40px solid $search-sell-background-blue;
+  border-right: 40px solid $search-sell-background-blue;
+  background-color: $search-sell-background-blue;
+}
+
+#search-sell-buttons li a#buttons-sell {
+  border-top: 20px solid $search-sell-buttons-inactive-blue;
+  border-left: 40px solid $search-sell-buttons-inactive-blue;
+  border-right: 40px solid $search-sell-buttons-inactive-blue;
+  background-color: $search-sell-buttons-inactive-blue;
+}
+
+
 #search-sell-main {
-  /*border: 1px solid red;*/
 	padding-bottom: 15px;
 }
 #search-for-books {
@@ -135,6 +150,13 @@ textarea{
   width: 250px;
 }
 
+input#search{
+  
+  line-height:2em;
+  font-size:12pt;
+  
+}
+
 #search-sell-main input.price_dollars, input.price_dollars {
   width: 4em; 
   margin-left: 0px;
@@ -177,8 +199,6 @@ input:focus, textarea:focus {
 }
 
 p#final-message {
-  position: relative;
-  top:20px;
 }
 
 #sell-form-signed-in-required-button {
@@ -196,5 +216,5 @@ p#final-message {
 #sell-form-final-button, #sell-form-signed-in-final-button, #sell-form-final-signup-button {
   position:relative;
   top: 5px;
-  right:-420px;
+  right:-480px;
 }
