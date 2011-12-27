@@ -4,3 +4,10 @@
 $(document).ready ->
   $("body").delegate "table#current-listings-table tbody tr", "click", (event) ->
     location.href= '/listings/' + @.id + '/edit'
+    
+    
+  $("#sign-up-button").click (event) ->
+    $("#new_user").submit()
+    
+  $("#sign-in-button").click (event) ->
+    $("#sign-in-form").submit()

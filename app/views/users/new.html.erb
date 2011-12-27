@@ -1,31 +1,29 @@
 <h1>Sign Up</h1>
+<div id="sign-up">
+	<%= form_for @user do |f| %>
+		  <div class="sell-form-divider">
+			  <div class="field">
+			    <%= f.text_field :email, :placeholder => "Email Address" %>
+			  </div>
+			  <div class="field">
+			    <%= f.text_field :name, :placeholder => "Full Name" %>
+			  </div>
+			  <div class="field">
+			    <%= f.password_field :password, :placeholder => "Password" %>
+			  </div>
+			  <div class="field">
+			    <%= f.password_field :password_confirmation, :placeholder => "Retype your password"%>
+			  </div>
+			</div>
+			<div class="sell-form-divider">
+		    <div class="form-message static"><%=f.label "Email Address"%></div>
+			  <div class="form-message static"><%=f.label "Full Name"%></div>
+			  <div class="form-message static"><%=f.label "Password"%></div>
+				<div class="form-message static"><%=f.label "Password Confirmation"%></div>
+			</div>
+	  <% end %>
+</div>
+<br>
+<br>
+<div class="clear centered" ><%= render :partial => "shared/fancy_button", :locals => { :button_id => "sign-up-button", :button_class => 'enabled', :text => "Sign up!"} %></div>
 
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions"><%= f.submit "Sign Up!" %></div>
-<% end %>

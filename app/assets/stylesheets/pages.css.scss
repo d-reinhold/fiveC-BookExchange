@@ -135,7 +135,9 @@ p.about {
   float:left;
 	width:326px;
 	height: 230px;
-
+}
+.sell-form-divider.static{
+	height: 130px;
 }
 
 textarea{
@@ -190,14 +192,17 @@ input:focus, textarea:focus {
 }
 
 
+.sell-form-divider .form-message.static {
+  border: none; 
+  text-align:left;
+}
+
+
 .sell-form-divider p {
   font-size:17px;
   margin:0px;
   margin-left:0px;
-  color: #555555;
-}
-
-p#final-message {
+  color: #333333;
 }
 
 #sell-form-signed-in-required-button {

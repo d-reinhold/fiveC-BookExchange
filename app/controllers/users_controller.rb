@@ -30,12 +30,16 @@ class UsersController < ApplicationController
       if @user.listings.empty?
         flash[:success] = "Welcome to the 5C Book Exchange!"
       else
-        flash[:success] = "Welcome to the 5C Book Exchange! \n Your listing has been posted"
+        flash[:success] = "Welcome to the 5C Book Exchange! Your listing has been posted"
       end
       session[:user_id] = @user.id
       redirect_to @user
     else
-      message = 'Your account could not be created!'
+      if User.find_by_email(params[:user][:email]).present?
+        message = 'That email address is already registered! Try signing in!'
+      else
+        message = 'Your account could not be created! Make sure your email is a valid 5C address.'
+      end
       flash[:error] = message
       redirect_to signup_path
     end
@@ -81,7 +85,10 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user)
+      unless current_user?(@user)
+        flash[:error] = "You don't have permission to view that page."
+        redirect_to(root_path) 
+      end
     end  
     
 

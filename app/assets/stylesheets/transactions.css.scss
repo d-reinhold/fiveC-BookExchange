@@ -26,3 +26,29 @@
     background-color:lighten(#578BF2,10%);
   };
 }
+
+.buyer-transaction-complete{
+  background-color:lighten(purple,60%);
+  border:1px solid purple;
+  padding:2px;
+  margin-bottom:9px;
+  @include rounded-corners(5px, 5px, 5px, 5px);
+  &:hover{
+    cursor:pointer;
+    background-color:lighten(purple,50%);
+  };
+}
+
+.seller-transaction-complete{
+  background-color:lighten(#FFA500,35%);
+  border:1px solid #FFA500;
+  padding:2px;
+  margin-bottom:9px;
+  @include rounded-corners(5px, 5px, 5px, 5px);
+  &:hover{
+    cursor:pointer;
+    background-color:lighten(#FFA500,30%);
+  };
+}
+
+

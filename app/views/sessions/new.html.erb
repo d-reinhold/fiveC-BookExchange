@@ -1,10 +1,19 @@
 <h1>Sign In</h1>
-<%= form_tag sessions_path do %>
-  <div class="field">
-    <%= text_field_tag :email, params[:email] %><%= label_tag :email %>
-  </div>
-  <div class="field">
-    <%= password_field_tag :password %><%= label_tag :password %>
-  </div>
-  <div class="actions"><%= submit_tag "Log in" %></div>
-<% end %>
+<div id="sign-up">
+  <%= form_tag sessions_path, :id => 'sign-in-form' do %>
+		  <div class="sell-form-divider static">
+			  <div class="field">
+			    <%= text_field_tag :email, params[:email] %>
+			  </div>
+			  <div class="field">
+			    <%= password_field_tag :password %>
+			  </div>
+			</div>
+			<div class="sell-form-divider static">
+		    <div class="form-message static"><%=label_tag "Email Address"%></div>
+			  <div class="form-message static"><%=label_tag "Password"%></div>
+			</div>
+	  <% end %>
+</div>
+
+<div class="clear centered" ><%= render :partial => "shared/fancy_button", :locals => { :button_id => "sign-in-button", :button_class => 'enabled', :text => "Sign in!"} %></div>

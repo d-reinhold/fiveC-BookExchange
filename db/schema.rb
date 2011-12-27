@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20111227024038) do
     t.string   "buyer_email", :default => "not set"
     t.string   "buyer_name",  :default => "not set"
     t.string   "status",      :default => "available"
+    t.string   "sell_date",   :default => "not sold"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

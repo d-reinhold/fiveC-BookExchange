@@ -1,3 +1,4 @@
+require 'date'
 class TransactionsController < ApplicationController
 
   before_filter :authenticate_user, :only => [:show, :cancel_request, :sold] 
@@ -73,6 +74,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
     if @transaction.status == 'unavailable'
       @transaction.status = 'sold'
+      @transaction.sell_date = Date.today
       if @transaction.save
         flash[:success] = "Transaction complete! Thanks for selling your book on the 5C Book Exchange!"
           redirect_to @current_user

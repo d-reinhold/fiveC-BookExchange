@@ -43,27 +43,36 @@
 		<p style="line-height: 1.75em">Name: <b><%=@transaction.buyer_name%></b><br>
 		Email Address: <b><%=@transaction.buyer_email%></b><br>
 		</div>
-	<% if @listing.user.id == @current_user.id %>
-	  <div class="clear"><p style="text-align:center;">Great, <%=@transaction.buyer_name%>  wants to buy <i><%= @listing.title %></i>! That's awesome, but now it's up to you and <%=@transaction.buyer_name.split(" ")[0] %> to work out the details. Email each other and find a time and place to meet up! There's nothing more the 5C Book exchange can do to help at this point! Good luck! <br>
-	</p></div>
-	  <div class="clear"><p style="text-align:center;">Click 'Sale Completed' once <%=@transaction.buyer_name.split(" ")[0] %> has the book and you have the money.
-	</p></div>
-	<div class="clear"><p style="text-align:center;">Click 'Cancel this Deal' if you no longer wish to take part in this transaction. An email will be sent to <%=@transaction.buyer_name.split(' ')[0] %> and the book will be relisted. If you don't want the book to be relisted, click "Cancel", then go to 'My Books' and delete the posting. Don't be a flake, though! Only post listings that you intend to follow through on in the future! <br><br>
-		<%= render :partial => "shared/fancy_button", :locals => { :button_id => "complete-transaction", :button_class => 'green enabled', :text => "Sale Completed!"} %>
-	<% else %>
-	  <div class="clear"><p style="text-align:center;">Ok cool, so you want to buy <%=@listing.user.name.split(" ")[0] %>'s book. What now? Well, it's up to you and <%= @listing.user.name.split(" ")[0] %> to work out the details. Email each other and find a time and place to meet up! There's nothing more the 5C Book exchange can do to help at this point! Good luck! <br>
-	</p></div>
-	<div class="clear"><p style="text-align:center;">Click 'Cancel this Deal' if you no longer wish to take part in this transaction. An email will be sent to the seller and the book will be relisted. Don't be a flake, though! Only initiate transactions that you intend to follow through on in the future! <br><br>
-	<% end %>
-	<%= render :partial => "shared/fancy_button", :locals => { :button_id => "cancel-transaction", :button_class => 'red enabled', :text => "Cancel this Deal"} %>	</p></div>
 		
-<div class="hidden">
-	<%= form_tag :transactions_cancel_request, :method => 'get', :id => 'cancel-request-form' do %>
-	<%= hidden_field_tag :id, nil, :value => @transaction.id %>
-	<%end%>
+		
+	<% if @transaction.status == 'unavailable' %>		
+		<% if @listing.user.id == @current_user.id %>
+		  <div class="clear"><p style="text-align:center;">Great, <%=@transaction.buyer_name%>  wants to buy <i><%= @listing.title %></i>! That's awesome, but now it's up to you and <%=@transaction.buyer_name.split(" ")[0] %> to work out the details. Email each other and find a time and place to meet up! There's nothing more the 5C Book exchange can do to help at this point! Good luck! <br>
+		</p></div>
+		  <div class="clear"><p style="text-align:center;">Click 'Sale Completed' once <%=@transaction.buyer_name.split(" ")[0] %> has the book and you have the money.
+		</p></div>
+		<div class="clear"><p style="text-align:center;">Click 'Cancel this Deal' if you no longer wish to take part in this transaction. An email will be sent to <%=@transaction.buyer_name.split(' ')[0] %> and the book will be relisted. If you don't want the book to be relisted, click "Cancel", then go to 'My Books' and delete the posting. Don't be a flake, though! Only post listings that you intend to follow through on in the future! <br><br>
+			<%= render :partial => "shared/fancy_button", :locals => { :button_id => "complete-transaction", :button_class => 'green enabled', :text => "Sale Completed!"} %>
+		<% else %>
+		  <div class="clear"><p style="text-align:center;">Ok cool, so you want to buy <%=@listing.user.name.split(" ")[0] %>'s book. What now? Well, it's up to you and <%= @listing.user.name.split(" ")[0] %> to work out the details. Email each other and find a time and place to meet up! There's nothing more the 5C Book exchange can do to help at this point! Good luck! <br>
+		</p></div>
+		<div class="clear"><p style="text-align:center;">Click 'Cancel this Deal' if you no longer wish to take part in this transaction. An email will be sent to the seller and the book will be relisted. Don't be a flake, though! Only initiate transactions that you intend to follow through on in the future! <br><br>
+		<% end %>
+		<%= render :partial => "shared/fancy_button", :locals => { :button_id => "cancel-transaction", :button_class => 'red enabled', :text => "Cancel this Deal"} %>	</p></div>
+		
+	<div class="hidden">
+		<%= form_tag :transactions_cancel_request, :method => 'get', :id => 'cancel-request-form' do %>
+		<%= hidden_field_tag :id, nil, :value => @transaction.id %>
+		<%end%>
+	</div>
+	<div class="hidden">
+		<%= form_tag :transactions_sold, :method => 'get', :id => 'book-sold-form' do %>
+		<%= hidden_field_tag :id, nil, :value => @transaction.id %>
+		<%end%>
+	</div>
+  <% else %>
+<div class="clear">
+	<h3 class="centered">Transaction Status: Complete</h3>
+	<p class='centered'><b>This book was sold on <%=@transaction.sell_date%>.</b></p>
 </div>
-<div class="hidden">
-	<%= form_tag :transactions_sold, :method => 'get', :id => 'book-sold-form' do %>
-	<%= hidden_field_tag :id, nil, :value => @transaction.id %>
-	<%end%>
-</div>
+  <%end%>
