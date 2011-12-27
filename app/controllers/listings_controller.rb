@@ -82,9 +82,7 @@ class ListingsController < ApplicationController
       puts "Last Search: #{session[:last_search]}"
     end
     
-    def authenticate_user
-      deny_access unless signed_in?
-    end
+
 
     def correct_user
       @listing = Listing.find(params[:id])
@@ -93,8 +91,6 @@ class ListingsController < ApplicationController
       end
     end  
 
-    def deny_access
-      redirect_to '/', :notice => "Please sign in to access this page."
-    end
+
 
 end

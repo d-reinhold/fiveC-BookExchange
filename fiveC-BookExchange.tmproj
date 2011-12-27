@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>db/migrate/20111227024038_create_transactions.rb</string>
+	<string>app/controllers/transactions_controller.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -232,7 +232,7 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>28</integer>
+				<integer>12</integer>
 				<key>line</key>
 				<integer>20</integer>
 			</dict>
@@ -246,14 +246,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>58</integer>
+				<integer>55</integer>
 				<key>line</key>
-				<integer>57</integer>
+				<integer>81</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>11</integer>
+			<integer>63</integer>
 		</dict>
 		<key>app/assets/javascripts/sessions.js.coffee</key>
 		<dict>
@@ -316,14 +316,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>11</integer>
+				<integer>19</integer>
 				<key>line</key>
-				<integer>32</integer>
+				<integer>102</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>22</integer>
+			<integer>79</integer>
 		</dict>
 		<key>app/assets/stylesheets/listings.css.scss</key>
 		<dict>
@@ -421,7 +421,7 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>10</integer>
+			<integer>0</integer>
 		</dict>
 		<key>app/controllers/pages_controller.rb</key>
 		<dict>
@@ -472,9 +472,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>7</integer>
+				<integer>50</integer>
 				<key>line</key>
-				<integer>23</integer>
+				<integer>7</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -486,30 +486,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>78</integer>
 				<key>line</key>
-				<integer>41</integer>
+				<integer>12</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>9</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>7</integer>
-				<key>line</key>
-				<integer>48</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>41</integer>
-			</dict>
+			<integer>0</integer>
 		</dict>
 		<key>app/helpers/application_helper.rb</key>
 		<dict>
@@ -628,9 +612,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>14</integer>
 				<key>line</key>
-				<integer>8</integer>
+				<integer>1</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -770,14 +754,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>5</integer>
+				<integer>11</integer>
 				<key>line</key>
-				<integer>59</integer>
+				<integer>69</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>46</integer>
+			<integer>49</integer>
 		</dict>
 		<key>app/views/pages/about.html.erb</key>
 		<dict>
@@ -970,9 +954,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>81</integer>
+				<integer>70</integer>
 				<key>line</key>
-				<integer>13</integer>
+				<integer>10</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -991,7 +975,7 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>8</integer>
+			<integer>5</integer>
 		</dict>
 		<key>app/views/shared/_sign_up_and_create_listing.html.erb</key>
 		<dict>
@@ -1005,7 +989,7 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>10</integer>
+			<integer>0</integer>
 		</dict>
 		<key>app/views/users/check_email.js.erb</key>
 		<dict>
@@ -1056,14 +1040,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>8</integer>
+				<integer>14</integer>
 				<key>line</key>
-				<integer>5</integer>
+				<integer>31</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>3</integer>
 		</dict>
 		<key>config.ru</key>
 		<dict>
@@ -1087,6 +1071,20 @@
 				<integer>21</integer>
 				<key>line</key>
 				<integer>23</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>config/environment.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -1168,9 +1166,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>48</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>5</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -1345,6 +1343,7 @@
 		<string>app/assets/javascripts/users.js.coffee</string>
 		<string>app/assets/javascripts/pages.js.coffee</string>
 		<string>app/models/listing.rb</string>
+		<string>config/environment.rb</string>
 		<string>app/controllers/transactions_controller.rb</string>
 		<string>app/controllers/pages_controller.rb</string>
 		<string>app/controllers/listings_controller.rb</string>
@@ -1357,6 +1356,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{-2, 188}, {679, 590}}</string>
+	<string>{{0, 188}, {679, 590}}</string>
 </dict>
 </plist>

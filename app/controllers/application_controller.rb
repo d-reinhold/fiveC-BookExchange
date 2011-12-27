@@ -19,4 +19,16 @@ class ApplicationController < ActionController::Base
   end
   helper_method :signed_in?
   
+  def authenticate_user
+    deny_access unless signed_in?
+  end  
+  
+  def deny_access
+    redirect_to '/', :notice => "Please sign in to access that page."
+  end  
+  
+  def current_user?(user)
+    user == current_user
+  end
+  
 end

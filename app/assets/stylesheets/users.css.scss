@@ -2,16 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
 #user {
+  position: relative;
   min-height:400px;
   min-width:760px;
   max-width:760px;
 }
 
+
+#user-container{
+  position:relative;
+  padding:5px;
+}
+
+
 #current-listings {
   float:left;
   padding:5px;
-  width:470px;
+  width:380px;
   min-height:400px;
 }
 
@@ -19,9 +29,9 @@
 
 #pending-transactions {
   float: left;
+
+  padding:10px;
   border-left:1px dashed gray;
-  padding: 9px;
-  width: 250px;
+  width: 320px;
   min-height:400px;
-  margin-left:5px;
 }

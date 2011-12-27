@@ -43,6 +43,7 @@
 		<%= render :partial => "shared/fancy_button", :locals => { :button_id => "tell-me-more", :button_class => 'enabled', :text => "Tell me more!"} %>
 		</p>
 	</div>
+  <div class="clear"></div>
 </div>
 
 <div id="new-transaction">
@@ -54,19 +55,28 @@
 	<%= form_tag :transactions_request_book, :method => 'get', :id => 'request-book-form' do %>
 	  <%= hidden_field_tag :id, nil, :value => @transaction.id %>
 	  <% if signed_in? %>
-		  <div class="field">
+		  <div class="field hidden">
 			  <%= text_field_tag :buyer_email, nil, :value => @current_user.email %>
+			</div>
+			<div class="field hidden">
+			  <%= text_field_tag :buyer_name, nil, :value => @current_user.name %>
+			</div>
 		<% else %>
 		  <div class="field">
 			  <%= label_tag 'Enter your email address: ' %><%= text_field_tag :buyer_email, nil, :placeholder => 'Email' %>
 			</div>
+		  <div class="field">
+			  <%= label_tag 'Enter your name: ' %><%= text_field_tag :buyer_name, nil, :placeholder => 'Full Name' %>
+			</div>
 		<% end %>
 	<% end %>
 	<br>
-	<p style="text-align:center;">Note: Clicking 'Buy this Book!' will remove this listing from the search engine, and send an email to you and to the seller so you can work out a time to meet. This is not a binding contract, and either party can cancel the deal at any time. If the deal gets cancelled, the listing will be reposted. If the deal goes through, it is up to the seller to mark the transaction as final. Thanks for reading!<br><br>
+	<p class="centered">Do you want to buy <b><%= @listing.title%></b> from <b><%= @listing.user.name %></b> for <b>$<%= @listing.price_dollars%>.<%=@listing.price_cents%></b>?</p>
+	<p class="centered">Note: Clicking 'Buy this Book!' will remove this listing from the search engine, and send an email to you and to the seller so you can work out a time to meet. This is not a binding contract, and either party can cancel the deal at any time. If the deal gets cancelled, the listing will be reposted. If the deal goes through, it is up to the seller to mark the transaction as final. Thanks for reading!<br><br>
 	<%= render :partial => "shared/fancy_button", :locals => { :button_id => "buy-this-book", :button_class => 'enabled', :text => "Buy this Book!"} %>
 	</p>
   </div>
+  <div class="clear"></div>
 <div>
 
 

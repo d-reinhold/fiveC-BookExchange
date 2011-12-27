@@ -7,6 +7,7 @@ $link-visited: #069;
   -webkit-border-radius: $upper-left $upper-right $bottom-left $bottom-right;
 }
 
+
 .container {
   width: 760px;
   min-width: 760px;
@@ -91,6 +92,19 @@ nav ul {
   -moz-border-radius:    10px;
   -webkit-border-radius: 10px;
   border-radius:         10px;
+}
+
+
+.hidden {
+  display: none;
+}
+
+.centered {
+  text-align:center;
+}
+
+.clear{
+  clear:both;
 }
 
 footer {
@@ -224,3 +238,28 @@ button.fancy_button {
     -ms-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
     -o-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
     box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee; }
+    
+  button.fancy_button.red{
+    background-color: red;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(lighten(red,15%)), to(red));
+    /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, lighten(red,15%), red);
+    background-image: -moz-linear-gradient(top, lighten(red,15%), red);
+    background-image: -ms-linear-gradient(top, lighten(red,15%), red);
+    background-image: -o-linear-gradient(top, lighten(red,15%), red);
+    background-image: linear-gradient(top, lighten(red,15%), red);
+    color: #ccc;
+    opacity: 1;
+    text-shadow: none;
+    &:hover{
+      background-color: lighten(red,15%);
+      background-image: -webkit-linear-gradient(top, lighten(red,20%), lighten(red,10%));
+      background-image: -moz-linear-gradient(top, lighten(red,20%), lighten(red,10%));
+      background-image: -ms-linear-gradient(top, lighten(red,20%), lighten(red,10%));
+      background-image: -o-linear-gradient(top, lighten(red,20%), lighten(red,10%));
+      background-image: linear-gradient(top, lighten(red,20%), lighten(red,10%));
+      text-shadow:none;
+    };
+  }
+    
+    

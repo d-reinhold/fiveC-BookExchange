@@ -1,6 +1,7 @@
 <div id="user">
 	<div id="current-listings">
 		<h1>My Current Listings</h1>
+		<br>
 		<table id="current-listings-table">
 		  <thead>
 			  <tr>
@@ -18,9 +19,30 @@
 	  	<% end %>
 	  </table>
 	</div>
-	
+
 	<div id="pending-transactions">
 	  <h1>Pending Transactions</h1>
-	
+	  <p><b>You're the buyer:</b></p>
+	   <% if @buyer_transactions.empty? %>
+	     <p class="centered">You haven't offered to buy anyone's books yet!</p>
+     <% else %>	
+	     <% @buyer_transactions.each do |t| %>
+         <div class="buyer-transaction" id="<%=t.id%>">
+	         <p class='centered'>You want to buy <b><%= t.listing.title %></b> from <b><%= t.listing.user.name%></b> for <b>$<%=t.listing.price_dollars%>.<%=t.listing.price_cents%></b>.</p>
+	       </div>
+	     <% end %>
+    <% end %>
+	  <br>
+	  <p><b>You're the seller:</b></p>
+	   <% if @seller_transactions.empty? %>
+	     <p class="centered">No one has offered to buy one of your books yet!</p>
+     <% else %>
+	   	<% @seller_transactions.each do |t| %>
+		     <div class="seller-transaction" id="<%=t.id%>">
+	         <p class="centered"><b><%=t.buyer_name%></b> wants to buy <b><%= t.listing.title %></b> for <b>$<%=t.listing.price_dollars%>.<%=t.listing.price_cents%></b>.</p>
+	       </div>
+	     <% end %>
+	   <% end %>
 	</div>
+  <div class="clear"></div>
 </div>

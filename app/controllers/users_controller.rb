@@ -3,8 +3,15 @@ class UsersController < ApplicationController
   before_filter :correct_user, :only => [:show, :edit, :update]  
    
   def show
-    @title = @user.name
-    @listings = @user.listings
+    @title = @current_user.name
+    @listings = @current_user.listings
+    @seller_transactions = Array.new
+    @current_user.listings.each do |l|
+      if l.transaction.status == 'unavailable'
+        @seller_transactions << l.transaction
+      end
+    end  
+    @buyer_transactions = Transaction.where('buyer_email = ?', @current_user.email)
   end 
       
   def new
@@ -66,23 +73,14 @@ class UsersController < ApplicationController
   end
   
   private
-  
-    def authenticate_user
-      deny_access unless signed_in?
-    end
+
 
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
     end  
     
-    def current_user?(user)
-      user == current_user
-    end
 
-    def deny_access
-      redirect_to '/', :notice => "Please sign in to access this page."
-    end
   
 
 end

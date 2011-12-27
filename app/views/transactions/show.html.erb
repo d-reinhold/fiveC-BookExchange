@@ -1,0 +1,61 @@
+<div id="listing">
+	<div id="top">
+		  <%= link_to "back to my books", @current_user %>
+	</div>
+	<div id="listing-details">
+		<h3>Transaction Details</h3>
+		<p style="line-height: 1.75em">
+		Title: <b><%=@listing.title%></b><br>
+		Author: <b><%=@listing.author%></b><br>
+
+		Edition: 
+		<% if @listing.edition == '' or @listing.edition.nil? %>
+		  <b><%= 'Not Provided' %></b>
+		<% else %>
+		  <b><%=@listing.edition%></b>
+		<% end %><br>
+
+		Condition:
+		<% if @listing.condition == '--Condition--' %>
+		  <b><%= 'Not Provided' %></b>
+		<% else %>
+		  <b><%=@listing.condition%></b>
+		<% end %><br>
+
+		Description: 
+		<% if @listing.description == '' %>
+		  <b><%= 'Not Provided' %></b>
+		<% else %>
+		  <b><%=@listing.description%></b>
+		<% end %><br>
+
+		Price: <b>$<%=@listing.price_dollars%>.<%=@listing.price_cents%></b>
+		
+		<br>
+		</p>
+	</div>
+	<div id="seller-details">
+		<h3>Seller Details</h3>
+		<p style="line-height: 1.75em">Name: <b><%=@listing.user.name%></b><br>
+		Email Address: <b><%=@listing.user.email%></b><br>
+		
+		<h3>Buyer Details</h3>
+		<p style="line-height: 1.75em">Name: <b><%=@transaction.buyer_name%></b><br>
+		Email Address: <b><%=@transaction.buyer_email%></b><br>
+		</div>
+	<% if @listing.user.id == @current_user.id %>
+	  <div class="clear"><p style="text-align:center;">Great, <%=@transaction.buyer_name%>  wants to buy <%= @listing.title %>! That's awesome, but now its up to you and <%=@transaction.buyer_name.split(' ')[0] %> to work out the details. Email each other and find a time to meet up! There's nothing more the 5C Book exchange can do to help at this point! Good luck! <br>
+	</p></div>
+	<div class="clear"><p style="text-align:center;">Click 'Cancel this Deal' if you no longer wish to take part in this transaction. An email will be sent to <%=@transaction.buyer_name.split(' ')[0] %> and the book will be relisted. If you don't want the book to be relisted, go to 'My Books' and delete the posting (after clicking cancel). Don't be a flake, though! Only post listings that you intend to follow through on in the future! <br><br>
+	<% else %>
+	  <div class="clear"><p style="text-align:center;">Ok cool, so you want to buy <%= @listing.user.name %>'s book. What now? Well, it's up to you and <%= @listing.user.name %> to work out the details. Email each other and find a time to meet up! There's nothing more the 5C Book exchange can do to help at this point! Good luck! <br>
+	</p></div>
+	<div class="clear"><p style="text-align:center;">Click 'Cancel this Deal' if you no longer wish to take part in this transaction. An email will be sent to the seller and the book will be relisted. Don't be a flake, though! Only initiate transactions that you intend to follow through on in the future! <br><br>
+	<% end %>
+	<%= render :partial => "shared/fancy_button", :locals => { :button_id => "cancel-transaction", :button_class => 'red enabled', :text => "Cancel this Deal"} %>	</p></div>
+		
+<div class="hidden">
+	<%= form_tag :transactions_cancel_request, :method => 'get', :id => 'cancel-request-form' do %>
+	<%= hidden_field_tag :id, nil, :value => @transaction.id %>
+	<%end%>
+</div>

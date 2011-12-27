@@ -1,3 +1,28 @@
 // Place all the styles related to the transactions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.buyer-transaction{
+  background-color:lighten(green,60%);
+  border:1px solid green;
+  padding:2px;
+  margin-bottom:9px;
+  @include rounded-corners(5px, 5px, 5px, 5px);
+  &:hover{
+    cursor:pointer;
+    background-color:lighten(green,50%);
+  };
+}
+
+.seller-transaction{
+  background-color:lighten(#578BF2,20%);
+  border:1px solid blue;
+  padding:2px;
+  margin-bottom:9px;
+  @include rounded-corners(5px, 5px, 5px, 5px);
+  &:hover{
+    cursor:pointer;
+    background-color:lighten(#578BF2,10%);
+  };
+}

@@ -1,8 +1,8 @@
 FiveCBookExchange::Application.routes.draw do
 
   get "transactions/request_book"
-
   get "transactions/cancel_request"
+
 
   match '/home' => 'pages#home'
   match '/about' => 'pages#about'
@@ -11,6 +11,7 @@ FiveCBookExchange::Application.routes.draw do
   match '/signout', :to => 'sessions#destroy'
   match '/check_email', :to => 'users#check_email'
   match '/search', :to => 'listings#index'
+  resources :transactions, :only => [:show]
   resources :users
   resources :listings
   resources :sessions, :only => [:new, :create, :destroy]

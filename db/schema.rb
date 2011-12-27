@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20111227024038) do
   create_table "transactions", :force => true do |t|
     t.integer  "listing_id"
     t.string   "buyer_email", :default => "not set"
+    t.string   "buyer_name",  :default => "not set"
     t.string   "status",      :default => "available"
     t.datetime "created_at"
     t.datetime "updated_at"

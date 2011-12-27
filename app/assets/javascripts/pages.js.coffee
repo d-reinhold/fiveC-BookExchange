@@ -79,7 +79,7 @@ $(document).ready ->
       
       
   $(".book_title").focus (event) ->
-    remove_status("p#title","Enter the title of your book here!")
+    remove_status("p#title","What book are you selling?")
 
   $(".book_title").blur (event) ->
     if @value.length > 0

@@ -8,10 +8,12 @@
 	  </tr>
 	</thead>
   <% relation.each do |listing|%>
-    <tr id="<%= listing.id %>">
-	    <td><%= listing.title %></td>
-    	<td> <%= listing.author %></td>
-      <td> $<%= listing.price_dollars %>.<%= listing.price_cents %></td>
-    </tr>
+    <% if listing.transaction.status == 'available'%>
+	    <tr id="<%= listing.id %>">
+		    <td><%= listing.title %></td>
+	    	<td> <%= listing.author %></td>
+	      <td> $<%= listing.price_dollars %>.<%= listing.price_cents %></td>
+	    </tr>
+    <% end %>
 	<% end %>
 </table>
