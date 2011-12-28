@@ -7,7 +7,7 @@ class TransactionMailer < ActionMailer::Base
     @seller = @transaction.listing.user
     @buyer_name = @transaction.buyer_name
     @buyer_email = @transaction.buyer_email
-    @url  = "http://fivecbookexchange.herokuapp.com/signin"
+    @url  = "http://fivecbookexchange.herokuapp.com"
     email_with_name = "#{@seller.name} <#{@seller.email}>"
     mail(:to => email_with_name, :subject => "#{@buyer_name} wants to buy your book!")    
   end
@@ -18,7 +18,7 @@ class TransactionMailer < ActionMailer::Base
     @seller = @transaction.listing.user
     @buyer_name = @transaction.buyer_name
     @buyer_email = @transaction.buyer_email
-    @url  = "http://fivecbookexchange.herokuapp.com/signin"
+    @url  = "http://fivecbookexchange.herokuapp.com"
     email_with_name = "#{@buyer_name} <#{@buyer_email}>"
     mail(:to => email_with_name, :subject => "Your request on the 5C Book Exchange..")
   end
@@ -28,7 +28,7 @@ class TransactionMailer < ActionMailer::Base
     @seller = @transaction.listing.user
     @buyer_name = @transaction.buyer_name
     @buyer_email = @transaction.buyer_email
-    @url  = "http://fivecbookexchange.herokuapp.com/signin"
+    @url  = "http://fivecbookexchange.herokuapp.com"
     email_with_name = "#{@seller.name} <#{@seller.email}>"
     mail(:to => email_with_name, :subject => "You cancelled a request for your book.")
   end
@@ -39,7 +39,7 @@ class TransactionMailer < ActionMailer::Base
     @seller = @transaction.listing.user
     @buyer_name = @transaction.buyer_name
     @buyer_email = @transaction.buyer_email
-    @url  = "http://fivecbookexchange.herokuapp.com/signin"
+    @url  = "http://fivecbookexchange.herokuapp.com"
     email_with_name = "#{@buyer_name} <#{@buyer_email}>"
     mail(:to => email_with_name, :subject => "Book request cancelled on the 5C Book Exchange.")
   end
@@ -49,18 +49,17 @@ class TransactionMailer < ActionMailer::Base
     @seller = @transaction.listing.user
     @buyer_name = @transaction.buyer_name
     @buyer_email = @transaction.buyer_email
-    @url  = "http://fivecbookexchange.herokuapp.com/signin"
+    @url  = "http://fivecbookexchange.herokuapp.com"
     email_with_name = "#{@seller.name} <#{@seller.email}>"
     mail(:to => email_with_name, :subject => "Request for your book cancelled on the 5C Book Exchange.")
   end
-  
   
   def buyer_cancelled_request_buyer(transaction)
     @transaction = transaction
     @seller = @transaction.listing.user
     @buyer_name = @transaction.buyer_name
     @buyer_email = @transaction.buyer_email
-    @url  = "http://fivecbookexchange.herokuapp.com/signin"
+    @url  = "http://fivecbookexchange.herokuapp.com"
     email_with_name = "#{@buyer_name} <#{@buyer_email}>"
     mail(:to => email_with_name, :subject => "Book request cancelled on the 5C Book Exchange.")
   end
@@ -70,7 +69,7 @@ class TransactionMailer < ActionMailer::Base
     @seller = @transaction.listing.user
     @buyer_name = @transaction.buyer_name
     @buyer_email = @transaction.buyer_email
-    @url  = "http://fivecbookexchange.herokuapp.com/signin"
+    @url  = "http://fivecbookexchange.herokuapp.com"
     email_with_name = "#{@seller.name} <#{@seller.email}>"
     mail(:to => email_with_name, :subject => "Book sold on the 5C Book Exchange!")
   end  
@@ -80,7 +79,7 @@ class TransactionMailer < ActionMailer::Base
     @seller = @transaction.listing.user
     @buyer_name = @transaction.buyer_name
     @buyer_email = @transaction.buyer_email
-    @url  = "http://fivecbookexchange.herokuapp.com/signin"
+    @url  = "http://fivecbookexchange.herokuapp.com"
     email_with_name = "#{@buyer_name} <#{@buyer_email}>"
     mail(:to => email_with_name, :subject => "Book sale finalized on the 5C Book Exchange!")
   end

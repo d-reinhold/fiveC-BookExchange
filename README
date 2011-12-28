@@ -15,12 +15,13 @@ This is a web app i created to simplify the process of buying and selling textbo
     To sell a book, all you need is a 5C email address. To buy a book, you don't even need to sign up! The 5C Book Exchange is dedicated to a single task, so I'm able to focus on doing it right. There isn't a lot you can do with this site, which makes it incredibly simple to use. The hassle of just setting up a seller account on ebay is enough for many students to return their books to Huntley at a considerable loss.
 
 TODO:
-ehh... Make signup/signin page pretty
-yeah... Finish CRUD for listings (edit is almost done, update, destroy)
-emails... Create transaction model, controller, etc (emails!)
+DONE... Make signup/signin page pretty
+just destroy... Finish CRUD for listings (edit is almost done, update, destroy)
+WRITTEN... Create transaction model, controller, etc (emails!)
 DONE - Get some sample data loaded
+Set up regex/checker of legit emails on client and server side
 Make favicon (mac software?)
-Fix bugs, write tests, talk to friends (rai, beryl, mary rachel, hale, becca, ryan, elissa)
+Fix bugs, write tests, talk to friends (rai, beryl, mary rachel, sarah?, vivian, hale, becca, ryan, elissa, sara?)
 
 
 BUG LIST:
