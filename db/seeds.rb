@@ -1,6 +1,6 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-
+=begin
 r = Random.new
 
 
@@ -81,4 +81,4 @@ cecil.listings.create!(:title => "Fahrenheit 451", :author => "Ray Bradbury", :i
 cecil.listings.create!(:title => "Odyssey", :author => "Homer", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
 cecil.listings.create!(:title => "None", :author => "None", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
 
-
+=end
