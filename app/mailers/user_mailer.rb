@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "notifications@fivecbookexchange.herokuapp.com"
+  default from: "5C Book Exchange <notifications@fivecbookexchange.herokuapp.com>"
   
   def welcome_email(user)
     @user = user

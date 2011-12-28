@@ -1,5 +1,5 @@
 class TransactionMailer < ActionMailer::Base
-  default from: "notifications@fivecbookexchange.herokuapp.com"
+  default from: "5C Book Exchange <notifications@fivecbookexchange.herokuapp.com>"
   
   
   def book_requested_seller(transaction)
@@ -32,7 +32,6 @@ class TransactionMailer < ActionMailer::Base
     email_with_name = "#{@seller.name} <#{@seller.email}>"
     mail(:to => email_with_name, :subject => "You cancelled a request for your book.")
   end
-  
   
   def seller_cancelled_request_buyer(transaction)
     @transaction = transaction

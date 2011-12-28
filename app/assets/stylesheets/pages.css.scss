@@ -205,6 +205,12 @@ input:focus, textarea:focus {
   color: #333333;
 }
 
+p#final-message{
+  /*position:relative;
+  top: 0px;*/
+}
+
+
 #sell-form-signed-in-required-button {
   position:relative;
   top: -50px;
@@ -217,7 +223,7 @@ input:focus, textarea:focus {
   right:-480px;
 }
 
-#sell-form-final-button, #sell-form-signed-in-final-button, #sell-form-final-signup-button {
+#sell-form-final-button, #sell-form-signed-in-final-button, #sell-form-final-signup-button, #sell-form-final-signin-button {
   position:relative;
   top: 5px;
   right:-480px;

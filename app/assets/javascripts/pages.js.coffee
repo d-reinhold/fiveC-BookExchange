@@ -137,14 +137,18 @@ $(document).ready ->
 
   $("body").delegate  "#user_password", "focus", (event) ->
     remove_status("p#password","Enter a secure password.")
+    remove_status("p#password-signin","Enter your password.")
 
   $("body").delegate "#user_password", "blur", (event) ->
     if @value == ''
-      add_error("p#password","Password can't be blank!")       
+      add_error("p#password","Password can't be blank!")     
+      add_error("p#password-signin","Password can't be blank!")   
     if @value.length > 5
       add_success("p#password","Looks good!")
+      add_success("p#password-signin","Looks good!")
     else
       add_error("p#password","Passwords must be at least 6 characters long!") 
+      add_error("p#password-signin","Passwords must be at least 6 characters long!") 
 
   $("body").delegate "#user_password_confirmation", "focus", (event) ->
     remove_status("p#password-confirm","Retype your password.")
@@ -238,7 +242,7 @@ add_error = (element,message) ->
     PRICE_CENTS_READY = false
   else if element.indexOf("name") != -1
     NAME_READY = false
-  else if element == "p#password"
+  else if element == "p#password" or element == "p#password-signin"
     PASSWORD_READY = false
   else if element == "p#password-confirm"
     CPASSWORD_READY = false
@@ -264,7 +268,7 @@ add_success = (element,message) ->
     PRICE_CENTS_READY = true
   else if element.indexOf("name") != -1
     NAME_READY = true
-  else if element == "p#password"
+  else if element == "p#password" or element == "p#password-signin"
     PASSWORD_READY = true
   else if element == "p#password-confirm"
     CPASSWORD_READY = true

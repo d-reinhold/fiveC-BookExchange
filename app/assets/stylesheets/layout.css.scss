@@ -34,6 +34,7 @@ a.header_text {
   position:relative;
   top: -6px;
   font-size: 32pt;
+  text-shadow: 0 1px 0 #eee;
   &:hover {
     color: $link-visited;
     text-decoration: none;
