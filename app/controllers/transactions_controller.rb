@@ -49,17 +49,17 @@ class TransactionsController < ApplicationController
     puts params
     @transaction = Transaction.find(params[:id])
     if @transaction.status == 'unavailable'
+      if @current_user.id == @transaction.listing.user.id
+        TransactionMailer.seller_cancelled_request_seller(@transaction).deliver
+        TransactionMailer.seller_cancelled_request_buyer(@transaction).deliver
+      else
+        TransactionMailer.buyer_cancelled_request_seller(@transaction).deliver
+        TransactionMailer.buyer_cancelled_request_buyer(@transaction).deliver        
+      end
       @transaction.buyer_email = 'not set'
       @transaction.buyer_name = 'not set'
       @transaction.status = 'available'
       if @transaction.save
-        if @current_user.id == @transaction.listing.user.id
-          TransactionMailer.seller_cancelled_request_seller(@transaction).deliver
-          TransactionMailer.seller_cancelled_request_buyer(@transaction).deliver
-        else
-          TransactionMailer.buyer_cancelled_request_seller(@transaction).deliver
-          TransactionMailer.buyer_cancelled_request_buyer(@transaction).deliver        
-        end
         flash[:success] = "Transaction cancelled."
         redirect_to @current_user
       else

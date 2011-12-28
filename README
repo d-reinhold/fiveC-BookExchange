@@ -26,5 +26,7 @@ Fix bugs, write tests, talk to friends (rai, beryl, mary rachel, sarah?, vivian,
 
 BUG LIST:
 Check both dollars and cents whenever either blurs
+cents field converts 05 to 5 in database
 Reduce code duplication created by index and home, make sure signup isn't broken
 Should listing id be attr_accessible?
+
