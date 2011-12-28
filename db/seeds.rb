@@ -13,7 +13,7 @@ def random_dollars(gen)
 end
 
 def random_cents(gen)
-  gen.rand(0..99)
+  gen.rand(10..99)
 end
 
 def random_condition

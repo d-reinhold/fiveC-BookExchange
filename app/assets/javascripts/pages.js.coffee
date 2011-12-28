@@ -209,6 +209,8 @@ check_dollar_field = (value) ->
 check_cents_field = (value) ->
   if value.length == 0
     add_error("p#price_cents","Well, you have to enter something...")
+  else if value.length == 1
+    add_error("p#price_cents","Please enter 2 digits (03, 59, etc).")
   else unless is_int(value)
     add_error("p#price_cents","You have to enter a number!")
   else if value.length >= 3

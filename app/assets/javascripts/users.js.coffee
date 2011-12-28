@@ -3,7 +3,8 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 $(document).ready ->
   $("body").delegate "table#current-listings-table tbody tr", "click", (event) ->
-    location.href= '/listings/' + @.id + '/edit'
+    if @.id != "unavailable"
+      location.href= '/listings/' + @.id + '/edit'
     
     
   $("#sign-up-button").click (event) ->

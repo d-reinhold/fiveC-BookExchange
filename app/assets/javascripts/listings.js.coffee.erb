@@ -20,4 +20,8 @@ $(document).ready ->
   
   $("body").delegate "#buy-this-book", "click", (event) ->
     $("form#request-book-form").submit()
-    #$("#new-transaction").fadeOut (event) ->
+    $("#new-transaction").fadeOut (event) ->
+
+
+  $("#edit-listing-button").click (event) -> 
+    $("form.edit_listing").submit()

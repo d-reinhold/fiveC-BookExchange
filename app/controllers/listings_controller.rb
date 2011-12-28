@@ -32,20 +32,19 @@ class ListingsController < ApplicationController
   end
 
   def update
+    puts "Start Listing Update!"
     puts params
-
-    
     @listing = Listing.find(params[:id])
-    if @listing.update_attributes!(params[:listing])
-      flash[:success] = 'Check your email for further instructions!'
+    if @listing.update_attributes(params[:listing])
+      flash[:success] = 'Listing updated!'
       if signed_in?
-        redirect_to @current_user 
+        redirect_to @current_user
       else
         redirect_to '/'
       end
     else
-      flash[:error] = 'Sorry, something went wrong!'
-      redirect_to '/'
+      flash[:error] = @listing.errors.full_messages
+      redirect_to edit_listing_path(@listing)
     end
   end
 
