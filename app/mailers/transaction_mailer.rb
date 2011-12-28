@@ -1,5 +1,5 @@
 class TransactionMailer < ActionMailer::Base
-  default from: "5C Book Exchange <notifications@fivecbookexchange.herokuapp.com>"
+  default from: "5C Book Exchange <fivecbookexchange@gmail.com>"
   
   
   def book_requested_seller(transaction)
