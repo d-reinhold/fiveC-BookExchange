@@ -26,6 +26,8 @@ class TransactionsController < ApplicationController
       @transaction.buyer_name = params[:buyer_name]
       @transaction.status = "unavailable"
       if @transaction.save
+        TransactionMailer.book_requested_buyer(@transaction).deliver
+        TransactionMailer.book_requested_seller(@transaction).deliver
         flash[:success] = "Transaction initiated! Check your email for more information."
         if signed_in?
           redirect_to @current_user
@@ -51,16 +53,19 @@ class TransactionsController < ApplicationController
       @transaction.buyer_name = 'not set'
       @transaction.status = 'available'
       if @transaction.save
-        flash[:success] = "Transaction cancelled."
-        if signed_in?
-          redirect_to @current_user
+        if @current_user.id == @transaction.listing.user.id
+          TransactionMailer.seller_cancelled_request_seller(@transaction).deliver
+          TransactionMailer.seller_cancelled_request_buyer(@transaction).deliver
         else
-          redirect_to root_path
+          TransactionMailer.buyer_cancelled_request_seller(@transaction).deliver
+          TransactionMailer.buyer_cancelled_request_buyer(@transaction).deliver        
         end
+        flash[:success] = "Transaction cancelled."
+        redirect_to @current_user
       else
         message = @transaction.errors.full_messages
         flash[:error] = message
-        redirect_to root_path
+        redirect_to @current_user
       end
     else 
       flash[:error] = "That listing is not currently requested."
@@ -76,6 +81,8 @@ class TransactionsController < ApplicationController
       @transaction.status = 'sold'
       @transaction.sell_date = Date.today
       if @transaction.save
+        TransactionMailer.book_sold_buyer(@transaction).deliver
+        TransactionMailer.book_sold_seller(@transaction).deliver
         flash[:success] = "Transaction complete! Thanks for selling your book on the 5C Book Exchange!"
           redirect_to @current_user
       else
