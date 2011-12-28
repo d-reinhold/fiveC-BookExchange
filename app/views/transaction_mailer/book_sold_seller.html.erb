@@ -6,10 +6,10 @@
   <body>
     <h3><%= @seller.name %>, a book you listed has been sold!</h3>
     <p>
-      This is just a notice that you have confirmed that <i><%=@transaction.listing.title%></i> was sold to <%=@buyer_name%> for $<%=@transaction.listing.price_dollars%>.<%=@transaction.listing.price_cents%>. Congratulations on selling your book, and thanks for using <a href="<%= @url %>">the 5C Book Exchange</a>!</br>
+      This is just a notice that you have confirmed that <i><%=@transaction.listing.title%></i> was sold to <%=@buyer_name%> for $<%=@transaction.listing.price_dollars%>.<%=@transaction.listing.price_cents%>. Congratulations on selling your book, and thanks for using the <a href="<%= @url %>">5C Book Exchange</a>!</br>
     </p>
-    <p>To buy and sell more textbooks, or to check the status of your books, go to <a href="<%= @url %>">the 5C Book Exchange</a> and log in using your 5C email address.<br/> 
+    <p>To buy and sell more textbooks, or to check the status of your books, go to the <a href="<%= @url %>">5C Book Exchange</a> and log in using your 5C email address.<br/> 
     </p>
-    <p>Thanks for using the 5C Book Exchange, and good luck!</p>
+    <p>Thanks for using the 5C Book Exchange!</p>
   </body>
 </html>
