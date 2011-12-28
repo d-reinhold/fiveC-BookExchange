@@ -1,6 +1,10 @@
 <div id="listing">
 	<div id="top">
+		<% if from_search? %>
 		  <%= link_to "back to search results", listings_path %>
+	  <% else %>
+    	<%= link_to "back to my books", @current_user %>
+    <% end %>
 	</div>
 	<div id="listing-details">
 		<h3>Listing Details</h3>
@@ -40,8 +44,19 @@
 		Email Address: <b><%=@listing.user.email%></b><br>
 		<br>-------------------------------------------------------------<br>
 		<% if signed_in? and @listing.user.id == @current_user.id %>	
-				<p class="centered">This is your book, so you can't buy it!<br><br>
-			<%= render :partial => "shared/fancy_button", :locals => { :button_id => "tell-me-more", :button_class => 'disabled', :text => "Tell me more!"} %>
+		  <% if @listing.transaction.status == 'available'%>
+				<br>
+					<div class="clear centered">
+					<%= render :partial => "shared/fancy_button", :locals => { :button_id => @listing.id, :button_class => 'goto-edit-listing-button enabled', :text => "Edit Listing!"} %>
+					<%= render :partial => "shared/fancy_button", :locals => { :button_id => @listing.id, :button_class => 'delete-listing-button red enabled', :text => "Delete Listing!"} %></div>
+				<% else %>
+				<br>
+					<div class="clear centered">
+					<p><%=@listing.transaction.buyer_name%> wants to buy this book, so you can't modify the listing!</p>
+					<%= render :partial => "shared/fancy_button", :locals => { :button_id => @listing.id, :button_class => 'goto-edit-listing-button disabled', :text => "Edit Listing!"} %>
+					<%= render :partial => "shared/fancy_button", :locals => { :button_id => "delete-listing-button", :button_class => 'red disabled', :text => "Delete Listing!"} %></div>
+				<% end %>
+	
 		<% else%>
 			<p class="centered">Click 'Tell me more!' for information on how to purchase this book.<br><br>
 			<%= render :partial => "shared/fancy_button", :locals => { :button_id => "tell-me-more", :button_class => 'enabled', :text => "Tell me more!"} %>
@@ -68,10 +83,10 @@
 			</div>
 		<% else %>
 		  <div class="field">
-			  <%= label_tag 'Enter your email address: ' %><%= text_field_tag :buyer_email, nil, :placeholder => 'Email' %>
+			  <%= text_field_tag :buyer_email, nil, :placeholder => 'Email' %><p>What's your email address?</p>
 			</div>
 		  <div class="field">
-			  <%= label_tag 'Enter your name: ' %><%= text_field_tag :buyer_name, nil, :placeholder => 'Full Name' %>
+			  <%= text_field_tag :buyer_name, nil, :placeholder => 'Full Name' %><p>What's your name?</p>
 			</div>
 		<% end %>
 	<% end %>
@@ -84,7 +99,7 @@
   <div class="clear"></div>
 <div>
 
-
+<div class="hidden"></div>
 
 
 

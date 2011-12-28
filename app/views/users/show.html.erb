@@ -12,11 +12,7 @@
 			</thead>
 		  <% @listings.each do |listing|%>
 		    <% if listing.transaction.status != 'sold' %>
-		      <% if listing.transaction.status == 'unavailable' %>
-		   	 		<tr id="unavailable">
-		      <% else %>
-			      <tr id="<%= listing.id %>">
-			    <% end %>
+			    <tr id="<%= listing.id %>">
 			    <td><%= listing.title %></td>
 		    	<td> <%= listing.author %></td>
 		      <td> $<%= listing.price_dollars %>.<%= listing.price_cents %></td>

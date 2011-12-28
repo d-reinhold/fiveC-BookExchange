@@ -13,6 +13,17 @@ $(document).ready ->
         $("#listing").css "display", "none"
         $("#new-transaction").css "display", "block"
 
+  $("body").delegate ".goto-edit-listing-button", "click", (event) ->
+    if $(".goto-edit-listing-button").hasClass("enabled")
+      location.href= '/listings/' + @.id + '/edit'
+
+
+  $("body").delegate ".delete-listing-button", "click", (event) ->
+    if $(".delete-listing-button").hasClass("enabled")
+      location.href= '/listings/' + @.id + '/edit'
+
+
+
   $("body").delegate "#back-to-listing-details", "click", (event) ->
     $("#new-transaction").fadeOut (event) ->
       $("#new-transaction").css "display", "none"

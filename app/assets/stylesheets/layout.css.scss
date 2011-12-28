@@ -258,7 +258,7 @@ button.fancy_button {
     color: #fff;
     opacity: 1;
     text-shadow: none;
-    &:hover{
+    &.enabled:hover{
       background-color: lighten(red,15%);
       background-image: -webkit-linear-gradient(top, lighten(red,20%), lighten(red,10%));
       background-image: -moz-linear-gradient(top, lighten(red,20%), lighten(red,10%));
@@ -267,7 +267,7 @@ button.fancy_button {
       background-image: linear-gradient(top, lighten(red,20%), lighten(red,10%));
       text-shadow:none;
     }
-    &:active{
+    &.enabled:active{
       -webkit-box-shadow: inset 0 0 5px 2px darken(red,10%), 0 1px 0 0 lighten(red,20%);
       -moz-box-shadow: inset 0 0 5px 2px darken(red,10%), 0 1px 0 0 lighten(red,20%);
       -ms-box-shadow: inset 0 0 5px 2px darken(red,10%), 0 1px 0 0 lighten(red,20%);
@@ -289,7 +289,7 @@ button.fancy_button {
     color: #fff;
     opacity: 1;
     text-shadow: none;
-    &:hover{
+    &.enabled:hover{
       background-color: lighten(green,15%);
       background-image: -webkit-linear-gradient(top, lighten(green,20%), lighten(green,10%));
       background-image: -moz-linear-gradient(top, lighten(green,20%), lighten(green,10%));
@@ -298,7 +298,7 @@ button.fancy_button {
       background-image: linear-gradient(top, lighten(green,20%), lighten(green,10%));
       text-shadow:none;
     }
-    &:active{
+    &.enabled:active{
       -webkit-box-shadow: inset 0 0 5px 2px darken(green,10%), 0 1px 0 0 lighten(green,20%);
       -moz-box-shadow: inset 0 0 5px 2px darken(green,10%), 0 1px 0 0 lighten(green,20%);
       -ms-box-shadow: inset 0 0 5px 2px darken(green,10%), 0 1px 0 0 lighten(green,20%);
@@ -307,7 +307,19 @@ button.fancy_button {
     }
   }
     
-    
+  button.fancy_button.green.disabled{
+    opacity: .3;
+    &:hover{
+      cursor:default;
+    }
+  }
+  
+  button.fancy_button.red.disabled{
+    opacity: .3;
+    &:hover{
+      cursor:default;
+    }
+  }
   
     
     

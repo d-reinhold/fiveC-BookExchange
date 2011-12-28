@@ -25,6 +25,15 @@
   min-height:400px;
 }
 
+#current-listings-table {
+  width: 380px;
+}
+
+
+#current-listings tr:hover {
+  background-color:lighten(green,50%);
+}
+
 
 
 #pending-transactions {

@@ -5,13 +5,8 @@ class ListingsController < ApplicationController
   
   def show
     @listing = Listing.find(params[:id])
-    if @listing.transaction.status != "available"
-      flash[:error] = 'That listing is not available at this time.'
-      redirect_to root_path
-    else
-      @title = @listing.title
-      @transaction = @listing.transaction
-    end
+    @title = @listing.title
+    @transaction = @listing.transaction
   end
 
   def create
@@ -29,6 +24,10 @@ class ListingsController < ApplicationController
 
   def edit
     @listing = Listing.find(params[:id])
+    if @listing.transaction.status != "available"
+      flash[:error] = 'That listing can not be edited at this time.'
+      redirect_to root_path
+    end
   end
 
   def update
@@ -53,6 +52,7 @@ class ListingsController < ApplicationController
 
   def index
     puts params
+    session[:from_search] = true
     if params[:search] == ''
       puts 'search params blank'
       @listings = Listing.order("title")

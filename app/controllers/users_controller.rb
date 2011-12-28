@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_filter :correct_user, :only => [:show, :edit, :update]  
    
   def show
+    session[:from_search] = false
     @title = @current_user.name
     @listings = @current_user.listings
     @seller_transactions = Array.new

@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       puts "Authenticated!"
       session[:user_id] = user.id
+      session[:from_search] = false
       @current_user = user
       respond_to do |format|
         format.html{

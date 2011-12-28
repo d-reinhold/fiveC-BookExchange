@@ -1,5 +1,5 @@
 <div id="top">
-	  <%= link_to "back to my books", @current_user %>
+	  <%= link_to "back to listing page", @listing %>
 </div>
 <br>
 <h1>Edit Listing</h1>
@@ -33,4 +33,4 @@
 <br><br>
 <br>
 <div class="clear centered">
-<%= render :partial => "shared/fancy_button", :locals => { :button_id => "edit-listing-button", :button_class => 'enabled', :text => "Edit Listing!"} %></div>
+<%= render :partial => "shared/fancy_button", :locals => { :button_id => "edit-listing-button", :button_class => 'green enabled', :text => "Edit Listing!"} %>

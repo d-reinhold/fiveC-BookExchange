@@ -19,6 +19,15 @@ class ApplicationController < ActionController::Base
   end
   helper_method :signed_in?
   
+  
+  def from_search?
+    session[:from_search] == true
+  end
+  helper_method :from_search?
+  
+  
+  
+  
   def authenticate_user
     deny_access unless signed_in?
   end  
