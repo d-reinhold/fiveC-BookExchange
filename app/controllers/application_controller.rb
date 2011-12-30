@@ -4,9 +4,16 @@ class ApplicationController < ActionController::Base
   private
   
   def current_user
-    if User.all.empty? or User.find(session[:user_id]).nil?
-      session[:user_id] = nil
-      @current_user = nil
+    if User.all.empty?
+      unless @current_user.nil?
+        if User.find(@current_user.id).nil?
+          session[:user_id] = nil
+          @current_user = nil
+        end
+      else
+        session[:user_id] = nil
+        @current_user = nil
+      end
     else
       @current_user ||= User.find(session[:user_id]) unless session[:user_id].nil?
     end
