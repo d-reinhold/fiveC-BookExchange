@@ -8,7 +8,7 @@ class Transaction < ActiveRecord::Base
 
 
   def is_fivec_email
-    unless (buyer_email.include?("@pomona.edu")) or (buyer_email.include?("@mymail.pomona.edu")) or (buyer_email.include?("@scripps.edu")) or (buyer_email.include?("@hmc.edu")) or (buyer_email.include?("@pitzer.edu")) or (buyer_email.include?("@cmc.edu") or (buyer_email == "not set"))
+    unless (buyer_email.include?("@pomona.edu")) or (buyer_email.include?("@students.pitzer.edu")) or (buyer_email.include?("@mymail.pomona.edu")) or (buyer_email.include?("@scripps.edu")) or (buyer_email.include?("@hmc.edu")) or (buyer_email.include?("@pitzer.edu")) or (buyer_email.include?("@cmc.edu") or (buyer_email == "not set"))
       errors.add(:buyer_email, "is not a valid 5C email address") 
     end
   end
