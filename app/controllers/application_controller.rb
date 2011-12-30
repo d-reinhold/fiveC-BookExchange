@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   private
   
   def current_user
-    if User.all.empty?
+    if User.all.empty? or User.find(session[:user_id]).nil?
       session[:user_id] = nil
       @current_user = nil
     else
