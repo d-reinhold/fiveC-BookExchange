@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
-  before_filter :authenticate_user, :only => [ :create, :edit, :update] 
-  before_filter :correct_user, :only => [ :edit, :update]
+  before_filter :authenticate_user, :only => [ :create, :edit, :update, :destroy] 
+  before_filter :correct_user, :only => [ :edit, :update, :destroy]
   
   
   def show
@@ -48,6 +48,11 @@ class ListingsController < ApplicationController
   end
 
   def destroy
+    puts "init delete"
+    Listing.find(params[:id]).destroy
+    flash[:success] = 'Listing deleted!'
+    redirect_to @current_user
+    
   end
 
   def index

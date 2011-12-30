@@ -37,7 +37,7 @@ class TransactionsController < ApplicationController
       else
         message = @transaction.errors.full_messages
         flash[:error] = message
-        redirect_to root_path
+        redirect_to @transaction.listing
       end
     else 
       flash[:error] = "That listing is no longer available."

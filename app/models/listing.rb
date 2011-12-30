@@ -1,7 +1,7 @@
 class Listing < ActiveRecord::Base
   attr_accessible :id, :title, :price_dollars, :price_cents, :author, :edition, :isbn, :description, :condition
   belongs_to :user
-  has_one :transaction
+  has_one :transaction, :dependent => :destroy
   
   after_initialize do
     self.transaction ||= self.build_transaction

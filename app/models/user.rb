@@ -12,9 +12,19 @@ class User < ActiveRecord::Base
   validates :email, :presence => true,
                     :format => { :with => email_regex },
                     :uniqueness => { :case_insensitive => true }
-                    
+                  
   validates_presence_of :password, :on => :create,
-                       :length => { :within => 6..40 }
+                        :length => { :within => 6..40 }
+            
+  validate :is_fivec_email
+
+
+  def is_fivec_email
+    unless (email.include?("@pomona.edu")) or (email.include?("@scripps.edu")) or (email.include?("@hmc.edu")) or (email.include?("@pitzer.edu")) or (email.include?("@cmc.edu"))
+      errors.add(:email, "is not a valid 5C email address") 
+    end
+  end
+
                        
           
 

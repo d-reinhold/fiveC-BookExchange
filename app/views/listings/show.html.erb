@@ -48,7 +48,7 @@
 				<br>
 					<div class="clear centered">
 					<%= render :partial => "shared/fancy_button", :locals => { :button_id => @listing.id, :button_class => 'goto-edit-listing-button enabled', :text => "Edit Listing!"} %>
-					<%= render :partial => "shared/fancy_button", :locals => { :button_id => @listing.id, :button_class => 'delete-listing-button red enabled', :text => "Delete Listing!"} %></div>
+					<%= link_to "Delete Listing!", @listing, :id => @listing.id, :class => "fancy_button enabled red", :method => :delete, :confirm => "Are you sure you want to delete #{@listing.title}?", :title => "Delete #{@listing.title}" %></div>
 				<% else %>
 				<br>
 					<div class="clear centered">
@@ -82,16 +82,22 @@
 			  <%= text_field_tag :buyer_name, nil, :value => @current_user.name %>
 			</div>
 		<% else %>
+		<div class="sell-form-divider static">
 		  <div class="field">
-			  <%= text_field_tag :buyer_email, nil, :placeholder => 'Email' %><p>What's your email address?</p>
-			</div>
+		    <%= text_field_tag :email, nil, :placeholder => 'Email Address'%>
+		  </div>
 		  <div class="field">
-			  <%= text_field_tag :buyer_name, nil, :placeholder => 'Full Name' %><p>What's your name?</p>
-			</div>
+		    <%= password_field_tag :password, nil, :placeholder => 'Password'%>
+		  </div>
+		</div>
+		<div class="sell-form-divider static">
+	    <div class="form-message static"><p>Email Address</p></div>
+		  <div class="form-message static"><p>Password</p></div>
+		</div>
 		<% end %>
 	<% end %>
 	<br>
-	<p class="centered">Do you want to buy <b><%= @listing.title%></b> from <b><%= @listing.user.name %></b> for <b>$<%= @listing.price_dollars%>.<%=@listing.price_cents%></b>?</p>
+	<p class="clear centered">Do you want to buy <b><%= @listing.title%></b> from <b><%= @listing.user.name %></b> for <b>$<%= @listing.price_dollars%>.<%=@listing.price_cents%></b>?</p>
 	<p class="centered">Note: Clicking 'Buy this Book!' will remove this listing from the search engine, and send an email to you and to the seller so you can work out a time to meet. This is not a binding contract, and either party can cancel the deal at any time. If the deal gets cancelled, the listing will be reposted. If the deal goes through, it is up to the seller to mark the transaction as final. Thanks for reading!<br><br>
 	<%= render :partial => "shared/fancy_button", :locals => { :button_id => "buy-this-book", :button_class => 'enabled', :text => "Buy this Book!"} %>
 	</p>
@@ -99,7 +105,6 @@
   <div class="clear"></div>
 <div>
 
-<div class="hidden"></div>
 
 
 

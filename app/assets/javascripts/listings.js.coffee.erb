@@ -20,7 +20,8 @@ $(document).ready ->
 
   $("body").delegate ".delete-listing-button", "click", (event) ->
     if $(".delete-listing-button").hasClass("enabled")
-      location.href= '/listings/' + @.id + '/edit'
+      alert "enabled"
+      $("#delete-form").submit()
 
 
 
