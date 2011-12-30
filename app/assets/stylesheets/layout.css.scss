@@ -249,7 +249,6 @@ button.fancy_button, a.fancy_button{
     
   button.fancy_button.red, a.fancy_button.red{
     width: 175px;
-    padding:15px;
     background-color: red;
     background-image: -webkit-gradient(linear, left top, left bottom, from(lighten(red,25%)), to(red));
     /* Saf4+, Chrome */
@@ -279,6 +278,10 @@ button.fancy_button, a.fancy_button{
     }
   }
   
+  
+  a.fancy_button.red{
+        padding:15px;
+  }
   button.fancy_button.green, a.fancy_button.green{
     background-color: green;
     width:175px;
