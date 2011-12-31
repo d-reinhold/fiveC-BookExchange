@@ -14,6 +14,7 @@ end
 #  buyer_email :string(255)     default("not set")
 #  buyer_name  :string(255)     default("not set")
 #  status      :string(255)     default("available")
+#  sell_date   :string(255)     default("not sold")
 #  created_at  :datetime
 #  updated_at  :datetime
 #

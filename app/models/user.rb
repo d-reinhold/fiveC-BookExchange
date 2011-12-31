@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
 
   def is_fivec_email
-    unless (email.include?("@pomona.edu")) or (email.include?("@students.pitzer.edu")) or (email.include?("@mymail.pomona.edu")) or (email.include?("@scripps.edu")) or (email.include?("@hmc.edu")) or (email.include?("@pitzer.edu")) or (email.include?("@cmc.edu"))
+    unless (email.include?("@pomona.edu")) or (email.include?("@students.pitzer.edu")) or (email.include?("@mymail.pomona.edu")) or (email.include?("@scrippscollege.edu")) or (email.include?("@hmc.edu"))  or (email.include?("@g.hmc.edu")) or (email.include?("@pitzer.edu")) or (email.include?("@cmc.edu"))
       errors.add(:email, "is not a valid 5C email address") 
     end
   end

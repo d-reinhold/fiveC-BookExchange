@@ -1,0 +1,32 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  number: MyString
+  department: MyString
+  school: MyString
+  book_title: MyString
+  book_author: MyString
+
+two:
+  name: MyString
+  number: MyString
+  department: MyString
+  school: MyString
+  book_title: MyString
+  book_author: MyString
+# == Schema Information
+#
+# Table name: courses
+#
+#  id          :integer         not null, primary key
+#  name        :string(255)
+#  number      :string(255)
+#  department  :string(255)
+#  school      :string(255)
+#  book_title  :string(255)
+#  book_author :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+

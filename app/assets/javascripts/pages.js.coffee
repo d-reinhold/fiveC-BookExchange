@@ -72,7 +72,7 @@ $(document).ready ->
   $("#email_checker").blur (event) ->
     if @value == ''
       add_error("p#email","Email can't be blank!")
-    else if @value.indexOf('pomona.edu') != -1 or @value.indexOf('hmc.edu') != -1 or @value.indexOf('pitzer.edu') != -1 or @value.indexOf('cmc.edu') != -1 or @value.indexOf('scripps.edu') != -1
+    else if @value.indexOf('pomona.edu') != -1 or @value.indexOf('hmc.edu') != -1 or @value.indexOf('pitzer.edu') != -1 or @value.indexOf('cmc.edu') != -1 or @value.indexOf('scrippscollege.edu') != -1
       add_success("p#email","Great!")
     else
       add_error("p#email","Sorry, that's not a 5C email address!") 
