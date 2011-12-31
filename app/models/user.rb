@@ -25,7 +25,12 @@ class User < ActiveRecord::Base
     end
   end
 
-                       
+  def self.not_exists?(id)
+    self.find(id)
+    false
+  rescue
+    true
+  end                     
           
 
     

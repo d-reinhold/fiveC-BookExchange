@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
     if User.all.empty?
       session[:user_id] = nil
       @current_user = nil
-    elsif @current_user
-      if User.find(@current_user.id).nil? 
+    elsif session[:user_id]
+      unless User.exists?(:id => session[:user_id])
         session[:user_id] = nil
         @current_user = nil     
       else
