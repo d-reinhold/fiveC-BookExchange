@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       if User.find_by_email(params[:user][:email]).present?
         message = 'That email address is already registered! Try signing in!'
       else
-        message = 'Your account could not be created! Make sure your email is a valid 5C address.'
+        message = 'Please correct the following errors:  '+ @user.errors.full_messages.to_s
       end
       flash[:error] = message
       redirect_to signup_path

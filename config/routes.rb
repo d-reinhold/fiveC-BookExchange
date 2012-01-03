@@ -1,10 +1,13 @@
 FiveCBookExchange::Application.routes.draw do
 
+
+
   get "transactions/request_book"
   get "transactions/cancel_request"
   get "transactions/sold"
 
-
+  match 'contact' => 'contact#new', :as => 'contact', :via => :get
+  match 'contact' => 'contact#create', :as => 'contact', :via => :post
   match '/home' => 'pages#home'
   match '/about' => 'pages#about'
   match '/signup', :to => 'users#new'

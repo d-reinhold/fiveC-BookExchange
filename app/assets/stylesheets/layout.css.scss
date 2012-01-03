@@ -113,6 +113,11 @@ nav ul {
   clear:both;
 }
 
+.loading {
+  text-align:center;
+  display:none;
+}
+
 footer {
   text-align: center;
   margin-top: 10px;
@@ -127,7 +132,7 @@ footer nav {
 
 
 /* Error Messages */
-
+/*
 
 .field_with_errors {
   margin-top: 10px;
@@ -170,7 +175,7 @@ footer nav {
   list-style: square;
 }
 
-
+*/
 
 input, select, textarea {  
     @include rounded-corners(5px, 5px, 5px, 5px);

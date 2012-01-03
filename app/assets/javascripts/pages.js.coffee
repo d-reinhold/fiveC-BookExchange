@@ -64,7 +64,7 @@ $(document).ready ->
     
   $("body").delegate "button#search-button", "click", (event) ->
     $("form#search").submit()
-  
+
 
   $("#email_checker").focus (event) ->
     remove_status("p#email","What's your 5C email address?")
@@ -72,7 +72,9 @@ $(document).ready ->
   $("#email_checker").blur (event) ->
     if @value == ''
       add_error("p#email","Email can't be blank!")
-    else if @value.indexOf('pomona.edu') != -1 or @value.indexOf('hmc.edu') != -1 or @value.indexOf('pitzer.edu') != -1 or @value.indexOf('cmc.edu') != -1 or @value.indexOf('scrippscollege.edu') != -1
+    else if @value.indexOf('@pomona.edu') != -1 
+      add_error("p#email","Please use '@mymail.pomona.edu'!")
+    else if @value.indexOf('@mymail.pomona.edu') != -1 or @value.indexOf('@hmc.edu') != -1 or @value.indexOf('@g.hmc.edu') != -1 or @value.indexOf('@students.pitzer.edu') != -1 or @value.indexOf('@pitzer.edu') != -1 or @value.indexOf('@cmc.edu') != -1 or @value.indexOf('@scrippscollege.edu') != -1
       add_success("p#email","Great!")
     else
       add_error("p#email","Sorry, that's not a 5C email address!") 
@@ -175,6 +177,7 @@ $(document).ready ->
       $("#new_user input#user_listings_attributes_0_price_cents").val($("#check-email-form input#price_cents_checker").val())
       $("#new_user").submit()
       $("#sell-form-final").fadeOut "slow", ->
+        $(".loading").css "display","block"
         
       
   $("body").delegate "button#sell-form-signed-in-final-button", "click", (event) ->
@@ -183,6 +186,8 @@ $(document).ready ->
       $("button#sell-form-signed-in-final-button").addClass("disabled")
       $("#sell-form-optional").fadeOut "slow", ->
         $("#new_listing").submit()
+        $(".loading").css "display","block"
+        
 
         
         
@@ -195,6 +200,7 @@ $(document).ready ->
       $("#new_listing input#listing_price_dollars").val($("#check-email-form input#price_dollars_checker").val())
       $("#new_listing input#listing_price_cents").val($("#check-email-form input#price_cents_checker").val())
       $("#authenticate-form input#email").val($("#check-email-form input#email_checker").val())
+      $(".loading").css "display","block"
       $("#authenticate-form").submit()
          
 

@@ -33,6 +33,7 @@ $(document).ready ->
   $("body").delegate "#buy-this-book", "click", (event) ->
     $("form#request-book-form").submit()
     $("#new-transaction").fadeOut (event) ->
+      $(".loading").css "display","block"
 
 
   $("#edit-listing-button").click (event) -> 

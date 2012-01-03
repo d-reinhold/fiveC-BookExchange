@@ -15,6 +15,10 @@
 	  <div class="container">
 		  <%= render 'layouts/header' %>
 			<section class="round">
+				<div class="loading">
+					<p>Processing request..</p>
+				  <%= image_tag 'blue_loading.gif'%>
+				</div>
 			  <% flash.each do |key, value| %>
 	      <div class="flash <%= key %>">
 	        <%= value %>

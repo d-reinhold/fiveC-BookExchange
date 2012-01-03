@@ -9,7 +9,7 @@ def random_isbn(gen)
 end
 
 def random_dollars(gen)
-  gen.rand(1..100)
+  gen.rand(1..50)
 end
 
 def random_cents(gen)
@@ -25,7 +25,7 @@ def random_description
 end
 
 
-dom = User.create!(:name => 'Dominick Reinhold', :email => 'dfr12009@pomona.edu', :password => 'foobar', :password_confirmation => 'foobar')
+dom = User.create!(:name => 'Dominick Reinhold', :email => 'dfr12009@mymail.pomona.edu', :password => 'foobar', :password_confirmation => 'foobar')
 
 dom.listings.create!(:title => "The Hitchhiker's Guide to the Galaxy", :author => "Douglas Adams", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
 dom.listings.create!(:title => "1984", :author => "George Orwell", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )

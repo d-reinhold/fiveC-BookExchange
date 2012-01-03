@@ -1,0 +1,26 @@
+<h1>Contact</h1>
+<p>If you need help, find a bug, or if you have general comments or concerns, please leave your message with your email and name!</p>
+<div id="sign-up">
+  <%= form_for @message, :url => contact_path do |form| %>
+		  <div class="sell-form-divider static">
+			  <div class="field">
+			    <%= form.text_field :email, :placeholder => 'Email Address'%>
+			  </div>
+			  <div class="field">
+			    <%= form.text_field :name, :placeholder => 'Full Name'%>
+			  </div>
+			  <div class="field">
+			    <%= form.text_area :body, :placeholder => "Type your message here.." %>
+			  </div>
+			</div>
+			<div class="sell-form-divider static">
+		    <div class="form-message static"><p>Email Address</p></div>
+			  <div class="form-message static"><p>Name</p></div>
+			  <div class="form-message static"><p>Message</p></div>
+			
+			</div>
+	  <% end %>
+</div>
+
+<div class="clear centered" ><br><%= render :partial => "shared/fancy_button", :locals => { :button_id => "support-button", :button_class => 'enabled', :text => "Send!"} %></div>
+

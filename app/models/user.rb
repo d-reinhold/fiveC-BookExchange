@@ -20,20 +20,14 @@ class User < ActiveRecord::Base
 
 
   def is_fivec_email
-    unless (email.include?("@pomona.edu")) or (email.include?("@students.pitzer.edu")) or (email.include?("@mymail.pomona.edu")) or (email.include?("@scrippscollege.edu")) or (email.include?("@hmc.edu"))  or (email.include?("@g.hmc.edu")) or (email.include?("@pitzer.edu")) or (email.include?("@cmc.edu"))
-      errors.add(:email, "is not a valid 5C email address") 
+    if email.include?("@pomona.edu")
+      errors.add(:email, "Please use '@mymail.pomona.edu'")  
+    else 
+      unless (email.include?("@students.pitzer.edu")) or (email.include?("@mymail.pomona.edu")) or (email.include?("@scrippscollege.edu")) or (email.include?("@hmc.edu"))  or (email.include?("@g.hmc.edu")) or (email.include?("@pitzer.edu")) or (email.include?("@cmc.edu"))
+        errors.add(:email, "is not a valid 5C email address") 
+      end
     end
   end
-
-  def self.not_exists?(id)
-    self.find(id)
-    false
-  rescue
-    true
-  end                     
-          
-
-    
 
 end
 # == Schema Information
