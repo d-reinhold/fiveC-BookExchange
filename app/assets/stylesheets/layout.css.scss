@@ -192,6 +192,12 @@ input, select, textarea {
     -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
 }
 
+#radios {
+  position:relative;
+  left:120px;
+}
+
+
 button.fancy_button, a.fancy_button{
   background-color: #eeeeee;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#eeeeee), to(#cccccc));

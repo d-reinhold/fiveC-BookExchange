@@ -58,13 +58,16 @@ class ListingsController < ApplicationController
   def index
     puts params
     session[:from_search] = true
-    if params[:search] == ''
+    if params[:search_keywords] == '' and params[:search_courses] == ''
       puts 'search params blank'
       @listings = Listing.order("title")
       session[:last_search] = nil
-    elsif params[:search].present?
-      puts "got search params: #{params[:search]}"
-      gen_search_arrays(params[:search])         
+    elsif params[:search_keywords].present?
+      puts "got keyword params: #{params[:search_keywords]}"
+      gen_keyword_search_arrays(params[:search_keywords])
+    elsif params[:search_courses].present?
+      puts "got course params: #{params[:search_courses]}"
+      gen_course_search_array(params[:search_courses])      
     elsif session[:last_search]
       puts "didnt get search params, but had a last search"
       gen_search_arrays(session[:last_search])
@@ -79,13 +82,21 @@ class ListingsController < ApplicationController
   
   private
   
-    def gen_search_arrays(keyword)
+    def gen_keyword_search_arrays(keyword)
+      puts 'searching keywords'
       @keyword = keyword.downcase
       @listings_title = Listing.where("lower(title) LIKE ?", "%#{@keyword}%").order("title")
       @listings_author = Listing.where("lower(author) LIKE ?", "%#{@keyword}%").order("title")
       @listings_isbn = Listing.where("lower(isbn) LIKE ?", "%#{@keyword}%").order("title")
       session[:last_search] = @keyword
-      puts "Last Search: #{session[:last_search]}"
+    end
+    
+    def gen_course_search_array(course)
+      puts 'searching courses'
+      @course = course.downcase
+      @matching_courses = Course.where("lower(name) LIKE ?", "%#{@course}%").order("name")
+      session[:last_search] = @course
+      puts "done searching courses"
     end
     
 

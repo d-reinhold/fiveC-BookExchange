@@ -58,6 +58,18 @@ $(document).ready ->
     $("a#buttons-search").css("background-color", "#578BF2")
     event.preventDefault()
     
+  $("input[name='search_type']").change ->
+    if $("input#search_type_keywords").is(':checked')
+      $("#searchbar-keywords").css "display", "block"
+      $("#searchbar-courses").css "display", "none"
+      $("#search_keywords").val("")
+      $("#search_courses").val("")
+    else
+      $("#searchbar-courses").css "display", "block"
+      $("#searchbar-keywords").css "display", "none"
+      $("#search_keywords").val("")
+      $("#search_courses").val("")
+    
     
   $("body").delegate "button.fancy_button", "click", (event) ->
     event.preventDefault()
