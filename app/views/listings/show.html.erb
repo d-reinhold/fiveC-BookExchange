@@ -94,8 +94,10 @@
 	    <div class="form-message static"><p>Email Address</p></div>
 		  <div class="form-message static"><p>Name</p></div>
 		</div>
+		
 		<% end %>
 	<% end %>
+	<br>
 	<br>
 	<p class="clear centered">Do you want to buy <b><%= @listing.title%></b> from <b><%= @listing.user.name %></b> for <b>$<%= @listing.price_dollars%>.<%=@listing.price_cents%></b>?</p>
 	<p class="centered">Note: Clicking 'Buy this Book!' will remove this listing from the search engine, and send an email to you and to the seller so you can work out a time to meet. This is not a binding contract, and either party can cancel the deal at any time. If the deal gets cancelled, the listing will be reposted. If the deal goes through, it is up to the seller to mark the transaction as final. Thanks for reading!<br><br>

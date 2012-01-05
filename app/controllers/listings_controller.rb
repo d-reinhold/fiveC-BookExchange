@@ -74,10 +74,15 @@ class ListingsController < ApplicationController
       gen_course_search_array(params[:search_courses])      
     elsif session[:last_search]
       puts "didnt get search params, but had a last search"
-      gen_search_arrays(session[:last_search])
+      if session[:last_search_type] == 'keyword'
+        gen_keyword_search_arrays(session[:last_search])
+      else 
+        gen_course_search_array(session[:last_search])
+      end
     else
       @listings = Listing.order("title")
     end
+    puts 'about to respond!'
     respond_to do |format|
       format.js
       format.html
@@ -94,6 +99,7 @@ class ListingsController < ApplicationController
       @listings_author = Listing.where("lower(author) LIKE ?", "%#{@keyword}%").order("title")
       @listings_isbn = Listing.where("lower(isbn) LIKE ?", "%#{@keyword}%").order("title")
       session[:last_search] = @keyword
+      session[:last_search_type] = 'keyword'
     end
     
     def gen_course_search_array(course)
@@ -101,6 +107,7 @@ class ListingsController < ApplicationController
       @course = course.downcase
       @matching_courses = Course.where("lower(name) LIKE ?", "%#{@course}%").order("name")
       session[:last_search] = @course
+      session[:last_search_type] = 'course'
       puts "done searching courses"
     end
     

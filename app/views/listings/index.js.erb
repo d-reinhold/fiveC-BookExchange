@@ -1,5 +1,4 @@
 $("#results").fadeOut( function() {
-  alert "hello"
   $("#results").html("");
   $("#results").css("display", "block");
   $("#results").html("<br><br><%=escape_javascript(render ('search_results.html.erb'))%>");

@@ -6,7 +6,7 @@
     <p> Sorry, no courses matched your search! Please try another query.</p>
   <% else %>
     <% @matching_courses.each do |course| %>
-      <h2><%= course.department%><%=course.number%> <%= course.school%>-<%= course.section%>(<%=course.id%>): <%=course.name%> with <%= course.prof %>:</h2>
+      <h2><%= course.department%><%=course.number%> <%= course.school%>-<%= course.section%>: <%=course.name%> with <%= course.prof %>:</h2>
       <% unless course.books.empty? %>
 	      <% if course.books.first.title == "Could not find the specified course." %> 
 	        <p>Check your school's online course portal for the books for this class.</p>
