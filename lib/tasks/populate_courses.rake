@@ -28,9 +28,9 @@ namespace :db do
           puts 'Prof: ' + prof
           puts 'Section: ' + course_section
           c = Course.new(:school => course_school, :department => course_department, :number => course_number, :name => course_name, :section => course_section, :prof => prof ) 
-          #if c.save
+          if c.save
             get_books_for_course(c)
-          #end
+          end
         end
         current_page_num += 1   
       rescue
