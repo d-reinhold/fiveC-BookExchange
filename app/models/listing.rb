@@ -1,7 +1,7 @@
 class Listing < ActiveRecord::Base
   attr_accessible :id, :title, :price_dollars, :price_cents, :author, :edition, :isbn, :description, :condition
   belongs_to :user
-  belongs_to :course
+  belongs_to :book
   has_one :transaction, :dependent => :destroy
   
   after_initialize do
@@ -35,5 +35,6 @@ end
 #  condition     :string(255)
 #  created_at    :datetime
 #  updated_at    :datetime
+#  book_id       :integer         default(-1)
 #
 

@@ -21,5 +21,6 @@ end
 #  condition     :string(255)
 #  created_at    :datetime
 #  updated_at    :datetime
+#  book_id       :integer         default(-1)
 #
 

@@ -13,6 +13,10 @@ class ListingsController < ApplicationController
     puts params
     @user = current_user
     @listing = @user.listings.new(params[:listing])
+    @book = Book.where("lower(title) LIKE ?", "%#{@listing.title.downcase}%").limit(1)
+    if @book
+      @listing.book_id = @book.first.id
+    end
     if @listing.save
       flash[:success] = 'Your listing was created!'
       redirect_to @user
@@ -81,6 +85,7 @@ class ListingsController < ApplicationController
   end
   
   private
+    
   
     def gen_keyword_search_arrays(keyword)
       puts 'searching keywords'

@@ -16,10 +16,10 @@ This is a web app i created to simplify the process of buying and selling textbo
 
 
 Final TODO list:
-Add a contact/help page
 
 
 BUG LIST:
+music classes are added twice
 cents field converts 05 to 5 in database
 Should listing id be attr_accessible?
 

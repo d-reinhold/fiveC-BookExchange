@@ -1,27 +1,31 @@
 <h2> Search Results </h2>
 
 <% if @course %>
-  <h2>Matching Courses</h2>
+  <h1>Matching Courses:</h1>
   <% if @matching_courses.empty? %>
     <p> Sorry, no courses matched your search! Please try another query.</p>
   <% else %>
     <% @matching_courses.each do |course| %>
-      <% if course.books.first.title == "Could not find the specified course." %> 
-        <p>Check your school's online course portal for the books for this class.</p>
-	     <% elsif course.books.first.title == "No books needed for this class." %> 
-	       <p>No course materials are needed for this class! But check with your professor to make sure.</p>
-	     <% elsif course.books.first.title == "Materials Not Finalized For This Class." %> 
-	       <p>Course materials for this class have not been determined yet. Check with your professor.</p>
-	    <% else %>
-	      <% course.books.each do |book| %>
-	        <h3><%= book.title %></h3>
-	        <% if book.listings.empty? %>
-	          <p>Sorry, no one is selling <%=book_title%> on the 5C Book Exchange. Since the service is new, check back in a few days to see if someone has listed it!</p>
-          <% else %>	
-  	      	<%= render :partial => 'shared/listings_table', :locals => { :header => "Matching listings for this book", :relation => book.listings } %>
-          <% end %>
-        <% end %>
-      <% end %>
+      <h2><%= course.department%><%=course.number%> <%= course.school%>-<%= course.section%>(<%=course.id%>): <%=course.name%> with <%= course.prof %>:</h2>
+      <% unless course.books.empty? %>
+	      <% if course.books.first.title == "Could not find the specified course." %> 
+	        <p>Check your school's online course portal for the books for this class.</p>
+		     <% elsif course.books.first.title == "No books needed for this class." %> 
+		       <p>No course materials are needed for this class! But check with your professor to make sure.</p>
+		     <% elsif course.books.first.title == "Materials Not Finalized For This Class." %> 
+		       <p>Course materials for this class have not been determined yet. Check with your professor.</p>
+		    <% else %>
+		      <h3>Required books:</h3>
+		      <% course.books.each do |book| %>
+		        <h4><%= book.title %> by <%= book.author%></h4>
+		        <% if book.listings.empty? %>
+		          <p>Sorry, no one is selling <%=book.title%> on the 5C Book Exchange. Since the service is new, check back in a few days to see if someone has listed it!</p>
+	          <% else %>	
+	  	      	<%= render :partial => 'shared/listings_table', :locals => { :header => "Matching listings for this book", :relation => book.listings } %>
+	          <% end %>
+	        <% end %>
+	      <% end %>
+	  <% end %>
     <% end %>
   <% end %>    
 <% elsif @keyword.blank? %>
