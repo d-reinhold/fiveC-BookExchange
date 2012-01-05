@@ -55,7 +55,7 @@ def get_books_for_course(course)
   elsif bookstore.css('.results h2.error')[0] and bookstore.css('.results h2.error')[0].text.include?("To Be Determined")
     puts "Materials Not Finalized For This Course: " + course.number
     course.books.create!(:title => 'Materials Not Finalized For This Class.', :author => '', :edition => '', :isbn => '')
-  elsif bookstore.css('.paddingLeft5em').parent.css('h2').text == 'REQUIRED'
+  else
     bookstore.css('.paddingLeft5em').each do |book|
       unless book.parent.css('h2').text == 'RECOMMENDED'
         book_title = book.css('li')[0].text.gsub('TITLE:','').strip
@@ -79,9 +79,9 @@ def get_books_for_course(course)
         end
       end
     end
-  else 
-    puts 'SUPER RANDOM ERROR ON ' + course.number
-    course.books.create!(:title => 'Could not find the specified course.', :author => '', :edition => '', :isbn => '')
+  #else 
+  #  puts 'SUPER RANDOM ERROR ON ' + course.number
+  #  course.books.create!(:title => 'Could not find the specified course.', :author => '', :edition => '', :isbn => '')
   end
 end
 

@@ -213,18 +213,18 @@ p#final-message{
 
 #sell-form-signed-in-required-button {
   position:relative;
-  top: -50px;
   right:-480px;
 }
 
-#sell-form-required-button, #sell-form-optional-button {
+
+#sell-form-required-button{
   position:relative;
   top: 5px;
   right:-480px;
 }
 
-#sell-form-final-button, #sell-form-signed-in-final-button, #sell-form-final-signup-button, #sell-form-final-signin-button {
+#sell-form-final-button, #sell-form-optional-button, #sell-form-signed-in-final-button, #sell-form-final-signup-button, #sell-form-final-signin-button {
   position:relative;
-  top: 5px;
-  right:-480px;
+  top: 160px;
+  right:-180px;
 }

@@ -13,8 +13,9 @@ class ListingsController < ApplicationController
     puts params
     @user = current_user
     @listing = @user.listings.new(params[:listing])
-    @book = Book.where("lower(title) LIKE ?", "%#{@listing.title.downcase}%").limit(1)
-    if @book
+    @book = Book.where("lower(title) LIKE ?", "%#{@listing.title.downcase}%").limit(1).all
+    unless @book.empty?
+      puts 'Found a course that requires this book!'
       @listing.book_id = @book.first.id
     end
     if @listing.save
