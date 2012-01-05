@@ -8,7 +8,7 @@ namespace :db do
     our_pomona_base_url = 'http://aspc.pomona.edu/courses/search/?department=&only_at_least=A&start_range=&end_range=&c_cgu=on&c_cm=on&c_cu=on&c_hm=on&c_po=on&c_pz=on&c_sc=on&instructor=&credit=A&min_class_size=&keywords=&page='  
     current_page_num = 1
     while current_page_num < 73
-      begin
+      #begin
         puts "--------------------Page: #{current_page_num} -----------------------------"
         current_page_data = Nokogiri::HTML(open(our_pomona_base_url+current_page_num.to_s(10)))
         current_page_data.css('ol.course_list li.even').each do |li|
@@ -33,10 +33,10 @@ namespace :db do
           end
         end
         current_page_num += 1   
-      rescue
-        puts "SKIPPING"
-        next
-      end                                                          
+      #rescue
+      #  puts "SKIPPING"
+      #  next
+      #end                                                          
     end
   end 
 end
