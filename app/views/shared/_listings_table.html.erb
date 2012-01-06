@@ -12,7 +12,13 @@
 	    <tr id="<%= listing.id %>">
 		    <td><%= listing.title %></td>
 	    	<td> <%= listing.author %></td>
-	      <td> $<%= listing.price_dollars %>.<%= listing.price_cents %></td>
+	      <td style="text-align: right;">
+	        <% if listing.price_cents == 0 %>
+	          $<%= listing.price_dollars %>.00 
+	        <% else %>
+            $<%=listing.price_dollars %>.<%= listing.price_cents %>
+          <% end %>
+        </td>
 	    </tr>
     <% end %>
 	<% end %>
