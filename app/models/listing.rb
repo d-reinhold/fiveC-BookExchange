@@ -4,7 +4,7 @@ class Listing < ActiveRecord::Base
   belongs_to :book
   has_one :transaction, :dependent => :destroy
   
-  after_initialize do
+  after_create do
     self.transaction ||= self.build_transaction
   end
   
@@ -12,7 +12,8 @@ class Listing < ActiveRecord::Base
   validates :title, :presence => true,
                     :length => { :within => 1..100 }
 
-  validates :price_dollars, :presence => true 
+  validates :price_dollars, :presence => true,
+                    :format => { :with => /(%d)*/}
                             
   validates :price_cents, :presence => true
               

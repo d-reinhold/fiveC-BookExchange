@@ -1,11 +1,10 @@
 class User < ActiveRecord::Base
-  has_many :listings
+  has_many :listings, :dependent => :destroy
   accepts_nested_attributes_for :listings
   attr_accessible :name, :email, :password, :password_confirmation, :listings_attributes
   has_secure_password
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  #email_regex = /\A[\w+\-.]+@\A[/pomona.edu/ | /cmc.edu/]\z/i
   
   validates :name, :presence => true, 
                    :length => { :maximum => 50 }

@@ -1,0 +1,21 @@
+<% if relation.size == 1 %>
+  <h4 style="margin-bottom:2px;">1 copy is available! (Click the listing for more info)</h4>
+<% else%>
+  <h4 style="margin-bottom:2px;"><%= pluralize(relation.size, 'copy')%> are available! (Click a listing for more info)</h4>	
+<% end%>
+	<table class="listings-search" style="margin-bottom:2px;">
+	  <thead>
+		  <tr>
+			  <th>Seller Name</th>
+			  <th>Seller Email</th>
+			  <th>Price</th>
+		  </tr>
+		</thead>
+	  <% relation.each do |listing|%>
+	    <tr id="<%= listing.id %>">
+		    <td><%= listing.user.name %></td>
+	    	<td> <%= listing.user.email %></td>
+	      <td> $<%= listing.price_dollars %>.<%= listing.price_cents %></td>
+	    </tr>
+		<% end %>
+	</table

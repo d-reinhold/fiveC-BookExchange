@@ -5,7 +5,6 @@ EMAIL_READY = false
 TITLE_READY = false
 AUTHOR_READY = false
 PRICE_DOLLARS_READY = false
-PRICE_CENTS_READY = false
 NAME_READY = false
 PASSWORD_READY = false
 CPASSWORD_READY = false
@@ -24,7 +23,7 @@ $(document).ready ->
   $("#price_dollars_checker").val('')
   $("#price_cents_checker").val('')
   $("#dollas").val("")
-  $("#cents").val("")
+  $("#cents").val(".00")
   $("#user_listings_attributes_0_edition").val("")
   $("#user_listings_attributes_0_isbn").val("")
   $("#user_listings_attributes_0_description").val("")
@@ -117,15 +116,9 @@ $(document).ready ->
 
   $(".price_dollars").blur (event) ->
     check_dollar_field(@value)
-    
-  $(".price_cents").focus (event) ->
-    remove_status("p#price_cents","How much are you asking for?")
-      
-  $(".price_cents").blur (event) ->
-    check_cents_field(@value)      
-
       
   $("button#sell-form-required-button").click (event) -> 
+    #alert $("#price_cents_checker option:selected").val()
     if $("button#sell-form-required-button").hasClass("enabled")
       $("#check-email-form").submit() 
       
@@ -186,7 +179,9 @@ $(document).ready ->
       $("#new_user input#user_listings_attributes_0_title").val($("#check-email-form input#title_checker").val())
       $("#new_user input#user_listings_attributes_0_author").val($("#check-email-form input#author_checker").val())
       $("#new_user input#user_listings_attributes_0_price_dollars").val($("#check-email-form input#price_dollars_checker").val())
-      $("#new_user input#user_listings_attributes_0_price_cents").val($("#check-email-form input#price_cents_checker").val())
+      $("#new_user select#user_listings_attributes_0_price_cents").prop("selectedIndex", $("#check-email-form #price_cents_checker").prop("selectedIndex"))
+      
+      alert $("#new_user select#user_listings_attributes_0_price_cents").val()
       $("#new_user").submit()
       $("#sell-form-final").fadeOut "slow", ->
         $(".loading").css "display","block"
@@ -199,9 +194,7 @@ $(document).ready ->
       $("#sell-form-optional").fadeOut "slow", ->
         $("#new_listing").submit()
         $(".loading").css "display","block"
-        
-
-        
+      
         
   $("body").delegate "button#sell-form-final-signin-button", "click", (event) ->
     if $("button#sell-form-final-signin-button").hasClass("enabled")
@@ -210,9 +203,10 @@ $(document).ready ->
       $("#new_listing input#listing_title").val($("#check-email-form input#title_checker").val())
       $("#new_listing input#listing_author").val($("#check-email-form input#author_checker").val())
       $("#new_listing input#listing_price_dollars").val($("#check-email-form input#price_dollars_checker").val())
-      $("#new_listing input#listing_price_cents").val($("#check-email-form input#price_cents_checker").val())
+      $("#new_listing select#listing_price_cents").prop("selectedIndex", $("#check-email-form #price_cents_checker").prop("selectedIndex"))
       $("#authenticate-form input#email").val($("#check-email-form input#email_checker").val())
       $(".loading").css "display","block"
+      alert $("#new_listing select#listing_price_cents").val()
       $("#authenticate-form").submit()
          
 
@@ -227,18 +221,6 @@ check_dollar_field = (value) ->
     add_success("p#price_dollars","Looks good!")
   else if value.length > 3
     add_success("p#price_dollars","Little greedy, don't ya think!?")
-    
-check_cents_field = (value) ->
-  if value.length == 0
-    add_error("p#price_cents","Well, you have to enter something...")
-  else if value.length == 1
-    add_error("p#price_cents","Please enter 2 digits (03, 59, etc).")
-  else unless is_int(value)
-    add_error("p#price_cents","You have to enter a number!")
-  else if value.length >= 3
-    add_error("p#price_cents","What?!")
-  else if value.length < 3
-    add_success("p#price_cents","Looks good!")
 
 add_error = (element,message) ->
   $(element).parent().css("border", "1px solid #FF6161") 
@@ -251,13 +233,7 @@ add_error = (element,message) ->
   else if element.indexOf("author") != -1
     AUTHOR_READY = false
   else if element.indexOf("dollars") != -1
-    $(element).css("display", "block")
-    $("p#price_cents").css("display","none")
     PRICE_DOLLARS_READY = false
-  else if element.indexOf("cents") != -1
-    $(element).css("display", "block")
-    $("p#price_dollars").css("display","none")
-    PRICE_CENTS_READY = false
   else if element.indexOf("name") != -1
     NAME_READY = false
   else if element == "p#password" or element == "p#password-signin"
@@ -277,13 +253,7 @@ add_success = (element,message) ->
   else if element.indexOf("author") != -1
     AUTHOR_READY = true
   else if element.indexOf("dollars") != -1
-    $(element).css("display", "block")
-    $("p#price_cents").css("display","none")
     PRICE_DOLLARS_READY = true
-  else if element.indexOf("cents") != -1
-    $(element).css("display", "block")
-    $("p#price_dollars").css("display","none")
-    PRICE_CENTS_READY = true
   else if element.indexOf("name") != -1
     NAME_READY = true
   else if element == "p#password" or element == "p#password-signin"
@@ -299,16 +269,12 @@ remove_status = (element,message) ->
   $(element).parent().css("border", "1px solid #85B1F2") 
   $(element).parent().css("background-color", "#85B1F2")
   $(element).text(message) 
-  if element.indexOf("dollars") != -1
-    $("p#price_cents").parent().css("display","none")
-  else if element.indexOf("cents") != -1
-     $("p#price_dollars").parent().css("display","none")
-  
+
 check_form = () ->
   if PASSWORD_READY
     $("button#sell-form-final-signin-button").removeClass("disabled") 
     $("button#sell-form-final-signin-button").addClass("enabled")
-  if TITLE_READY and AUTHOR_READY and PRICE_DOLLARS_READY and PRICE_CENTS_READY
+  if TITLE_READY and AUTHOR_READY and PRICE_DOLLARS_READY
     $("button#sell-form-signed-in-required-button").removeClass("disabled") 
     $("button#sell-form-signed-in-required-button").addClass("enabled")
     if EMAIL_READY

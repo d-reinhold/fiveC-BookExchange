@@ -4,8 +4,16 @@
   <% if @matching_courses.empty? %>
     <p> Sorry, no courses matched your search! Please try another query.</p>
   <% else %>
+    <% num = 0 %>
     <% @matching_courses.each do |course| %>
-      <h2><%= course.department%><%=course.number%> <%= course.school%>-<%= course.section%>: <%=course.name%> with <%= course.prof %>:</h2>
+      <% num += 1%>
+      <% if num % 2 == 0 %>
+        <div class="course even">
+	    <% else %>
+	      <div class="course odd">
+		  <% end %>
+      <h2 style="line-height:.5em;"><%= course.department%><%=course.number%> <%= course.school%>-<%= course.section%></h2>
+      <h3><b><%=course.name%> with <%= course.prof %></b></h3>
       <% unless course.books.empty? %>
 	      <% if course.books.first.title == "Could not find the specified course." %> 
 	        <p>Check your school's online course portal for the books for this class.</p>
@@ -14,17 +22,28 @@
 		     <% elsif course.books.first.title == "Materials Not Finalized For This Class." %> 
 		       <p>Course materials for this class have not been determined yet. Check with your professor.</p>
 		    <% else %>
-		      <h3>Required books:</h3>
+		      <h3 style="line-height:.2em;"><%= pluralize(course.books.size, 'required book') %>:</h3>
 		      <% course.books.each do |book| %>
-		        <h4><i><%= book.title %></i> <%= "by #{book.author}" unless book.author == '' %></h4>
-		        <% if book.listings.empty? %>
-		          <p>Sorry, no one is selling <%=book.title%> on the 5C Book Exchange. Since the service is new, check back in a few days to see if someone has listed it!</p>
-	          <% else %>	
-	  	      	<%= render :partial => 'shared/courses_table', :locals => { :header => "People selling this book (Click for more information)", :relation => book.listings } %>
-	          <% end %>
+		        <div class="required-books">
+		        	<h4 style="margin-bottom:.1em;"><i><%= book.title %></i> <%= "by #{book.author}" unless book.author == '' %></h4>
+							<% @available_listings = Array.new %>
+							<% book.listings.each do |listing| %>
+							  <% if listing.transaction.status == 'available'%>
+							    <% @available_listings << listing %>
+							  <% end %>
+						  <% end %>
+			        <% if @available_listings.empty? %>
+			          Sorry, no one is selling <i><%=book.title%></i> on the 5C Book Exchange. Since the service is new, check back in a few days to see if someone has listed it!<br>
+			</div>
+		          <% else %>	
+		  	      	<%= render :partial => 'shared/listings_by_course', :locals => { :relation => @available_listings } %>
+		</div>
+		</div>
+		          <% end %>
 	        <% end %>
 	      <% end %>
-	  <% end %>
+	    <% end %>
+      </div>
     <% end %>
   <% end %>    
 <% elsif @keyword.blank? %>

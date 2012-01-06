@@ -181,6 +181,13 @@ input:focus, textarea:focus {
     -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;  
     }
 
+#listing_price_cents, .cents-select{
+  font-size:12pt;
+  height:38px;
+  position:relative;
+  top:1px;
+}
+
 .sell-form-divider .form-message {
   border: 1px solid $search-sell-background-blue;
   padding-top:7px;
@@ -217,13 +224,20 @@ p#final-message{
 }
 
 
-#sell-form-required-button{
+#sell-form-required-button {
   position:relative;
   top: 5px;
   right:-480px;
 }
 
-#sell-form-final-button, #sell-form-optional-button, #sell-form-signed-in-final-button, #sell-form-final-signup-button, #sell-form-final-signin-button {
+#sell-form-final-signup-button{
+  position:relative;
+  top: 35px;
+  right:-480px;
+}
+
+
+#sell-form-final-button, #sell-form-optional-button, #sell-form-signed-in-final-button, #sell-form-final-signin-button {
   position:relative;
   top: 160px;
   right:-180px;

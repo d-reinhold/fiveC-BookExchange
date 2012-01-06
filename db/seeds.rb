@@ -13,7 +13,7 @@ def random_dollars(gen)
 end
 
 def random_cents(gen)
-  gen.rand(10..99)
+  ['0','25', '50', '75'].shuffle.first
 end
 
 def random_condition
@@ -26,7 +26,6 @@ end
 
 
 dom = User.create!(:name => 'Dominick Reinhold', :email => 'dfr12009@mymail.pomona.edu', :password => 'foobar', :password_confirmation => 'foobar')
-
 dom.listings.create!(:title => "The Hitchhiker's Guide to the Galaxy", :author => "Douglas Adams", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
 dom.listings.create!(:title => "1984", :author => "George Orwell", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
 dom.listings.create!(:title => "Dune", :author => "Frank Herbert", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
@@ -53,7 +52,6 @@ dom.listings.create!(:title => "House of Leaves", :author => "Mark Z.  Danielwel
 dom.listings.create!(:title => "The Giver", :author => "Lois Lowry", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
 dom.listings.create!(:title => "Crime and Punishment", :author => "Fyodor Dostoyevsky", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
 dom.listings.create!(:title => "A People's History of the United States", :author => "Howard Zinn", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
-
 dom.listings.create!(:title => "The Fellowship of the Ring", :author => "J. R. R. Tolkien", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
 dom.listings.create!(:title => "Ishmael", :author => "Daniel Quinn", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
 dom.listings.create!(:title => "A Brief History of Time", :author => "Stephen Hawking", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )

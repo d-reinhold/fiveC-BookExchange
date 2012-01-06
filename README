@@ -19,7 +19,9 @@ Final TODO list:
 
 
 BUG LIST:
-music classes are added twice
+Fix 'WEIRD ERROR' listings (prob happened when conn reset at huntley)
 cents field converts 05 to 5 in database
+cents field doesnt think 08 or 09 are numbers?
+fix model validations for listings (via edit)
 Should listing id be attr_accessible?
 

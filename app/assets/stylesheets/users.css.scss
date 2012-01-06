@@ -26,11 +26,12 @@
 }
 
 #current-listings-table {
+  background-color: #578BF2;
   width: 380px;
 }
 
 
-#current-listings tr:hover {
+table tr:hover {
   background-color:lighten(green,50%);
 }
 

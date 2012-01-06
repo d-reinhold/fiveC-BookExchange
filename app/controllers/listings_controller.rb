@@ -10,7 +10,7 @@ class ListingsController < ApplicationController
   end
 
   def create
-    puts params
+    puts 'creating listing!'
     @user = current_user
     @listing = @user.listings.new(params[:listing])
     @book = Book.where("lower(title) LIKE ?", "%#{@listing.title.downcase}%").limit(1).all
@@ -53,7 +53,7 @@ class ListingsController < ApplicationController
   end
 
   def destroy
-    puts "init delete"
+    puts "about to destroy a listing"
     Listing.find(params[:id]).destroy
     flash[:success] = 'Listing deleted!'
     redirect_to @current_user
@@ -83,7 +83,6 @@ class ListingsController < ApplicationController
     else
       @listings = Listing.order("title")
     end
-    puts 'about to respond!'
     respond_to do |format|
       format.js
       format.html
@@ -106,7 +105,7 @@ class ListingsController < ApplicationController
     def gen_course_search_array(course)
       puts 'searching courses'
       @course = course.downcase
-      @matching_courses = Course.where("lower(name) LIKE ?", "%#{@course}%").order("name")
+      @matching_courses = Course.where("lower(name) LIKE ?", "%#{@course}%").order("number")
       session[:last_search] = @course
       session[:last_search_type] = 'course'
       puts "done searching courses"

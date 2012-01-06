@@ -7,6 +7,12 @@ $link-visited: #069;
   -webkit-border-radius: $upper-left $upper-right $bottom-left $bottom-right;
 }
 
+@mixin shadow ($x, $y, $z){
+  box-shadow: rgba(0,0,0, 0.5) $x $y $z;  
+  -moz-box-shadow: rgba(0,0,0, 0.5) $x $y $z;   
+  -webkit-box-shadow: rgba(0,0,0, 0.5) $x $y $z;  
+}
+
 
 .container {
   width: 760px;
@@ -176,9 +182,6 @@ footer nav {
 
 input, select, textarea {  
     @include rounded-corners(5px, 5px, 5px, 5px);
-    padding: 9px; 
-    margin-right:0px;
-    margin-top:15px;
     border: solid 1px #E5E5E5;  
     outline: 0;  
     font: normal 15px/100% Verdana, Tahoma, sans-serif;  
@@ -187,6 +190,12 @@ input, select, textarea {
     box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
     -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
     -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+}
+
+input, textarea {
+  padding: 9px; 
+  margin-right:0px;
+  margin-top:15px;
 }
 
 #radios {

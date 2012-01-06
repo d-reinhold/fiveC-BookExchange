@@ -4,20 +4,17 @@
 			<div class="field"><%= text_field_tag :email_checker, nil, :placeholder => 'Email Address' %></div>	
 		  <div class="field"><%= text_field_tag :title_checker, nil, :placeholder => 'Book Title', :class => 'book_title' %></div>
 		  <div class="field"><%= text_field_tag :author_checker, nil, :placeholder => "Author(s)", :class => 'book_author' %></div>
-			<div class="field">$<%= text_field_tag :price_dollars_checker, nil, :placeholder => 'dollars', :class => 'price_dollars' %>.<%= text_field_tag :price_cents_checker, nil, :placeholder => 'cents', :class => 'price_cents' %></div>
+			<div class="field">$<%= text_field_tag :price_dollars_checker, nil, :placeholder => 'dollars', :class => 'price_dollars' %><%= select_tag :price_cents_checker,  "<option value='0' selected='selected'> .00</option> <option value='25'>.25</option> <option value='50'>.50</option> <option value ='75'>.75</option>".html_safe, :class => 'cents-select' %></div>
 		</div>
 		<div class="sell-form-divider">
 	    <div class="form-message"><p id="email">What's your 5C email address?</p></div>
 		  <div class="form-message"><p id="title">What book are you selling?</p></div>
 		  <div class="form-message"><p id="author">Who's the author?</p></div>
 			<div class="form-message"><p id="price_dollars">How much are you asking for?</p></div>
-			<div class="form-message" style="display:none;"><p id="price_cents"></p></div>
 		</div>
 		<%= render :partial => "shared/fancy_button", :locals => { :button_id => "sell-form-required-button", :button_class => 'disabled', :text => "Continue!"} %>
   <% end %>
 </div>
 <div id="sell-form-validated-email">
 </div>
-
-
 
