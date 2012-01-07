@@ -16,12 +16,14 @@ This is a web app i created to simplify the process of buying and selling textbo
 
 
 Final TODO list:
-
+Should prob paginate search results..
+add checkboxes to filter courses by school
+search by prof?
+add indicator when searching
+move search results up a little
 
 BUG LIST:
-Fix 'WEIRD ERROR' listings (prob happened when conn reset at huntley)
-cents field converts 05 to 5 in database
-cents field doesnt think 08 or 09 are numbers?
+
 fix model validations for listings (via edit)
 Should listing id be attr_accessible?
 
