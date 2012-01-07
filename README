@@ -16,19 +16,17 @@ This is a web app i created to simplify the process of buying and selling textbo
 
 
 Final TODO list:
-add indicator when searching
-move search results up a little
 add social plugins
 set up staging/production apps
-set it up so @pomona.edu can register, deliver to @mymail.pomona.edu
-similarly, deliver @pitzer.edu to @students.pitzer.edu
 Should prob paginate search results..
 add checkboxes to filter courses by school
-search by prof? (Def by course number/department, maybe use squeel to write queries?)
 
 
 BUG LIST:
 when a book exists but is unavailable, searching for it will display an empty table.
+add a before save method that changes a @pomona.edu address to a @mymail.pomona.edu address (but what will people use to login?)
+deliver @pitzer.edu to @students.pitzer.edu??
 fix model validations for listings (via edit)
 Should listing id be attr_accessible?
+search by prof, course number/department could be much improved with substrings)
 

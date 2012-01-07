@@ -98,24 +98,27 @@ class ListingsController < ApplicationController
   private
     
   
-    def gen_keyword_search_arrays(keyword)
-      puts 'searching keywords'
-      @keyword = keyword.downcase
-      @listings_title = Listing.where("lower(title) LIKE ?", "%#{@keyword}%").order("title")
-      @listings_author = Listing.where("lower(author) LIKE ?", "%#{@keyword}%").order("title")
-      @listings_isbn = Listing.where("lower(isbn) LIKE ?", "%#{@keyword}%").order("title")
-      session[:last_search] = @keyword
-      session[:last_search_type] = 'keyword'
-    end
-    
-    def gen_course_search_array(course)
-      puts 'searching courses'
-      @course = course.downcase
-      @matching_courses = Course.where("lower(name) LIKE ?", "%#{@course}%").order("number")
-      session[:last_search] = @course
-      session[:last_search_type] = 'course'
-      puts "done searching courses"
-    end
+  def gen_keyword_search_arrays(listing_params)
+    puts 'searching listings'
+    @keyword = listing_params
+    #@listings_title = Listing.where("lower(title) LIKE ?", "%#{@keyword}%").order("title")
+    #@listings_author = Listing.where("lower(author) LIKE ?", "%#{@keyword}%").order("title")
+    #@listings_isbn = Listing.where("lower(isbn) LIKE ?", "%#{@keyword}%").order("title")
+    @listings_title = Listing.search_by_title(listing_params)
+    @listings_author = Listing.search_by_author(listing_params)
+    @listings_isbn = Listing.search_by_isbn(listing_params)
+    session[:last_search] = listing_params
+    session[:last_search_type] = 'keyword'
+  end
+  
+  def gen_course_search_array(course_params)
+    puts 'searching courses'
+    #@matching_courses = Course.where("lower(name) LIKE ? OR lower(number) LIKE ? OR lower(department) LIKE ?", "%#{@course}%","%#{@course}%","%#{@course}%").order("number")
+    @matching_courses = Course.search_by_name_or_prof(course_params,course_params).order('number')
+    session[:last_search] = course_params
+    session[:last_search_type] = 'course'
+    puts "done searching courses"
+  end
     
 
 

@@ -9,7 +9,7 @@ gem 'pg'
 gem 'thin'
 gem "faker", "~> 1.0.1"
 gem "nokogiri"
-#gem "searchlogic"
+gem 'texticle', '~> 2.0', :require => 'texticle/rails'
 gem "nifty-generators", :group => :development
 gem 'annotate', '~> 2.4.1.beta', :group => :development
 #gem 'haml-rails', '>= 0.3.4', :group => :development

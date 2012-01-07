@@ -1,7 +1,10 @@
 $("#results").fadeOut( function() {
   $("#results").html("");
   $("#results").css("display", "block");
-  $("#results").html("<br><br><%=escape_javascript(render ('search_results.html.erb'))%>");
+  $("#results").html("<%=escape_javascript(render ('search_results.html.erb'))%>");
+  $("button#search-button").removeClass("disabled");
+  $("button#search-button").addClass("enabled");
+  $("button#search-button").html('Search!')
 });
 
 

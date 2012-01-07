@@ -74,7 +74,11 @@ $(document).ready ->
     event.preventDefault()
     
   $("body").delegate "button#search-button", "click", (event) ->
-    $("form#search").submit()
+    if $("button#search-button").hasClass("enabled")
+      $("button#search-button").removeClass("enabled")
+      $("button#search-button").addClass("disabled")
+      $("button#search-button").html('Searching...')
+      $("form#search").submit()
 
 
   $("#email_checker").focus (event) ->
@@ -84,8 +88,7 @@ $(document).ready ->
     if @value == ''
       add_error("p#email","Email can't be blank!")
     else if @value.indexOf('@pomona.edu') != -1 
-      #add_error("p#email","Please use '@mymail.pomona.edu'!")
-      add_success("p#email","Great!")
+      add_error("p#email","Please use '@mymail.pomona.edu'!")
     else if @value.indexOf('@mymail.pomona.edu') != -1 or @value.indexOf('@hmc.edu') != -1 or @value.indexOf('@g.hmc.edu') != -1 or @value.indexOf('@students.pitzer.edu') != -1 or @value.indexOf('@pitzer.edu') != -1 or @value.indexOf('@cmc.edu') != -1 or @value.indexOf('@scrippscollege.edu') != -1
       add_success("p#email","Great!")
     else
@@ -119,7 +122,6 @@ $(document).ready ->
     check_dollar_field(@value)
       
   $("button#sell-form-required-button").click (event) -> 
-    #alert $("#price_cents_checker option:selected").val()
     if $("button#sell-form-required-button").hasClass("enabled")
       $("#check-email-form").submit() 
       

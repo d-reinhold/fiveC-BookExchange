@@ -1,5 +1,7 @@
+require 'texticle/searchable'
 class Course < ActiveRecord::Base
   has_many :books
+  extend Searchable(:school, :department, :name, :number, :prof, :school)
 end
 # == Schema Information
 #
