@@ -182,7 +182,7 @@ $(document).ready ->
       $("#new_user input#user_listings_attributes_0_price_dollars").val($("#check-email-form input#price_dollars_checker").val())
       $("#new_user select#user_listings_attributes_0_price_cents").prop("selectedIndex", $("#check-email-form #price_cents_checker").prop("selectedIndex"))
       
-      alert $("#new_user select#user_listings_attributes_0_price_cents").val()
+      #alert $("#new_user select#user_listings_attributes_0_price_cents").val()
       $("#new_user").submit()
       $("#sell-form-final").fadeOut "slow", ->
         $(".loading").css "display","block"
@@ -207,7 +207,7 @@ $(document).ready ->
       $("#new_listing select#listing_price_cents").prop("selectedIndex", $("#check-email-form #price_cents_checker").prop("selectedIndex"))
       $("#authenticate-form input#email").val($("#check-email-form input#email_checker").val())
       $(".loading").css "display","block"
-      alert $("#new_listing select#listing_price_cents").val()
+      #alert $("#new_listing select#listing_price_cents").val()
       $("#authenticate-form").submit()
          
 
