@@ -23,7 +23,7 @@ add indicator when searching
 move search results up a little
 
 BUG LIST:
-
+when a book exists but is unavailable, searching for it will display an empty table.
 fix model validations for listings (via edit)
 Should listing id be attr_accessible?
 

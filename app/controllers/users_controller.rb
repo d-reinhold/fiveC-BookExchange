@@ -93,6 +93,10 @@ class UsersController < ApplicationController
 
 
     def correct_user
+      unless User.exists?(:id => params[:id])
+        flash[:error] = 'That account does not exist.'
+        redirect_to root_path
+      else
       @user = User.find(params[:id])
       unless current_user?(@user)
         flash[:error] = "You don't have permission to view that page."
