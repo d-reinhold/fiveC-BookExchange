@@ -1,5 +1,5 @@
 class TransactionMailer < ActionMailer::Base
-  default from: "5C Book Exchange <fivecbookexchange@gmail.com>"
+  default from: "5C Book Exchange <fivecbookexchange@sendgrid.me>"
   
   
   def book_requested_seller(transaction)

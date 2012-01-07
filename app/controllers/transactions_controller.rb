@@ -13,7 +13,7 @@ class TransactionsController < ApplicationController
     else
       @transaction = Transaction.find(params[:id])
       if @transaction.status == 'available'
-        flash[:success] = "You don't have permission to view that page."
+        flash[:error] = "You don't have permission to view that page."
         redirect_to @current_user
       else
         @title = 'Transactions'
