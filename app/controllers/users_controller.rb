@@ -96,6 +96,7 @@ class UsersController < ApplicationController
       unless User.exists?(:id => params[:id])
         flash[:error] = 'That account does not exist.'
         redirect_to root_path
+        return
       else
         @user = User.find(params[:id])
       end
