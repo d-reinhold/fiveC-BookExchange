@@ -16,11 +16,7 @@
 			    <td><%= listing.title %></td>
 		    	<td> <%= listing.author %></td>
 		      <td style="text-align: right;">
-		        <% if listing.price_cents == 0 %>
-		          $<%= listing.price_dollars %>.00 
-		        <% else %>
-	            $<%=listing.price_dollars %>.<%= listing.price_cents %>
-	          <% end %>
+	          $<%=listing.price_dollars %>.<%= listing.price_cents %>
 	        </td>
 		    </tr>
 			  <% end %>
@@ -36,12 +32,7 @@
      <% else %>	
 	     <% @buyer_transactions.each do |t| %>
          <div class="buyer-transaction" id="<%=t.id%>">
-	         <p class='centered'>You want to buy <b><%= t.listing.title %></b> from <b><%= t.listing.user.name%></b> for 
-		        <% if t.listing.price_cents == 0 %>
-		          <b>$<%= t.listing.price_dollars %>.00.</b></p>
-		        <% else %>
-	            <b>$<%= t.listing.price_dollars %>.<%= t.listing.price_cents %>.</b></p>
-	          <% end %>
+	         <p class='centered'>You want to buy <b><%= t.listing.title %></b> from <b><%= t.listing.user.name%></b> for <b>$<%= t.listing.price_dollars %>.<%= t.listing.price_cents %>.</b></p>
 	       </div>
 	     <% end %>
     <% end %>
@@ -52,28 +43,18 @@
      <% else %>
 	   	<% @seller_transactions.each do |t| %>
 		     <div class="seller-transaction" id="<%=t.id%>">
-	         <p class="centered"><b><%=t.buyer_name%></b> wants to buy <b><%= t.listing.title %></b> for            	
-	          <% if t.listing.price_cents == 0 %>
-		          <b>$<%= t.listing.price_dollars %>.00.</b></p>
-		        <% else %>
-	            <b>$<%= t.listing.price_dollars %>.<%= t.listing.price_cents %>.</b></p>
-	          <% end %>
+	         <p class="centered"><b><%=t.buyer_name%></b> wants to buy <b><%= t.listing.title %></b> for      <b>$<%= t.listing.price_dollars %>.<%= t.listing.price_cents %>.</b></p>
 	       </div>
 	     <% end %>
 	   <% end %>
-	  <h1>History</h1>
+	  <h2>History</h2>
 	  <p><b>You bought:</b></p>
 	   <% if @buyer_transactions_final.empty? %>
 	     <p class="centered">You haven't bought any books yet!</p>
      <% else %>	
 	     <% @buyer_transactions_final.each do |t| %>
          <div class="buyer-transaction-complete" id="<%=t.id%>">
-	         <p class='centered'>You bought <b><%= t.listing.title %></b> from <b><%= t.listing.user.name%></b> for  
-	          <% if t.listing.price_cents == 0 %>
-		          <b>$<%= t.listing.price_dollars %>.00</b> on <b><%=t.sell_date%></b>.</p>
-		        <% else %>
-	            <b>$<%= t.listing.price_dollars %>.<%= t.listing.price_cents %></b> on <b><%=t.sell_date%></b>.</p>
-	          <% end %>
+	         <p class='centered'>You bought <b><%= t.listing.title %></b> from <b><%= t.listing.user.name%></b> for <b>$<%= t.listing.price_dollars %>.<%= t.listing.price_cents %></b> on <b><%=t.sell_date%></b>.</p>
 	       </div>
 	     <% end %>
     <% end %>
@@ -84,12 +65,7 @@
      <% else %>
 	   	<% @seller_transactions_final.each do |t| %>
 		     <div class="seller-transaction-complete" id="<%=t.id%>">
-	         <p class="centered"><b><%=t.buyer_name%></b> bought <b><%= t.listing.title %></b> for  
-	          <% if t.listing.price_cents == 0 %>
-		          <b>$<%= t.listing.price_dollars %>.00</b> on <b><%=t.sell_date%></b>.</p>
-		        <% else %>
-	            <b>$<%= t.listing.price_dollars %>.<%= t.listing.price_cents %></b> on <b><%=t.sell_date%></b>.</p>
-	          <% end %>
+	         <p class="centered"><b><%=t.buyer_name%></b> bought <b><%= t.listing.title %></b> for <b>$<%= t.listing.price_dollars %>.<%= t.listing.price_cents %></b> on <b><%=t.sell_date%></b>.</p>
 	       </div>
 	     <% end %>
 	   <% end %>

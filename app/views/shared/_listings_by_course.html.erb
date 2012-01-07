@@ -16,11 +16,7 @@
 		    <td><%= listing.user.name %></td>
 	    	<td> <%= listing.user.email %></td>
 	      <td style="text-align: right;">
-	        <% if listing.price_cents == 0 %>
-	          $<%= listing.price_dollars %>.00 
-	        <% else %>
-            $<%=listing.price_dollars %>.<%= listing.price_cents %>
-          <% end %>
+          $<%=listing.price_dollars %>.<%= listing.price_cents %>
         </td>
 	    </tr>
 		<% end %>

@@ -4,9 +4,14 @@ class ListingsController < ApplicationController
   
   
   def show
-    @listing = Listing.find(params[:id])
-    @title = @listing.title
-    @transaction = @listing.transaction
+    unless Listing.exists?(:id => params[:id])
+      flash[:error] = 'That listing does not exist.'
+      redirect_to root_path
+    else
+      @listing = Listing.find(params[:id])
+      @title = @listing.title
+      @transaction = @listing.transaction
+    end
   end
 
   def create

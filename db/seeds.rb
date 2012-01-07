@@ -4,8 +4,9 @@
 r = Random.new
 
 
-def random_isbn(gen)
-  gen.rand(0000000000000..9999999999999)
+
+def random_book(gen)
+  Book.find(gen.rand(1..1500))
 end
 
 def random_dollars(gen)
@@ -13,7 +14,7 @@ def random_dollars(gen)
 end
 
 def random_cents(gen)
-  ['0','25', '50', '75'].shuffle.first
+  ['00','25', '50', '75'].shuffle.first
 end
 
 def random_condition
@@ -26,6 +27,19 @@ end
 
 
 dom = User.create!(:name => 'Dominick Reinhold', :email => 'dfr12009@mymail.pomona.edu', :password => 'foobar', :password_confirmation => 'foobar')
+
+
+99.times do
+  book = random_book(r)
+  unless book.title == 'No books needed for this class.' or book.title == 'Could not find the specified course.' or book.title == 'Materials Not Finalized For This Class.'
+    dom.listings.create!(:book_id => book.id, :title => book.title, :author => book.author, :isbn => book.isbn, :price_dollars => random_dollars(r), :price_cents => random_cents(r),  :condition => random_condition, :description => random_description )
+  end
+end
+
+
+=begin
+
+
 dom.listings.create!(:title => "The Hitchhiker's Guide to the Galaxy", :author => "Douglas Adams", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
 dom.listings.create!(:title => "1984", :author => "George Orwell", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
 dom.listings.create!(:title => "Dune", :author => "Frank Herbert", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
@@ -78,4 +92,4 @@ dom.listings.create!(:title => "Cat's Cradle", :author => "Kurt Vonnegut", :isbn
 dom.listings.create!(:title => "Fahrenheit 451", :author => "Ray Bradbury", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
 dom.listings.create!(:title => "Odyssey", :author => "Homer", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
 dom.listings.create!(:title => "None", :author => "None", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )
-
+=end

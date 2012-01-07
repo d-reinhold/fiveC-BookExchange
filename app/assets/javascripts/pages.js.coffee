@@ -215,8 +215,6 @@ check_dollar_field = (value) ->
     add_error("p#price_dollars","Well, you have to enter something...")
   else unless is_int(value)
     add_error("p#price_dollars","You have to enter a number!")
-  else if value.length == 1
-    add_success("p#price_dollars","Bet you could get more than that...")
   else if value.length <= 3
     add_success("p#price_dollars","Looks good!")
   else if value.length > 3

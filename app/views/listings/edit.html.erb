@@ -12,7 +12,7 @@
 			<div class="field">
 			    <%= f.text_field :author, :placeholder => "Author(s)" %>
 			</div>
-			<div class="field">$<%= f.text_field :price_dollars, :placeholder => 'dollars', :class => 'price_dollars' %><%= f.select( :price_cents, [['.00', '0'],['.25','25'], ['.50','50'], ['.75','75']], :default => '.00', :class => 'cents-select') %></div>
+			<div class="field">$<%= f.text_field :price_dollars, :placeholder => 'dollars', :class => 'price_dollars' %><%= f.select( :price_cents, [['.00', '00'],['.25','25'], ['.50','50'], ['.75','75']], :default => '.00', :class => 'cents-select') %></div>
 			<div class="field"><%= f.text_field :edition, :placeholder => 'Edition' %></div>
 			<div class="field"><%= f.text_field :isbn, :placeholder => 'ISBN' %></div>
       <div class="field"><%= f.select( :condition, [['---Condition---', '--Condition--'],['New','New'], ['Lightly Used','Lightly Used'], ['Heavily Used','Heavily Used'], ['Falling Apart','Falling Apart']], :default => '---Condition---') %></div>

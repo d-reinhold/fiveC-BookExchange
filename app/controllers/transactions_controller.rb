@@ -7,13 +7,18 @@ class TransactionsController < ApplicationController
   
   
   def show
-    @transaction = Transaction.find(params[:id])
-    if @transaction.status == 'available'
-      flash[:success] = "You don't have permission to view that page."
-      redirect_to @current_user
+    unless Transaction.exists?(:id => params[:id])
+      flash[:error] = 'That transaction does not exist.'
+      redirect_to root_path
     else
-      @title = 'Transactions'
-      @listing = @transaction.listing
+      @transaction = Transaction.find(params[:id])
+      if @transaction.status == 'available'
+        flash[:success] = "You don't have permission to view that page."
+        redirect_to @current_user
+      else
+        @title = 'Transactions'
+        @listing = @transaction.listing
+      end
     end
   end
   

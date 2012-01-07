@@ -81,7 +81,6 @@ def get_books_for_course(course)
     end
   end
   if course.books.empty?
-    puts 'WTF?'
     course.books.create!(:title => 'WEIRD ERROR', :author => '', :edition => '', :isbn => '')
   end
 end

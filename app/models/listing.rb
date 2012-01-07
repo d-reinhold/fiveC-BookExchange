@@ -1,5 +1,5 @@
 class Listing < ActiveRecord::Base
-  attr_accessible :id, :title, :price_dollars, :price_cents, :author, :edition, :isbn, :description, :condition
+  attr_accessible :id, :title, :price_dollars, :price_cents, :author, :edition, :isbn, :description, :condition, :book_id
   belongs_to :user
   belongs_to :book
   has_one :transaction, :dependent => :destroy
@@ -12,8 +12,7 @@ class Listing < ActiveRecord::Base
   validates :title, :presence => true,
                     :length => { :within => 1..100 }
 
-  validates :price_dollars, :presence => true,
-                    :format => { :with => /(%d)*/}
+  validates :price_dollars, :presence => true
                             
   validates :price_cents, :presence => true
               

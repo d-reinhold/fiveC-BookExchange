@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120104224749) do
+ActiveRecord::Schema.define(:version => 20120107012022) do
 
   create_table "books", :force => true do |t|
     t.string   "title"
@@ -41,12 +41,12 @@ ActiveRecord::Schema.define(:version => 20120104224749) do
     t.string   "edition"
     t.string   "author"
     t.integer  "price_dollars"
-    t.integer  "price_cents"
     t.string   "description"
     t.string   "condition"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "book_id",       :default => -1
+    t.string   "price_cents",   :default => "00"
   end
 
   create_table "transactions", :force => true do |t|
