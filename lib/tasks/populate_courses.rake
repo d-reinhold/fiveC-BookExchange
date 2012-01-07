@@ -11,10 +11,20 @@ namespace :db do
       begin
         puts "--------------------Page: #{current_page_num} -----------------------------"
         current_page_data = Nokogiri::HTML(open(our_pomona_base_url+current_page_num.to_s(10)))
-        current_page_data.css('ol.course_list li.even').each do |li|
+        current_page_data.css('ol.course_list li.odd, li.even').each do |li|
           course = li.css('h3').text
           puts course
-          prof = li.css('h4').text.split(' — ')[0].strip
+          reverse_prof = li.css('h4').text.split(' — ')[0].strip
+          unless reverse_prof == 'Staff'
+            if reverse_prof.include?(';')
+              profs = reverse_prof.gsub('Jr.','').split(';')
+              prof =  profs[0].split(',').reverse.join(' ').gsub(',','').strip + ' and ' + profs[1].split(',').reverse.join(' ').gsub(',','').gsub('  ', ' ').strip
+            else
+              prof = reverse_prof.gsub('Jr.','').split(',').reverse.join(' ').gsub(',','').strip
+            end
+          else
+            prof = reverse_prof
+          end
           puts "*************** #{course} ****************"
           course_school = course.split('-')[0][-2,2].strip
           course_department = course.split(/\d/)[0].strip
@@ -52,6 +62,9 @@ def get_books_for_course(course)
   elsif bookstore.css('.results h2.error')[0] and bookstore.css('.results h2.error')[0].text.include?("No Course Materials Required For This Course")
     puts "No Course Materials Required For This Course: " + course.number
     course.books.create!(:title => 'No books needed for this class.', :author => '', :edition => '', :isbn => '')
+  elsif bookstore.css('.results h3.paddingChoice')[0] and bookstore.css('.results h3.paddingChoice')[0].text.include?("CHOOSE")
+     puts "This course has options for required books: " + course.number
+     course.books.create!(:title => 'Materials Not Finalized For This Class.', :author => '', :edition => '', :isbn => '')
   elsif bookstore.css('.results h2.error')[0] and bookstore.css('.results h2.error')[0].text.include?("To Be Determined")
     puts "Materials Not Finalized For This Course: " + course.number
     course.books.create!(:title => 'Materials Not Finalized For This Class.', :author => '', :edition => '', :isbn => '')
@@ -81,7 +94,7 @@ def get_books_for_course(course)
     end
   end
   if course.books.empty?
-    course.books.create!(:title => 'WEIRD ERROR', :author => '', :edition => '', :isbn => '')
+    course.books.create!(:title => 'Could not find the specified course.', :author => '', :edition => '', :isbn => '')
   end
 end
 
