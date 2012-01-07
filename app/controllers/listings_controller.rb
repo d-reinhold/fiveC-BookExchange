@@ -24,7 +24,7 @@ class ListingsController < ApplicationController
       @listing.book_id = @book.first.id
     end
     if @listing.save
-      ListingMailer.listed_book(@listing).deliver
+      #ListingMailer.listed_book(@listing).deliver
       flash[:success] = 'Your listing was created!'
       redirect_to @user
     else

@@ -6,7 +6,7 @@
   <body>
     <h3><%= @user.name %>, you listed a book for sale on the 5C Book Exchange!</h3>
     <p>
-      This email is just a notification that you listed <i><%= @listing.title %></i> for a price of $<%= @listing.price_dollars%>.<%= @listing.price_cents%>. You will get an email when someone wants to buy this book. To edit this listing, or if you do not wish your book to be available on the 5C Book Exchange anymore, go to the <a href="<%= @url %>">5C Book Exchange</a>, log in and go to 'My Books'. From there you can edit or delete the listing.<br>
+      This email is just a notification that you listed <i><%= @listing.title %></i> for a price of $<%= @listing.price_dollars%>.<%= @listing.price_cents%>. You will get an email when someone wants to buy this book. To edit this listing, or if you do not want your book to be available on the 5C Book Exchange anymore, go to the <a href="<%= @url %>">5C Book Exchange</a>, log in and go to 'My Books'. From there you can edit or delete the listing.<br>
     </p>
     <p>To buy and sell more textbooks, or to check the status of your books, go to the <a href="<%= @url %>">5C Book Exchange</a> and log in using your 5C email address.<br/> 
     </p>

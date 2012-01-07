@@ -84,7 +84,8 @@ $(document).ready ->
     if @value == ''
       add_error("p#email","Email can't be blank!")
     else if @value.indexOf('@pomona.edu') != -1 
-      add_error("p#email","Please use '@mymail.pomona.edu'!")
+      #add_error("p#email","Please use '@mymail.pomona.edu'!")
+      add_success("p#email","Great!")
     else if @value.indexOf('@mymail.pomona.edu') != -1 or @value.indexOf('@hmc.edu') != -1 or @value.indexOf('@g.hmc.edu') != -1 or @value.indexOf('@students.pitzer.edu') != -1 or @value.indexOf('@pitzer.edu') != -1 or @value.indexOf('@cmc.edu') != -1 or @value.indexOf('@scrippscollege.edu') != -1
       add_success("p#email","Great!")
     else
