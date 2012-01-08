@@ -11,6 +11,7 @@
 			  <th>Price</th>
 		  </tr>
 		</thead>
+		<% relation.sort_by!(&:price_dollars)%>
 	  <% relation.each do |listing|%>
 	    <tr id="<%= listing.id %>">
 		    <td><%= listing.user.name %></td>

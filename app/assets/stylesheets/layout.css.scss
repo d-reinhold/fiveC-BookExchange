@@ -356,6 +356,10 @@ button.fancy_button, a.fancy_button{
 }  
 
 .top-banner{
+  position:fixed;
+  z-index:999;
+  top:0px;
+  left:0px;
   background-color:#DD1E1B;
   border-bottom:3px solid darken(#DD1E1B,20%);
   width:100%;
