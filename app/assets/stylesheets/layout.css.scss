@@ -48,6 +48,8 @@ a.header_text {
 }
 
 section {
+  position:relative;
+  top:-26px;
   margin-top: 1em;
   font-size: 120%;
   padding: 20px;
@@ -122,6 +124,8 @@ nav ul {
 }
 
 footer {
+  position:relative;
+  top:-21px;
   text-align: center;
   margin-top: 10px;
   width: 760px;
@@ -345,5 +349,10 @@ button.fancy_button, a.fancy_button{
     }
   }
   
+  .fb-like{
+    position:relative;
+    top:-17px;
+    left:0px;
+  }
     
     

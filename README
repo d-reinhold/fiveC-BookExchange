@@ -16,12 +16,10 @@ This is a web app i created to simplify the process of buying and selling textbo
 
 
 Final TODO list:
-check out pg_search instead of texticle
-add social plugins
 set up staging/production apps
 Should prob paginate search results..
 add checkboxes to filter courses by school
-Looks like crap on Firefox
+Looks like crap on Firefox (this is somewhat fixed)
 
 
 BUG LIST:
