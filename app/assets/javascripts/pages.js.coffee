@@ -61,11 +61,13 @@ $(document).ready ->
     if $("input#search_type_keywords").is(':checked')
       $("#searchbar-keywords").css "display", "block"
       $("#searchbar-courses").css "display", "none"
+      $(".checkboxes").css "display", "none"
       $("#search_keywords").val($("#search_courses").val())
       $("#search_courses").val("")
     else
       $("#searchbar-courses").css "display", "block"
       $("#searchbar-keywords").css "display", "none"
+      $(".checkboxes").css "display", "block"
       $("#search_courses").val($("#search_keywords").val())
       $("#search_keywords").val("")
     

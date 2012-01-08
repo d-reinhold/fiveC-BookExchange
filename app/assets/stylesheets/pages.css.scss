@@ -144,7 +144,7 @@ textarea{
   columns:36;
 }
 
-#search-sell-main input{
+#search-sell-main input[type=text], input[type=password], input[type=url], input[type=email],{
   width: 250px;
 }
 

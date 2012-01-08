@@ -5,9 +5,18 @@
   <div class="searchbar hidden" id="searchbar-courses">
     <%= text_field_tag :search_courses, params[:search_courses], :placeholder => "Enter a course or professor!" %> 
 </div>
+<br>
 <div id="radios">
-	  <div class="field centered">Search by book title, author or ISBN<%= radio_button_tag :search_type, :keywords, true %></div>
-	  <div class="field centered"><p>Search by course name or professor<%= radio_button_tag :search_type, :courses, false %>
+	  <div class="field centered">Search by book title, author or ISBN<%= radio_button_tag :search_type, :keywords, true %></div><br>
+	  <div class="field centered">Search by course name or professor<%= radio_button_tag :search_type, :courses, false %>
+	</div><br>
+	<div class="checkboxes centered"><p class="centered" style="font-size:9pt;">Filter results by school:<br>
+	  <%= check_box_tag "school[]", 'PO', true %>Pomona | 
+  	<%= check_box_tag "school[]", 'CM', true %>CMC | 
+    <%= check_box_tag "school[]", 'SC', true %>Scripps | 
+    <%= check_box_tag "school[]", 'HM', true %>Harvey Mudd | 
+    <%= check_box_tag "school[]", 'PZ', true %>Pitzer | 
+    <%= check_box_tag "school[]", 'JS', true %>Joint Science
 	</p></div>
 </div>
 
