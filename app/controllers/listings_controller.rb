@@ -71,7 +71,7 @@ class ListingsController < ApplicationController
     session[:from_search] = true
     if params[:search_keywords] == '' and params[:search_courses] == ''
       puts 'search params blank'
-      @listings = Listing.order("title")
+      @listings = Listing.order("title").page(params[:page]).per(20)
       session[:last_search] = nil
     elsif params[:search_keywords].present?
       puts "got keyword params: #{params[:search_keywords]}"
@@ -87,7 +87,7 @@ class ListingsController < ApplicationController
         gen_course_search_array(session[:last_search])
       end
     else
-      @listings = Listing.order("title")
+      @listings = Listing.order("title").page(params[:page]).per(20)
     end
     respond_to do |format|
       format.js
@@ -104,9 +104,9 @@ class ListingsController < ApplicationController
     #@listings_title = Listing.where("lower(title) LIKE ?", "%#{@keyword}%").order("title")
     #@listings_author = Listing.where("lower(author) LIKE ?", "%#{@keyword}%").order("title")
     #@listings_isbn = Listing.where("lower(isbn) LIKE ?", "%#{@keyword}%").order("title")
-    @listings_title = Listing.search_by_title(listing_params).order('title').order('author')
-    @listings_author = Listing.search_by_author(listing_params).order('author').order('title')
-    @listings_isbn = Listing.search_by_isbn(listing_params).order('isbn')
+    @listings_title = Listing.search_by_title(@keyword).order('title').order('author').order('price_dollars').order('price_cents')
+    @listings_author = Listing.search_by_author(@keyword).order('author').order('title').order('price_dollars').order('price_cents')
+    @listings_isbn = Listing.search_by_isbn(@keyword).order('isbn').order('price_dollars').order('price_cents')
     session[:last_search] = params
     session[:last_search_type] = 'keyword'
   end

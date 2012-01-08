@@ -38,10 +38,10 @@ $(document).ready ->
     $("a#buttons-search").css("border-left", "40px solid #11379E")
     $("a#buttons-search").css("border-right", "40px solid #11379E")
     $("a#buttons-search").css("background-color", "#11379E")
-    $("a#buttons-sell").css("border-top", "20px solid #578BF2")
-    $("a#buttons-sell").css("border-left", "40px solid #578BF2")
-    $("a#buttons-sell").css("border-right", "40px solid #578BF2")
-    $("a#buttons-sell").css("background-color", "#578BF2")
+    $("a#buttons-sell").css("border-top", "20px solid #71B1F2")
+    $("a#buttons-sell").css("border-left", "40px solid #71B1F2")
+    $("a#buttons-sell").css("border-right", "40px solid #71B1F2")
+    $("a#buttons-sell").css("background-color", "#71B1F2")
     event.preventDefault()
 
   $("a#buttons-search").click (event) ->
@@ -51,10 +51,10 @@ $(document).ready ->
     $("a#buttons-sell").css("border-left", "40px solid #11379E")
     $("a#buttons-sell").css("border-right", "40px solid #11379E")
     $("a#buttons-sell").css("background-color", "#11379E")
-    $("a#buttons-search").css("border-top", "20px solid #578BF2")
-    $("a#buttons-search").css("border-left", "40px solid #578BF2")
-    $("a#buttons-search").css("border-right", "40px solid #578BF2")
-    $("a#buttons-search").css("background-color", "#578BF2")
+    $("a#buttons-search").css("border-top", "20px solid #71B1F2")
+    $("a#buttons-search").css("border-left", "40px solid #71B1F2")
+    $("a#buttons-search").css("border-right", "40px solid #71B1F2")
+    $("a#buttons-search").css("background-color", "#71B1F2")
     event.preventDefault()
     
   $("input[name='search_type']").change ->

@@ -48,7 +48,9 @@
     <div class="paginate"><%= paginate @matching_courses, :remote => true%></div>
   <% end %>    
 <% elsif @keyword.blank? %>
+  <div class="paginate"><%= paginate @listings, :remote => true%></div><br>
   <%= render :partial => 'shared/listings_table', :locals => { :header => "All Books", :relation => @listings } %>
+  <div class="paginate"><%= paginate @listings, :remote => true%></div><br>
 <% elsif @listings_title.empty? and @listings_author.empty? and @listings_isbn.empty?  %>
   <p> Sorry, no books matched your search! Please try another query.</p>
 <% else %>
