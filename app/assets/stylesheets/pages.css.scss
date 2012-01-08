@@ -81,6 +81,7 @@ p.about {
 
 #sell-your-books {
 	display:none;
+	min-height:280px;
 }
 
 #search-for-books div.searchbar{
@@ -96,26 +97,22 @@ p.about {
   right:-250px;
 }
 
-
 #sell-form-required-email, #sell-form-required {
-  height: 290px;
+  min-height: 280px;
   position: relative;
 	display: block;
-	/*border: 1px solid green;*/
 }
 
 #sell-form-required {
-  height: 250px;
+  min-height: 280px;
 }
-
-
 
 #sell-form-required-hidden {
   display:none;
 }
 
 #sell-form-optional {
-  height: 290px;  
+  min-height: 220px;  
   position: relative;
 	display: block;
 }
@@ -125,15 +122,15 @@ p.about {
 }
 
 #sell-form-final {
-  height: 290px;  
+  min-height: 220px;  
   position: relative;
 	display: none;
-	/*border: 1px solid green;*/
 }
 
 .sell-form-divider {
   float:left;
 	width:326px;
+	min-height:220px;
 	
 }
 .sell-form-divider.static{
@@ -188,6 +185,7 @@ input:focus, textarea:focus {
   top:1px;
 }
 
+
 .sell-form-divider .form-message {
   border: 1px solid $search-sell-background-blue;
   padding-top:7px;
@@ -212,33 +210,21 @@ input:focus, textarea:focus {
   color: #333333;
 }
 
-p#final-message{
-  /*position:relative;
-  top: 0px;*/
+#bottom_button{
+  margin-right:22px;
+  float:right;
 }
-
-
-#sell-form-signed-in-required-button {
-  position:relative;
-  right:-480px;
-}
-
-
-#sell-form-required-button {
+/*
+#sell-form-required-button, #sell-form-signed-in-required-button  {
   position:relative;
   top: 5px;
   right:-480px;
 }
 
-#sell-form-final-signup-button{
-  position:relative;
-  top: 35px;
-  right:-480px;
-}
 
-
-#sell-form-final-button, #sell-form-optional-button, #sell-form-signed-in-final-button, #sell-form-final-signin-button {
+#sell-form-final-button, #sell-form-final-signup-button,#sell-form-optional-button, #sell-form-signed-in-final-button, #sell-form-final-signin-button {
   position:relative;
   top: 160px;
   right:-180px;
 }
+*/

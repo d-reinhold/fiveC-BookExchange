@@ -10,6 +10,8 @@
 	  <div class="field centered"><p>Search by course name or professor<%= radio_button_tag :search_type, :courses, false %>
 	</p></div>
 </div>
+
+
     <%= render :partial => "shared/fancy_button", :locals => { :button_id => "search-button", :button_class => 'enabled', :text => "Search!"} %>
 		<p class="centered" style="font-size:8pt;">Or just click 'Search' to see all books!</p>
 
