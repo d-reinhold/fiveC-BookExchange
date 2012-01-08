@@ -12,6 +12,9 @@
     <%= yield(:head) %>
   </head>
 	<body>
+		<% if Rails.env.staging?%>
+		  <div id="staging-banner"><h4>This is the Staging Environment!!</h4></div>
+		<%end%>
 		<div id="fb-root"></div>
 		<script>
 		  (function(d, s, id) {
