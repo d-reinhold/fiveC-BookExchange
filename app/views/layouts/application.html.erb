@@ -13,8 +13,11 @@
   </head>
 	<body>
 		<% if Rails.env.staging?%>
-		  <div id="staging-banner"><h4>This is the Staging Environment!!</h4></div>
+		  <div class="top-banner"><h3>This is the Staging Environment!!</h3></div>
 		<%end%>
+		<noscript>
+		  <div class="top-banner"><h3>This website requires Javascript! Please enable Javascript in your browser.</h3></div>
+		</noscript>
 		<div id="fb-root"></div>
 		<script>
 		  (function(d, s, id) {
