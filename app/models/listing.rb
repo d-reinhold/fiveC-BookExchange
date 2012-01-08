@@ -1,6 +1,7 @@
 require 'texticle/searchable'
 class Listing < ActiveRecord::Base
   extend Searchable(:title, :author, :isbn)
+  
   attr_accessible :id, :title, :price_dollars, :price_cents, :author, :edition, :isbn, :description, :condition, :book_id
   belongs_to :user
   belongs_to :book
