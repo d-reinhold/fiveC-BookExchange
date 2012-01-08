@@ -29,7 +29,7 @@ end
 dom = User.create!(:name => 'Dominick Reinhold', :email => 'dfr12009@mymail.pomona.edu', :password => 'foobar', :password_confirmation => 'foobar')
 
 
-99.times do
+5000.times do
   book = random_book(r)
   unless book.title == 'No books needed for this class.' or book.title == 'Could not find the specified course.' or book.title == 'Materials Not Finalized For This Class.'
     dom.listings.create!(:book_id => book.id, :title => book.title, :author => book.author, :isbn => book.isbn, :price_dollars => random_dollars(r), :price_cents => random_cents(r),  :condition => random_condition, :description => random_description )
