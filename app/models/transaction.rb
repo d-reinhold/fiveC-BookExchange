@@ -1,10 +1,9 @@
 class Transaction < ActiveRecord::Base
   attr_accessible :buyer_email, :buyer_name, :id
   belongs_to :listing
-  email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  #email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
-  validates :buyer_email, :presence => true,
-                          :format => { :with => email_regex }
+  validates :buyer_email, :presence => true
   validates :buyer_name, :presence => true
   validate :is_fivec_email
 
