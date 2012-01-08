@@ -357,11 +357,13 @@ button.fancy_button, a.fancy_button{
 
 #staging-banner{
   background-color:#DD1E1B;
-  border-bottom:1px solid darken(#DD1E1B,20%);
+  border-bottom:2px solid darken(#DD1E1B,15%);
   width:100%;
   text-align:center;
   &h4{
+    padding-top:7px;
     color:white;
+    text-shadow: 0 1px 0 #eee;
   }
 }
 
