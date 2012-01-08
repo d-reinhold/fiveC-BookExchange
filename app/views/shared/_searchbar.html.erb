@@ -10,7 +10,7 @@
 	  <div class="field centered">Search by book title, author or ISBN <%= radio_button_tag :search_type, :keywords, true %></div><br>
 	  <div class="field centered">Search by course name or professor <%= radio_button_tag :search_type, :courses, false %>
 	</div><br>
-	<div class="checkboxes centered"><p class="centered" style="font-size:9pt;">Filter results by school:<br>
+	<div class="checkboxes centered"><p class="centered" style="font-size:9pt;">Filter courses by school:<br>
 	  <%= check_box_tag "school[]", 'PO', true %>Pomona | 
   	<%= check_box_tag "school[]", 'CM', true %>CMC | 
     <%= check_box_tag "school[]", 'SC', true %>Scripps | 

@@ -22,6 +22,7 @@ Looks like crap on Firefox (this is somewhat fixed)
 
 
 BUG LIST:
+searh freezes when no filters are checked
 when a book exists but is unavailable, searching for it will display an empty table.
 add a before save method that changes a @pomona.edu address to a @mymail.pomona.edu address (but what will people use to login?)
 deliver @pitzer.edu to @students.pitzer.edu??
