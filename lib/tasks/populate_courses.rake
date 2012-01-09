@@ -43,6 +43,7 @@ namespace :db do
           puts 'Section: ' + course_section
           if Course.where('department = ? AND number = ? AND school = ? AND section = ?',course_department,course_number,course_school,course_section).empty?
             c = Course.new(:school => course_school, :department => course_department, :number => course_number, :name => course_name, :section => course_section, :prof => prof ) 
+            puts 'creating course!'
             if c.save
               get_books_for_course(c,no_course_book, no_materials_book, not_finalized_book)
             end
