@@ -133,9 +133,6 @@ $(document).ready ->
       $("#sell-form-required").fadeOut "slow", ->
         $("#sell-form-required").css("display","none")
         $("#sell-form-optional").css("display","block")
-
-      
-      
       
     
         
@@ -270,8 +267,8 @@ add_success = (element,message) ->
 remove_status = (element,message) ->
   $(element).css("display","block")
   $(element).parent().css("display", "block") 
-  $(element).parent().css("border", "1px solid #85B1F2") 
-  $(element).parent().css("background-color", "#85B1F2")
+  $(element).parent().css("border", "1px solid #5691A9") 
+  $(element).parent().css("background-color", "#8DD8EA")
   $(element).text(message) 
 
 check_form = () ->

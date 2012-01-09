@@ -1,13 +1,13 @@
 <div class="sell-form-divider">
-	<div class="field"><%= l.text_field :edition, :placeholder => 'Edition' %></div>
 	<div class="field"><%= l.text_field :isbn, :placeholder => 'ISBN' %></div>
+	<div class="field"><%= l.text_field :edition, :placeholder => 'Edition' %></div>
 	<div class="field"><%= l.select( :condition, [['---Condition---', '--Condition--'],['New','New'], ['Lightly Used','Lightly Used'], ['Heavily Used','Heavily Used'], ['Falling Apart','Falling Apart']], :default => '---Condition---') %></div>
 	<div class="field"><%= l.text_area :description, :placeholder => 'Give a short description' %></div>
 </div>
 <div class="sell-form-divider">
-  <div class="form-message"><br>
+  <div class="form-message">
 	  <p>
-    None of these fields are required, but they might help your book get sold faster!</p><br><br><p> When you're finished, click the button!
+    None of these fields are required, but it's <b>highly recommended that you include the ISBN, to ensure your book gets matched when people search by course!</b> This is because your book's title might not exactly match the database (due to abbreviations, misspellings, etc.) </p><br><br><p> When you're finished, click the button!
     </p>
   </div>
 </div>
