@@ -18,10 +18,10 @@ class ListingsController < ApplicationController
     puts 'creating listing!'
     @user = current_user
     @listing = @user.listings.new(params[:listing])
-    @book = Book.where("lower(title) LIKE ?", "%#{@listing.title.downcase}%").limit(1).all
+    @book = Book.where("lower(title) = ? and lower(author) = ?", "%#{@listing.title.downcase}%", "%#{@listing.author.downcase.split(' ').last}%").limit(1).all
     unless @book.empty?
       puts 'Found a course that requires this book!'
-      @listing.book_id = @book.first.id
+      @listing.book_id = @book.first.id 
     end
     if @listing.save
       #ListingMailer.listed_book(@listing).deliver

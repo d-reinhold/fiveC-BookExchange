@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120107233227) do
+ActiveRecord::Schema.define(:version => 20120109032037) do
 
   create_table "books", :force => true do |t|
     t.string   "title"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(:version => 20120107233227) do
     t.datetime "updated_at"
     t.integer  "course_id"
   end
+
+  create_table "books_courses", :id => false, :force => true do |t|
+    t.integer  "book_id"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "books_courses", ["book_id", "course_id"], :name => "index_books_courses_on_book_id_and_course_id", :unique => true
+  add_index "books_courses", ["book_id"], :name => "index_books_courses_on_book_id"
+  add_index "books_courses", ["course_id"], :name => "index_books_courses_on_course_id"
 
   create_table "courses", :force => true do |t|
     t.string   "school"

@@ -1,6 +1,6 @@
 require 'texticle/searchable'
 class Course < ActiveRecord::Base
-  has_many :books
+  has_and_belongs_to_many :books
   extend Searchable(:school, :department, :name, :number, :prof)
 
 end

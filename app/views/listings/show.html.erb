@@ -41,7 +41,7 @@
 	<div id="seller-details">
 		<h3>Seller Details</h3>
 		<p style="line-height: 1.75em">Name: <b><%=@listing.user.name%></b><br>
-		Email Address: <b><%=@listing.user.email%></b><br>
+		Email Address: <b><%=@listing.user.email.split('@')[0] + ' (at) ' + @listing.user.email.split('@')[1]%></b><br>
 		<br>-------------------------------------------------------------<br>
 		<% if signed_in? and @listing.user.id == @current_user.id %>	
 		  <% if @listing.transaction.status == 'available'%>

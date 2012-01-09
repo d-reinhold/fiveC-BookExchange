@@ -25,7 +25,7 @@ def random_description
   Faker::Lorem.sentence
 end
 
-
+=begin
 dom = User.create!(:name => 'Dominick Reinhold', :email => 'dfr12009@mymail.pomona.edu', :password => 'foobar', :password_confirmation => 'foobar')
 
 
@@ -37,7 +37,7 @@ dom = User.create!(:name => 'Dominick Reinhold', :email => 'dfr12009@mymail.pomo
 end
 
 
-=begin
+
 
 
 dom.listings.create!(:title => "The Hitchhiker's Guide to the Galaxy", :author => "Douglas Adams", :isbn => random_isbn(r), :price_dollars => random_dollars(r), :price_cents => random_cents(r), :condition => random_condition, :description => random_description )

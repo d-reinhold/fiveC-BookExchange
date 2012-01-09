@@ -80,6 +80,7 @@ $(document).ready ->
       $("button#search-button").removeClass("enabled")
       $("button#search-button").addClass("disabled")
       $("button#search-button").html('Searching...')
+      $("#spinner").css("display", "block")
       $("form#search").submit()
 
 
