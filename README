@@ -21,9 +21,13 @@ Final TODO list:
         the same book can belong to many courses. So I think we need to set up a 
         :has_and_belongs_to_many relationship between them. (HABTM)
 
+For next version:
+Possibly use Cufon for fonts?
+
+
 BUG LIST:
+
 when a book exists but is unavailable, searching for it will display an empty table.
-add a before save method that changes a @pomona.edu address to a @mymail.pomona.edu address (but what will people use to login?)
 deliver @pitzer.edu to @students.pitzer.edu??
 fix model validations for listings (via edit)
 Should listing id be attr_accessible?

@@ -15,7 +15,8 @@ class Listing < ActiveRecord::Base
   validates :title, :presence => true,
                     :length => { :within => 1..100 }
 
-  validates :price_dollars, :presence => true
+  validates :price_dollars, :numericality => { :greater_than_or_equal_to => 0, :only_integer => true }
+  
                             
   validates :price_cents, :presence => true
               
