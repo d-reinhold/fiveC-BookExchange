@@ -12,7 +12,7 @@ namespace :db do
     
     current_page_num = 1
     while current_page_num < 73
-      #begin
+      begin
         puts "-----------------------Page: #{current_page_num} -----------------------------"
         current_page_data = Nokogiri::HTML(open(our_pomona_base_url+current_page_num.to_s(10)))
         current_page_data.css('ol.course_list li.odd, li.even').each do |li|
@@ -41,7 +41,7 @@ namespace :db do
           puts 'Name: ' + course_name
           puts 'Prof: ' + prof
           puts 'Section: ' + course_section
-          if Course.where('department = ? AND number = ? AND school = ? AND section = ?',course_department,course_number,course_school,course_section).empty?
+          if Course.where('department = ? AND number = ? AND school = ? AND section = ?', course_department,course_number,course_school,course_section).empty?
             c = Course.new(:school => course_school, :department => course_department, :number => course_number, :name => course_name, :section => course_section, :prof => prof ) 
             puts 'creating course!'
             if c.save
@@ -50,10 +50,10 @@ namespace :db do
           end
         end
         current_page_num += 1   
-      #rescue
-      #  puts "SKIPPING"
-      #  next
-      #end                                                          
+      rescue
+        puts "SKIPPING"
+        next
+      end                                                          
     end
   end 
 end
