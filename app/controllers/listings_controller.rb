@@ -18,7 +18,8 @@ class ListingsController < ApplicationController
     puts 'creating listing!'
     @user = current_user
     @listing = @user.listings.new(params[:listing])
-    if match_listing_to_book(@listing).save
+    @listing.book_id = match_listing_to_book(@listing)
+    if @listing.save
       #ListingMailer.listed_book(@listing).deliver
       flash[:success] = 'Your listing was created!'
       redirect_to @user
@@ -99,9 +100,10 @@ class ListingsController < ApplicationController
     end
     unless book.empty?
       puts 'Found a course that requires this book!'
-      listing.book_id = book.first.id 
+      return book.first.id 
+    else
+      return -1
     end
-    return listing
   end
   
   def gen_keyword_search_arrays(params)
