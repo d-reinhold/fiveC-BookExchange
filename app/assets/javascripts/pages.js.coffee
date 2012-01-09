@@ -214,7 +214,9 @@ $(document).ready ->
          
 
 check_dollar_field = (value) ->
-  if value.length == 0
+  if value*1 < 0
+    add_error("p#price_dollars","Only positive values please!")
+  else if value.length == 0
     add_error("p#price_dollars","Well, you have to enter something...")
   else unless is_int(value)
     add_error("p#price_dollars","You have to enter a number!")
