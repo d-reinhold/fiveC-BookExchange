@@ -12,7 +12,7 @@ namespace :db do
     
     current_page_num = 1
     while current_page_num < 73
-      #begin
+      begin
         puts "-----------------------Page: #{current_page_num} -----------------------------"
         current_page_data = Nokogiri::HTML(open(our_pomona_base_url+current_page_num.to_s(10)))
         current_page_data.css('ol.course_list li.odd, li.even').each do |li|
@@ -49,10 +49,10 @@ namespace :db do
           end
         end
         current_page_num += 1   
-      #rescue
-      #  puts "SKIPPING"
-      #  next
-      #end                                                          
+      rescue
+        puts "SKIPPING"
+        next
+      end                                                          
     end
   end 
 end
