@@ -101,6 +101,8 @@ class ListingsController < ApplicationController
     end
     if book.nil? or book.empty?
       puts 'no isbn on listing, or isbn doesnt match'
+      puts listing.title.downcase
+      puts listing.author.downcase.split(' ').last
       book = Book.where("lower(title) = ? and lower(author) = ?", listing.title.downcase, listing.author.downcase.split(' ').last).limit(1).all
     end
     unless book.empty?
