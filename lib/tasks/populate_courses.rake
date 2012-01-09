@@ -96,7 +96,7 @@ def get_books_for_course(course,no_course_book,no_materials_book,not_finalized_b
             book_isbn = ''
           end
           book = Book.where('title = ? AND author = ?', book_title,book_author).limit(1).all
-          if book
+          unless book.empty?
             course.books << book
           else
             course.books.create!(:title => book_title, :author => book_author, :edition => book_edition, :isbn => book_isbn)
