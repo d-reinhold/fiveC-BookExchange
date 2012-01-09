@@ -42,6 +42,8 @@ class ListingsController < ApplicationController
     puts params
     @listing = Listing.find(params[:id])
     if @listing.update_attributes(params[:listing])
+      @listing.book_id = match_listing_to_book(@listing)
+      @listing.save
       flash[:success] = 'Listing updated!'
       if signed_in?
         redirect_to @current_user
@@ -94,14 +96,18 @@ class ListingsController < ApplicationController
   private
     
   def match_listing_to_book(listing)
-    book = Book.where("isbn = ?", listing.isbn).limit(1).all
-    if book.empty?
-      book = Book.where("lower(title) = ? and lower(author) = ?", "%#{listing.title.downcase}%", "%#{listing.author.downcase.split(' ').last}%").limit(1).all
+    if listing.isbn != ''
+      book = Book.where("isbn = ?", listing.isbn).limit(1).all
+    end
+    if book.nil? or book.empty?
+      puts 'no isbn on listing, or isbn doesnt match'
+      book = Book.where("lower(title) = ? and lower(author) = ?", listing.title.downcase, listing.author.downcase.split(' ').last).limit(1).all
     end
     unless book.empty?
       puts 'Found a course that requires this book!'
       return book.first.id 
     else
+      puts 'no Books match this listing'
       return -1
     end
   end

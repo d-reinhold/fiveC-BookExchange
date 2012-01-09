@@ -16,7 +16,7 @@ This is a web app i created to simplify the process of buying and selling textbo
 
 
 Final TODO list:
-REWRITE populate_courses.rake to not allow duplicate courses (Same /DEPT NUMBER SCHOOL-SECTION/)
+(DONE!!?) REWRITE populate_courses.rake to not allow duplicate courses (Same /DEPT NUMBER SCHOOL-SECTION/)
         OR duplicate books (same title and author). This means a course can have many books, and
         the same book can belong to many courses. So I think we need to set up a 
         :has_and_belongs_to_many relationship between them. (HABTM)
