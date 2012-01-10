@@ -2,8 +2,30 @@
 <html>
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style>
+      .top-banner{
+			  position:fixed;
+			  z-index:999;
+			  top:0px;
+			  left:0px;
+			  background-color:#DD1E1B;
+			  border-bottom:3px solid #444444;
+			  width:100%;
+			  text-align:center;
+			  h4 {
+			    padding-top:6px;
+			    color:white;
+			    text-shadow: 0 1px 0 #777;
+			  }
+			}
+    </style>
   </head>
   <body>
+	  <% if Rails.env.staging?%>
+	  	<br><br>
+	  	<br>
+		  <div class="top-banner"><h4>This is an email from the Staging Environment!</h4></div>
+		<%end%>
     <h3>Welcome to the 5C Book Exchange, <%= @user.name %></h3>
     <p>
       You have successfully signed up! To get started selling your textbooks, or to buy next semester's books, go to the <a href="<%= @url %>">5C Book Exchange</a> and log in using your 5C email address.<br/>
