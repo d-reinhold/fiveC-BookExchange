@@ -4,6 +4,9 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
+	  <% if Rails.env.staging?%>
+		  <div><h4>[This is an email from the Staging Environment!]</h4></div>
+		<%end%>
     <h3><%= @seller.name %>, someone has requested one of your books!</h3>
     <p>
       <%= @buyer_name %> wants to buy <i><%=@transaction.listing.title%></i>! You can contact <%= @buyer_name.split(' ')[0] %> at <%=@buyer_email%> to set up a time and place to sell your book. It's your responsibility to contact <%= @buyer_name.split(' ')[0] %> to get the transaction going!<br>

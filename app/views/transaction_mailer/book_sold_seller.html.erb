@@ -4,6 +4,9 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
+	  <% if Rails.env.staging?%>
+		  <div><h4>[This is an email from the Staging Environment!]</h4></div>
+		<%end%>
     <h3><%= @seller.name %>, a book you listed has been sold!</h3>
     <p>
       This is just a notice that you have confirmed that <i><%=@transaction.listing.title%></i> was sold to <%=@buyer_name%> for $<%=@transaction.listing.price_dollars%>.<%=@transaction.listing.price_cents%>. Congratulations on selling your book, and thanks for using the <a href="<%= @url %>">5C Book Exchange</a>!</br>

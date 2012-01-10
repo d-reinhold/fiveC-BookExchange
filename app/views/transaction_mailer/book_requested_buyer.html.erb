@@ -4,6 +4,9 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
+	  <% if Rails.env.staging?%>
+		  <div><h4>[This is an email from the Staging Environment!]</h4></div>
+		<%end%>
     <h3><%= @buyer_name %>, you requested a book on the 5C Book Exchange!</h3>
     <p>
       You requested <i><%=@transaction.listing.title%></i> from <%=@seller.name%> for $<%=@transaction.listing.price_dollars%>.<%=@transaction.listing.price_cents%>! We sent an email to <%=@seller.name.split(' ')[0]%> notifying him/her, and you can expect an email from <%=@seller.name.split(' ')[0]%> soon! If you don't hear from <%=@seller.name.split(' ')[0]%> in a few days, you can contact him/her at <%=@seller.email%> to set up a time and place to buy your book.<br>

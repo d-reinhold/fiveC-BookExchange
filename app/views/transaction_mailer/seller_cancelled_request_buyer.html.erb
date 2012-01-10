@@ -4,6 +4,9 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
+	  <% if Rails.env.staging?%>
+		  <div><h4>[This is an email from the Staging Environment!]</h4></div>
+		<%end%>
     <h3><%= @buyer_name %>, a book you requested has been cancelled!</h3>
     <p>
       We're sorry, sometimes these things just don't work out. Hopefully this was a mutual decision between you and <%= @seller.name %>! Whatever the reason, the request was cancelled, and you no longer have any obligation to buy <i><%=@transaction.listing.title%></i> from <%= @seller.name.split(' ')[0] %>. The good news is you can go to the <a href="<%= @url %>">5C Book Exchange</a> search for another seller!<br>
