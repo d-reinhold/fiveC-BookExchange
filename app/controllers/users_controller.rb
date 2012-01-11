@@ -39,7 +39,7 @@ class UsersController < ApplicationController
           @listing.book_id = @book.first.id
           @listing.save
         end
-        flash[:success] = "Welcome to the 5C Book Exchange! Your listing has been posted"
+        flash[:success] = "Welcome to the 5C Book Exchange! Your listing has been posted!"
       end
       session[:user_id] = @user.id
       redirect_to @user
