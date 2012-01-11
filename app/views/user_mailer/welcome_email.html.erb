@@ -5,12 +5,12 @@
   </head>
   <body>
 	  <% if Rails.env.staging?%>
-		  <div><h4>[This is an email from the Staging Environment!]</h4></div>
+		  <div><h3>[This is a test email from the 5CBookExchange!]</h3></div>
 		<%end%>
     <h3>Welcome to the 5C Book Exchange, <%= @user.name %></h3>
     <p>
       You have successfully signed up! To get started selling your textbooks, or to buy next semester's books, go to the <a href="<%= @url %>">5C Book Exchange</a> and log in using your 5C email address.<br/>
     </p>
-    <p>Thanks for joining and hopefully you find the site useful!</p>
+    <p>Thanks for joining! </p>
   </body>
 </html>
