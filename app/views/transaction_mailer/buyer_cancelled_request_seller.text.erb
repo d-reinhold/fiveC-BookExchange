@@ -1,0 +1,10 @@
+<% if Rails.env.staging?%>
+  [This is a test email from the 5CBookExchange!]
+<%end%>
+<%= @seller.name %>, a request for one of your books has been cancelled!
+
+  Hopefully this was a mutual decision between you and <%= @buyer_name %>! Whatever the reason, the request was cancelled, and your book has been relisted. If you do not want your book to be available on the 5C Book Exchange anymore, go to <%= @url %>, log in and go to 'My Books'. From there you can delete the listing permanently.
+
+To buy and sell more textbooks, or to check the status of your books, go to <%= @url %> and log in using your 5C email address.
+
+Thanks for using the 5C Book Exchange!

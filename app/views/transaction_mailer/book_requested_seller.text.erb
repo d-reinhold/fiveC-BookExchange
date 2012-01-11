@@ -1,0 +1,9 @@
+<% if Rails.env.staging?%>
+[This is a test email from the 5CBookExchange!]
+<%end%>
+<%= @seller.name %>, someone has requested one of your books!
+  <%= @buyer_name %> wants to buy <%=@transaction.listing.title%>! You can contact <%= @buyer_name.split(' ')[0] %> at <%=@buyer_email%> to set up a time and place to sell your book. It's your responsibility to contact <%= @buyer_name.split(' ')[0] %> to get the transaction going!
+
+  To buy and sell more textbooks, or to check the status of your books, go to <%= @url %> and log in using your 5C email address.
+
+Thanks for using the 5C Book Exchange!
