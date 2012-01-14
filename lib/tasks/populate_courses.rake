@@ -9,7 +9,6 @@ namespace :db do
     no_course_book = Book.create!(:title => 'Could not find the specified course.', :author => '', :edition => '', :isbn => '')
     no_materials_book = Book.create!(:title => 'No books needed for this class.', :author => '', :edition => '', :isbn => '')
     not_finalized_book = Book.create!(:title => 'Materials Not Finalized For This Class.', :author => '', :edition => '', :isbn => '')
-    
     current_page_num = 1
     while current_page_num < 73
       begin
