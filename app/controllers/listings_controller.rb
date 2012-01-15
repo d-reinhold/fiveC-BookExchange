@@ -118,8 +118,8 @@ class ListingsController < ApplicationController
     puts 'searching listings'
     @keyword = params[:search_keywords]
     @listings_title = Listing.where("title ILIKE ?", "%#{@keyword}%").order("title")
-    @listings_author = Listing.where("author) ILIKE ?", "%#{@keyword}%").order("title")
-    @listings_isbn = Listing.where("isbn) ILIKE ?", "%#{@keyword}%").order("title")
+    @listings_author = Listing.where("author ILIKE ?", "%#{@keyword}%").order("title")
+    @listings_isbn = Listing.where("isbn ILIKE ?", "%#{@keyword}%").order("title")
     #@listings_title = Listing.search_by_title(@keyword).order('title').order('author').order('price_dollars').order('price_cents')
     #@listings_author = Listing.search_by_author(@keyword).order('author').order('title').order('price_dollars').order('price_cents')
     #@listings_isbn = Listing.search_by_isbn(@keyword).order('isbn').order('price_dollars').order('price_cents')
