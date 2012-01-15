@@ -97,13 +97,13 @@ class ListingsController < ApplicationController
     
   def match_listing_to_book(listing)
     if listing.isbn != ''
-      book = Book.where("isbn = ?", listing.isbn).limit(1).all
+      book = Book.where("isbn = ?", listing.isbn.gsub('-','')).limit(1).all
     end
     if book.nil? or book.empty?
       puts 'no isbn on listing, or isbn doesnt match'
-      puts listing.title.downcase
-      puts listing.author.downcase.split(' ').last
-      book = Book.where("lower(title) = ? and lower(author) = ?", listing.title.downcase, listing.author.downcase.split(' ').last).limit(1).all
+      dt = listing.title.downcase
+      da = listing.author.downcase.split(' ').last
+      book = Book.where("(lower(title) = ? or lower(title) = ?) and lower(author) = ?) = ?", dt, dt.gsub('&', 'and'), da).limit(1).all
     end
     unless book.empty?
       puts 'Found a course that requires this book!'
