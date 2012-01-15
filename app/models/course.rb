@@ -8,7 +8,6 @@ class Course < ActiveRecord::Base
                     {
                       :tsearch => 
                       {
-                        :prefix => true, 
                         :any_word => true,
                         :dictionary => "english"
                       }
