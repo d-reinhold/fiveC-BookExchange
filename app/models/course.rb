@@ -1,6 +1,10 @@
-#require 'texticle/searchable'
+require 'texticle/searchable'
 class Course < ActiveRecord::Base
   has_and_belongs_to_many :books
+  extend Searchable(:school, :department, :name, :number, :prof)
+
+=begin 
+  # HEROKU DOESN'T SUPPORT POSTGRES 8.4!!!!
   include PgSearch
   pg_search_scope :search_by_course_keywords, 
                   :against => [:school, :department, :name, :number, :prof],
@@ -13,8 +17,9 @@ class Course < ActiveRecord::Base
                       }
                     }
           
+=end
     
-  #extend Searchable(:school, :department, :name, :number, :prof)
+
 
 end
 # == Schema Information

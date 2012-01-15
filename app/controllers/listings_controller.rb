@@ -117,12 +117,12 @@ class ListingsController < ApplicationController
   def gen_keyword_search_arrays(params)
     puts 'searching listings'
     @keyword = params[:search_keywords]
-    #@listings_title = Listing.where("lower(title) LIKE ?", "%#{@keyword}%").order("title")
-    #@listings_author = Listing.where("lower(author) LIKE ?", "%#{@keyword}%").order("title")
-    #@listings_isbn = Listing.where("lower(isbn) LIKE ?", "%#{@keyword}%").order("title")
-    @listings_title = Listing.search_by_title(@keyword).order('title').order('author').order('price_dollars').order('price_cents')
-    @listings_author = Listing.search_by_author(@keyword).order('author').order('title').order('price_dollars').order('price_cents')
-    @listings_isbn = Listing.search_by_isbn(@keyword).order('isbn').order('price_dollars').order('price_cents')
+    @listings_title = Listing.where("title ILIKE ?", "%#{@keyword}%").order("title")
+    @listings_author = Listing.where("author) ILIKE ?", "%#{@keyword}%").order("title")
+    @listings_isbn = Listing.where("isbn) ILIKE ?", "%#{@keyword}%").order("title")
+    #@listings_title = Listing.search_by_title(@keyword).order('title').order('author').order('price_dollars').order('price_cents')
+    #@listings_author = Listing.search_by_author(@keyword).order('author').order('title').order('price_dollars').order('price_cents')
+    #@listings_isbn = Listing.search_by_isbn(@keyword).order('isbn').order('price_dollars').order('price_cents')
     session[:last_search] = params
     session[:last_search_type] = 'keyword'
   end
@@ -133,10 +133,11 @@ class ListingsController < ApplicationController
     @course = params[:search_courses]
     #@matching_courses = Course.where("lower(name) LIKE ? OR lower(number) LIKE ? OR lower(department) LIKE ?", "%#{@course}%","%#{@course}%","%#{@course}%").order("number")
     if params[:school]
-      @matching_courses = Course.search_by_course_keywords(@course).where('school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ?', params[:school][0],params[:school][1],params[:school][2],params[:school][3],params[:school][4],params[:school][5]).order('number').order('section').page(params[:page]).per(5)
+      @keywords = '%'+@course.gsub(' ', '% %')+'%'
+      puts @keywords
+      #@matching_courses = Course.search_by_course_keywords(@course).where('school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ?', params[:school][0],params[:school][1],params[:school][2],params[:school][3],params[:school][4],params[:school][5]).order('number').order('section').page(params[:page]).per(5)
       #@matching_courses = Course.search_by_name_or_prof_or_department_or_number(params[:search_courses],params[:search_courses],params[:search_courses],params[:search_courses]).where('school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ?', params[:school][0],params[:school][1],params[:school][2],params[:school][3],params[:school][4],params[:school][5]).order('number').order('section').page(params[:page]).per(5)
-      #@matching_courses = Course.where('name params[:search_courses],params[:search_courses],params[:search_courses],params[:search_courses]).where('school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ?', params[:school][0],params[:school][1],params[:school][2],params[:school][3],params[:school][4],params[:school][5]).order('number').order('section').page(params[:page]).per(5)
-      
+      @matching_courses = Course.where('name ILIKE ? OR prof ILIKE ? OR department ILIKE ? OR number = ?',@keywords,@keywords,@keywords,@keywords).where('school = ? OR school = ? OR school = ? OR school = ? OR school = ? OR school = ?', params[:school][0],params[:school][1],params[:school][2],params[:school][3],params[:school][4],params[:school][5]).order('number').order('section').page(params[:page]).per(5)
     else
       @matching_courses = Array.new
     end
