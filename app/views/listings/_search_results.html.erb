@@ -26,6 +26,7 @@
 		      <% course.books.each do |book| %>
 		        <div class="required-books">
 		        	<h4 style="margin-bottom:.1em;"><i><%= book.title %></i> <%= "by #{book.author}" unless book.author == '' %></h4>
+		          <p class="small"><%="ISBN: #{book.isbn}" unless book.isbn == ''%><%=" • Edition: #{book.edition}" unless book.edition == ''%></p>
 							<% @available_listings = Array.new %>
 							<% book.listings.each do |listing| %>
 							  <% if listing.transaction.status == 'available'%>
