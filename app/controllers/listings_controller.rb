@@ -103,7 +103,7 @@ class ListingsController < ApplicationController
       puts 'no isbn on listing, or isbn doesnt match'
       dt = listing.title.downcase
       da = listing.author.downcase.split(' ').last
-      book = Book.where("(lower(title) = ? or lower(title) = ?) and lower(author) = ?) = ?", dt, dt.gsub('&', 'and'), da).limit(1).all
+      book = Book.where("(lower(title) = ? or lower(title) = ?) and lower(author) = ?", dt, dt.gsub('&', 'and'), da).limit(1).all
     end
     unless book.empty?
       puts 'Found a course that requires this book!'
