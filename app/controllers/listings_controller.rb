@@ -101,9 +101,10 @@ class ListingsController < ApplicationController
     end
     if book.nil? or book.empty?
       puts 'no isbn on listing, or isbn doesnt match'
-      dt = listing.title.downcase
-      da = '%'+listing.author.downcase.split(' ').last
-      book = Book.where("(lower(title) = ? or lower(title) = ?) and lower(author) LIKE ?", dt, dt.gsub!('&', 'and'), da).limit(1).all
+      downcase_title = listing.title.downcase
+      downcase_title_nosymbol = downcase_title.gsub('&', 'and')
+      downcase_author = '%'+listing.author.downcase.split(' ').last
+      book = Book.where("(lower(title) = ? or lower(title) = ?) and lower(author) LIKE ?", downcase_title, downcase_title_nosymbol, downcase_author).limit(1).all
     end
     unless book.empty?
       puts 'Found a course that requires this book!'
