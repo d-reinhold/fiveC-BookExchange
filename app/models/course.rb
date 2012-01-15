@@ -1,7 +1,21 @@
-require 'texticle/searchable'
+#require 'texticle/searchable'
 class Course < ActiveRecord::Base
   has_and_belongs_to_many :books
-  extend Searchable(:school, :department, :name, :number, :prof)
+  include PgSearch
+  pg_search_scope :search_by_course_keywords, 
+                  :against => [:school, :department, :name, :number, :prof],
+                  :using => 
+                    {
+                      :tsearch => 
+                      {
+                        :prefix => true, 
+                        :any_word => true,
+                        :dictionary => "english"
+                      }
+                    }
+          
+    
+  #extend Searchable(:school, :department, :name, :number, :prof)
 
 end
 # == Schema Information

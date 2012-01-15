@@ -1,7 +1,22 @@
-require 'texticle/searchable'
+#require 'texticle/searchable'
 class Listing < ActiveRecord::Base
-  extend Searchable(:title, :author, :isbn)
+  #extend Searchable(:title, :author, :isbn)
+  include PgSearch
+  pg_search_scope :search_by_title, 
+                  :against => :title,
+                  :using => 
+                    {:tsearch => {:prefix => true, :any_word => true}
+                  }
+  pg_search_scope :search_by_author, 
+                  :against => :author,
+                  :using => 
+                    {:tsearch => {:prefix => true, :any_word => true}
+                  }
+  pg_search_scope :search_by_isbn, 
+                  :against => :isbn,
+                  :using => :tsearch        
   
+                  
   attr_accessible :id, :title, :price_dollars, :price_cents, :author, :edition, :isbn, :description, :condition, :book_id
   belongs_to :user
   belongs_to :book
