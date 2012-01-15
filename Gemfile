@@ -11,7 +11,7 @@ gem "faker", "~> 1.0.1"
 gem "nokogiri"
 gem 'texticle', '~> 2.0', :require => 'texticle/rails'
 gem 'kaminari'
-gem "pg_search"
+#gem "pg_search"
 
 gem "nifty-generators", :group => :development
 gem 'annotate', '~> 2.4.1.beta', :group => :development
