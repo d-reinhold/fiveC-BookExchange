@@ -22,14 +22,6 @@ p.about {
 }
 
 
-
-div.searchbar{
-  text-align: center;    
-  input {
-    width:350px;
-  }
-}
-
 #search-button {
   position:relative;
   top: -10px;
@@ -75,14 +67,17 @@ textarea{
   columns:36;
 }
 
-#main input[type=text], input[type=password], input[type=url], input[type=email]{
+#main input[type=text], input[type=password], input[type=email]{
   width: 250px;
 }
 
-input#search{
-  line-height:2em;
-  font-size:12pt;
-  
+#main div.searchbar{
+  text-align: center;    
+  input[type=text] {
+    line-height:2em;
+    font-size:12pt;
+    width:400px;
+  }
 }
 
 #main input.price_dollars, input.price_dollars {
@@ -96,6 +91,7 @@ input#search{
   margin-left: 0px;
   margin-right: 0px;
 }
+
 
 .sell-form-divider .field {
   margin-right: 25px;
@@ -168,5 +164,6 @@ input.isbn{
 #sell-form-optional-button, #sell-form-signed-in-final-button {
   position:relative;
 }
+
 
 
