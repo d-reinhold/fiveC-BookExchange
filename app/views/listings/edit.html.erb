@@ -2,35 +2,18 @@
 	  <%= link_to "back to listing page", @listing %>
 </div>
 <br>
-<h1>Edit Listing</h1>
+<h2>Edit Listing</h2>
 <div id="edit-listing">
 	<%= form_for @listing do |f| %>
 		<div class="sell-form-divider">
-	    <div class="field">
-	      <%= f.text_field :title, :placeholder => "Book Title" %>
-			</div>
-			<div class="field">
-			    <%= f.text_field :author, :placeholder => "Author(s)" %>
-			</div>
 			<div class="field">$<%= f.text_field :price_dollars, :placeholder => 'dollars', :class => 'price_dollars' %><%= f.select( :price_cents, [['.00', '00'],['.25','25'], ['.50','50'], ['.75','75']], :default => '.00', :class => 'cents-select') %></div>
-			<div class="field"><%= f.text_field :edition, :placeholder => 'Edition' %></div>
-			<div class="field"><%= f.text_field :isbn, :placeholder => 'ISBN' %></div>
-      <div class="field"><%= f.select( :condition, [['---Condition---', '--Condition--'],['New','New'], ['Lightly Used','Lightly Used'], ['Heavily Used','Heavily Used'], ['Falling Apart','Falling Apart']], :default => '---Condition---') %></div>
-			<div class="field"><%= f.text_area :description, :placeholder => 'Give a short description' %></div>
+      <div class="field" style="margin-top:10px"><%= f.select( :condition, [['---Condition---', '--Condition--'],['New','New'], ['Lightly Used','Lightly Used'], ['Heavily Used','Heavily Used'], ['Falling Apart','Falling Apart']], :default => '---Condition---') %></div>
 		</div>
 		<div class="sell-form-divider">
-	    <div class="form-message static"><p>Book Title</p></div>
-		  <div class="form-message static"><p>Author(s)</p></div>
 		  <div class="form-message static"><p>Price</p></div>
-		  <div class="form-message static"><p>Edition</p></div>
-			<div class="form-message static"><p>ISBN</p></div>
 			<div class="form-message static"><p>Condition</p></div>
-			<div class="form-message static"><p>Description</p></div>
 		</div>
 	<% end %>
 </div>
-<br><br>
-<br><br>
-<br>
 <div class="clear centered">
 <%= render :partial => "shared/fancy_button", :locals => { :button_id => "edit-listing-button", :button_class => 'green enabled', :text => "Update Listing!"} %>

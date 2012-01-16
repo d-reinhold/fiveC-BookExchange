@@ -26,19 +26,13 @@ class UsersController < ApplicationController
   end
   
   def create
+    puts params
     @user = User.new(params[:user])
     if @user.save
       UserMailer.welcome_email(@user).deliver
       if @user.listings.empty?
         flash[:success] = "Welcome to the 5C Book Exchange!"
       else
-        @listing = @user.listings.first
-        @book = Book.where("lower(title) LIKE ?", "%#{@listing.title.downcase}%").limit(1).all
-        unless @book.empty?
-          puts 'Found a course that requires this book!'
-          @listing.book_id = @book.first.id
-          @listing.save
-        end
         flash[:success] = "Welcome to the 5C Book Exchange! Your listing has been posted!"
       end
       session[:user_id] = @user.id

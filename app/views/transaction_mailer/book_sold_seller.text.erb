@@ -2,6 +2,6 @@
   [This is a test email from the 5CBookExchange!]
 <%end%>
 <%= @seller.name %>, a book you listed has been sold!
-  This is just a notice that you have confirmed that <%=@transaction.listing.title%> was sold to <%=@buyer_name%> for $<%=@transaction.listing.price_dollars%>.<%=@transaction.listing.price_cents%>. Congratulations on selling your book, and thanks for using the 5C Book Exchange!
+  This is just a notice that you have confirmed that <%=@transaction.listing.book.title%> was sold to <%=@buyer_name%> for $<%=@transaction.listing.price_dollars%>.<%=@transaction.listing.price_cents%>. Congratulations on selling your book, and thanks for using the 5C Book Exchange!
 
 To buy and sell more textbooks, or to check the status of your books, go to <%= @url %> and log in using your 5C email address.

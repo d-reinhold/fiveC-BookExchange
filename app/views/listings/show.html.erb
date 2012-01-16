@@ -9,14 +9,14 @@
 	<div id="listing-details">
 		<h3>Listing Details</h3>
 		<p style="line-height: 1.75em">
-		Title: <b><%=@listing.title%></b><br>
-		Author: <b><%=@listing.author%></b><br>
+		Title: <b><%=@listing.book.title%></b><br>
+		Author: <b><%=@listing.book.author%></b><br>
 
 		Edition: 
-		<% if @listing.edition == '' or @listing.edition.nil? %>
+		<% if @listing.book.edition == '' or @listing.book.edition.nil? %>
 		  <b><%= 'Not Provided' %></b>
 		<% else %>
-		  <b><%=@listing.edition%></b>
+		  <b><%=@listing.book.edition%></b>
 		<% end %><br>
 
 		Condition:
@@ -24,13 +24,6 @@
 		  <b><%= 'Not Provided' %></b>
 		<% else %>
 		  <b><%=@listing.condition%></b>
-		<% end %><br>
-
-		Description: 
-		<% if @listing.description == '' %>
-		  <b><%= 'Not Provided' %></b>
-		<% else %>
-		  <b><%=@listing.description%></b>
 		<% end %><br>
 
 		Price: <b>$<%=@listing.price_dollars%>.<%=@listing.price_cents%></b>
@@ -48,7 +41,7 @@
 				<br>
 					<div class="clear centered">
 					<%= render :partial => "shared/fancy_button", :locals => { :button_id => @listing.id, :button_class => 'goto-edit-listing-button enabled', :text => "Edit Listing!"} %>
-					<%= link_to "Delete Listing!", @listing, :id => @listing.id, :class => "fancy_button enabled red", :method => :delete, :confirm => "Are you sure you want to delete #{@listing.title}?", :title => "Delete #{@listing.title}" %></div>
+					<%= link_to "Delete Listing!", @listing, :id => @listing.id, :class => "fancy_button enabled red", :method => :delete, :confirm => "Are you sure you want to delete #{@listing.book.title}?", :title => "Delete #{@listing.book.title}" %></div>
 				<% else %>
 				<br>
 					<div class="clear centered">
@@ -99,7 +92,7 @@
 	<% end %>
 	<br>
 	<br>
-	<p class="clear centered">Do you want to buy <b><%= @listing.title%></b> from <b><%= @listing.user.name %></b> for <b>$<%= @listing.price_dollars%>.<%=@listing.price_cents%></b>?</p>
+	<p class="clear centered">Do you want to buy <b><%= @listing.book.title%></b> from <b><%= @listing.user.name %></b> for <b>$<%= @listing.price_dollars%>.<%=@listing.price_cents%></b>?</p>
 	<p class="centered">Note: Clicking 'Buy this Book!' will remove this listing from the search engine, and send an email to you and to the seller so you can work out a time to meet. This is not a binding contract, and either party can cancel the deal at any time. If the deal gets cancelled, the listing will be reposted. If the deal goes through, it is up to the seller to mark the transaction as final. Thanks for reading!<br><br>
 	<%= render :partial => "shared/fancy_button", :locals => { :button_id => "buy-this-book", :button_class => 'enabled', :text => "Buy this Book!"} %>
 	</p>

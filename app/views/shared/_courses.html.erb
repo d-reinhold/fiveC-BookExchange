@@ -1,0 +1,34 @@
+<% num = 0 %>
+<% if session[:remote_pag] == true%>
+  <div class="paginate"><%= paginate matching_courses, :remote => true %></div><br>
+<% else %>
+  <div class="paginate"><%= paginate matching_courses, :remote => false %></div><br>
+<% end %>
+<% matching_courses.each do |course| %>
+  <% num += 1%>
+  <% if num % 2 == 0 %>
+    <div class="course even">
+  <% else %>
+    <div class="course odd">
+  <% end %>
+  <h2 style="line-height:.5em;"><%= course.department%><%=course.number%> <%= course.school%>-<%= course.section%></h2>
+  <h3><b><%=course.name%> with <%= course.prof %></b></h3>
+  <% if course.books.first.title == "Could not find the specified course." %> 
+    <p>Check your school's online course portal for the books for this class.</p>
+   <% elsif course.books.first.title == "No books needed for this class." %> 
+     <p>No course materials are needed for this class! But check with your professor to make sure.</p>
+   <% elsif course.books.first.title == "Materials Not Finalized For This Class." %> 
+     <p>Course materials for this class have not been determined yet. Check with your professor.</p>
+  <% else %>
+    <h3 style="line-height:.2em;"><%= pluralize(course.books.size, 'required book') %>:</h3>
+    <% course.books.each do |book| %>
+      <%= render :partial => 'shared/book', :locals => {:book => book} %>
+    <% end %>
+  <% end %>
+  </div>
+<% end %>
+<% if session[:remote_pag] == true%>
+  <div class="paginate"><%= paginate matching_courses, :remote => true %></div><br>
+<% else %>
+  <div class="paginate"><%= paginate matching_courses, :remote => false %></div><br>
+<% end %>

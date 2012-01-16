@@ -129,15 +129,6 @@ nav ul {
   margin-bottom:5px;
 }
 
-#spinner{
-  display:none;
-  position:relative;
-  top:9px;
-  left:12px;
-  width:36px;
-  height:36px;
-}
-
 footer {
   position:relative;
   top:-21px;
@@ -153,51 +144,6 @@ footer nav {
 }
 
 
-/* Error Messages */
-/*
-
-.field_with_errors {
-  margin-top: 10px;
-  padding: 2px;
-  background-color: red;
-  display: table;
-}
-
-.field_with_errors label {
-  color: #fff;
-}
-
-#error_explanation {
-  width: 400px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-}
-
-#error_explanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: -7px;
-  background-color: #c00;
-  color: #fff;
-}
-
-#error_explanation p {
-  color: #333;
-  margin-bottom: 0;
-  padding: 5px;
-}
-
-#error_explanation ul li {
-  font-size: 12px;
-  list-style: square;
-}
-
-*/
 
 input[type=text], input[type=password], input[type=url], input[type=email], select, textarea {  
     @include rounded-corners(5px, 5px, 5px, 5px);
@@ -244,6 +190,9 @@ button.fancy_button, a.fancy_button{
   text-decoration:none;
   width: 150px; }
   
+  
+  
+
   
   button.fancy_button.enabled, a.fancy_button.enabled{
     opacity: 1;
@@ -315,25 +264,25 @@ button.fancy_button, a.fancy_button{
         padding:15px;
   }
   button.fancy_button.green, a.fancy_button.green{
-    background-color: green;
     width:175px;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(lighten(green,25%)), to(green));
+    background-color: green;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(lighten(green,15%)), to(green));
     /* Saf4+, Chrome */
-    background-image: -webkit-linear-gradient(top, lighten(green,25%), green);
-    background-image: -moz-linear-gradient(top, lighten(green,25%), green);
-    background-image: -ms-linear-gradient(top, lighten(green,25%), green);
-    background-image: -o-linear-gradient(top, lighten(green,25%), green);
-    background-image: linear-gradient(top, lighten(green,25%), green);
+    background-image: -webkit-linear-gradient(top, lighten(green,15%), green);
+    background-image: -moz-linear-gradient(top, lighten(green,15%), green);
+    background-image: -ms-linear-gradient(top, lighten(green,15%), green);
+    background-image: -o-linear-gradient(top, lighten(green,15%), green);
+    background-image: linear-gradient(top, lighten(green,15%), green);
     color: #fff;
     opacity: 1;
     text-shadow: none;
     &.enabled:hover{
       background-color: lighten(green,15%);
-      background-image: -webkit-linear-gradient(top, lighten(green,20%), lighten(green,10%));
-      background-image: -moz-linear-gradient(top, lighten(green,20%), lighten(green,10%));
-      background-image: -ms-linear-gradient(top, lighten(green,20%), lighten(green,10%));
-      background-image: -o-linear-gradient(top, lighten(green,20%), lighten(green,10%));
-      background-image: linear-gradient(top, lighten(green,20%), lighten(green,10%));
+      background-image: -webkit-linear-gradient(top, lighten(green,10%), lighten(green,10%));
+      background-image: -moz-linear-gradient(top, lighten(green,10%), lighten(green,10%));
+      background-image: -ms-linear-gradient(top, lighten(green,10%), lighten(green,10%));
+      background-image: -o-linear-gradient(top, lighten(green,10%), lighten(green,10%));
+      background-image: linear-gradient(top, lighten(green,10%), lighten(green,10%));
       text-shadow:none;
     }
     &.enabled:active{
@@ -358,6 +307,17 @@ button.fancy_button, a.fancy_button{
       cursor:default;
     }
   }
+  
+  button.fancy_button.small, a.fancy_button.small{
+    position:absolute;
+    font: 14px 'Duru Sans', sans-serif;
+    right:3px;
+    top:2px;
+    padding:3px;
+    line-height:1;
+    width:70px;
+  }
+  
   
   .fb-like{
     position:relative;

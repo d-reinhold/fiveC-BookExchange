@@ -1,10 +1,10 @@
 <div class="sell-form-divider">
-	<div class="field"><%= l.text_field :title, :placeholder => 'Book Title', :class => 'book_title' %></div>
-	<div class="field"><%= l.text_field :author, :placeholder => "Author(s)", :class => 'book_author '%></div>
-	<div class="field">$<%= l.text_field :price_dollars, :placeholder => 'dollars', :class => 'price_dollars' %><%= l.select( :price_cents, [['.00', '00'],['.25','25'], ['.50','50'], ['.75','75']], :default => '.00') %></div>
-</div>
+	<div class="hidden"><%= l.hidden_field :book_id, :value => params[:book_id] %></div>
+	<div class="field" style="padding-bottom:10px">$<%= l.text_field :price_dollars, :placeholder => 'dollars', :class => 'price_dollars' %><%= l.select( :price_cents, [['.00', '00'],['.25','25'], ['.50','50'], ['.75','75']], :default => '.00') %></div>
+	<div class="field" style="padding-bottom:12px"><%= l.select( :condition, [['---Condition---', '--Condition--'],['New','New'], ['Lightly Used','Lightly Used'], ['Heavily Used','Heavily Used'], ['Falling Apart','Falling Apart']], :default => '---Condition---') %></div>
+	</div>
+	
 <div class="sell-form-divider">
-  <div class="form-message"><p id="title">Enter the title of your book here!</p></div>
-  <div class="form-message"><p id="author">Who's the author?</p></div>
 	<div class="form-message"><p id="price_dollars">How much are you asking for?</p></div>
+	<div class="form-message"><p id="condition">What condition is it in?</p></div>
 </div>

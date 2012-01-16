@@ -1,0 +1,18 @@
+<div class="required-books">
+	<%= render :partial => "shared/fancy_button", :locals => { :button_id => "#{book.id}", :button_class => 'sell-this-book small green enabled', :text => "Sell this book!"} %>
+ 	<h4 style="margin-bottom:.1em;"><i><%= book.title %></i> <%= "by #{book.author}" unless book.author == '' %></h4>
+   <p class="small"><%="ISBN: #{book.isbn}" unless book.isbn == ''%><%=" • Edition: #{book.edition}" unless book.edition == ''%></p>
+		<% @available_listings = Array.new %>
+		<% book.listings.each do |listing| %>
+		  <% if listing.transaction.status == 'available'%>
+		    <% @available_listings << listing %>
+		  <% end %>
+	  <% end %>
+   <% if @available_listings.empty? %>
+     No one is selling <i><%=book.title%></i> on the 5C Book Exchange. Since the service is new, check back in a few days to see if someone has listed it! If you have a copy you want to sell, click the button!<br>
+ </div>
+   <% else %>	
+   	<%= render :partial => 'shared/listings', :locals => { :relation => @available_listings } %>
+   </div>
+ </div>
+   <% end %>

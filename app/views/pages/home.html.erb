@@ -1,24 +1,9 @@
-<div id="search-sell-container">
-	<div id="search-sell-full">
-		<div id="search-sell-buttons">
-		  <ul>
-			  <li><a href="#" id="buttons-search">Search for Books!</a></li>
-				<li><a href="#" id="buttons-sell">Sell your Books!</a></li>
-			</ul>
-		</div>
-		<div id="search-sell-main">
-			<div id="search-for-books">
-				<%= render 'shared/searchbar' %>
-				<div id="results"></div>
-			</div>
-
-			<div id="sell-your-books">
-				<% if signed_in? %>
-				  <%= render 'shared/sell_form_signed_in' %>
-				<% else %>
-				  <%= render 'shared/sell_form_signed_out' %>
-				<% end %>
-			</div>
-		</div>
+<h3>Welcome to the 5C Book Exchange!</h3>
+<div id="main">
+	<h4 class="centered">To get started, just enter the title of the book you are trying to buy or sell.</h4>
+		<p class="centered">Alternatively, you can search for that book by the course that requires it.</p>
+	<div id="search-for-books">
+		<%= render 'shared/searchbar' %>
+		<div id="results"></div>
 	</div>
 </div>

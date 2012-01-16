@@ -9,7 +9,7 @@
 		<%end%>
     <h3><%= @buyer_name %>, you cancelled a request on the 5C Book Exchange!</h3>
     <p>
-      We're sorry, sometimes these things just don't work out. Hopefully this was a mutual decision between you and <%= @seller.name %>! Whatever the reason, the request was cancelled, and you no longer have any obligation to buy <i><%=@transaction.listing.title%></i> from <%= @seller.name.split(' ')[0] %>. If you still want a copy of <i><%=@transaction.listing.title%></i>, you can go to the <a href="<%= @url %>">5C Book Exchange</a> search for another seller!<br>
+      We're sorry, sometimes these things just don't work out. Hopefully this was a mutual decision between you and <%= @seller.name %>! Whatever the reason, the request was cancelled, and you no longer have any obligation to buy <i><%=@transaction.listing.book.title%></i> from <%= @seller.name.split(' ')[0] %>. If you still want a copy of <i><%=@transaction.listing.book.title%></i>, you can go to the <a href="<%= @url %>">5C Book Exchange</a> search for another seller!<br>
     </p>
     <p>To buy and sell more textbooks, or to check the status of your books, go to the <a href="<%= @url %>">5C Book Exchange</a> and log in using your 5C email address.<br/> 
     </p>

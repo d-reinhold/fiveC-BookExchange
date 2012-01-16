@@ -1,0 +1,13 @@
+<div id="top">
+	<%= link_to "back to search results", listings_path %>
+</div>
+<div id="main">
+	<h3>You are selling <i><%= @book.title%></i></h3>
+	<h4><%= "Author: #{@book.author}" unless @book.author == '' %><%="  • ISBN: #{@book.isbn}" unless @book.isbn == ''%><%="  • Edition: #{@book.edition}" unless @book.edition == ''%></h4>
+	<% if signed_in? %>
+		<%= render :partial => 'shared/sell_form_signed_in' %>
+	<% else %>
+		<%= render :partial => 'shared/sell_form_signed_out' %>
+	<% end %>
+</div>
+

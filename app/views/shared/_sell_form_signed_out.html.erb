@@ -1,16 +1,15 @@
 <div id="sell-form-required-email">
   <%= form_tag :check_email, :id => "check-email-form", :remote => true do %>
 	  <div class="sell-form-divider">
+		  <%= hidden_field_tag :book_id_checker, params[:book_id] %>
 			<div class="field"><%= text_field_tag :email_checker, nil, :placeholder => 'Email Address' %></div>	
-		  <div class="field"><%= text_field_tag :title_checker, nil, :placeholder => 'Book Title', :class => 'book_title' %></div>
-		  <div class="field"><%= text_field_tag :author_checker, nil, :placeholder => "Author(s)", :class => 'book_author' %></div>
 			<div class="field">$<%= text_field_tag :price_dollars_checker, nil, :placeholder => 'dollars', :class => 'price_dollars' %><%= select_tag :price_cents_checker,  "<option value='00' selected='selected'> .00</option> <option value='25'>.25</option> <option value='50'>.50</option> <option value ='75'>.75</option>".html_safe, :class => 'cents-select' %></div>
-		</div>
+			<div class="field" style="margin-top:15px"><%= select_tag :condition_checker,  "<option value='---Condition---' selected='selected'>---Condition---</option> <option value='New'>New</option> <option value='Lightly Used'>Lightly Used</option> <option value ='Heavily Used'>Heavily Used</option><option value ='Falling Apart'>Falling Apart</option>".html_safe, :class => 'condition-select' %></div>
+	  </div>
 		<div class="sell-form-divider">
 	    <div class="form-message"><p id="email">What's your 5C email address?</p></div>
-		  <div class="form-message"><p id="title">What book are you selling?</p></div>
-		  <div class="form-message"><p id="author">Who's the author?</p></div>
 			<div class="form-message"><p id="price_dollars">How much are you asking for?</p></div>
+			<div class="form-message"><p id="condition">What's the condition?</p></div>
 		</div>
 		<div class="clear"></div>
 		<div id="bottom_button">
@@ -19,6 +18,5 @@
 		<div class="clear"></div>
   <% end %>
 </div>
-<div id="sell-form-validated-email">
+<div id="sell-form-validated-email" style="display:block;">
 </div>
-

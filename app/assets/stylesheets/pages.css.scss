@@ -9,82 +9,21 @@ p.about {
   text-indent: 12px;
 }
 
-
-#search-sell-container{
-  position:relative;
-  padding: 8px;
-}
-
-#search-sell-full {
+#main {
 	position: relative;
 	background-color:$search-sell-background-blue;
-	margin-top: 45px;
+	padding:16px;
 	max-width: 680px;
 	min-width: 675px;
 	margin-left: auto;
 	margin-right: auto;
 	width: 100%;
-	@include rounded-corners(0px, 10px, 10px, 10px)
-}
-
-#search-sell-buttons {
-	/*background-color: white;*/
-	max-width: 680px;
-  /*border: 1px solid black;*/
-	
-}
-
-#search-sell-buttons ul {
-	list-style: none;
-	padding:0px;
-	margin:0px;
-	max-width: 680px;
-}
-
-#search-sell-buttons ul li {
-	display: inline;
-}
-
-#search-sell-buttons li a {
-	font-size: 20px;
-	position:relative;
-	top:-34px;
-	color: #fff;
-	padding-bottom: 8px;
-	text-decoration: none;
-  @include rounded-corners(10px, 10px, 0px, 0px)
-}
-
-#search-sell-buttons li a#buttons-search {
-  border-top: 20px solid $search-sell-background-blue;
-  border-left: 40px solid $search-sell-background-blue;
-  border-right: 40px solid $search-sell-background-blue;
-  background-color: $search-sell-background-blue;
-}
-
-#search-sell-buttons li a#buttons-sell {
-  border-top: 20px solid $search-sell-buttons-inactive-blue;
-  border-left: 40px solid $search-sell-buttons-inactive-blue;
-  border-right: 40px solid $search-sell-buttons-inactive-blue;
-  background-color: $search-sell-buttons-inactive-blue;
+	@include rounded-corners(10px, 10px, 10px, 10px)
 }
 
 
-#search-sell-main {
-	padding-bottom: 15px;
-}
-#search-for-books {
-  padding:9px;
-	display:block;
-	min-height: 200px;
-}
 
-#sell-your-books {
-	display:none;
-	min-height:280px;
-}
-
-#search-for-books div.searchbar{
+div.searchbar{
   text-align: center;    
   input {
     width:350px;
@@ -111,20 +50,11 @@ p.about {
   display:none;
 }
 
-#sell-form-optional {
-  min-height: 220px;  
-  position: relative;
-	display: block;
-}
-
-#sell-form-signed-in #sell-form-optional{
-  display:none;
-}
 
 #sell-form-final {
   min-height: 220px;  
   position: relative;
-	display: none;
+	display: block;
 	padding:9px;
 }
 
@@ -134,7 +64,7 @@ p.about {
 	min-height:220px;
 	
 }
-.sell-form-divider.static{
+.sell-form-divider.static{  
 	min-height: 70px;
 }
 
@@ -145,24 +75,23 @@ textarea{
   columns:36;
 }
 
-#search-sell-main input[type=text], input[type=password], input[type=url], input[type=email],{
+#main input[type=text], input[type=password], input[type=url], input[type=email]{
   width: 250px;
 }
 
 input#search{
-  
   line-height:2em;
   font-size:12pt;
   
 }
 
-#search-sell-main input.price_dollars, input.price_dollars {
+#main input.price_dollars, input.price_dollars {
   width: 4em; 
   margin-left: 0px;
   margin-right: 0px;
 }
 
-#search-sell-main input.price_cents, input.price_cents {
+#main input.price_cents, input.price_cents {
   width: 3em; 
   margin-left: 0px;
   margin-right: 0px;
@@ -203,7 +132,6 @@ input.isbn{
 
 
 .sell-form-divider .form-message {
-  border: 1px solid $search-sell-background-blue;
   padding-top:7px;
   margin-right:0px;
   margin-top:15px;
@@ -214,7 +142,6 @@ input.isbn{
 
 
 .sell-form-divider .form-message.static {
-  border: none; 
   text-align:left;
 }
 
@@ -240,6 +167,6 @@ input.isbn{
 
 #sell-form-optional-button, #sell-form-signed-in-final-button {
   position:relative;
-  left:-90px;
 }
+
 

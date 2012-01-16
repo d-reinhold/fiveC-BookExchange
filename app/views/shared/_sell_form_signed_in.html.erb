@@ -1,21 +1,12 @@
 <div id="sell-form-signed-in">
 	<%= form_for @listing do |f| %>
-	  <%= render :partial => "shared/error_messages", :locals => { :object => @listing} %>
 	  <div id="sell-form-required">
 	    <%= render 'shared/sell_form_required', :l => f %>
-			<div class="clear"></div>
+		  <div class="clear"></div>
 			<div id="bottom_button">
-			<%= render :partial => "shared/fancy_button", :locals => { :button_id => "sell-form-signed-in-required-button", :button_class => 'disabled', :text => "Continue!"} %>
+			<%= render :partial => "shared/fancy_button", :locals => { :button_id => "sell-form-signed-in-final-button", :button_class => 'disabled', :text => "Post Your Book!"} %>
 			</div>
-					<div class="clear"></div>
-		</div>
-		<div id="sell-form-optional">
-	    <%= render 'shared/sell_form_optional', :l => f %>
 			<div class="clear"></div>
-			<div id="bottom_button">
-			<%= render :partial => "shared/fancy_button", :locals => { :button_id => "sell-form-signed-in-final-button", :button_class => 'enabled', :text => "Post Your Book!"} %>
-			</div>
-					<div class="clear"></div>
 		</div>
 	<% end %>
-</idv>
+</div>

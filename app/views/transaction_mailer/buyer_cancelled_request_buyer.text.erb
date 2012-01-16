@@ -3,7 +3,7 @@
 <%end%>
 <%= @buyer_name %>, you cancelled a request on the 5C Book Exchange!
 
-  We're sorry, sometimes these things just don't work out. Hopefully this was a mutual decision between you and <%= @seller.name %>! Whatever the reason, the request was cancelled, and you no longer have any obligation to buy <%=@transaction.listing.title%> from <%= @seller.name.split(' ')[0] %>. If you still want a copy of <%=@transaction.listing.title%>, you can go to <%= @url %> and search for another seller!
+  We're sorry, sometimes these things just don't work out. Hopefully this was a mutual decision between you and <%= @seller.name %>! Whatever the reason, the request was cancelled, and you no longer have any obligation to buy <%=@transaction.listing.book.title%> from <%= @seller.name.split(' ')[0] %>. If you still want a copy of <%=@transaction.listing.book.title%>, you can go to <%= @url %> and search for another seller!
 
 To buy and sell more textbooks, or to check the status of your books, go to <%= @url %> and log in using your 5C email address.
 

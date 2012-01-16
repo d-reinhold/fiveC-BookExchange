@@ -36,7 +36,6 @@
 
 #edit-listing {
   position:relative;
-  min-height:350px;
 }
 
 #index-background{
@@ -74,6 +73,7 @@
 
 .required-books {
   @include rounded-corners(5px, 5px, 5px, 5px);
+  position: relative;
   border:1px dashed gray;
   padding:3px;
   &:hover{
@@ -90,5 +90,8 @@ nav.pagination {
   float:right;
   @include rounded-corners(5px, 5px, 5px, 5px);
 }  
+
+.sell-this-book {
   
+}
 

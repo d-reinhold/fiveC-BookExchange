@@ -1,19 +1,10 @@
 <%= form_for @user do |f| %>
-  <%= render :partial => "shared/error_messages", :locals => { :object => @user} %>
   <div id="sell-form-required-hidden">
 	  <div class="sell-form-divider">
 			<%= f.text_field :email %>
 			<%= f.fields_for :listings do |l| %>	
 			  <%= render :partial => "shared/sell_form_required", :locals => { :l => l} %>
 		</div>
-	</div>
-	<div id="sell-form-optional">
-	  <%= render :partial => "shared/sell_form_optional", :locals => { :l => l} %>
-		<div class="clear"></div>
-		<div id="bottom_button">
-	<%= render :partial => "shared/fancy_button", :locals => { :button_id => "sell-form-optional-button", :button_class => 'enabled', :text => "Continue!"} %>
-	</div>
-			<div class="clear"></div>
 	</div>
   <% end %>
 	<div id="sell-form-final">

@@ -9,7 +9,7 @@
 		<%end%>
     <h3><%= @seller.name %>, someone has requested one of your books!</h3>
     <p>
-      <%= @buyer_name %> wants to buy <i><%=@transaction.listing.title%></i>! You can expect an email from <%=@buyer_name.split(' ')[0]%> soon! If you don't hear from <%=@buyer_name.split(' ')[0]%> in a few days, you can contact him/her at <%=@buyer_email%> to set up a time and place to buy your book.<br>
+      <%= @buyer_name %> wants to buy <i><%=@transaction.listing.book.title%></i>! You can expect an email from <%=@buyer_name.split(' ')[0]%> soon! If you don't hear from <%=@buyer_name.split(' ')[0]%> in a few days, you can contact him/her at <%=@buyer_email%> to set up a time and place to buy your book.<br>
     </p>
     <p>To buy and sell more textbooks, or to check the status of your books, go to the <a href="<%= @url %>">5C Book Exchange</a> and log in using your 5C email address.<br/> 
     </p>

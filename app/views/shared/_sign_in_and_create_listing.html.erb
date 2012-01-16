@@ -1,15 +1,6 @@
 <%= form_for @listing do |f| %>
-  <%= render :partial => "shared/error_messages", :locals => { :object => @listing} %>
   <div id="sell-form-required-hidden">
 	  <%= render :partial => "shared/sell_form_required", :locals => { :l => f} %>
-	</div>
-	<div id="sell-form-optional">
-	  <%= render :partial => "shared/sell_form_optional", :locals => { :l => f} %>
-		<div class="clear"></div>
-		<div id="bottom_button">
-		<%= render :partial => "shared/fancy_button", :locals => { :button_id => "sell-form-optional-button", :button_class => 'enabled', :text => "Continue!"} %>
-		</div>
-				<div class="clear"></div>
 	</div>
 	<% end %>
 	<div id="sell-form-final">
@@ -21,12 +12,12 @@
 		  <div class="field">
 		    <%= password_field_tag :password, nil, :id => :user_password, :placeholder => "Password" %>
 		  </div>
-		<% end %>
-		<br>
-		<br>
+		  <% end %>
+	  	<br>
+		  <br>
 			<div class="form-message">
 				<p id="final-message">
-					We noticed you already have an account at the 5C Book Exchange! All we need now is your password to sell your book!
+					We noticed you already have an account on the 5C Book Exchange! All we need now is your password to sell your book!
 				</p>
 			</div>
 	  </div>
@@ -36,6 +27,6 @@
 		
 		<div class="clear"></div>
 		<div id="bottom_button">
-<%= render :partial => "shared/fancy_button", :locals => { :button_id => "sell-form-final-signin-button", :button_class => 'disabled', :text => "Post Your Book!"} %>
-</div>
-		<div class="clear"></div>
+      <%= render :partial => "shared/fancy_button", :locals => { :button_id => "sell-form-final-signin-button", :button_class => 'disabled', :text => "Post Your Book!"} %>
+    </div>
+  <div class="clear"></div>

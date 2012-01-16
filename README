@@ -20,11 +20,12 @@ Final TODO list:
 
 For next version:
 Possibly use Cufon for fonts?
+'sell this book' button in search results leads to a simpler sell form with auto ties to the Book database!
 
 
 
 BUG LIST:
-A search for 'differential equations' doesn't return 'Differential Equations/Modeling'
+pagination doesnt work when formatting html
 when a book exists but is unavailable, searching for it will display an empty table.
 deliver @pitzer.edu to @students.pitzer.edu??
 fix model validations for listings (via edit)

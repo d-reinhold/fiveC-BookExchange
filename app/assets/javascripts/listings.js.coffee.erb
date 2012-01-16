@@ -23,6 +23,9 @@ $(document).ready ->
       alert "enabled"
       $("#delete-form").submit()
 
+  $("body").delegate ".sell-this-book", "click", (event) ->
+    location.href= '/listings/new?book_id=' + @.id
+
 
 
   $("body").delegate "#back-to-listing-details", "click", (event) ->

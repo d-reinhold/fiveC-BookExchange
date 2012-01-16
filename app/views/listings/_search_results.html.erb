@@ -1,67 +1,31 @@
 <h2> Search Results </h2>
-<% if @course %>
-  <% if @matching_courses.empty? %>
-    <p> Sorry, no courses matched your search! Please try another query.</p>
-  <% else %>
-    <% num = 0 %>
-    <div class="paginate"><%= paginate @matching_courses, :remote => true%></div><br>
-    <% @matching_courses.each do |course| %>
-      <% num += 1%>
-      <% if num % 2 == 0 %>
-        <div class="course even">
-	    <% else %>
-	      <div class="course odd">
-		  <% end %>
-      <h2 style="line-height:.5em;"><%= course.department%><%=course.number%> <%= course.school%>-<%= course.section%></h2>
-      <h3><b><%=course.name%> with <%= course.prof %></b></h3>
-      <% unless course.books.empty? %>
-	      <% if course.books.first.title == "Could not find the specified course." %> 
-	        <p>Check your school's online course portal for the books for this class.</p>
-		     <% elsif course.books.first.title == "No books needed for this class." %> 
-		       <p>No course materials are needed for this class! But check with your professor to make sure.</p>
-		     <% elsif course.books.first.title == "Materials Not Finalized For This Class." %> 
-		       <p>Course materials for this class have not been determined yet. Check with your professor.</p>
-		    <% else %>
-		      <h3 style="line-height:.2em;"><%= pluralize(course.books.size, 'required book') %>:</h3>
-		      <% course.books.each do |book| %>
-		        <div class="required-books">
-		        	<h4 style="margin-bottom:.1em;"><i><%= book.title %></i> <%= "by #{book.author}" unless book.author == '' %></h4>
-		          <p class="small"><%="ISBN: #{book.isbn}" unless book.isbn == ''%><%=" • Edition: #{book.edition}" unless book.edition == ''%></p>
-							<% @available_listings = Array.new %>
-							<% book.listings.each do |listing| %>
-							  <% if listing.transaction.status == 'available'%>
-							    <% @available_listings << listing %>
-							  <% end %>
-						  <% end %>
-			        <% if @available_listings.empty? %>
-			          Sorry, no one is selling <i><%=book.title%></i> on the 5C Book Exchange. Since the service is new, check back in a few days to see if someone has listed it!<br>
-			</div>
-		          <% else %>	
-		  	      	<%= render :partial => 'shared/listings_by_course', :locals => { :relation => @available_listings } %>
-		</div>
-		</div>
-		          <% end %>
-	        <% end %>
-	      <% end %>
-	    <% end %>
-      </div>
-    <% end %>
-    <div class="paginate"><%= paginate @matching_courses, :remote => true%></div>
-  <% end %>    
-<% elsif @keyword.blank? %>
+<% if @query.nil? # no search terms were entered %>
   <div class="paginate"><%= paginate @listings, :remote => true%></div><br>
   <%= render :partial => 'shared/listings_table', :locals => { :header => "All Books", :relation => @listings } %>
   <div class="paginate"><%= paginate @listings, :remote => true%></div><br>
-<% elsif @listings_title.empty? and @listings_author.empty? and @listings_isbn.empty?  %>
-  <p> Sorry, no books matched your search! Please try another query.</p>
-<% else %>
-  <% unless @listings_title.empty? %>
-  	<%= render :partial => 'shared/listings_table', :locals => { :header => "Matching Title", :relation => @listings_title } %>
+<% elsif @matching_courses # searching by course %>
+  <% if @matching_courses.empty? %>
+    <p> Sorry, no courses matched your search! Please try another query.</p>
+  <% else %>
+    <%= render :partial => 'shared/courses', :locals => { :matching_courses => @matching_courses }%>
   <% end %>
-  <% unless @listings_author.empty? %>
-  	<%= render :partial => 'shared/listings_table', :locals => { :header => "Matching Author", :relation => @listings_author } %>
-  <% end %>
-  <% unless @listings_isbn.empty? %>
-  	<%= render :partial => 'shared/listings_table', :locals => { :header => "Matching ISBN", :relation => @listings_isbn } %>
-  <% end %>
+<% elsif @matching_books %>
+	<% if @matching_books.empty?  %>
+	  <p> Sorry, no books matched your search! Please try another query.</p>
+	<% else %>
+		<% if session[:remote_pag] == true%>
+		  <div class="paginate"><%= paginate @matching_books, :remote => true %></div><br>
+		<% else %>
+		  <div class="paginate"><%= paginate @matching_books, :remote => false %></div><br>
+		<% end %>
+    <% @matching_books.each do |book| %>
+      <%= render :partial => 'shared/book', :locals => { :book => book }%>
+      <br>
+	  <% end %>
+		<% if session[:remote_pag] == true%>
+		  <div class="paginate"><%= paginate @matching_books, :remote => true %></div><br>
+		<% else %>
+		  <div class="paginate"><%= paginate @matching_books, :remote => false %></div><br>
+		<% end %>
+	<% end %>
 <% end %>
