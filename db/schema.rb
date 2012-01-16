@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120116062029) do
+ActiveRecord::Schema.define(:version => 20120109032037) do
 
   create_table "books", :force => true do |t|
     t.string   "title"
@@ -53,6 +53,11 @@ ActiveRecord::Schema.define(:version => 20120116062029) do
     t.datetime "updated_at"
     t.integer  "book_id",       :default => -1
     t.string   "price_cents",   :default => "00"
+    t.string   "title"
+    t.string   "author"
+    t.string   "isbn"
+    t.string   "edition"
+    t.string   "description"
   end
 
   create_table "transactions", :force => true do |t|
