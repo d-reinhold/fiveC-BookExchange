@@ -359,6 +359,16 @@ button.fancy_button, a.fancy_button{
     }
   }
   
+  button.fancy_button.small, a.fancy_button.small{
+    position:absolute;
+    font: 14px 'Duru Sans', sans-serif;
+    right:3px;
+    top:2px;
+    padding:3px;
+    line-height:1;
+    width:70px;
+  }
+  
   .fb-like{
     position:relative;
     top:-17px;

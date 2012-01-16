@@ -25,6 +25,7 @@
 		      <h3 style="line-height:.2em;"><%= pluralize(course.books.size, 'required book') %>:</h3>
 		      <% course.books.each do |book| %>
 		        <div class="required-books">
+				      <%= render :partial => "shared/fancy_button", :locals => { :button_id => "#{book.id}", :button_class => 'sell-this-book small green enabled', :text => "Sell this book!"} %>
 		        	<h4 style="margin-bottom:.1em;"><i><%= book.title %></i> <%= "by #{book.author}" unless book.author == '' %></h4>
 		          <p class="small"><%="ISBN: #{book.isbn}" unless book.isbn == ''%><%=" • Edition: #{book.edition}" unless book.edition == ''%></p>
 							<% @available_listings = Array.new %>
