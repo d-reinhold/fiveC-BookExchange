@@ -1,3 +1,4 @@
+require "rack/google_analytics"
 FiveCBookExchange::Application.configure do
   
   
