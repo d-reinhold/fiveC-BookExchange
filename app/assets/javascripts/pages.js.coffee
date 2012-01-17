@@ -10,25 +10,44 @@ PASSWORD_READY = false
 CPASSWORD_READY = false
 
 $(document).ready ->
-  $("#user_email").val("")
-  $("#user_name").val("")
-  $("#user_password").val("")
-  $("#user_password_confirmation").val("")
-  $("#email_checker").val("")
-  $("#name_checker").val("")
-  $("#title_checker").val('')
-  $("#author_checker").val('')
-  $("#user_listings_attributes_0_title").val('')
-  $("#user_listings_attributes_0_author").val('')
-  $("#price_dollars_checker").val('')
-  $("#price_cents_checker").val('')
-  $("#dollas").val("")
-  $("#cents").val(".00")
-  $("#user_listings_attributes_0_edition").val("")
-  $("#user_listings_attributes_0_isbn").val("")
-  $("#user_listings_attributes_0_description").val("")
-  $("#user_listings_attributes_0_condition").val("---Condition---")
+  clear_form()
   check_form()
+  
+  
+  $("body").delegate ".sell-this-book", "click", (event) ->
+    $(".price_dollars").val("")
+    $("#email_checker").val("")
+    $("#sell-form-required").css("display","block")
+    $("#sell-form-required-email").css("display","block")
+    $("#sell-form-optional").css("display","none")
+    $("#sell-form-optional").css("display","none")
+    $("#sell-form-final").css("display","none")
+    alert $("ul.data li#title-"+@.id).text()
+    alert $("ul.data li#author-"+@.id).text()
+    alert $("ul.data li#isbn-"+@.id).text()
+    alert $("ul.data li#edition-"+@.id).text()
+    remove_status("p#email","What's your 5C email address?")
+    remove_status("p#price_dollars","How much are you asking for?")
+    add_success("p#title","What's the title?") 
+    add_success("p#author","Who's the author!") 
+    $(".book_title").val($("ul.data li#title-"+@.id).text())
+    $(".book_author").val($("ul.data li#author-"+@.id).text())
+    alert $("#listing_isbn").val()
+    alert $("ul.data li#isbn-"+@.id).text()
+    $(".isbn").val($("ul.data li#isbn-"+@.id).text())
+    $("#listing_isbn").val($("ul.data li#isbn-"+@.id).text())
+    $("#listing_edition").val($("ul.data li#edition-"+@.id).text())
+    $("#search-for-books").fadeOut "slow", ->
+      $("#sell-your-books").css("display","block")
+      $("a#buttons-search").css("border-top", "20px solid #11379E")
+      $("a#buttons-search").css("border-left", "40px solid #11379E")
+      $("a#buttons-search").css("border-right", "40px solid #11379E")
+      $("a#buttons-search").css("background-color", "#11379E")
+      $("a#buttons-sell").css("border-top", "20px solid #71B1F2")
+      $("a#buttons-sell").css("border-left", "40px solid #71B1F2")
+      $("a#buttons-sell").css("border-right", "40px solid #71B1F2")
+      $("a#buttons-sell").css("background-color", "#71B1F2")
+
 
 
   $("a#buttons-sell").click (event) ->
@@ -133,6 +152,9 @@ $(document).ready ->
       $("#sell-form-required").fadeOut "slow", ->
         $("#sell-form-required").css("display","none")
         $("#sell-form-optional").css("display","block")
+      
+      
+      
       
     
         
@@ -272,6 +294,25 @@ remove_status = (element,message) ->
   $(element).parent().css("border", "1px solid #5691A9") 
   $(element).parent().css("background-color", "#8DD8EA")
   $(element).text(message) 
+
+clear_form = () ->
+  $("#user_email").val("")
+  $("#user_name").val("")
+  $("#user_password").val("")
+  $("#user_password_confirmation").val("")
+  $("#email_checker").val("")
+  $("#name_checker").val("")
+  $("#title_checker").val('')
+  $("#author_checker").val('')
+  $("#new_listing_title").val('')
+  $("#new_listing_author").val('')
+  $(".book_title").val('')
+  $("#dollas").val("")
+  $("#cents").val(".00")
+  $("#user_listings_attributes_0_edition").val("")
+  $("#user_listings_attributes_0_isbn").val("")
+  $("#user_listings_attributes_0_description").val("")
+  $("#user_listings_attributes_0_condition").val("---Condition---")
 
 check_form = () ->
   if PASSWORD_READY

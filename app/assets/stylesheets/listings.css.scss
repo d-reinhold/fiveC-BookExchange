@@ -73,6 +73,7 @@
 }
 
 .required-books {
+  position: relative;
   @include rounded-corners(5px, 5px, 5px, 5px);
   border:1px dashed gray;
   padding:3px;

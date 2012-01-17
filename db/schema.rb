@@ -47,27 +47,27 @@ ActiveRecord::Schema.define(:version => 20120109032037) do
 
   create_table "listings", :force => true do |t|
     t.integer  "user_id"
-    t.string   "title"
-    t.string   "isbn"
-    t.string   "edition"
-    t.string   "author"
     t.integer  "price_dollars"
-    t.string   "description"
     t.string   "condition"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "book_id",       :default => -1
     t.string   "price_cents",   :default => "00"
+    t.string   "title"
+    t.string   "author"
+    t.string   "isbn"
+    t.string   "edition"
+    t.string   "description"
   end
 
   create_table "transactions", :force => true do |t|
     t.integer  "listing_id"
-    t.string   "buyer_email", :default => "not set"
-    t.string   "buyer_name",  :default => "not set"
     t.string   "status",      :default => "available"
     t.string   "sell_date",   :default => "not sold"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "buyer_email"
+    t.string   "buyer_name"
   end
 
   create_table "users", :force => true do |t|

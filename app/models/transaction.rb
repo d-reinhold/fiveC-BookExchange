@@ -2,6 +2,10 @@ class Transaction < ActiveRecord::Base
   attr_accessible :buyer_email, :buyer_name, :id
   belongs_to :listing
   #email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  before_validation(:on => :create) do
+    self.buyer_email = "not set"
+    self.buyer_name = "not set"
+  end
   
   validates :buyer_email, :presence => true
   validates :buyer_name, :presence => true

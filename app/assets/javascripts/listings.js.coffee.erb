@@ -21,8 +21,7 @@ $(document).ready ->
   $("body").delegate ".delete-listing-button", "click", (event) ->
     if $(".delete-listing-button").hasClass("enabled")
       alert "enabled"
-      $("#delete-form").submit()
-
+      $("#delete-form").submit()  
 
 
   $("body").delegate "#back-to-listing-details", "click", (event) ->
