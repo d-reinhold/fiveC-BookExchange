@@ -23,6 +23,7 @@ group :assets do
   gem 'sass-rails', "  ~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
+  gem 'rack-google_analytics', :require => "rack/google_analytics"
 end
 
 gem 'jquery-rails'

@@ -10,6 +10,19 @@
 	  <%= javascript_include_tag "application" %>
 	  <%= csrf_meta_tags %>
     <%= yield(:head) %>
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-28381592-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
   </head>
 	<body>
 		<% if Rails.env.staging?%>
@@ -22,7 +35,6 @@
 			<br>
 		  <div class="top-banner"><h3>This website requires Javascript! Please enable Javascript in your browser.</h3></div>
 		</noscript>
-		<!--
 		<div id="fb-root"></div>
 		<script>
 		  (function(d, s, id) {
@@ -33,12 +45,9 @@
 		    fjs.parentNode.insertBefore(js, fjs);
 		  }(document, 'script', 'facebook-jssdk'));
 		</script>
-		-->
 	  <div class="container">
 		  <%= render 'layouts/header' %>
-		<!--
 		  <div class="fb-like" data-href="http://www.5cbookexchange.com" data-send="false" data-width="450" data-show-faces="false"></div>
-		-->
 			<section class="round">
 				<div class="loading">
 					<p>Processing request..</p>
