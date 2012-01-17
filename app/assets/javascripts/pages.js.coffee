@@ -10,44 +10,33 @@ PASSWORD_READY = false
 CPASSWORD_READY = false
 
 $(document).ready ->
-  clear_form()
-  check_form()
-  
-  
-  $("body").delegate ".sell-this-book", "click", (event) ->
-    $(".price_dollars").val("")
-    $("#email_checker").val("")
-    $("#sell-form-required").css("display","block")
-    $("#sell-form-required-email").css("display","block")
-    $("#sell-form-optional").css("display","none")
-    $("#sell-form-optional").css("display","none")
-    $("#sell-form-final").css("display","none")
-    #alert $("ul.data li#title-"+@.id).text()
-    #alert $("ul.data li#author-"+@.id).text()
-    #alert $("ul.data li#isbn-"+@.id).text()
-    #alert $("ul.data li#edition-"+@.id).text()
+  if location.href.match(/(\?|&)autofill_title($|&|=)/)
+    #alert "got params!"
     remove_status("p#email","What's your 5C email address?")
     remove_status("p#price_dollars","How much are you asking for?")
     add_success("p#title","What's the title?") 
-    add_success("p#author","Who's the author!") 
-    $(".book_title").val($("ul.data li#title-"+@.id).text())
-    $(".book_author").val($("ul.data li#author-"+@.id).text())
-    #alert $("#listing_isbn").val()
-    #alert $("ul.data li#isbn-"+@.id).text()
-    $(".isbn").val($("ul.data li#isbn-"+@.id).text())
-    $("#listing_isbn").val($("ul.data li#isbn-"+@.id).text())
-    $("#listing_edition").val($("ul.data li#edition-"+@.id).text())
-    $("#search-for-books").fadeOut "slow", ->
-      $("#sell-your-books").css("display","block")
-      $("a#buttons-search").css("border-top", "20px solid #11379E")
-      $("a#buttons-search").css("border-left", "40px solid #11379E")
-      $("a#buttons-search").css("border-right", "40px solid #11379E")
-      $("a#buttons-search").css("background-color", "#11379E")
-      $("a#buttons-sell").css("border-top", "20px solid #71B1F2")
-      $("a#buttons-sell").css("border-left", "40px solid #71B1F2")
-      $("a#buttons-sell").css("border-right", "40px solid #71B1F2")
-      $("a#buttons-sell").css("background-color", "#71B1F2")
+    add_success("p#author","Who's the author!")
+    $("#sell-your-books").css("display","block")
+    $("#search-for-books").css("display", "none")
+    $("a#buttons-search").css("border-top", "20px solid #11379E")
+    $("a#buttons-search").css("border-left", "40px solid #11379E")
+    $("a#buttons-search").css("border-right", "40px solid #11379E")
+    $("a#buttons-search").css("background-color", "#11379E")
+    $("a#buttons-sell").css("border-top", "20px solid #71B1F2")
+    $("a#buttons-sell").css("border-left", "40px solid #71B1F2")
+    $("a#buttons-sell").css("border-right", "40px solid #71B1F2")
+    $("a#buttons-sell").css("background-color", "#71B1F2")
+    
+  #don't use ajax??
 
+  $("body").delegate ".sell-this-book", "click", (event) ->
+    title = $("ul.data li#title-"+@.id).text()
+    author = $("ul.data li#author-"+@.id).text() 
+    isbn = $("ul.data li#isbn-"+@.id).text()
+    edition = $("ul.data li#edition-"+@.id).text()
+    $(".loading").css "display","block"
+    $("#search-for-books, #index-background").fadeOut "slow", ->
+      location.href= '/?autofill_title=' + title + '&autofill_author=' + author + '&autofill_isbn=' + isbn + '&autofill_edition=' + edition
 
 
   $("a#buttons-sell").click (event) ->
@@ -99,7 +88,6 @@ $(document).ready ->
       $("button#search-button").removeClass("enabled")
       $("button#search-button").addClass("disabled")
       $("button#search-button").html('Searching...')
-      $("#spinner").css("display", "block")
       $("form#search").submit()
 
 

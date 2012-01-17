@@ -74,7 +74,7 @@ class UsersController < ApplicationController
   
   def check_email
     puts "Checking email now.."
-    puts params[:email_checker]
+    puts params
     @user = User.find_by_email(params[:email_checker])
     if @user.nil?
       puts "Email not registered, creating a new user"

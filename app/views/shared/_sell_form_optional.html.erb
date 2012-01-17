@@ -1,6 +1,6 @@
 <div class="sell-form-divider">
-	<div class="field"><%= l.text_field :isbn, :placeholder => 'ISBN', :class => 'isbn' %></div>
-	<div class="field"><%= l.text_field :edition, :placeholder => 'Edition' %></div>
+	<div class="field"><%= l.text_field :isbn, :value => @autofill_isbn, :placeholder => 'ISBN', :class => 'isbn' %></div>
+	<div class="field"><%= l.text_field :edition, :value => @autofill_edition, :placeholder => 'Edition', :class => 'edition' %></div>
 	<div class="field"><%= l.select( :condition, [['---Condition---', '--Condition--'],['New','New'], ['Lightly Used','Lightly Used'], ['Heavily Used','Heavily Used'], ['Falling Apart','Falling Apart']], :default => '---Condition---') %></div>
 	<div class="field"><%= l.text_area :description, :placeholder => 'Give a short description' %></div>
 </div>

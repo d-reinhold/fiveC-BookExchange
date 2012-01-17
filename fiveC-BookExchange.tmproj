@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/assets/javascripts/pages.js.coffee</string>
+	<string>config/environments/production.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -60,7 +60,7 @@
 			<key>filename</key>
 			<string>Gemfile</string>
 			<key>lastUsed</key>
-			<date>2012-01-15T20:51:08Z</date>
+			<date>2012-01-17T07:03:38Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -150,14 +150,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>32</integer>
 				<key>line</key>
-				<integer>13</integer>
+				<integer>25</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>5</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>66</integer>
+				<key>line</key>
+				<integer>25</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>32</integer>
+				<key>line</key>
+				<integer>25</integer>
+			</dict>
 		</dict>
 		<key>Gemfile.lock</key>
 		<dict>
@@ -262,14 +278,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>34</integer>
+				<integer>5</integer>
 				<key>line</key>
-				<integer>34</integer>
+				<integer>35</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>13</integer>
+			<integer>0</integer>
 		</dict>
 		<key>app/assets/javascripts/sessions.js.coffee</key>
 		<dict>
@@ -490,14 +506,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>51</integer>
+				<integer>42</integer>
 				<key>line</key>
-				<integer>26</integer>
+				<integer>13</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>22</integer>
+			<integer>6</integer>
 		</dict>
 		<key>app/controllers/pages_controller.rb</key>
 		<dict>
@@ -872,14 +888,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>11</integer>
 				<key>line</key>
 				<integer>24</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>21</integer>
+			<integer>0</integer>
 		</dict>
 		<key>app/views/listing_mailer/listed_book.html.erb</key>
 		<dict>
@@ -900,14 +916,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>58</integer>
+				<integer>105</integer>
 				<key>line</key>
-				<integer>30</integer>
+				<integer>40</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
-			<integer>0</integer>
+			<integer>82</integer>
 			<key>firstVisibleLine</key>
-			<integer>19</integer>
+			<integer>18</integer>
 		</dict>
 		<key>app/views/listings/edit.html.erb</key>
 		<dict>
@@ -1653,6 +1669,20 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>config/application.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>10</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>1</integer>
+		</dict>
 		<key>config/boot.rb</key>
 		<dict>
 			<key>caret</key>
@@ -1714,9 +1744,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>44</integer>
+				<integer>8</integer>
 				<key>line</key>
-				<integer>11</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -2191,6 +2221,7 @@
 		<string>app/assets/javascripts/pages.js.coffee</string>
 		<string>app/models/listing.rb</string>
 		<string>config/environment.rb</string>
+		<string>config/application.rb</string>
 		<string>app/models/message.rb</string>
 		<string>app/mailers/support_mailer.rb</string>
 		<string>app/views/support_mailer/support_message.text.erb</string>
@@ -2237,6 +2268,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{4, 388}, {750, 670}}</string>
+	<string>{{0, 291}, {750, 487}}</string>
 </dict>
 </plist>

@@ -3,7 +3,15 @@ $("#sell-form-required-email").fadeOut("slow", function() {
   $("#sell-form-validated-email").css("display", "block");
   <% if @user.new_record? %>
     $("#sell-form-validated-email").html("<%=escape_javascript(render ('shared/sign_up_and_create_listing'))%>");
+    var autofill_isbn = location.href.split('autofill_isbn=')[1].split('&')[0]
+    var autofill_edition = location.href.split('autofill_edition=')[1].split('&')[0]
+    $(".isbn").val(autofill_isbn)
+    $(".edition").val(autofill_edition)
   <% else %>
     $("#sell-form-validated-email").html("<%=escape_javascript(render ('shared/sign_in_and_create_listing'))%>");
+    var autofill_isbn = location.href.split('autofill_isbn=')[1].split('&')[0]
+    var autofill_edition = location.href.split('autofill_edition=')[1].split('&')[0]
+    $(".isbn").val(autofill_isbn)
+    $(".edition").val(autofill_edition)
   <% end %>
 });

@@ -1,6 +1,6 @@
 <div class="sell-form-divider">
-	<div class="field"><%= l.text_field :title, :placeholder => 'Book Title', :class => 'book_title' %></div>
-	<div class="field"><%= l.text_field :author, :placeholder => "Author(s)", :class => 'book_author '%></div>
+	<div class="field"><%= l.text_field :title, :value => @autofill_title, :placeholder => 'Book Title', :class => 'book_title' %></div>
+	<div class="field"><%= l.text_field :author, :value => @autofill_author, :placeholder => "Author(s)", :class => 'book_author' %></div>
 	<div class="field">$<%= l.text_field :price_dollars, :placeholder => 'dollars', :class => 'price_dollars' %><%= l.select( :price_cents, [['.00', '00'],['.25','25'], ['.50','50'], ['.75','75']], :default => '.00') %></div>
 </div>
 <div class="sell-form-divider">

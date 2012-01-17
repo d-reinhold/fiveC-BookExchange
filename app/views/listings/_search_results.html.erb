@@ -37,7 +37,7 @@
 		            	<li id="edition-<%=book.id%>-<%=course.id%>"><%= book.edition %></li>
 		            </ul>
 		          </div>
-		          <% if signed_in? and session[:remote_pag] %>
+		          <% if true %>
 				        <%= render :partial => "shared/fancy_button", :locals => { :button_id => "#{book.id}-#{course.id}", :button_class => 'sell-this-book small green enabled', :text => "Sell this book!"} %>
 				      <% end %>
 		        	<h4 style="margin-bottom:.1em;"><i><%= book.title %></i> <%= "by #{book.author}" unless book.author == '' %></h4>
