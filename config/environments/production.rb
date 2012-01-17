@@ -1,4 +1,8 @@
 FiveCBookExchange::Application.configure do
+  
+  
+  config.middleware.use("Rack::GoogleAnalytics", :web_property_id => "UA-28381592-1")
+
   # Settings specified here will take precedence over those in config/application.rb
   # Set up the mailer with SendGrid
   ActionMailer::Base.smtp_settings = {
