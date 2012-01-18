@@ -14,8 +14,8 @@ $(document).ready ->
     #alert "got params!"
     remove_status("p#email","What's your 5C email address?")
     remove_status("p#price_dollars","How much are you asking for?")
-    add_success("p#title","What's the title?") 
-    add_success("p#author","Who's the author!")
+    add_success("p#title","Title") 
+    add_success("p#author","Author")
     $("#sell-your-books").css("display","block")
     $("#search-for-books").css("display", "none")
     $("a#buttons-search").css("border-top", "20px solid #11379E")

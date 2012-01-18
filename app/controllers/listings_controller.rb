@@ -59,10 +59,14 @@ class ListingsController < ApplicationController
 
   def destroy
     puts "about to destroy a listing"
-    Listing.find(params[:id]).destroy
-    flash[:success] = 'Listing deleted!'
+    @listing = Listing.find(params[:id])
+    if @listing.transaction.status != 'available'
+      flash[:error] = 'Someone has requested this book!'
+    else
+      Listing.find(params[:id]).destroy
+      flash[:success] = 'Listing deleted!'
+    end
     redirect_to @current_user
-    
   end
 
   def index
