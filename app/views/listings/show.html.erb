@@ -12,6 +12,14 @@
 		Title: <b><%=@listing.title%></b><br>
 		Author: <b><%=@listing.author%></b><br>
 
+		ISBN: 
+		<% if @listing.isbn == '' or @listing.isbn.nil? %>
+		  <b><%= 'Not Provided' %></b>
+		<% else %>
+		  <b><%=@listing.isbn%></b>
+		<% end %><br>
+
+
 		Edition: 
 		<% if @listing.edition == '' or @listing.edition.nil? %>
 		  <b><%= 'Not Provided' %></b>
