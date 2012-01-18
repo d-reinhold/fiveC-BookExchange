@@ -25,6 +25,10 @@ class Listing < ActiveRecord::Base
   belongs_to :book
   has_one :transaction, :dependent => :destroy
   
+  before_save do
+    self.isbn.gsub!('-','')
+  end
+  
   after_create do
     self.transaction ||= self.build_transaction
   end
