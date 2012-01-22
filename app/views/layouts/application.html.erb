@@ -9,6 +9,7 @@
     <%= stylesheet_link_tag "application" %>
 	  <%= javascript_include_tag "application" %>
 	  <meta property="fb:admins" content="1048504295" />
+	  <meta property="og:image" content="<%=image_tag 'book_icon.png'%>" />
 	  <%= csrf_meta_tags %>
     <%= yield(:head) %>
     <% if Rails.env.production? %>
@@ -25,7 +26,6 @@
 		<%end%>
   </head>
 	<body>
-		<div id="book-icon"><%= image_tag 'book_icon.png'%></div>
 		<% if Rails.env.staging?%>
 	  	<br><br>
 	  	<br>
