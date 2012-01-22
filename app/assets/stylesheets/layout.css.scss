@@ -20,7 +20,13 @@ $link-visited: #069;
   max-width:760px;
   margin-left:auto;
 	margin-right:auto;
+}
 
+#book-icon{
+  background-image: url('/assets/book_icon.png');
+	background-repeat: no-repeat;
+  background-position: 50px 0px;
+  display:none;
 }
 
 body {
@@ -392,4 +398,6 @@ button.fancy_button, a.fancy_button{
   }
 }
 
-    
+#book_image {
+  position:relative;
+}
