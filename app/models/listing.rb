@@ -20,7 +20,7 @@ class Listing < ActiveRecord::Base
                   :using => :tsearch        
 =end
                   
-  attr_accessible :id, :title, :price_dollars, :price_cents, :author, :edition, :isbn, :description, :condition, :book_id
+  attr_accessible :id, :user_id, :title, :price_dollars, :price_cents, :author, :edition, :isbn, :description, :condition, :book_id
   belongs_to :user
   belongs_to :book
   has_one :transaction, :dependent => :destroy
