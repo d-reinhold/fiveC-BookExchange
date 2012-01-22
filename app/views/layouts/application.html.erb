@@ -26,6 +26,7 @@
 		<%end%>
   </head>
 	<body>
+		<div class="hidden"><%= image_tag "book_icon.png"%></div>
 		<% if Rails.env.staging?%>
 	  	<br><br>
 	  	<br>
@@ -56,7 +57,7 @@
 			<section class="round">
 				<div class="loading">
 					<p>Processing request..</p>
-				  <%= image_tag 'blue_loading.gif'%>
+				  
 				</div>
 			  <% flash.each do |key, value| %>
 	      <div class="flash <%= key %>">
