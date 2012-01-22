@@ -9,6 +9,10 @@
     <%= stylesheet_link_tag "application" %>
 	  <%= javascript_include_tag "application" %>
 	  <meta property="fb:admins" content="1048504295" />
+	  <meta property="og:title" content="The 5C Book Exchange">
+	  <meta property="og:url" content="http://www.5cbookexchange.com/">
+  	<meta property="og:site_name" content="The 5C Book Exchange"/>
+    <meta property="og:type" content="exchange service"/>
 	  <meta property="og:image" content="<%= request.protocol + request.host_with_port + image_path('book_icon.png')%>" />
 	  <%= csrf_meta_tags %>
     <%= yield(:head) %>
