@@ -5,6 +5,7 @@
     <link href='http://fonts.googleapis.com/css?family=Duru+Sans' rel='stylesheet' type='text/css'>
 		<%= stylesheet_link_tag 'blueprint/screen', :media => "screen, projection" %>
 		<%= stylesheet_link_tag 'blueprint/print', :media => "print" %>
+		<%= stylesheet_link_tag 'fancybox/jquery.fancybox-1.3.4' %>
 		<!--[if lt IE8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif] -->
     <%= stylesheet_link_tag "application" %>
 	  <%= javascript_include_tag "application" %>
@@ -30,6 +31,7 @@
 		<%end%>
   </head>
 	<body>
+		</div>
 		<% if Rails.env.staging?%>
 	  	<br><br>
 	  	<br>
@@ -46,6 +48,10 @@
 		  <div class="top-banner"><h3>This website requires Javascript! Please enable Javascript in your browser.</h3></div>
 		</noscript>
 		<% if Rails.env.production? %>
+		  <a id="inline" href="#greeting"></a>
+		  <div id="greeting">
+			<h1> Thanks for visiting the 5C Book Exchange!</h1>
+			<h3> Given that it's the third week of the semester and most students have probably bought their books by now, I've decided to disable the site to save server costs. </h3><h3>But thank you all for a successful launch! In a few months when the Spring semester draws to a close, expect version 2 to have a bigger launch with new features and increased focus on marketing! </h3>
 			<div id="fb-root"></div>
 			<script>
 			  (function(d, s, id) {

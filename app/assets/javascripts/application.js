@@ -7,3 +7,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+
+$(document).ready(function() {
+	
+	$("a#inline").fancybox({
+		'modal': true
+	});
+	$("a#inline").trigger('click');
+});
