@@ -2,7 +2,7 @@
 
 FiveCBookExchange::Application.configure do
   config.middleware.insert_after(::Rack::Lock, "::Rack::Auth::Basic", "Experimental") do |u, p|
-    [u, p] == [ENV['EXPERIMENTAL_USERNAME'], ENV['EXPERIMENTAL_SECRET']]
+    [u, p] == [ENV['EXPERIMENTAL_USERNAME'], ENV['EXPERIMENTAL_PASSWORD']]
     
   end
   
