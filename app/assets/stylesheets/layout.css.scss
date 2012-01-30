@@ -128,14 +128,6 @@ nav ul {
   margin-bottom:5px;
 }
 
-#spinner{
-  display:none;
-  position:relative;
-  top:9px;
-  left:12px;
-  width:36px;
-  height:36px;
-}
 
 footer {
   position:relative;
@@ -380,12 +372,13 @@ button.fancy_button, a.fancy_button{
   z-index:999;
   top:0px;
   left:0px;
-  background-color:#DD1E1B;
-  border-bottom:3px solid darken(#DD1E1B,20%);
+  height:28px;
+  background-color:#E97E5D;
+  border-bottom:2px solid darken(#E97E5D,20%);
   width:100%;
   text-align:center;
-  h3 {
-    padding-top:16px;
+  h4 {
+    padding-top:6px;
     color:white;
     text-shadow: 0 1px 0 #777;
   }

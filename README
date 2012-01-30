@@ -20,6 +20,12 @@ Final TODO list:
 
 For next version:
 Try postgres 9.1 shared!
+Implement fun features in 5CBE
+  - Request this book button
+  - Fix staging app/experimental branch
+  - Change emails when book requested (reverse roles)
+  - Add email for when a book doesnt match (to me)
+Send email to users asking for feedback
 
 
 
