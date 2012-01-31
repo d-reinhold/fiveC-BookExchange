@@ -1,4 +1,4 @@
-<% if Rails.env.staging?%>
+<% unless Rails.env.production?%>
    [This is a test email from the 5CBookExchange!]
 <%end%>
 <%= @buyer_name %>, a book you requested has been cancelled!

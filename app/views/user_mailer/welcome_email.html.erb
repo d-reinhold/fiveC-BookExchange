@@ -4,7 +4,7 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-	  <% if Rails.env.staging?%>
+    <% unless Rails.env.production?%>
 		  <div><h3>[This is a test email from the 5CBookExchange!]</h3></div>
 		<%end%>
     <h3>Welcome to the 5C Book Exchange, <%= @user.name %></h3>
