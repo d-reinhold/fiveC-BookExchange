@@ -92,12 +92,12 @@ $(document).ready ->
 
 
   $("#email_checker").focus (event) ->
-    remove_status("p#email","What's your 5C email address?")
+    remove_status("p#email","What's your email address?")
     
   $("#email_checker").blur (event) ->
     if @value == ''
       add_error("p#email","Email can't be blank!")
-    else unless @value.include('@')
+    else unless @value.include?('@')
       add_error("p#email","Not a valid email address!")    
     else
       add_success("p#email","Great!")
