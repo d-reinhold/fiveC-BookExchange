@@ -15,9 +15,9 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create,
                         :length => { :within => 6..40 }
             
-  validate :is_fivec_email
+  #validate :is_fivec_email
 
-
+=begin
   def is_fivec_email
     if email.include?("@pomona.edu")
       errors.add(:email, "Please use '@mymail.pomona.edu'") 
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
       end
     end
   end
-
+=end
 end
 # == Schema Information
 #

@@ -12,7 +12,7 @@ CPASSWORD_READY = false
 $(document).ready ->
   if location.href.match(/(\?|&)autofill_title($|&|=)/)
     #alert "got params!"
-    remove_status("p#email","What's your 5C email address?")
+    remove_status("p#email","What's your email address?")
     remove_status("p#price_dollars","How much are you asking for?")
     add_success("p#title","Title") 
     add_success("p#author","Author")
@@ -97,13 +97,10 @@ $(document).ready ->
   $("#email_checker").blur (event) ->
     if @value == ''
       add_error("p#email","Email can't be blank!")
-    else if @value.indexOf('@pomona.edu') != -1 
-      add_error("p#email","Please use '@mymail.pomona.edu'!")
-    else if @value.indexOf('@mymail.pomona.edu') != -1 or @value.indexOf('@hmc.edu') != -1 or @value.indexOf('@g.hmc.edu') != -1 or @value.indexOf('@students.pitzer.edu') != -1 or @value.indexOf('@pitzer.edu') != -1 or @value.indexOf('@cmc.edu') != -1 or @value.indexOf('@scrippscollege.edu') != -1
-      add_success("p#email","Great!")
+    else unless @value.include('@')
+      add_error("p#email","Not a valid email address!")    
     else
-      add_error("p#email","Sorry, that's not a 5C email address!") 
-      
+      add_success("p#email","Great!")
       
   $(".book_title").focus (event) ->
     remove_status("p#title","What book are you selling?")
