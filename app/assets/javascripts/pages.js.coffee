@@ -95,12 +95,13 @@ $(document).ready ->
     remove_status("p#email","What's your email address?")
     
   $("#email_checker").blur (event) ->
+    #alert @value
     if @value == ''
       add_error("p#email","Email can't be blank!")
-    else unless @value.include?('@')
-      add_error("p#email","Not a valid email address!")    
-    else
-      add_success("p#email","Great!")
+    else #if @value.include? "@"
+      add_success("p#email","Great!")  
+    #else
+      #add_error("p#email","Not a valid email address!")  
       
   $(".book_title").focus (event) ->
     remove_status("p#title","What book are you selling?")
