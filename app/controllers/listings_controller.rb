@@ -21,6 +21,9 @@ class ListingsController < ApplicationController
     @listing = @user.listings.new(params[:listing])
     @listing.book_id = match_listing_to_book(@listing)
     if @listing.save
+      if @listing.book_id != -1
+        compute_requests(@listing.book_id)
+      end
       #ListingMailer.listed_book(@listing).deliver
       flash[:success] = 'Your listing was created!'
       redirect_to @user
@@ -42,18 +45,32 @@ class ListingsController < ApplicationController
     puts "Start Listing Update!"
     puts params
     @listing = Listing.find(params[:id])
-    if @listing.update_attributes(params[:listing])
-      @listing.book_id = match_listing_to_book(@listing)
-      @listing.save
-      flash[:success] = 'Listing updated!'
-      if signed_in?
-        redirect_to @current_user
-      else
-        redirect_to '/'
-      end
+    old_book_id = @listing.book_id
+    if @listing.transaction.status != "available"
+        flash[:error] = 'That listing can not be edited at this time.'
+        redirect_to root_path
     else
-      flash[:error] = @listing.errors.full_messages
-      redirect_to edit_listing_path(@listing)
+      if @listing.update_attributes(params[:listing])
+        @listing.book_id = match_listing_to_book(@listing)
+        @listing.save
+        if @listing.book_id != old_book_id
+          if old_book_id != -1
+            compute_requests(old_book_id)
+          end
+          if @listing.book_id != -1
+            compute_requests(@listing.book_id)
+          end
+        end       
+        flash[:success] = 'Listing updated!'
+        if signed_in?
+          redirect_to @current_user
+        else
+          redirect_to '/'
+        end
+      else
+        flash[:error] = @listing.errors.full_messages
+        redirect_to edit_listing_path(@listing)
+      end
     end
   end
 
@@ -63,7 +80,11 @@ class ListingsController < ApplicationController
     if @listing.transaction.status != 'available'
       flash[:error] = 'Someone has requested this book!'
     else
-      Listing.find(params[:id]).destroy
+      book_id = @listing.book_id
+      @listing.destroy #destroy original listing
+      if book_id !=
+        compute_requests(book_id)
+      end
       flash[:success] = 'Listing deleted!'
     end
     redirect_to @current_user
@@ -100,6 +121,37 @@ class ListingsController < ApplicationController
   end
   
   private
+    
+    def compute_requests(book_id)
+      puts "computing requests"        
+      requests = Request.where('book_id = ?', book_id) # find all the requests for this book
+      listings = Listing.where('book_id = ?', book_id) 
+      listing_is_available = false
+      unless listings.empty? # see if anyone else is listing this book
+        listings.each do |l|
+          if l.transaction.status == 'available' # if there are any available listings, the request is still 'available'!
+            puts 'A listing is available!'
+            listing_is_available = true
+            break
+          end
+        end
+      end
+      unless requests.empty?
+        puts 'setting requests!'
+        requests.each do |r|
+          if listing_is_available
+            puts r.id
+            puts r.status
+            puts 'setting requests to available!'
+            r.status = 'available'
+          else
+            puts 'setting requests to unavailable!'
+            r.status = 'unavailable'
+          end
+          r.save
+        end
+      end
+    end
     
   def match_listing_to_book(listing)
     if listing.isbn != ''

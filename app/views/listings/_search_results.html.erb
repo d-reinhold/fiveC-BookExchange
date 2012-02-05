@@ -32,14 +32,28 @@
 			        <div class="hidden">
 				        <ul class="data">
 				        	<li id="title-<%=book.id%>-<%=course.id%>"><%= book.title %></li>        
-					        <li id="author-<%= book.id%>-<%=course.id%>"><%= book.author %></li>
+					        <li id="author-<%=book.id%>-<%=course.id%>"><%= book.author %></li>
 			        		<li id="isbn-<%=book.id %>-<%=course.id%>"><%= book.isbn %></li>
 		            	<li id="edition-<%=book.id%>-<%=course.id%>"><%= book.edition %></li>
 		            </ul>
 		          </div>
-		          <% if true %>
-				        <%= render :partial => "shared/fancy_button", :locals => { :button_id => "#{book.id}-#{course.id}", :button_class => 'sell-this-book small green enabled', :text => "Sell this book!"} %>
-				      <% end %>
+		          <% if book.listings.empty? %>
+		            <% if signed_in? %>
+		              <% book_requested_by_user = false %>
+		              <% book.requests.each do |r| %>
+		                <% if @current_user.email == r.student_email %>
+		                  <% book_requested_by_user = true %>
+		                  <% break %>
+		                <% end %>
+		              <% end %>
+		              <% unless book_requested_by_user %>
+						        <%= render :partial => "shared/fancy_button", :locals => { :button_id => "request$-$#{book.id}-#{course.id}", :button_class => 'request-this-book small orange enabled', :text => "Request this book!"} %>
+						      <% end %>
+						    <% else %>
+						      <%= render :partial => "shared/fancy_button", :locals => { :button_id => "request$-$#{book.id}-#{course.id}", :button_class => 'request-this-book small orange enabled', :text => "Request this book!"} %>
+					      <% end %>
+					    <% end %>
+							<%= render :partial => "shared/fancy_button", :locals => { :button_id => "sell$-$#{book.id}-#{course.id}", :button_class => 'sell-this-book small green enabled', :text => "Sell this book!"} %>
 		        	<h4 style="margin-bottom:.1em;"><i><%= book.title %></i> <%= "by #{book.author}" unless book.author == '' %></h4>
 		          <p class="small"><%="ISBN: #{book.isbn}" unless book.isbn == ''%><%=" • Edition: #{book.edition}" unless book.edition == ''%></p>
 							<% @available_listings = Array.new %>

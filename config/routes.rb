@@ -2,6 +2,12 @@ FiveCBookExchange::Application.routes.draw do
 
 
 
+  get "requests/new"
+
+  get "requests/create"
+
+  get "requests/destroy"
+
   get "transactions/request_book"
   get "transactions/cancel_request"
   get "transactions/sold"
@@ -16,6 +22,7 @@ FiveCBookExchange::Application.routes.draw do
   match '/check_email', :to => 'users#check_email'
   match '/search', :to => 'listings#index'
   resources :transactions, :only => [:show]
+  resources :requests, :only => [:new, :create, :destroy]
   resources :users
   resources :listings
   resources :sessions, :only => [:new, :create, :destroy]

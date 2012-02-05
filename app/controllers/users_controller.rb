@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     end  
     @buyer_transactions = Transaction.where('buyer_email = ? AND status = ?', @current_user.email, 'unavailable')    
     @buyer_transactions_final = Transaction.where('buyer_email = ? AND status = ?', @current_user.email, 'sold')
+    @requests = Request.where('student_email = ?', @current_user.email)
   end 
       
   def new

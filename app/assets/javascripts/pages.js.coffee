@@ -30,13 +30,24 @@ $(document).ready ->
   #don't use ajax??
 
   $("body").delegate ".sell-this-book", "click", (event) ->
-    title = $("ul.data li#title-"+@.id).text()
-    author = $("ul.data li#author-"+@.id).text() 
-    isbn = $("ul.data li#isbn-"+@.id).text()
-    edition = $("ul.data li#edition-"+@.id).text()
+    title = $("ul.data li#title-"+@.id.split('$-$')[1]).text()
+    author = $("ul.data li#author-"+@.id.split('$-$')[1]).text() 
+    isbn = $("ul.data li#isbn-"+@.id.split('$-$')[1]).text()
+    edition = $("ul.data li#edition-"+@.id.split('$-$')[1]).text()
     $(".loading").css "display","block"
     $("#search-for-books, #index-background").fadeOut "slow", ->
       location.href= '/?autofill_title=' + title + '&autofill_author=' + author + '&autofill_isbn=' + isbn + '&autofill_edition=' + edition
+
+  $("body").delegate ".request-this-book", "click", (event) ->
+    title = $("ul.data li#title-"+@.id.split('$-$')[1]).text()
+    author = $("ul.data li#author-"+@.id.split('$-$')[1]).text() 
+    isbn = $("ul.data li#isbn-"+@.id.split('$-$')[1]).text()
+    edition = $("ul.data li#edition-"+@.id.split('$-$')[1]).text()
+    $(".loading").css "display","block"
+    $("#search-for-books, #index-background").fadeOut "slow", ->
+      location.href= '/requests/new?autofill_title=' + title + '&autofill_author=' + author + '&autofill_isbn=' + isbn + '&autofill_edition=' + edition
+
+
 
 
   $("a#buttons-sell").click (event) ->

@@ -1,28 +1,58 @@
 <div id="user">
 	<div id="current-listings">
-		<h2>My Current Listings</h2>
+		<h2>My Listings</h2>
 		<br>
-		<table id="current-listings-table">
-		  <thead>
-			  <tr>
-				  <th>Title</th>
-				  <th>Author</th>
-				  <th>Price</th>
-			  </tr>
-			</thead>
-		  <% @listings.each do |listing|%>
-		    <% if listing.transaction.status != 'sold' %>
-			    <tr id="<%= listing.id %>">
-			    <td><%= listing.title %></td>
-		    	<td> <%= listing.author %></td>
-		      <td style="text-align: right;">
-	          $<%=listing.price_dollars %>.<%= listing.price_cents %>
-	        </td>
-		    </tr>
-			  <% end %>
-	  	<% end %>
+		<% if @listings.empty? %>
+		  <p class="centered">You aren't currently listing any books!</p>
+		<% else %>
+			<table id="current-listings-table">
+			  <thead>
+				  <tr>
+					  <th>Title</th>
+					  <th>Author</th>
+					  <th>Price</th>
+				  </tr>
+				</thead>
+			  <% @listings.each do |listing|%>
+			    <% if listing.transaction.status != 'sold' %>
+				    <tr id="<%= listing.id %>">
+				    <td><%= listing.title %></td>
+			    	<td> <%= listing.author %></td>
+			      <td style="text-align: right;">
+		          $<%=listing.price_dollars %>.<%= listing.price_cents %>
+		        </td>
+			    </tr>
+				  <% end %>
+		  	<% end %>
+		  <% end %>
 	  </table>
+		<div id="current-requests">
+			<br>
+			<h2>My Requests</h2>
+				<% if @requests.empty? %>
+				  <p class="centered">You aren't currently requesting any books!</p>
+				<% else %>	
+				  <% @requests.each do |r| %>
+				    <% listing = nil %>
+				    <% r.book.listings.each do |l|%>
+				      <% if l.transaction.status == 'available'%>  
+				        <% listing = l %>
+				        <% break %>
+				      <% end %>
+				    <% end %>
+					  <% if r.status == 'available'%>
+				      <div class="request-available" id="<%=listing.id%>">
+				        <p class='centered'>A copy of <b><%= r.book.title %></b> is available! Click for more information!</p>
+				      <% else%>
+				      <div class="request-unavailable" id="<%=r.id%>">
+				        <p class='centered'>You have requested <b><%= r.book.title %></b>, but no copies are currently available. We'll send you an email as soon as one shows up!</p>
+				      <% end %>
+				    </div>
+				  <% end %>
+	      <% end %>
+	  </div>
 	</div>
+
 
 	<div id="pending-transactions">
 	  <h2>Pending Transactions</h2>

@@ -1,0 +1,35 @@
+class RequestsController < ApplicationController
+  def new
+    puts "Title: " + params[:autofill_title]
+    @book = Book.where('title = ?', params[:autofill_title]).first
+    @request = Request.new
+    session[:returning_to_search] = true
+  end
+
+  def create
+    puts 'creating request!'
+    puts params
+    @request = Request.new(params[:request])
+    @request.status = 'unavailable'
+    @listings = Listing.where('book_id = ?', @request.book_id)
+    unless @listings.empty?
+      @listings.each do |l|
+        if l.transaction.status == 'available'
+          @request.status = 'available'
+        end
+      end
+    end
+    if @request.save
+      #ListingMailer.listed_book(@listing).deliver
+      flash[:success] = 'Your request has been created!'
+      redirect_to current_user
+    else
+      flash[:error] = @request.errors.full_messages
+      redirect_to root_path
+    end
+  end
+
+  def destroy
+  end
+
+end
