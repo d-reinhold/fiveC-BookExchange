@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.1.3'
 
 gem 'pg'
 gem 'thin'
@@ -9,7 +9,7 @@ gem "nokogiri"
 gem 'kaminari'
 
 gem 'rails3-jquery-autocomplete', :git => "git@github.com:/slash4/rails3-jquery-autocomplete.git"
-
+gem 'bcrypt-ruby'
 
 gem "nifty-generators", :group => :development
 gem 'annotate', '~> 2.4.1.beta', :group => :development
