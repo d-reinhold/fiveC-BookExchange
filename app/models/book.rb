@@ -2,7 +2,17 @@ class Book < ActiveRecord::Base
   has_and_belongs_to_many :courses
   has_many :listings
   has_many :requests
+
+  def autocomplete_display
+      "#{self.title} by #{self.author}"
+  end
+
+
 end
+
+
+
+
 # == Schema Information
 #
 # Table name: books

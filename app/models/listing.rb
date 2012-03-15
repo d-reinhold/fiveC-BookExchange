@@ -1,25 +1,5 @@
-require 'texticle/searchable'
 class Listing < ActiveRecord::Base
-  extend Searchable(:title, :author, :isbn)
-  
-=begin
-  # HEROKU DOESN'T SUPPORT POSTGRES 8.4!!!!
-  include PgSearch
-  pg_search_scope :search_by_title, 
-                  :against => :title,
-                  :using => 
-                    {:tsearch => {:prefix => true, :any_word => true}
-                  }
-  pg_search_scope :search_by_author, 
-                  :against => :author,
-                  :using => 
-                    {:tsearch => {:prefix => true, :any_word => true}
-                  }
-  pg_search_scope :search_by_isbn, 
-                  :against => :isbn,
-                  :using => :tsearch        
-=end
-                  
+                
   attr_accessible :id, :user_id, :title, :price_dollars, :price_cents, :author, :edition, :isbn, :description, :condition, :book_id
   belongs_to :user
   belongs_to :book

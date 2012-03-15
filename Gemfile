@@ -2,16 +2,14 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
 
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
 gem 'pg'
 gem 'thin'
 gem "faker", "~> 1.0.1"
 gem "nokogiri"
-gem 'texticle', '~> 2.0', :require => 'texticle/rails'
 gem 'kaminari'
-#gem "pg_search"
+
+gem 'rails3-jquery-autocomplete', :git => "git@github.com:/slash4/rails3-jquery-autocomplete.git"
+
 
 gem "nifty-generators", :group => :development
 gem 'annotate', '~> 2.4.1.beta', :group => :development

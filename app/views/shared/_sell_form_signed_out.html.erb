@@ -2,7 +2,7 @@
   <%= form_tag :check_email, :id => "check-email-form", :remote => true do %>
 	  <div class="sell-form-divider">
 			<div class="field"><%= text_field_tag :email_checker, nil, :placeholder => 'Email Address' %></div>	
-		  <div class="field"><%= text_field_tag :title_checker, @autofill_title, :placeholder => 'Book Title', :class => 'book_title' %></div>
+<div class="field"><%= autocomplete_field_tag :title_checker, @autofill_title, '/listings/autocomplete_book_title', :update_elements => {:id => '#id_element', :author => '.book_author', :title => '.book_title', :isbn => '.isbn'}, :placeholder => 'Book Title', :class => 'book_title' %></div>
 		  <div class="field"><%= text_field_tag :author_checker, @autofill_author, :placeholder => "Author(s)", :class => 'book_author' %></div>
 			<div class="field">$<%= text_field_tag :price_dollars_checker, nil, :placeholder => 'dollars', :class => 'price_dollars' %><%= select_tag :price_cents_checker,  "<option value='00' selected='selected'> .00</option> <option value='25'>.25</option> <option value='50'>.50</option> <option value ='75'>.75</option>".html_safe, :class => 'cents-select' %></div>
 		</div>

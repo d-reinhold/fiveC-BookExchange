@@ -24,7 +24,10 @@ FiveCBookExchange::Application.routes.draw do
   resources :transactions, :only => [:show]
   resources :requests, :only => [:new, :create, :destroy]
   resources :users
-  resources :listings
+  resources :listings do
+    get :autocomplete_book_title, :on => :collection
+    get :autocomplete_course_school, :on => :collection
+  end
   resources :sessions, :only => [:new, :create, :destroy]
 
   root :to => 'pages#home'

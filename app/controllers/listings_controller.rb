@@ -1,7 +1,8 @@
 class ListingsController < ApplicationController
   before_filter :authenticate_user, :only => [ :create, :edit, :update, :destroy] 
   before_filter :correct_user, :only => [ :edit, :update, :destroy]
-  
+  autocomplete :book, [:title], :full => true, :extra_data => [:author, :title, :isbn], :value => :title, :display_value => :autocomplete_display
+  autocomplete :course, [:school, :department, :name, :number, :prof], :full => true, :extra_data => [:school, :department, :name, :number, :prof], :display_value => :autocomplete_display
   
   def show
     unless Listing.exists?(:id => params[:id])
