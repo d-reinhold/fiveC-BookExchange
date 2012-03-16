@@ -22,6 +22,7 @@
  * http://docs.jquery.com/UI/Menu#theming
  */
 .ui-menu {
+  width:275px;
 	list-style:none;
 	padding: 2px;
 	margin: 0;
@@ -32,6 +33,7 @@
 	margin-top: -3px;
 }
 .ui-menu .ui-menu-item {
+  border-bottom: 1px solid #ccc;
 	margin:0;
 	padding: 0;
 	zoom: 1;
