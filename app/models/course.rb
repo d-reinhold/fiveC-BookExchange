@@ -2,7 +2,21 @@ class Course < ActiveRecord::Base
   has_and_belongs_to_many :books
 
   def autocomplete_display
-      "#{self.name} with #{self.prof} at #{self.school}"
+    case self.school
+    when 'PO'
+      college = 'Pomona'
+    when 'CM'
+      college = 'CMC'
+    when 'HM'
+      college = 'Harvey Mudd'
+    when 'SC'
+      college = 'Scripps'
+    when 'PZ'
+      college = 'Pitzer'
+    else
+      college = self.school
+    end
+    "#{self.name} with #{self.prof} at #{college}"
   end
 
 

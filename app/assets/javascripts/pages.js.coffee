@@ -100,6 +100,15 @@ $(document).ready ->
       $("button#search-button").addClass("disabled")
       $("button#search-button").html('Searching...')
       $("form#search").submit()
+      
+  $(".course_searchbar").bind "railsAutocomplete.select", (event, data) ->
+    if $("button#search-button").hasClass("enabled")
+      $("button#search-button").removeClass("enabled")
+      $("button#search-button").addClass("disabled")
+      $("button#search-button").html('Searching...')
+      $("form#search").submit()
+      $("form#search input#id").val('')
+      $("form#search input.course_searchbar").val('')      
 
 
   $("#email_checker").focus (event) ->
@@ -125,6 +134,11 @@ $(document).ready ->
     else
       add_error("p#title","Don't forget to enter a title!")
       
+  $(".book_title").bind "railsAutocomplete.select", (event, data) ->
+    add_success("p#author","Got it!")
+    add_success("p#title","Awesome, thanks!")
+    
+
       
   $(".book_author").focus (event) ->
     remove_status("p#author","Who's the author?")
