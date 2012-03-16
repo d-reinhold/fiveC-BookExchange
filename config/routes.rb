@@ -21,6 +21,7 @@ FiveCBookExchange::Application.routes.draw do
   match '/signout', :to => 'sessions#destroy'
   match '/check_email', :to => 'users#check_email'
   match '/search', :to => 'listings#index'
+  match '/delete_requests', :to => 'requests#destroy'
   resources :transactions, :only => [:show]
   resources :requests, :only => [:new, :create, :destroy]
   resources :users

@@ -30,6 +30,14 @@ class RequestsController < ApplicationController
   end
 
   def destroy
+    puts 'about to delete a request'
+    @request = Request.find(params[:id])
+    if @request.student_email == @current_user.email
+      @request.destroy
+    else
+      flash[:error] = "You don't have permission to do that!"
+      redirect_to root_url
+    end
   end
 
 end

@@ -83,7 +83,7 @@ class ListingsController < ApplicationController
     else
       book_id = @listing.book_id
       @listing.destroy #destroy original listing
-      if book_id !=
+      if book_id != -1
         compute_requests(book_id)
       end
       flash[:success] = 'Listing deleted!'
@@ -141,10 +141,11 @@ class ListingsController < ApplicationController
         puts 'setting requests!'
         requests.each do |r|
           if listing_is_available
-            puts r.id
-            puts r.status
             puts 'setting requests to available!'
             r.status = 'available'
+            puts "requester: #{r.student_email}"
+            book = Book.find(book_id)
+            RequestMailer.request_available(r,book).deliver
           else
             puts 'setting requests to unavailable!'
             r.status = 'unavailable'
@@ -155,16 +156,12 @@ class ListingsController < ApplicationController
     end
     
   def match_listing_to_book(listing)
-    if listing.isbn != ''
+    downcase_title = listing.title.downcase
+    downcase_title_symbol = downcase_title.gsub('and', '&')
+    downcase_author = '%'+listing.author.downcase.split(' ').last
+    book = Book.where("lower(title) = ? and lower(author) LIKE ?", downcase_title_symbol, downcase_author).limit(1).all
+    if (book.nil? or book.empty?) and listing.isbn != ''
       book = Book.where("isbn = ?", listing.isbn.gsub('-','')).limit(1).all
-    end
-    if book.nil? or book.empty?
-      puts 'no isbn on listing, or isbn doesnt match'
-      downcase_title = listing.title.downcase
-      downcase_title_symbol = downcase_title.gsub('and', '&')
-      downcase_author = '%'+listing.author.downcase.split(' ').last
-      puts downcase_title_symbol
-      book = Book.where("lower(title) = ? and lower(author) LIKE ?", downcase_title_symbol, downcase_author).limit(1).all
     end
     unless book.empty?
       puts 'Found a course that requires this book!'

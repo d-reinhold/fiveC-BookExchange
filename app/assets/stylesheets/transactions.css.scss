@@ -59,30 +59,5 @@
   };
 }
   
-.request-available{
-  width: 70%;
-  margin: 0px auto;
-  background-color:lighten(green,60%);
-  border:1px solid green;
-  padding:4px;
-  margin-bottom:9px;
-  @include rounded-corners(5px, 5px, 5px, 5px);
-  &:hover{
-    cursor:pointer;
-    background-color:lighten(green,50%);
-  };  
-}
-
-.request-unavailable{
-  width: 70%;
-  margin: 0px auto;
-  background-color:lighten(#FFA500,35%);
-  border:1px solid #FFA500;
-  padding:4px;
-  margin-bottom:9px;
-  @include rounded-corners(5px, 5px, 5px, 5px);
- 
-}
-
 
 
