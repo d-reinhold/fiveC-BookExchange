@@ -9,7 +9,7 @@
 		<%end%>
     <h3>Hello <%= @name %>!</h3>
     <p>
-      Someone just listed <i><%= @book.title%><i> for sale on the 5C Book Exchange, which you requested on <%= @date %>! But hurry, you may not be the only person who wants <i><%= @book.title%><i>! To buy this book, go to <a href="<%= @url %>">5C Book Exchange</a>, log in using your 5C email address, and click on 'My Books.' </br>
+      Someone just listed <i><%= @book.title%></i> for sale on the 5C Book Exchange! You requested this book on <%= @date.to_date %>! But hurry, you may not be the only person who wants <i><%= @book.title%></i>! To buy this book, go to <a href="<%= @url %>">5C Book Exchange</a>, log in using your 5C email address, and click on 'My Books.' </br>
     <p>To buy and sell other textbooks, or to check the status of your books, be sure to visit the <a href="<%= @url %>">5C Book Exchange</a>.<br/> 
 	<br/>
     </p>
