@@ -143,7 +143,7 @@ class ListingsController < ApplicationController
           if listing_is_available
             puts 'setting requests to available!'
             r.status = 'available'
-            puts "requester: #{r.student_email}"
+            puts "requester: #{r.student_email }"
             book = Book.find(book_id)
             RequestMailer.request_available(r,book).deliver
           else

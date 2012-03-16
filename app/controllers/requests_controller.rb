@@ -22,7 +22,7 @@ class RequestsController < ApplicationController
     if @request.save
       #ListingMailer.listed_book(@listing).deliver
       flash[:success] = 'Your request has been created!'
-      redirect_to current_user
+      redirect_to current_user ? current_user : root_path
     else
       flash[:error] = @request.errors.full_messages
       redirect_to root_path
