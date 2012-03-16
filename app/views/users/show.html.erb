@@ -41,14 +41,14 @@
 				      <% end %>
 				    <% end %>
 					  <% if r.status == 'available'%>
-				      <div class="request-bubble request-available" id="<%=r.id%>-<%=listing.id%>">
+				      <div class="request-bubble request-available" id="request-<%=r.id%>-<%=listing.id%>">
 				        <div class='centered'> A copy of <b><%= r.book.title %></b> is available! Click for more information!</div>
 				      <% else%>
-				      <div class="request-bubble request-unavailable" id="<%=r.id%>">
+				      <div class="request-bubble request-unavailable" id="request-<%=r.id%>">
 				        <div class='centered'>You have requested <b><%= r.book.title %></b>, but no copies are currently available. We'll send you an email as soon as one shows up!</div>
 				      <% end %>
 				    </div>
-			     	<div class='delete-request'><a id="delete-<%=r.id%>"><b>X</b></a></div>
+			     	<div class='delete-request'><a id="delete-request-<%=r.id%>"><b>X</b></a></div>
 				  <% end %>
 	      <% end %>
 	    <%= form_tag :delete_requests, :id => 'delete-request-form', :remote => true do %>

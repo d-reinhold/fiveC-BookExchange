@@ -9,16 +9,16 @@ $(document).ready ->
       $(".loading").css "display","block"
       
   $(".request-available").click (event) ->
-    location.href= '/listings/' + @.id.split('-')[1]
+    location.href= '/listings/' + @.id.split('-')[2]
   
   
   $(".delete-request a").click (event) ->
     event.preventDefault()
     agree = confirm "Are you sure you want to delete this request?"
     if agree
-      $("form#delete-request-form input#id").val(@.id.split('-')[1])
+      $("form#delete-request-form input#id").val(@.id.split('-')[2])
       $("form#delete-request-form").submit()
       $("form#delete-request-form input#id").val('')
-      $("[id*="+@.id.split('-')[1]+"]").fadeOut (event) ->
+      $("[id*=request-"+@.id.split('-')[2]+"]").fadeOut (event) ->
 
   
