@@ -13,6 +13,10 @@ class Course < ActiveRecord::Base
       college = 'Scripps'
     when 'PZ'
       college = 'Pitzer'
+    when 'JS'
+      college = 'Joint Sciences'
+    when 'AF'
+      college = 'Africana Studies'
     else
       college = self.school
     end

@@ -7,6 +7,7 @@ gem 'thin'
 gem "faker", "~> 1.0.1"
 gem "nokogiri"
 gem 'kaminari'
+gem 'omniauth-facebook'
 
 gem 'rails3-jquery-autocomplete', :git => "git@github.com:/slash4/rails3-jquery-autocomplete.git"
 gem 'bcrypt-ruby'
