@@ -57,18 +57,26 @@
 			<% end %>
 			<div id="fb-root"></div>
 			<script>
-			  (function(d, s, id) {
-			    var js, fjs = d.getElementsByTagName(s)[0];
-			    if (d.getElementById(id)) return;
-			    js = d.createElement(s); js.id = id;
-			    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=112086768880136";
-			    fjs.parentNode.insertBefore(js, fjs);
-			  }(document, 'script', 'facebook-jssdk'));
-			</script>
+			        window.fbAsyncInit = function() {
+			          FB.init({
+			            appId      : 274758929266415,
+			            status     : true, 
+			            cookie     : true,
+			            xfbml      : true,
+			            oauth      : true,
+			          });
+			        };
+			        (function(d){
+			           var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+			           js = d.createElement('script'); js.id = id; js.async = true;
+			           js.src = "//connect.facebook.net/en_US/all.js";
+			           d.getElementsByTagName('head')[0].appendChild(js);
+			         }(document));
+			      </script>
 		<% end %>
 	  <div class="container">
 		  <%= render 'layouts/header' %>
-		  <% if Rails.env.production? %>
+		  <% if Rails.env.production? or Rails.env.development? %>
 		    <div class="fb-like" data-href="http://www.5cbookexchange.com" data-send="false" data-width="450" data-show-faces="false"></div>
 	  	<% end %>
 			<section class="round">
@@ -82,6 +90,7 @@
 		    </div>
 	      <% end %>	
 	      <%= yield %>
+				<div class="fb-login-button" data-scope="email"></div>
       </section>
 	    <%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>

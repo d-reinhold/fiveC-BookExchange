@@ -97,28 +97,16 @@ p.about {
   right:-250px;
 }
 
-#sell-form-required-email, #sell-form-required {
+#sell-form-required {
   min-height: 280px;
   position: relative;
 	display: block;
-}
-
-#sell-form-required {
-  min-height: 280px;
-}
-
-#sell-form-required-hidden {
-  display:none;
 }
 
 #sell-form-optional {
-  min-height: 220px;  
+  min-height: 220px; 
+  display:none; 
   position: relative;
-	display: block;
-}
-
-#sell-form-signed-in #sell-form-optional{
-  display:none;
 }
 
 #sell-form-final {
@@ -150,7 +138,6 @@ textarea{
 }
 
 input#search{
-  
   line-height:2em;
   font-size:12pt;
   
@@ -238,7 +225,7 @@ input.isbn{
 }
 */
 
-#sell-form-optional-button, #sell-form-signed-in-final-button {
+#sell-form-optional-button, #sell-form-optional-final-button {
   position:relative;
   left:-90px;
 }

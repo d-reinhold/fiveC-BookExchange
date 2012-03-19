@@ -73,22 +73,6 @@ class UsersController < ApplicationController
     end
   end  
   
-  def check_email
-    puts "Checking email now.."
-    puts params
-    @user = User.find_by_email(params[:email_checker])
-    if @user.nil?
-      puts "Email not registered, creating a new user"
-      @user = User.new
-      @user.listings.new
-    else
-      puts "Email already taken"
-      @listing = @user.listings.new
-    end
-    respond_to do |format|
-      format.js
-    end
-  end
   
   private
 

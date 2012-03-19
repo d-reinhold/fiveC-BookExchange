@@ -1,38 +1,15 @@
 class SessionsController < ApplicationController
-  def new
-    @title = 'Sign in'
-  end
+
 
   def create
-    puts "begin authentication"
-    user = User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password])
-      puts "Authenticated!"
-      session[:user_id] = user.id
-      session[:from_search] = false
-      @current_user = user
-      respond_to do |format|
-        format.html{
-          flash[:success] = "Signed in!"
-          redirect_to root_url
-        }
-        format.js
-      end
-    else
-      puts "Authentication failed!"
-      respond_to do |format|
-        format.html{
-          flash.now[:error] = "Invalid email or password"
-          render "new"
-        }
-        format.js
-      end
-    end
+    auth = request.env["omniauth.auth"]
+    user = User.find_by_uid(auth["uid"]) || User.create_with_omniauth(auth)
+    session[:user_id] = user.id
+    redirect_to root_url, :notice => "Signed in!"
   end
 
   def destroy
     session[:user_id] = nil
-    flash[:notice] = 'Signed out!'
-    redirect_to root_url
+    redirect_to root_url, :notice => "Signed out!"
   end
 end

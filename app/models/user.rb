@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   has_many :listings, :dependent => :destroy
   accepts_nested_attributes_for :listings
-  attr_accessible :name, :email, :password, :password_confirmation, :listings_attributes
-  has_secure_password
+  attr_accessible :name, :email, :listings_attributes
+
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
@@ -10,21 +10,14 @@ class User < ActiveRecord::Base
                    :length => { :maximum => 50 }
   validates :email, :presence => true,
                     :format => { :with => email_regex },
-                    :uniqueness => { :case_insensitive => true }
-                  
-  validates_presence_of :password, :on => :create,
-                        :length => { :within => 6..40 }
-            
-  validate :is_fivec_email
+                    :uniqueness => { :case_insensitive => true }        
 
-
-  def is_fivec_email
-    if email.include?("@pomona.edu")
-      errors.add(:email, "Please use '@mymail.pomona.edu'") 
-    else 
-      unless (email.include?("@students.pitzer.edu")) or (email.include?("@mymail.pomona.edu")) or email.include?("@pomona.edu") or (email.include?("@scrippscollege.edu")) or (email.include?("@hmc.edu"))  or (email.include?("@g.hmc.edu")) or (email.include?("@pitzer.edu")) or (email.include?("@cmc.edu"))
-        errors.add(:email, "is not a valid 5C email address")
-      end
+  
+  def self.create_with_omniauth(auth)
+    create! do |user|
+      user.uid = auth["uid"]
+      user.name = auth["info"]["name"]
+      user.email = auth["info"]["email"]
     end
   end
 

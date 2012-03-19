@@ -13,11 +13,7 @@
 			</div>
 
 			<div id="sell-your-books">
-				<% if signed_in? %>
-				  <%= render 'shared/sell_form_signed_in' %>
-				<% else %>
-				  <%= render 'shared/sell_form_signed_out' %>
-				<% end %>
+				  <%= render 'shared/sell_form' %>
 			</div>
 		</div>
 	</div>

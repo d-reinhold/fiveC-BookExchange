@@ -1,5 +1,8 @@
 FiveCBookExchange::Application.routes.draw do
 
+  match "/auth/:provider/callback" => "sessions#create"
+  match "/auth/failure" => "pages#home"
+  match "/signout" => "sessions#destroy", :as => :signout
 
 
   get "requests/new"
@@ -16,10 +19,7 @@ FiveCBookExchange::Application.routes.draw do
   match 'contact' => 'contact#create', :as => 'contact', :via => :post
   match '/home' => 'pages#home'
   match '/about' => 'pages#about'
-  match '/signup', :to => 'users#new'
-  match '/signin', :to => 'sessions#new'
-  match '/signout', :to => 'sessions#destroy'
-  match '/check_email', :to => 'users#check_email'
+
   match '/search', :to => 'listings#index'
   match '/delete_requests', :to => 'requests#destroy'
   resources :transactions, :only => [:show]
@@ -29,7 +29,7 @@ FiveCBookExchange::Application.routes.draw do
     get :autocomplete_book_title, :on => :collection
     get :autocomplete_course_school, :on => :collection
   end
-  resources :sessions, :only => [:new, :create, :destroy]
+
 
   root :to => 'pages#home'
   
