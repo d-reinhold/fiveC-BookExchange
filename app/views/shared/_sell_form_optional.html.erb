@@ -10,3 +10,12 @@
     <br>
   </div>
 </div>
+<div class="clear"></div>
+<div id="bottom_button">
+<% if signed_in? %>
+  <%= render :partial => "shared/fancy_button", :locals => { :button_id => "sell-form-optional-final-button", :button_class => 'enabled', :text => "Post Your Book!"} %>
+<% else %>
+  <%= render :partial => "shared/fancy_button", :locals => { :button_id => "sell-form-optional-button", :button_class => 'enabled', :text => "Continue!"} %>
+<% end %>
+</div>
+<div class="clear"></div>

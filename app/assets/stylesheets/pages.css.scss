@@ -217,16 +217,18 @@ input.isbn{
   margin-right:22px;
   float:right;
 }
-/*
-#sell-form-required-button, #sell-form-signed-in-required-button  {
-  position:relative;
-  top: 5px;
-  right:-480px;
-}
-*/
 
 #sell-form-optional-button, #sell-form-optional-final-button {
   position:relative;
   left:-90px;
 }
 
+#sell-form-final-button {
+  width: auto;
+  margin: 0px auto;  
+}
+
+.big-fb-button{
+  width: 400px;
+  margin: 0px auto;
+}
