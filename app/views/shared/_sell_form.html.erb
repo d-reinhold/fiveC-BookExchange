@@ -1,0 +1,14 @@
+<div id="sell-form">
+	<%= form_for @listing, :remote => true do |f| %>
+	  <%= render :partial => "shared/error_messages", :locals => { :object => @listing} %>
+	  <div id="sell-form-required">
+	    <%= render :partial => 'shared/sell_form_required', :locals => {:l => f} %>
+	  </div>
+	  <div id="sell-form-optional">
+      <%= render :partial => 'shared/sell_form_optional', :locals => {:l => f }%>
+	  </div>
+	  <div id="sell-form-final">
+      <%= render :partial => 'shared/sell_form_final' %>  
+    </div>
+	<% end %>
+</div>

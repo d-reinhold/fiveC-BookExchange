@@ -1,0 +1,7 @@
+$(".container").fadeOut( function() {
+  alert("redirect");
+  alert(<%="#{@user}"%>);
+  location.href = <%="#{@user}"%>;
+});
+
+
