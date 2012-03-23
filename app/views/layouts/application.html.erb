@@ -55,11 +55,11 @@
 				<h3>Until next time :)</h3>
 				</div>
 			<% end %>
-			<div id="fb-root"></div>
 		<% end %>
 	  <div class="container">
 		  <%= render 'layouts/header' %>
 		  <% if Rails.env.production? or Rails.env.development? %>
+				<div id="fb-root"></div>
 		    <div class="fb-like" data-href="http://www.5cbookexchange.com" data-send="false" data-width="450" data-show-faces="false"></div>
 	  	<% end %>
 			<section class="round">

@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_filter :authenticate_user, :only => [ :create, :edit, :update, :destroy] 
+  before_filter :authenticate_user, :only => [ :edit, :update, :destroy] 
   before_filter :correct_user, :only => [ :edit, :update, :destroy]
   autocomplete :book, [:title], :full => true, :extra_data => [:author, :title, :isbn], :value => :title, :display_value => :autocomplete_display
   autocomplete :course, [:school, :department, :name, :number, :prof], :full => true, :extra_data => [:school, :department, :name, :number, :prof, :id], :display_value => :autocomplete_display
@@ -9,6 +9,10 @@ class ListingsController < ApplicationController
       flash[:error] = 'That listing does not exist.'
       redirect_to root_path
     else
+      if session[:fb_store_listing_url]
+        @from_facebook = true
+        session[:fb_store_listing_url] = nil
+      end
       @listing = Listing.find(params[:id])
       @title = @listing.title
       @transaction = @listing.transaction
@@ -17,20 +21,23 @@ class ListingsController < ApplicationController
   end
 
   def create
-    puts 'creating listing!'
-    @user = current_user
-    @listing = @user.listings.new(params[:listing])
-    @listing.book_id = match_listing_to_book(@listing)
-    if @listing.save
-      if @listing.book_id != -1
-        compute_requests(@listing.book_id)
-      end
-      #ListingMailer.listed_book(@listing).deliver
-      flash[:success] = 'Your listing was created!'
-      redirect_to @user
+    if not signed_in?
+      session[:fb_store_listing_params] = params
     else
-      flash[:error] = @listing.errors.full_messages
-      redirect_to root_path
+      @user = current_user
+      @listing = @user.listings.new(params[:listing])
+      @listing.book_id = match_listing_to_book(@listing)
+      if @listing.save
+        if @listing.book_id != -1
+          compute_requests(@listing.book_id)
+        end
+        #ListingMailer.listed_book(@listing).deliver
+        flash[:success] = 'Your listing was created!'
+        render :js => "window.location = '/users/#{@user.id}'"
+      else
+        flash[:error] = @listing.errors.full_messages
+        redirect_to root_path
+      end
     end
   end
 
@@ -126,7 +133,7 @@ class ListingsController < ApplicationController
     def compute_requests(book_id)
       puts "computing requests"        
       requests = Request.where('book_id = ?', book_id) # find all the requests for this book
-      listings = Listing.where('book_id = ?', book_id) 
+      listings = Listing.where('book_id = ?', book_id)
       listing_is_available = false
       unless listings.empty? # see if anyone else is listing this book
         listings.each do |l|
@@ -143,7 +150,6 @@ class ListingsController < ApplicationController
           if listing_is_available
             puts 'setting requests to available!'
             r.status = 'available'
-            puts "requester: #{r.student_email }"
             book = Book.find(book_id)
             RequestMailer.request_available(r,book).deliver
           else

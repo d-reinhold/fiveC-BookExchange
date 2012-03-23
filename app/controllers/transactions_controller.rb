@@ -18,35 +18,47 @@ class TransactionsController < ApplicationController
       else
         @title = 'Transactions'
         @listing = @transaction.listing
+        @seller = User.find(@transaction.seller_id)
+        @buyer = User.find(@transaction.buyer_id)
       end
     end
   end
   
   
   def request_book
-    puts params
     @transaction = Transaction.find(params[:id])
-    if @transaction.status == 'available'
-      @transaction.buyer_email = params[:buyer_email]
-      @transaction.buyer_name = params[:buyer_name]
-      @transaction.status = "unavailable"
-      if @transaction.save
-        TransactionMailer.book_requested_buyer(@transaction).deliver
-        TransactionMailer.book_requested_seller(@transaction).deliver
-        flash[:success] = "Transaction initiated! Check your email for more information."
-        if signed_in?
-          redirect_to @current_user
-        else
+    if @transaction.nil?
+      flash[:error] = "An error occured!"
+      redirect_to '/'
+    else
+      if not signed_in?
+        session[:fb_store_listing_url] = "/listings/#{@transaction.listing.id}"
+        redirect_to '/auth/facebook/'
+      else
+        @transaction = Transaction.find(params[:id])
+        puts @transaction.seller_id 
+        puts current_user.id
+        if @transaction.seller_id == current_user.id
+          flash[:error] = "You can't buy a book that you are selling!"
+          redirect_to '/'
+        elsif @transaction.status == 'available'
+          @transaction.buyer_id = current_user.id
+          @transaction.status = "unavailable"
+          if @transaction.save
+            TransactionMailer.book_requested_buyer(@transaction).deliver
+            TransactionMailer.book_requested_seller(@transaction).deliver
+            flash[:success] = "Transaction initiated! Check your email for more information."
+            redirect_to @current_user
+          else
+            message = @transaction.errors.full_messages
+            flash[:error] = message
+            redirect_to @transaction.listing
+          end
+        else 
+          flash[:error] = "That listing is no longer available."
           redirect_to root_path
         end
-      else
-        message = @transaction.errors.full_messages
-        flash[:error] = message
-        redirect_to @transaction.listing
       end
-    else 
-      flash[:error] = "That listing is no longer available."
-      redirect_to root_path
     end
   end
 
@@ -61,8 +73,7 @@ class TransactionsController < ApplicationController
         TransactionMailer.buyer_cancelled_request_seller(@transaction).deliver
         TransactionMailer.buyer_cancelled_request_buyer(@transaction).deliver        
       end
-      @transaction.buyer_email = 'not set'
-      @transaction.buyer_name = 'not set'
+      @transaction.buyer_id = -1
       @transaction.status = 'available'
       if @transaction.save
         flash[:success] = "Transaction cancelled."
@@ -105,30 +116,15 @@ class TransactionsController < ApplicationController
 
 
     def buyer_or_seller
-      if is_buyer? or is_seller?
-        return true
-      else
+      @transaction = Transaction.find(params[:id])
+      unless (@current_user.id == @transaction.buyer_id) or (@current_user.id == @transaction.seller_id)
         redirect_to '/', :notice => "You don't have permission to view that page!"
       end
     end
     
     def seller
-      redirect_to '/', :notice => "You don't have permission to view that page!" unless is_seller?
+      @transaction = Transaction.find(params[:id])
+      redirect_to '/', :notice => "You don't have permission to view that page!" unless @current_user.id == @transaction.seller_id
     end
         
-    def is_buyer?
-      @transaction = Transaction.find(params[:id])
-      @transaction.buyer_email == @current_user.email ? true : false
-    end
-    
-    def is_seller?
-      @transaction = Transaction.find(params[:id])
-      @listing = @transaction.listing
-      @current_user.listings.each do |l|
-        if l.id == @listing.id
-          return true
-        end
-      end
-      return false
-    end
 end

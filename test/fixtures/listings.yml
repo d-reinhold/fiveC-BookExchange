@@ -26,11 +26,11 @@ two:
 #  edition       :string(255)
 #  author        :string(255)
 #  price_dollars :integer
-#  price_cents   :integer
 #  description   :string(255)
 #  condition     :string(255)
 #  created_at    :datetime
 #  updated_at    :datetime
 #  book_id       :integer         default(-1)
+#  price_cents   :string(255)     default("00")
 #
 

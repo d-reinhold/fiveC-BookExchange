@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120319211620) do
+ActiveRecord::Schema.define(:version => 20120320215222) do
 
   create_table "books", :force => true do |t|
     t.string   "title"
@@ -62,21 +62,21 @@ ActiveRecord::Schema.define(:version => 20120319211620) do
 
   create_table "requests", :force => true do |t|
     t.integer  "book_id"
-    t.string   "student_name"
-    t.string   "student_email"
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "transactions", :force => true do |t|
     t.integer  "listing_id"
-    t.string   "buyer_email", :default => "not set"
-    t.string   "buyer_name",  :default => "not set"
-    t.string   "status",      :default => "available"
-    t.string   "sell_date",   :default => "not sold"
+    t.string   "status",     :default => "available"
+    t.string   "sell_date",  :default => "not sold"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "buyer_name"
+    t.integer  "buyer_id"
+    t.integer  "seller_id"
   end
 
   create_table "users", :force => true do |t|
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20120319211620) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "uid"
+    t.text     "fb_colleges"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

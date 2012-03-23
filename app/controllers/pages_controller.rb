@@ -16,6 +16,9 @@ class PagesController < ApplicationController
     @autofill_author = params[:autofill_author]
     @autofill_isbn = params[:autofill_isbn]
     @autofill_edition = params[:autofill_edition]
+    session[:fb_store_listings_params] = nil
+    session[:fb_store_request_url] = nil 
+    session[:fb_store_listing_url] = nil
   end
 
   def about

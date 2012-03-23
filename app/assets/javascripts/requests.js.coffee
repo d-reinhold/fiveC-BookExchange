@@ -22,3 +22,8 @@ $(document).ready ->
       $("[id*=request-"+@.id.split('-')[2]+"]").fadeOut (event) ->
 
   
+
+  $("body").delegate ".facebook-login-request", "click", (event) ->
+    $("#new-request").fadeOut (event) ->
+      $(".loading").css "display","block"
+      $("form#new_request").submit()

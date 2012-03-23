@@ -145,14 +145,15 @@ $(document).ready ->
     $("#sell-form-optional").fadeOut "slow", ->
       $("#sell-form-optional").css("display","none")
       $("#sell-form-final").css("display","block")
+      $("#new_listing").submit()
       
   $("body").delegate "button#sell-form-optional-final-button", "click", (event) ->
     if $("button#sell-form-optional-final-button").hasClass("enabled")
       $("button#sell-form-optional-final-button").removeClass("enabled")
       $("button#sell-form-optional-final-button").addClass("disabled")
       $("#sell-form-optional").fadeOut "slow", ->
-        $("#new_listing").submit()
         $(".loading").css "display","block"    
+        $("#new_listing").submit()
         
         
   $("body").delegate "button#sell-form-final-button", "click", (event) ->

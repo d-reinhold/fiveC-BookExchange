@@ -16,13 +16,14 @@ $(document).ready(function() {
 	window.fbAsyncInit = function() {
     FB.init({
       appId      : 274758929266415,
-    	channelUrl : 'http://localhost:3000',
       status     : true, 
       cookie     : true,
       xfbml      : true,
       oauth      : true,
     });
   };
+  
+  
   (function(d){
      var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
      js = d.createElement('script'); js.id = id; js.async = true;

@@ -16,6 +16,9 @@ class Listing < ActiveRecord::Base
   
   validates :title, :presence => true,
                     :length => { :within => 1..100 }
+  
+  validates :author, :presence => true,
+                    :length => { :within => 1..100 }
 
   validates :price_dollars, :numericality => { :greater_than_or_equal_to => 0, :only_integer => true }
   
@@ -36,11 +39,11 @@ end
 #  edition       :string(255)
 #  author        :string(255)
 #  price_dollars :integer
-#  price_cents   :integer
 #  description   :string(255)
 #  condition     :string(255)
 #  created_at    :datetime
 #  updated_at    :datetime
 #  book_id       :integer         default(-1)
+#  price_cents   :string(255)     default("00")
 #
 

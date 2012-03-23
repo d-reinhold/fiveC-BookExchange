@@ -1,15 +1,12 @@
 class User < ActiveRecord::Base
+  serialize :fb_colleges
   has_many :listings, :dependent => :destroy
-  accepts_nested_attributes_for :listings
-  attr_accessible :name, :email, :listings_attributes
-
-  
-  email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  has_many :requests
+  attr_accessible :name, :email, :fb_colleges, :uid # PROTECT UID BEFORE PUBLIC LAUNCH!!
   
   validates :name, :presence => true, 
                    :length => { :maximum => 50 }
   validates :email, :presence => true,
-                    :format => { :with => email_regex },
                     :uniqueness => { :case_insensitive => true }        
 
   
@@ -19,6 +16,18 @@ class User < ActiveRecord::Base
       user.name = auth["info"]["name"]
       user.email = auth["info"]["email"]
     end
+  end
+  
+  def update_with_omniauth(auth)
+    self.name = auth["info"]["name"]
+    self.email = auth["info"]["email"]
+    schools = auth["extra"]["raw_info"]["education"]
+    colleges = schools.each.select{|s| s["type"] == 'College'}
+    college_names = Array.new
+    colleges.each{|s| college_names << s["school"]["name"]}
+    puts "College Names: #{college_names}"
+    self.fb_colleges = college_names
+    self.save
   end
 
 end

@@ -6,18 +6,11 @@ class UsersController < ApplicationController
     session[:from_search] = false
     @title = @current_user.name
     @listings = @current_user.listings
-    @seller_transactions = Array.new
-    @seller_transactions_final = Array.new
-    @current_user.listings.each do |l|
-      if l.transaction.status == 'unavailable'
-        @seller_transactions << l.transaction
-      elsif l.transaction.status == 'sold'
-        @seller_transactions_final << l.transaction
-      end
-    end  
-    @buyer_transactions = Transaction.where('buyer_email = ? AND status = ?', @current_user.email, 'unavailable')    
-    @buyer_transactions_final = Transaction.where('buyer_email = ? AND status = ?', @current_user.email, 'sold')
-    @requests = Request.where('student_email = ?', @current_user.email)
+    @requests = @current_user.requests
+    @seller_transactions_pending = Transaction.where('seller_id = ? AND status = ?', @current_user.id, 'unavailable')    
+    @seller_transactions_final = Transaction.where('seller_id = ? AND status = ?', @current_user.id, 'sold')
+    @buyer_transactions_pending = Transaction.where('buyer_id = ? AND status = ?', @current_user.id, 'unavailable')    
+    @buyer_transactions_final = Transaction.where('buyer_id = ? AND status = ?', @current_user.id, 'sold')
   end 
       
   def new

@@ -4,8 +4,8 @@ class RequestMailer < ActionMailer::Base
   def request_available(request, book)
     @book = book
     @date = request.created_at
-    @email = request.student_email
-    @name = request.student_name
+    @email = request.user.email
+    @name = request.user.name
     @url  = "http://www.5cbookexchange.com"
     email_with_name = "#{@name} <#{@email}>"
     mail(:to => email_with_name, :subject => "A book you requested is available!")

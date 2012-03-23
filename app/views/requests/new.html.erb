@@ -7,33 +7,21 @@
 	<%= form_for @request do |f| %>
 		<%= f.hidden_field :book_id, :value => @book.id %>
 	  <% if signed_in? %>
-		  <div class="field hidden">
-			  <%= f.text_field :student_email, :value => @current_user.email %>
-			</div>
-			<div class="field hidden">
-			  <%= f.text_field :student_name, :value => @current_user.name %>
-			</div>
+		<p class="clear centered">Do you want to request <i><%= @book.title%></i> by <%= @book.author%>?</p>
+		<p class="centered">Click 'Request this Book', and we will notify you as soon as anyone lists <i><%= @book.title%></i> on the 5C Book Exchange! Also this book will show up the Requested Books page, giving people incentive to list their copy!<br><br>
+		<%= render :partial => "shared/fancy_button", :locals => { :button_id => "request-this-book-final", :button_class => 'orange enabled', :text => "Request this Book!"} %>
+		</p>
+	  </div>
+	  <div class="clear"></div>
 		<% else %>
-		<div class="sell-form-divider static">
-		  <div class="field">
-		    <%= f.text_field :student_email, :placeholder => 'Email Address'%>
-		  </div>
-		  <div class="field">
-		    <%= f.text_field :student_name, :placeholder => 'Full Name'%>
-		  </div>
+		<p class="clear centered">Sign up on Facebook to request <b><%= @book.title%></b> by <b><%= @book.author %></b>!</p>
+		<div class="big-fb-button">
+		  <%=image_tag '/assets/large-fb-login.png', :class => 'facebook-login-request' %>
 		</div>
-		<div class="sell-form-divider static">
-	    <div class="form-message static"><p>Email Address</p></div>
-		  <div class="form-message static"><p>Name</p></div>
-		</div>
+		</p>
 		<% end %>
 	<% end %>
 	<br>
 	<br>
-	<p class="clear centered">Do you want to request <i><%= @book.title%></i> by <%= @book.author%>?</p>
-	<p class="centered">Click 'Request this Book', and we will notify you as soon as anyone lists <i><%= @book.title%></i> on the 5C Book Exchange! Also this book will show up the Requested Books page, giving people incentive to list their copy!<br><br>
-	<%= render :partial => "shared/fancy_button", :locals => { :button_id => "request-this-book-final", :button_class => 'orange enabled', :text => "Request this Book!"} %>
-	</p>
-  </div>
-  <div class="clear"></div>
+
 <div>

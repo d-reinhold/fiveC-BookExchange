@@ -1,4 +1,8 @@
-<div id="listing">
+<% if @from_facebook %>
+  <div id="listing" style="display:none">
+<% else %>
+	<div id="listing" style="display:block">
+<% end %>
 	<div id="top">
 		<% if from_search? %>
 		  <%= link_to "back to search results", listings_path %>
@@ -74,43 +78,34 @@
   <div class="clear"></div>
 </div>
 
-<div id="new-transaction">
+<% if @from_facebook %>
+  <div id="new-transaction" style="display:block">
+<% else %>
+	<div id="new-transaction" style="display:none">
+<% end %>
+
 	<div id="top">
 		  <%= link_to "back to listing details", '#', :id => "back-to-listing-details" %>
 	</div>
 	<div id='transaction-form'>		
-	<h3>Transaction Details</h3>
-	<%= form_tag :transactions_request_book, :method => 'get', :id => 'request-book-form' do %>
-	  <%= hidden_field_tag :id, nil, :value => @transaction.id %>
-	  <% if signed_in? %>
-		  <div class="field hidden">
-			  <%= text_field_tag :buyer_email, nil, :value => @current_user.email %>
-			</div>
-			<div class="field hidden">
-			  <%= text_field_tag :buyer_name, nil, :value => @current_user.name %>
-			</div>
+		<h3>Transaction Details</h3> 
+		  <%= form_tag :transactions_request_book, :method => 'get', :id => 'request-book-form' do %>
+		    <%= hidden_field_tag :id, nil, :value => @transaction.id %>
+					<% end %>
+					<br>
+					<br>
+		<% if signed_in? %>
+			<p class="clear centered">Do you want to buy <b><%= @listing.title%></b> from <b><%= @listing.user.name %></b> for <b>$<%= @listing.price_dollars%>.<%=@listing.price_cents%></b>?</p>
+			<p class="centered">Note: Clicking 'Buy this Book!' will remove this listing from the search engine, and send an email to you and to the seller so you can work out a time to meet. This is not a binding contract, and either party can cancel the deal at any time. If the deal gets cancelled, the listing will be reposted. If the deal goes through, it is up to the seller to mark the transaction as final. Thanks for reading!<br><br>
+			<%= render :partial => "shared/fancy_button", :locals => { :button_id => "buy-this-book", :button_class => 'enabled', :text => "Buy this Book!"} %>
+			</p>
 		<% else %>
-		<div class="sell-form-divider static">
-		  <div class="field">
-		    <%= text_field_tag :buyer_email, nil, :placeholder => 'Email Address'%>
-		  </div>
-		  <div class="field">
-		    <%= text_field_tag :buyer_name, nil, :placeholder => 'Full Name'%>
-		  </div>
-		</div>
-		<div class="sell-form-divider static">
-	    <div class="form-message static"><p>Email Address</p></div>
-		  <div class="form-message static"><p>Name</p></div>
-		</div>
-		
+			<p class="clear centered">Sign up on Facebook to buy <b><%= @listing.title%></b> from <b><%= @listing.user.name %></b>!</p>
+			<div class="big-fb-button">
+			  <%=image_tag '/assets/large-fb-login.png', :class => 'facebook-login-transaction' %>
+			</div>
+			</p>
 		<% end %>
-	<% end %>
-	<br>
-	<br>
-	<p class="clear centered">Do you want to buy <b><%= @listing.title%></b> from <b><%= @listing.user.name %></b> for <b>$<%= @listing.price_dollars%>.<%=@listing.price_cents%></b>?</p>
-	<p class="centered">Note: Clicking 'Buy this Book!' will remove this listing from the search engine, and send an email to you and to the seller so you can work out a time to meet. This is not a binding contract, and either party can cancel the deal at any time. If the deal gets cancelled, the listing will be reposted. If the deal goes through, it is up to the seller to mark the transaction as final. Thanks for reading!<br><br>
-	<%= render :partial => "shared/fancy_button", :locals => { :button_id => "buy-this-book", :button_class => 'enabled', :text => "Buy this Book!"} %>
-	</p>
   </div>
   <div class="clear"></div>
 <div>

@@ -37,3 +37,11 @@ $(document).ready ->
 
   $("#edit-listing-button").click (event) -> 
     $("form.edit_listing").submit()
+    
+    
+  $("body").delegate ".facebook-login-transaction", "click", (event) ->
+    $("#new-transaction").fadeOut (event) ->
+      $(".loading").css "display","block"
+      $("form#request-book-form").submit()
+    
+    

@@ -7,7 +7,7 @@
 	  <% unless Rails.env.production?%>
 		  <div><h3>[This is a test email from the 5CBookExchange!]</h3></div>
 		<%end%>
-    <h3><%= @buyer_name %>, a book you requested has been cancelled!</h3>
+    <h3><%= @buyer.name %>, a book you requested has been cancelled!</h3>
     <p>
       We're sorry, sometimes these things just don't work out. Hopefully this was a mutual decision between you and <%= @seller.name %>! Whatever the reason, the request was cancelled, and you no longer have any obligation to buy <i><%=@transaction.listing.title%></i> from <%= @seller.name.split(' ')[0] %>. The good news is you can go to the <a href="<%= @url %>">5C Book Exchange</a> search for another seller!<br>
     </p>

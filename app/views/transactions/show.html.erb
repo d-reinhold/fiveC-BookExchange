@@ -36,25 +36,25 @@
 	</div>
 	<div id="seller-details">
 		<h3>Seller Details</h3>
-		<p style="line-height: 1.75em">Name: <b><%=@listing.user.name%></b><br>
-		Email Address: <b><%=@listing.user.email%></b><br>
+		<p style="line-height: 1.75em">Name: <b><%=@seller.name%></b><br>
+		Email Address: <b><%=@seller.email%></b><br>
 		
 		<h3>Buyer Details</h3>
-		<p style="line-height: 1.75em">Name: <b><%=@transaction.buyer_name%></b><br>
-		Email Address: <b><%=@transaction.buyer_email%></b><br>
+		<p style="line-height: 1.75em">Name: <b><%=@buyer.name%></b><br>
+		Email Address: <b><%=@buyer.email%></b><br>
 		</div>
 		
 		
 	<% if @transaction.status == 'unavailable' %>		
-		<% if @listing.user.id == @current_user.id %>
-		  <div class="clear"><p style="text-align:center;">Great, <%=@transaction.buyer_name%>  wants to buy <i><%= @listing.title %></i>! That's awesome, but now it's up to you and <%=@transaction.buyer_name.split(" ")[0] %> to work out the details. Email each other and find a time and place to meet up! There's nothing more the 5C Book exchange can do to help at this point! Good luck! <br>
+		<% if @seller.id == @current_user.id %>
+		  <div class="clear"><p style="text-align:center;">Great, <%=@buyer.name%>  wants to buy <i><%= @listing.title %></i>! That's awesome, but now it's up to you and <%=@buyer.name.split(" ")[0] %> to work out the details. Email each other and find a time and place to meet up! There's nothing more the 5C Book exchange can do to help at this point! Good luck! <br>
 		</p></div>
-		  <div class="clear"><p style="text-align:center;">Click 'Sale Completed' once <%=@transaction.buyer_name.split(" ")[0] %> has the book and you have the money.
+		  <div class="clear"><p style="text-align:center;">Click 'Sale Completed' once <%=@buyer.name.split(" ")[0] %> has the book and you have the money.
 		</p></div>
-		<div class="clear"><p style="text-align:center;">Click 'Cancel this Deal' if you no longer wish to take part in this transaction. An email will be sent to <%=@transaction.buyer_name.split(' ')[0] %> and the book will be relisted. If you don't want the book to be relisted, click "Cancel", then go to 'My Books' and delete the posting. Don't be a flake, though! Only post listings that you intend to follow through on in the future! <br><br>
+		<div class="clear"><p style="text-align:center;">Click 'Cancel this Deal' if you no longer wish to take part in this transaction. An email will be sent to <%=@buyer.name.split(' ')[0] %> and the book will be relisted. If you don't want the book to be relisted, click "Cancel", then go to 'My Books' and delete the posting. Don't be a flake, though! Only post listings that you intend to follow through on in the future! <br><br>
 			<%= render :partial => "shared/fancy_button", :locals => { :button_id => "complete-transaction", :button_class => 'green enabled', :text => "Sale Completed!"} %>
 		<% else %>
-		  <div class="clear"><p style="text-align:center;">Ok cool, so you want to buy <%=@listing.user.name.split(" ")[0] %>'s book. What now? Well, it's up to you and <%= @listing.user.name.split(" ")[0] %> to work out the details. Email each other and find a time and place to meet up! There's nothing more the 5C Book exchange can do to help at this point! Good luck! <br>
+		  <div class="clear"><p style="text-align:center;">Ok cool, so you want to buy <%=@seller.name.split(" ")[0] %>'s book. What now? Well, it's up to you and <%= @seller.name.split(" ")[0] %> to work out the details. Email each other and find a time and place to meet up! There's nothing more the 5C Book exchange can do to help at this point! Good luck! <br>
 		</p></div>
 		<div class="clear"><p style="text-align:center;">Click 'Cancel this Deal' if you no longer wish to take part in this transaction. An email will be sent to the seller and the book will be relisted. Don't be a flake, though! Only initiate transactions that you intend to follow through on in the future! <br><br>
 		<% end %>

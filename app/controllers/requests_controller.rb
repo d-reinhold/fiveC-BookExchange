@@ -1,4 +1,6 @@
 class RequestsController < ApplicationController
+  before_filter :authenticate_user, :only => [ :destroy]   
+  
   def new
     puts "Title: " + params[:autofill_title]
     @book = Book.where('title = ?', params[:autofill_title]).first
@@ -7,32 +9,35 @@ class RequestsController < ApplicationController
   end
 
   def create
-    puts 'creating request!'
-    puts params
-    @request = Request.new(params[:request])
-    @request.status = 'unavailable'
-    @listings = Listing.where('book_id = ?', @request.book_id)
-    unless @listings.empty?
-      @listings.each do |l|
-        if l.transaction.status == 'available'
-          @request.status = 'available'
+    @book = Book.find(params[:request][:book_id])
+    if not signed_in?
+      session[:fb_store_request_url] = "/requests/new?autofill_title=#{@book.title}&autofill_author=#{@book.author}&autofill_isbn=#{@book.isbn}&autofill_edition=#{@book.edition}"
+      redirect_to '/auth/facebook/'
+    else
+      @request = current_user.requests.new(params[:request])
+      @request.status = 'unavailable'
+      @listings = Listing.where('book_id = ?', @request.book_id)
+      unless @listings.empty?
+        @listings.each do |l|
+          if l.transaction.status == 'available'
+            @request.status = 'available'
+          end
         end
       end
-    end
-    if @request.save
-      #ListingMailer.listed_book(@listing).deliver
-      flash[:success] = 'Your request has been created!'
-      redirect_to current_user ? current_user : root_path
-    else
-      flash[:error] = @request.errors.full_messages
-      redirect_to root_path
+      if @request.save
+        flash[:success] = 'Your request has been created!'
+        redirect_to current_user
+      else
+        flash[:error] = @request.errors.full_messages
+        redirect_to root_path
+      end
     end
   end
 
   def destroy
     puts 'about to delete a request'
     @request = Request.find(params[:id])
-    if @request.student_email == @current_user.email
+    if @request.user.id == @current_user.id
       @request.destroy
     else
       flash[:error] = "You don't have permission to do that!"

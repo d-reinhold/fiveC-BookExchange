@@ -61,10 +61,10 @@
 	<div id="pending-transactions">
 	  <h2>Pending Transactions</h2>
 	  <p><b>You're the buyer:</b></p>
-	   <% if @buyer_transactions.empty? %>
-	     <p class="centered">You haven't offered to buy anyone's books yet!</p>
+	   <% if @buyer_transactions_pending.empty? %>
+	     <p class="centered">You aren't currently offering to buy any books!</p>
      <% else %>	
-	     <% @buyer_transactions.each do |t| %>
+	     <% @buyer_transactions_pending.each do |t| %>
          <div class="buyer-transaction" id="<%=t.id%>">
 	         <p class='centered'>You want to buy <b><%= t.listing.title %></b> from <b><%= t.listing.user.name%></b> for <b>$<%= t.listing.price_dollars %>.<%= t.listing.price_cents %>.</b></p>
 	       </div>
@@ -72,10 +72,10 @@
     <% end %>
 	  <br>
 	  <p><b>You're the seller:</b></p>
-	   <% if @seller_transactions.empty? %>
-	     <p class="centered">No one has offered to buy one of your books yet!</p>
+	   <% if @seller_transactions_pending.empty? %>
+	     <p class="centered">No one is currently offering to buy one of your books!</p>
      <% else %>
-	   	<% @seller_transactions.each do |t| %>
+	   	<% @seller_transactions_pending.each do |t| %>
 		     <div class="seller-transaction" id="<%=t.id%>">
 	         <p class="centered"><b><%=t.buyer_name%></b> wants to buy <b><%= t.listing.title %></b> for      <b>$<%= t.listing.price_dollars %>.<%= t.listing.price_cents %>.</b></p>
 	       </div>
