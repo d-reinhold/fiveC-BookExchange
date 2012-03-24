@@ -14,11 +14,13 @@ class RequestsController < ApplicationController
       session[:fb_store_request_url] = "/requests/new?autofill_title=#{@book.title}&autofill_author=#{@book.author}&autofill_isbn=#{@book.isbn}&autofill_edition=#{@book.edition}"
       redirect_to '/auth/facebook/'
     else
+      puts 'Creating a request.'
       @request = current_user.requests.new(params[:request])
       @request.status = 'unavailable'
       @listings = Listing.where('book_id = ?', @request.book_id)
       unless @listings.empty?
         @listings.each do |l|
+          puts l.title
           if l.transaction.status == 'available'
             @request.status = 'available'
           end

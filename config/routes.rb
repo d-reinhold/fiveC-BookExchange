@@ -27,7 +27,7 @@ FiveCBookExchange::Application.routes.draw do
   resources :users
   resources :listings do
     get :autocomplete_book_title, :on => :collection
-    get :autocomplete_course_school, :on => :collection
+    get :autocomplete_course_prof, :on => :collection
   end
 
 

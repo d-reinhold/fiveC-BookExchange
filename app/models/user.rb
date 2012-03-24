@@ -35,14 +35,16 @@ class User < ActiveRecord::Base
         @school = School.create(:uid => s["school"]["id"], :name => s["school"]["name"])
         @network = Network.find_by_name(s["school"]["name"]) || Network.create(:name => s["school"]["name"])
         @school.networks << @network
-        if claremont_colleges.include?(@school.name)
-          @school.networks << @claremont_colleges_network
-          self.current_network = @claremont_colleges_network
-        end
         self.schools << @school
       end
       unless self.schools.all.include?(@school)
         self.schools << @school
+      end
+      if claremont_colleges.include?(@school.name)
+        self.current_network = @claremont_colleges_network
+        unless @school.networks.all.include?(@claremont_colleges_network)
+          @school.networks << @claremont_colleges_network
+        end        
       end
     end
     self.save
@@ -53,6 +55,7 @@ class User < ActiveRecord::Base
     else
       self.schools.each{|s| puts "You attend #{s.name}."}
       self.networks.each{|n| puts "You are a part of the #{n.name} network."}
+      puts "Your current network is #{self.current_network.id}."
     end
   end
 

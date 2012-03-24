@@ -5,7 +5,7 @@
     <%= text_field_tag :search_keywords, params[:search_keywords], :placeholder => "Enter a title, author or ISBN!" %> 
   </div>
 	<div class="searchbar" id="searchbar-courses">
-	<%= autocomplete_field_tag :search_courses, params[:search_courses], '/listings/autocomplete_course_school', :placeholder => 'Enter a course or professor!', :class => 'course_searchbar', :update_elements => {:id => '#id'}%>
+	<%= autocomplete_field_tag :search_courses, params[:search_courses], '/listings/autocomplete_course_prof', :placeholder => 'Enter a course or professor!', :class => 'course_searchbar', :update_elements => {:id => '#id'}%>
 	</div>
 <br>
 <div id="radios">

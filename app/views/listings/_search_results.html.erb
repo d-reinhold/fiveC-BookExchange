@@ -16,7 +16,7 @@
 	    <% else %>
 	      <div class="course odd">
 		  <% end %>
-      <h2 style="line-height:.5em;"><%= course.department%><%=course.number%> <%= course.school%>-<%= course.section%></h2>
+      <h2 style="line-height:.5em;"><%= course.department%><%=course.number%> <%= school_abbreviation(course.school_name)%>-<%= course.section%></h2>
       <h3><b><%=course.name%> with <%= course.prof %></b></h3>
       <% unless course.books.empty? %>
 	      <% if course.books.first.title == "Could not find the specified course." %> 

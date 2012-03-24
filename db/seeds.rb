@@ -1,29 +1,44 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
-r = Random.new
 
+pomona = School.create(:uid => '103756122996046', :name => 'Pomona College')
+cmc = School.create(:uid => '103756122996046', :name => 'Pomona College')
+hmc = School.create(:uid => '103756122996046', :name => 'Pomona College')
+scripps = School.create(:uid => '103756122996046', :name => 'Pomona College')
+pitzer = School.create(:uid => '103756122996046', :name => 'Pomona College')
+claremo = School.create(:uid => '103756122996046', :name => 'Pomona College')
 
+pomona_id = School.where("name = ?", 'Pomona College').limit(1).id
+cmc_id = School.where("name = ?", 'Claremont McKenna College').limit(1).id
+hmc_id = School.where("name = ?", 'Harvey Mudd College').limit(1).id
+scripps_id = School.where("name = ?", 'Scripps College').limit(1).id
+pitzer_id = School.where("name = ?", 'Pitzer College').limit(1).id
+claremont_id = School.where("name = ?", 'Claremont Colleges').limit(1).id
 
-def random_book(gen)
-  Book.find(gen.rand(1..1500))
+Course.all.each do |course|
+  school_name = course.school_name
+  case school_name
+  when 'Pomona College'
+    course.school_id = pomona.id
+  when 'Claremont McKenna College'
+    course.school_id = .id
+  when 'Harvey Mudd College'
+    course.school_id = pomona.id
+  when 'Scripps College'
+    course.school_id = pomona.id
+  when 'Pitzer College'
+    course.school_id = pomona.id
+  else
+    course.school_id = pomona.id
+  end
+  course.save
 end
 
-def random_dollars(gen)
-  gen.rand(1..50)
-end
 
-def random_cents(gen)
-  ['00','25', '50', '75'].shuffle.first
-end
 
-def random_condition
-   ['New','Lightly Used', 'Heavily Used', 'Falling Apart'].shuffle.first
-end
 
-def random_description
-  Faker::Lorem.sentence
-end
+
 
 =begin
 dom = User.create!(:name => 'Dominick Reinhold', :email => 'dfr12009@mymail.pomona.edu', :password => 'foobar', :password_confirmation => 'foobar')

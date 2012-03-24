@@ -3,25 +3,7 @@ class Course < ActiveRecord::Base
   belongs_to :school
 
   def autocomplete_display
-    case self.school
-    when 'PO'
-      college = 'Pomona'
-    when 'CM'
-      college = 'CMC'
-    when 'HM'
-      college = 'Harvey Mudd'
-    when 'SC'
-      college = 'Scripps'
-    when 'PZ'
-      college = 'Pitzer'
-    when 'JS'
-      college = 'Joint Sciences'
-    when 'AF'
-      college = 'Africana Studies'
-    else
-      college = self.school
-    end
-    "#{self.name} with #{self.prof} at #{college}"
+    "#{self.name} with #{self.prof} at #{self.school_name}"
   end
 
 
