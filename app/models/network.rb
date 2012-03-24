@@ -1,5 +1,5 @@
 class Network < ActiveRecord::Base
-  has_and_belongs_to_many :schools
+  has_and_belongs_to_many :schools, :uniq => true
   has_many :users, :through => :schools, :uniq => true
   
   validates :name, :uniqueness => true

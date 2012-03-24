@@ -1,5 +1,5 @@
 <header>
-  <%= link_to '5C Book Exchange', '/', :class => "header_text" %>
+  <%= link_to 'Campus BookSwap', '/', :class => "header_text" %>
 
   <nav class="round">
     <ul>
@@ -14,6 +14,10 @@
     </ul>
   <% if signed_in? %>
     <p>Signed in as <%=@current_user.name%></p>
+	  <% unless @current_user.current_network.nil? %>
+      <p>You are currently on the <%= @current_user.current_network%> network!</p>
+      <p>You are one of <%= @current_user.networks.find_by_name(@current_user.current_network).users.size %> members from the <%= @current_user.current_network%> </p>
+    <% end %>
   <% end %>
   </nav>
 	

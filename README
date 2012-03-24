@@ -26,6 +26,12 @@ Before merge to master and push to 5CBookExchange.com:
 		- Restrict search to current user network
 		- If not signed in, allow users to choose what college to look at (original landing page with searchbar)! Once they sign up, they are locked into their Facebook schools.
 		
+BUG LIST:
+  -logout, create request, logout, create listing, request not satisfied
+
+
+
+
 Later:
 	- Refactor out transactions for much faster request processing
 	

@@ -1,10 +1,10 @@
 class School < ActiveRecord::Base
-  has_and_belongs_to_many :users
-  has_and_belongs_to_many :networks
+  has_and_belongs_to_many :users, :uniq => true
+  has_and_belongs_to_many :networks, :uniq => true
   has_many :courses
   
-  validates :name, :uniqueness => true
-  validates :uid, :uniqueness => true
+  validates :name, :presence => true
+
   
   
 end

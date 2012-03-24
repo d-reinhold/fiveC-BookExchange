@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_and_belongs_to_many :schools
+  has_and_belongs_to_many :schools, :uniq => true
   has_many :networks, :through => :schools, :uniq => true
   has_many :listings, :dependent => :destroy
   has_many :requests
@@ -30,24 +30,26 @@ class User < ActiveRecord::Base
                           'Pitzer College', 'Keck Graduate Institute',
                           'Claremont Graduate University']
     schools.each do |s| 
-      @school = School.where("uid = ?", s["school"]["id"]).limit(1).first
+      @school = School.where("name = ?", s["school"]["name"]).limit(1).first
       if @school.nil? # if no one from this school has signed up before
-        @school = School.create(:uid => s["school"]["id"], :name => s["school"]["name"])
+        @school = School.create(:name => s["school"]["name"])
         @network = Network.find_by_name(s["school"]["name"]) || Network.create(:name => s["school"]["name"])
         @school.networks << @network
         self.schools << @school
       end
       unless self.schools.all.include?(@school)
+        puts "Adding #{@school.name} to your schools."
         self.schools << @school
       end
       if claremont_colleges.include?(@school.name)
-        self.current_network = @claremont_colleges_network
+        self.current_network = @claremont_colleges_network.name
+        puts "Setting #{self.current_network} to be your current network."
         unless @school.networks.all.include?(@claremont_colleges_network)
           @school.networks << @claremont_colleges_network
         end        
       end
     end
-    self.save
+    self.save!
     puts "Your name is #{self.name}."
     puts "Your email is #{self.email}."
     if self.schools.empty?
@@ -55,8 +57,8 @@ class User < ActiveRecord::Base
     else
       self.schools.each{|s| puts "You attend #{s.name}."}
       self.networks.each{|n| puts "You are a part of the #{n.name} network."}
-      puts "Your current network is #{self.current_network.id}."
     end
+    self.schools.each{|s| s.save!}
   end
 
 end
