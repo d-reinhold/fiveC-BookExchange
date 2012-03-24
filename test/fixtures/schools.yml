@@ -1,0 +1,20 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  uid: MyString
+  name: MyString
+
+two:
+  uid: MyString
+  name: MyString
+# == Schema Information
+#
+# Table name: schools
+#
+#  id         :integer         not null, primary key
+#  uid        :string(255)
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+

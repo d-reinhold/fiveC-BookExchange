@@ -26,5 +26,6 @@ two:
 #  created_at :datetime
 #  updated_at :datetime
 #  prof       :string(255)
+#  school_id  :integer
 #
 

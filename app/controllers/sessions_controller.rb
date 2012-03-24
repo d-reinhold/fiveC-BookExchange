@@ -1,13 +1,14 @@
 class SessionsController < ApplicationController
 
-
   def create
     auth = request.env["omniauth.auth"]
     @user = User.find_by_uid(auth["uid"])
     if @user.nil?
+      puts 'You are signing up.'
       @greeting = "Welcome to Campus Bookswap"
       @user = User.create_with_omniauth(auth)
     else
+      puts 'You are signing in.'
       @greeting = "Welcome back"
     end
     @user.update_with_omniauth(auth)
@@ -31,7 +32,7 @@ class SessionsController < ApplicationController
       puts 'You are logging in to buy a book.'
       @url = session[:fb_store_listing_url]
     else
-      puts 'You are just logging in, welcome back!'
+      puts 'You logging in with the default button.'
       @url = @user
     end
     redirect_to @url, :notice => "#{@greeting}, #{@name}! #{@tag}"

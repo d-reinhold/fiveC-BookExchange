@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120320215222) do
+ActiveRecord::Schema.define(:version => 20120323222615) do
 
   create_table "books", :force => true do |t|
     t.string   "title"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20120320215222) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "prof"
+    t.integer  "school_id"
   end
 
   create_table "listings", :force => true do |t|
@@ -60,6 +61,23 @@ ActiveRecord::Schema.define(:version => 20120320215222) do
     t.string   "price_cents",   :default => "00"
   end
 
+  create_table "networks", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "networks_schools", :id => false, :force => true do |t|
+    t.integer  "network_id"
+    t.integer  "school_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "networks_schools", ["network_id"], :name => "index_networks_schools_on_network_id"
+  add_index "networks_schools", ["school_id", "network_id"], :name => "index_networks_schools_on_school_id_and_network_id", :unique => true
+  add_index "networks_schools", ["school_id"], :name => "index_networks_schools_on_school_id"
+
   create_table "requests", :force => true do |t|
     t.integer  "book_id"
     t.string   "status"
@@ -67,6 +85,24 @@ ActiveRecord::Schema.define(:version => 20120320215222) do
     t.datetime "updated_at"
     t.integer  "user_id"
   end
+
+  create_table "schools", :force => true do |t|
+    t.string   "uid"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "schools_users", :id => false, :force => true do |t|
+    t.integer  "school_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "schools_users", ["school_id", "user_id"], :name => "index_schools_users_on_school_id_and_user_id", :unique => true
+  add_index "schools_users", ["school_id"], :name => "index_schools_users_on_school_id"
+  add_index "schools_users", ["user_id"], :name => "index_schools_users_on_user_id"
 
   create_table "transactions", :force => true do |t|
     t.integer  "listing_id"
@@ -85,7 +121,7 @@ ActiveRecord::Schema.define(:version => 20120320215222) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "uid"
-    t.text     "fb_colleges"
+    t.string   "current_network"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

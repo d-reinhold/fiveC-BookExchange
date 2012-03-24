@@ -9,6 +9,7 @@ gem "nokogiri"
 gem 'kaminari'
 gem 'omniauth-facebook'
 
+gem "awesome_print"
 gem 'rails3-jquery-autocomplete', :git => "git@github.com:/slash4/rails3-jquery-autocomplete.git"
 gem 'bcrypt-ruby'
 

@@ -1,5 +1,6 @@
 class Course < ActiveRecord::Base
   has_and_belongs_to_many :books
+  belongs_to :school
 
   def autocomplete_display
     case self.school
@@ -40,5 +41,6 @@ end
 #  created_at :datetime
 #  updated_at :datetime
 #  prof       :string(255)
+#  school_id  :integer
 #
 
