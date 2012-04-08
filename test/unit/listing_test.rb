@@ -22,5 +22,6 @@ end
 #  updated_at    :datetime
 #  book_id       :integer         default(-1)
 #  price_cents   :string(255)     default("00")
+#  school_id     :integer
 #
 

@@ -24,6 +24,5 @@ end
 #  isbn       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
-#  course_id  :integer Should probably get rid of the course id, since it's habtm???
 #
 

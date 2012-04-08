@@ -16,6 +16,5 @@ end
 #  isbn       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
-#  course_id  :integer
 #
 

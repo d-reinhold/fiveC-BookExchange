@@ -27,6 +27,7 @@ class ListingsController < ApplicationController
       @user = current_user
       @listing = @user.listings.new(params[:listing])
       @listing.book_id = match_listing_to_book(@listing)
+      @listing.school_id = @current_user.default_school_id
       if @listing.save
         if @listing.book_id != -1
           compute_requests(@listing.book_id)

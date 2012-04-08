@@ -9,12 +9,13 @@ end
 #
 # Table name: users
 #
-#  id              :integer         not null, primary key
-#  email           :string(255)
-#  name            :string(255)
-#  created_at      :datetime
-#  updated_at      :datetime
-#  uid             :string(255)
-#  current_network :string(255)
+#  id                  :integer         not null, primary key
+#  email               :string(255)
+#  name                :string(255)
+#  created_at          :datetime
+#  updated_at          :datetime
+#  uid                 :string(255)
+#  default_school_name :string(255)
+#  default_school_id   :integer
 #
 

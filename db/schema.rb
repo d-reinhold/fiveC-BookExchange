@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120324053046) do
+ActiveRecord::Schema.define(:version => 20120408043952) do
 
   create_table "books", :force => true do |t|
     t.string   "title"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(:version => 20120324053046) do
     t.string   "isbn"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "course_id"
   end
 
   create_table "books_courses", :id => false, :force => true do |t|
@@ -59,24 +58,8 @@ ActiveRecord::Schema.define(:version => 20120324053046) do
     t.datetime "updated_at"
     t.integer  "book_id",       :default => -1
     t.string   "price_cents",   :default => "00"
-  end
-
-  create_table "networks", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "networks_schools", :id => false, :force => true do |t|
-    t.integer  "network_id"
     t.integer  "school_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
-
-  add_index "networks_schools", ["network_id"], :name => "index_networks_schools_on_network_id"
-  add_index "networks_schools", ["school_id", "network_id"], :name => "index_networks_schools_on_school_id_and_network_id", :unique => true
-  add_index "networks_schools", ["school_id"], :name => "index_networks_schools_on_school_id"
 
   create_table "requests", :force => true do |t|
     t.integer  "book_id"
@@ -105,11 +88,11 @@ ActiveRecord::Schema.define(:version => 20120324053046) do
 
   create_table "transactions", :force => true do |t|
     t.integer  "listing_id"
+    t.string   "buyer_name", :default => "not set"
     t.string   "status",     :default => "available"
     t.string   "sell_date",  :default => "not sold"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "buyer_name"
     t.integer  "buyer_id"
     t.integer  "seller_id"
   end
@@ -120,7 +103,8 @@ ActiveRecord::Schema.define(:version => 20120324053046) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "uid"
-    t.string   "current_network"
+    t.string   "default_school_name"
+    t.integer  "default_school_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

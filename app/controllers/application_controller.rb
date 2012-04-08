@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   
   
   def authenticate_user
-    deny_access unless signed_in?
+    deny_access unless (signed_in? and @current_user.default_school_name == 'Claremont Colleges')
   end  
   
   def deny_access

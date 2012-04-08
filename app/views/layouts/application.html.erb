@@ -63,6 +63,13 @@
 		    <div class="fb-like" data-href="http://www.5cbookexchange.com" data-send="false" data-width="450" data-show-faces="false"></div>
 	  	<% end %>
 			<section class="round">
+	      <% if signed_in? and @current_user.default_school_id == -1 %>
+	        <% if @current_user.default_school_name == 'No FB Colleges' %>
+	          <%= render 'layouts/no_college' %>
+	        <% else %>
+	          <%= render 'layouts/not_available' %>
+	        <% end %>
+	      <% else %>
 				<div class="loading">
 					<p>Processing request..</p>
 				  <%= image_tag "blue_loading.gif"%>
@@ -71,10 +78,7 @@
 	      <div class="flash <%= key %>">
 	        <%= value %>
 		    </div>
-	      <% end %>	
-	      <% if signed_in? and @current_user.current_network.nil? %>
-	        <%= render 'layouts/no_college' %>
-	      <% else %>
+	      <% end %>
 	        <%= yield %>
 	      <% end %>
       </section>

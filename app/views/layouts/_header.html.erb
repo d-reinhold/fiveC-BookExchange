@@ -1,7 +1,7 @@
 <header>
   <%= link_to 'Campus BookSwap', '/', :class => "header_text" %>
 
-  <nav class="round">
+  <nav class="round" id="header">
     <ul>
 	    <% if signed_in? %>
 	      <li><%= link_to "Search/Sell Books!", '/' %></li>•
@@ -14,9 +14,8 @@
     </ul>
   <% if signed_in? %>
     <p>Signed in as <%=@current_user.name%></p>
-	  <% unless @current_user.current_network.nil? %>
-      <p>You are currently on the <%= @current_user.current_network%> network!</p>
-      <p>You are one of <%= @current_user.networks.find_by_name(@current_user.current_network).users.size %> members from the <%= @current_user.current_network%> </p>
+	  <% if @current_user.default_school_id != -1 %>
+      <p>You are one of <%= @current_user.schools.find_by_id(@current_user.default_school_id).users.size %> members from the</p><p> <%= @current_user.default_school_name%> network!</p>
     <% end %>
   <% end %>
   </nav>

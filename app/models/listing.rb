@@ -3,6 +3,7 @@ class Listing < ActiveRecord::Base
   attr_accessible :id, :user_id, :title, :price_dollars, :price_cents, :author, :edition, :isbn, :description, :condition, :book_id
   belongs_to :user
   belongs_to :book
+  belongs_to :school
   has_one :transaction, :dependent => :destroy
   
   before_save do
@@ -45,5 +46,6 @@ end
 #  updated_at    :datetime
 #  book_id       :integer         default(-1)
 #  price_cents   :string(255)     default("00")
+#  school_id     :integer
 #
 
