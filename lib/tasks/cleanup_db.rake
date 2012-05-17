@@ -12,17 +12,17 @@ namespace :db do
       school_name = course.school_name
       case school_name
       when 'Pomona College'
-        course.school_id = pomona_id
+        course.school_symbol = 'PO'
       when 'Claremont McKenna College'
-        course.school_id = cmc_id
+        course.school_symbol = 'CM'
       when 'Harvey Mudd College'
-        course.school_id = hmc_id
+        course.school_symbol = 'HM'
       when 'Scripps College'
-        course.school_id = scripps_id
+        course.school_symbol = 'SC'
       when 'Pitzer College'
-        course.school_id = pitzer_id
+        course.school_symbol = 'PZ'
       else
-        course.school_id = claremont_id
+        course.school_symbol = 'JS'
       end
       course.save
     end

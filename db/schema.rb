@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120408043952) do
+ActiveRecord::Schema.define(:version => 20120414044412) do
 
   create_table "books", :force => true do |t|
     t.string   "title"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(:version => 20120408043952) do
     t.string   "prof"
     t.integer  "school_id"
     t.string   "school_name"
+    t.string   "school_symbol"
+    t.string   "semester"
   end
 
   create_table "listings", :force => true do |t|
@@ -88,11 +90,11 @@ ActiveRecord::Schema.define(:version => 20120408043952) do
 
   create_table "transactions", :force => true do |t|
     t.integer  "listing_id"
-    t.string   "buyer_name", :default => "not set"
     t.string   "status",     :default => "available"
     t.string   "sell_date",  :default => "not sold"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "buyer_name"
     t.integer  "buyer_id"
     t.integer  "seller_id"
   end

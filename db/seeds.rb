@@ -2,41 +2,6 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
 
-pomona = School.create(:uid => '103756122996046', :name => 'Pomona College')
-cmc = School.create(:uid => '103756122996046', :name => 'Pomona College')
-hmc = School.create(:uid => '103756122996046', :name => 'Pomona College')
-scripps = School.create(:uid => '103756122996046', :name => 'Pomona College')
-pitzer = School.create(:uid => '103756122996046', :name => 'Pomona College')
-claremo = School.create(:uid => '103756122996046', :name => 'Pomona College')
-
-pomona_id = School.where("name = ?", 'Pomona College').limit(1).id
-cmc_id = School.where("name = ?", 'Claremont McKenna College').limit(1).id
-hmc_id = School.where("name = ?", 'Harvey Mudd College').limit(1).id
-scripps_id = School.where("name = ?", 'Scripps College').limit(1).id
-pitzer_id = School.where("name = ?", 'Pitzer College').limit(1).id
-claremont_id = School.where("name = ?", 'Claremont Colleges').limit(1).id
-
-Course.all.each do |course|
-  school_name = course.school_name
-  case school_name
-  when 'Pomona College'
-    course.school_id = pomona.id
-  when 'Claremont McKenna College'
-    course.school_id = .id
-  when 'Harvey Mudd College'
-    course.school_id = pomona.id
-  when 'Scripps College'
-    course.school_id = pomona.id
-  when 'Pitzer College'
-    course.school_id = pomona.id
-  else
-    course.school_id = pomona.id
-  end
-  course.save
-end
-
-
-
 
 
 

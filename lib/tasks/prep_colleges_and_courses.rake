@@ -11,19 +11,25 @@ namespace :db do
 
 
     Course.all.each do |course|
-      case course.school_name
-      when 'Pomona College'
+      case course.school_symbol
+      when 'PO'
         course.school_id = claremont_colleges.id
-      when 'Claremont McKenna College'
+        course.school_name = 'Pomona College'
+      when 'CM'
         course.school_id = claremont_colleges.id
-      when 'Harvey Mudd College'
+        course.school_name = 'Claremont McKenna College'
+      when 'HM'
         course.school_id = claremont_colleges.id
-      when 'Scripps College'
+        course.school_name = 'Harvey Mudd College'
+      when 'SC'
         course.school_id = claremont_colleges.id
-      when 'Pitzer College'
+        course.school_name = 'Scripps College'
+      when 'PZ'
         course.school_id = claremont_colleges.id
+        course.school_name = 'Pitzer College'
       else
         course.school_id = claremont_colleges.id
+        course.school_name = 'Claremont Colleges'
       end
       course.save
     end

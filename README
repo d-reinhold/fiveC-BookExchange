@@ -17,9 +17,11 @@ This is a web app i created to simplify the process of buying and selling textbo
 
 TODO list:
 
+When Huntley updates courses for Fall 2012, KEEP old books database, DROP old courses database. Rerun script.  
+
 
 Before merge to master and push to 5CBookExchange.com:
-	- Update user facebook info each time they login
+	- Update user facebook info each time they login 
 	- Make facebook redirection consistent in the session
 	- Set up basic network structure:
 		- Ensure there is a proper error page if a user has no facebook schools
