@@ -22,9 +22,11 @@
 	      <% if course.books.first.title == "Could not find the specified course." %> 
 	        <p>Check your school's online course portal for the books for this class.</p>
 		     <% elsif course.books.first.title == "No books needed for this class." %> 
-		       <p>No course materials are needed for this class! But check with your professor to make sure.</p>
-		     <% elsif course.books.first.title == "Materials Not Finalized For This Class." %> 
+		       <p>No books are needed for this class! But check with your professor to make sure.</p>
+		     <% elsif course.books.first.title == "Materials not finalized for this class." %> 
 		       <p>Course materials for this class have not been determined yet. Check with your professor.</p>
+		     <% elsif course.books.first.title == "This course has a bundle available." %> 
+		       <p>This course has a bundle available! Check your school's course portal for more information.</p>
 		    <% else %>
 		      <h3 style="line-height:.2em;"><%= pluralize(course.books.size, 'required book') %>:</h3>
 		      <% course.books.each do |book| %>

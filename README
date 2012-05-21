@@ -46,9 +46,28 @@ Implement fun features in 5CBE
 Send email to users asking for feedback
 
 
+Courses and Books data (5-21-2012):
+Total Courses: 1566
+	-Materials not finalized for this class: 617
+	-No books needed for this class: 162
+	-Could not find the specified course: 280
+	-This course has optional materials: 7
+	-This course has a bundle available: 58
+	Courses with materials: 442
+	Courses without materials yet: 1124
+	Courses with one book: 1362
+	Courses with one finalized required book: 238
+  Courses with more than one finalized required book: 204
+
+Total Books: 848
+
+
+
 
 BUG LIST:
 when a book exists but is unavailable, searching for it will display an empty table.
 Should listing id be attr_accessible?
 search by prof, course number/department could be much improved with substrings)
 
+POSSIBLE PRIVACY CONCERN:
+Users give the app permission to use their email address, not necessarily to display that address to other people..

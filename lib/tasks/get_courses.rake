@@ -8,8 +8,7 @@ namespace :db do
     num_pages = 78 # this needs to be manually set by visiting the ASPC website
     course_semester = "FA2012" # update each semester
     our_pomona_base_url = 'http://aspc.pomona.edu/courses/search/?end_range=&course_number_min=&spots_left=on&c_pz=on&requirement_area=&c_cm=on&c_po=on&credit=A&c_cu=on&department=&c_sc=on&only_at_least=A&c_hm=on&keywords=&start_range=&instructor=&c_cgu=on&course_number_max=&page='  
-    school_names = {"PO" => "Pomona College", "CM" => "Claremont McKenna College", "SC" => "Scripps College", "PZ" => "Pitzer College", "HM" => "Harvey Mudd College", "KS" => "Claremont Colleges", "JP" => "Claremont Colleges", "JM" => "Claremont Colleges", "JT" => "Claremont Colleges"}
-    puts school_names["PO"]
+    school_names = {"PO" => "Pomona College", "CM" => "Claremont McKenna College", "SC" => "Scripps College", "PZ" => "Pitzer College", "HM" => "Harvey Mudd College", "KS" => "Claremont Colleges", "JP" => "Claremont Colleges", "JM" => "Claremont Colleges", "JT" => "Claremont Colleges", "AF" => "Claremont Colleges", "AA" => "Claremont Colleges", "CG" => "Claremont Colleges", "CH" => "Claremont Colleges" }
     new_courses = 0
     current_page_num = 1
     while current_page_num < num_pages
