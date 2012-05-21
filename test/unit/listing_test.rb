@@ -23,5 +23,9 @@ end
 #  book_id       :integer         default(-1)
 #  price_cents   :string(255)     default("00")
 #  school_id     :integer
+#  sell_date     :string(255)
+#  status        :string(255)
+#  buyer_id      :integer
+#  buyer_name    :string(255)
 #
 

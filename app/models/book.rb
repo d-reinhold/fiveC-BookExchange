@@ -17,12 +17,14 @@ end
 #
 # Table name: books
 #
-#  id         :integer         not null, primary key
-#  title      :string(255)
-#  author     :string(255)
-#  edition    :string(255)
-#  isbn       :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id           :integer         not null, primary key
+#  title        :string(255)
+#  author       :string(255)
+#  edition      :string(255)
+#  isbn         :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
+#  huntley_new  :string(255)
+#  huntley_used :string(255)
 #
 
