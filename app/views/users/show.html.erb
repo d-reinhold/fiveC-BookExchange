@@ -40,7 +40,7 @@
 				        <% break %>
 				      <% end %>
 				    <% end %>
-					  <% if r.status == 'available'%>
+					  <% if r.status == 'available' and listing %>
 				      <div class="request-bubble request-available" id="request-<%=r.id%>-<%=listing.id%>">
 				        <div class='centered'> A copy of <b><%= r.book.title %></b> is available! Click for more information!</div>
 				      <% else%>

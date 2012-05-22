@@ -25,7 +25,9 @@ class Listing < ActiveRecord::Base
   
                             
   validates :price_cents, :presence => true
-              
+     
+     
+       
              
 
 end

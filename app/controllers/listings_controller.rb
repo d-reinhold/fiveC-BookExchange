@@ -26,11 +26,11 @@ class ListingsController < ApplicationController
     else
       @user = current_user
       @listing = @user.listings.new(params[:listing])
-      @listing.book_id = match_listing_to_book(@listing)
+      @listing.book_id = Book.match_listing_to_book(@listing)
       @listing.school_id = @current_user.default_school_id
       if @listing.save
         if @listing.book_id != -1
-          compute_requests(@listing.book_id)
+          Book.compute_requests(@listing.book_id)
         end
         #ListingMailer.listed_book(@listing).deliver
         flash[:success] = 'Your listing was created!'
@@ -60,15 +60,11 @@ class ListingsController < ApplicationController
         redirect_to root_path
     else
       if @listing.update_attributes(params[:listing])
-        @listing.book_id = match_listing_to_book(@listing)
+        @listing.book_id = Book.match_listing_to_book(@listing)
         @listing.save
         if @listing.book_id != old_book_id
-          if old_book_id != -1
-            compute_requests(old_book_id)
-          end
-          if @listing.book_id != -1
-            compute_requests(@listing.book_id)
-          end
+            Book.compute_requests(old_book_id)
+            Book.compute_requests(@listing.book_id)
         end       
         flash[:success] = 'Listing updated!'
         if signed_in?
@@ -91,9 +87,7 @@ class ListingsController < ApplicationController
     else
       book_id = @listing.book_id
       @listing.destroy #destroy original listing
-      if book_id != -1
-        compute_requests(book_id)
-      end
+      Book.compute_requests(book_id)
       flash[:success] = 'Listing deleted!'
     end
     redirect_to @current_user
@@ -131,53 +125,7 @@ class ListingsController < ApplicationController
   
   private
     
-    def compute_requests(book_id)
-      puts "computing requests"        
-      requests = Request.where('book_id = ?', book_id) # find all the requests for this book
-      listings = Listing.where('book_id = ?', book_id)
-      listing_is_available = false
-      unless listings.empty? # see if anyone else is listing this book
-        listings.each do |l|
-          if l.transaction.status == 'available' # if there are any available listings, the request is still 'available'!
-            puts 'A listing is available!'
-            listing_is_available = true
-            break
-          end
-        end
-      end
-      unless requests.empty?
-        puts 'setting requests!'
-        requests.each do |r|
-          if listing_is_available
-            puts 'setting requests to available!'
-            r.status = 'available'
-            book = Book.find(book_id)
-            RequestMailer.request_available(r,book).deliver
-          else
-            puts 'setting requests to unavailable!'
-            r.status = 'unavailable'
-          end
-          r.save
-        end
-      end
-    end
-    
-  def match_listing_to_book(listing)
-    downcase_title = listing.title.downcase
-    downcase_title_symbol = downcase_title.gsub('and', '&')
-    downcase_author = '%'+listing.author.downcase.split(' ').last
-    book = Book.where("lower(title) = ? and lower(author) LIKE ?", downcase_title_symbol, downcase_author).limit(1).all
-    if (book.nil? or book.empty?) and listing.isbn != ''
-      book = Book.where("isbn = ?", listing.isbn.gsub('-','')).limit(1).all
-    end
-    unless book.empty?
-      puts 'Found a course that requires this book!'
-      return book.first.id 
-    else
-      puts 'no Books match this listing'
-      return -1
-    end
-  end
+  
   
   def gen_keyword_search_arrays(parameters)
     puts 'searching listings'

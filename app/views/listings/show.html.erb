@@ -66,7 +66,7 @@
 					<div class="clear centered">
 					<p><%=@listing.transaction.buyer_name%> wants to buy this book, so you can't modify the listing!</p>
 					<%= render :partial => "shared/fancy_button", :locals => { :button_id => @listing.id, :button_class => 'goto-edit-listing-button disabled', :text => "Edit Listing!"} %>
-					<%= render :partial => "shared/fancy_button", :locals => { :button_id => "delete-listing-button", :button_class => 'red disabled', :text => "Delete Listing!"} %></div>
+					<%= render :partial => "shared/fancy_button", :locals => { :button_id => "delete-listing-button", :button_class => 'disabled', :text => "Delete Listing!"} %></div>
 				<% end %>
 	
 		<% else%>

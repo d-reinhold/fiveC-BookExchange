@@ -45,11 +45,13 @@ class TransactionsController < ApplicationController
           @transaction.buyer_id = current_user.id
           @transaction.buyer_name = current_user.name
           @transaction.status = "unavailable"
-          @requests_for_this_book = @current_user.requests.select{|request| request.book_id == @transaction.listing.book_id}
-          if @requests_for_this_book.any?
+          Book.compute_requests(@transaction.listing.book_id)
+          @your_requests_for_this_book = @current_user.requests.select{|request| request.book_id == @transaction.listing.book_id}
+          if @your_requests_for_this_book.any?
             puts "You're trying to buy a book you've requested previously!"
-            @requests_for_this_book.each{|request| request.destroy }
+            @your_requests_for_this_book.each{|request| request.destroy }
           end
+          Book.compute_requests(@transaction.listing.book_id)
             
           if @transaction.save
             TransactionMailer.book_requested_buyer(@transaction).deliver
@@ -73,7 +75,7 @@ class TransactionsController < ApplicationController
     puts params
     @transaction = Transaction.find(params[:id])
     if @transaction.status == 'unavailable'
-      if @current_user.id == @transaction.listing.user.id
+      if @current_user.id == @transaction.seller_id
         TransactionMailer.seller_cancelled_request_seller(@transaction).deliver
         TransactionMailer.seller_cancelled_request_buyer(@transaction).deliver
       else
@@ -91,7 +93,7 @@ class TransactionsController < ApplicationController
         redirect_to @current_user
       end
     else 
-      flash[:error] = "That listing is not currently requested."
+      flash[:error] = "That request can not be cancelled at this time."
       redirect_to root_path
     end 
   end
