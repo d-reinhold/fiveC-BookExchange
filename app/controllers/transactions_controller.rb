@@ -43,7 +43,14 @@ class TransactionsController < ApplicationController
           redirect_to '/'
         elsif @transaction.status == 'available'
           @transaction.buyer_id = current_user.id
+          @transaction.buyer_name = current_user.name
           @transaction.status = "unavailable"
+          @requests_for_this_book = @current_user.requests.select{|request| request.book_id == @transaction.listing.book_id}
+          if @requests_for_this_book.any?
+            puts "You're trying to buy a book you've requested previously!"
+            @requests_for_this_book.each{|request| request.destroy }
+          end
+            
           if @transaction.save
             TransactionMailer.book_requested_buyer(@transaction).deliver
             TransactionMailer.book_requested_seller(@transaction).deliver
