@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def create
+    puts "trying to sign you in"
     auth = request.env["omniauth.auth"]
     @user = User.find_by_uid(auth["uid"])
     puts '--------------- Initiating new user session ---------------'
