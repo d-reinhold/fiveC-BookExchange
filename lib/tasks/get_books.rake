@@ -5,6 +5,7 @@ require 'open-uri'
 namespace :db do
   desc "Goes through the course database and scrapes Huntley for the required books."
   task :get_books => :environment do
+    sleep 1
     huntley_base_url = "http://www.bkstr.com/webapp/wcs/stores/servlet/booklookServlet?bookstore_id-1=994&term_id-1=FA2012"
     no_course_book = Book.where('title =?', 'Could not find the specified course.').first
     no_course_book ||= Book.create!(:title => 'Could not find the specified course.')
@@ -19,13 +20,14 @@ namespace :db do
     bundled_book = Book.where('title =?', 'This course has a bundle available.').first
     bundled_book ||= Book.create!(:title => 'This course has a bundle available.')
     Course.all.each do |course|
+      
       puts 'School: ' + course.school_symbol
       puts 'Department: ' + course.department
       puts 'Number: ' + course.number
       puts 'Name: ' + course.name
       puts 'Prof: ' + course.prof
       puts 'Section: ' + course.section
-      begin
+      #begin
         puts huntley_base_url+'&div-1='+course.school_symbol+'&dept-1='+course.department+'&course-1='+course.number+'&section-1='+course.section+'#content'
         bookstore = Nokogiri::HTML(open(huntley_base_url+'&div-1='+course.school_symbol+'&dept-1='+course.department+'&course-1='+course.number+'&section-1='+course.section+'#content'))
         if bookstore.css('.results h2.error')[0]
@@ -95,10 +97,10 @@ namespace :db do
         if course.books.empty?
           course.books << no_course_book
         end
-      rescue
-        puts "SKIPPING #{course.name}"
-        next
-      end                                            
+      #rescue
+      #  puts "SKIPPING #{course.name}"
+      #  next
+      #end                                            
     end
   end 
 end
