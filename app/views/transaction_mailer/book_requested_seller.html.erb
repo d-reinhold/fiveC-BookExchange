@@ -7,7 +7,7 @@
 	  <% unless Rails.env.production?%>
 		  <div><h3>[This is a test email from the 5CBookExchange!]</h3></div>
 		<%end%>
-    <h3><%= @seller.name %>, someone has requested one of your books!</h3>
+    <h3><%= @seller.name.split(' ')[0] %>, someone has requested one of your books!</h3>
     <p>
       <%= @buyer.name %> wants to buy <i><%=@transaction.listing.title%></i>! You can contact <%= @buyer.name.split(' ')[0] %> at <%=@buyer_email%> to set up a time and place to sell your book. It's your responsibility to contact <%= @buyer.name.split(' ')[0] %> to get the transaction going!<br>
     </p>

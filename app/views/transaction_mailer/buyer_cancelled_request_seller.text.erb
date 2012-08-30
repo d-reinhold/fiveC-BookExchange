@@ -1,7 +1,7 @@
 <% unless Rails.env.production?%>
   [This is a test email from the 5CBookExchange!]
 <%end%>
-<%= @seller.name %>, a request for one of your books has been cancelled!
+<%= @seller.name.split(' ')[0] %>, a request for one of your books has been cancelled!
 
   Hopefully this was a mutual decision between you and <%= @buyer.name %>! Whatever the reason, the request was cancelled, and your book has been relisted. If you do not want your book to be available on the 5C Book Exchange anymore, go to <%= @url %>, log in and go to 'My Books'. From there you can delete the listing permanently.
 

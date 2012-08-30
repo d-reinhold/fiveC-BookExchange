@@ -3,7 +3,7 @@ class Course < ActiveRecord::Base
   belongs_to :school
 
   def autocomplete_display
-    "#{self.name} with #{self.prof} at #{self.school_name}"
+    "#{self.department} #{self.number} #{self.school_symbol} -- #{self.name} with #{self.prof}"
   end
 
 

@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
   before_filter :authenticate_user, :only => [ :edit, :update, :destroy] 
   before_filter :correct_user, :only => [ :edit, :update, :destroy]
   autocomplete :book, [:title], :full => true, :extra_data => [:author, :title, :isbn], :value => :title, :display_value => :autocomplete_display
-  autocomplete :course, [:prof, :name, :department, :school_name, :number], :full => true, :extra_data => [:department, :name, :school_name, :number, :prof, :id], :display_value => :autocomplete_display
+  autocomplete :course, [:prof, :name, :department, :school_name, :number, :school_symbol], :full => true, :extra_data => [:department, :name, :school_name, :number, :prof, :id, :school_symbol], :display_value => :autocomplete_display
   
   def show
     unless Listing.exists?(:id => params[:id])
@@ -150,20 +150,20 @@ class ListingsController < ApplicationController
     else
       @course = parameters[:search_courses]
       #@matching_courses = Course.where("lower(name) LIKE ? OR lower(number) LIKE ? OR lower(department) LIKE ?", "%#{@course}%","%#{@course}%","%#{@course}%").order("number")
-      if parameters[:school]
+      #if parameters[:school]
         @keywords = '%'+@course.gsub(' ', '% %')+'%'
         puts @keywords
         #@matching_courses = Course.search_by_course_keywords(@course).where('school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ?', params[:school][0],params[:school][1],params[:school][2],params[:school][3],params[:school][4],params[:school][5]).order('number').order('section').page(params[:page]).per(5)
         #@matching_courses = Course.search_by_name_or_prof_or_department_or_number(params[:search_courses],params[:search_courses],params[:search_courses],params[:search_courses]).where('school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ?', params[:school][0],params[:school][1],params[:school][2],params[:school][3],params[:school][4],params[:school][5]).order('number').order('section').page(params[:page]).per(5)
         if session[:returning_to_search] == true
           puts "PAGE NUM2: #{page_num}"
-          @matching_courses = Course.where('name ILIKE ? OR prof ILIKE ? OR department ILIKE ? OR number = ?',@keywords,@keywords,@keywords,@keywords).order('number').order('section').page(page_num).per(5)
+          @matching_courses = Course.where('name ILIKE ? OR prof ILIKE ? OR department ILIKE ? OR number ILIKE ?',@keywords,@keywords,@keywords,@keywords).order('number').order('section').page(page_num).per(5)
         else
-          @matching_courses = Course.where('name ILIKE ? OR prof ILIKE ? OR department ILIKE ? OR number = ?',@keywords,@keywords,@keywords,@keywords).order('number').order('section').page(params[:page]).per(5)
+          @matching_courses = Course.where('name ILIKE ? OR prof ILIKE ? OR department ILIKE ? OR number ILIKE ?',@keywords,@keywords,@keywords,@keywords).order('number').order('section').page(params[:page]).per(5)
         end
-      else
-        @matching_courses = Array.new
-      end
+      #else
+      #  @matching_courses = Array.new
+      #end
     end
     session[:last_search] = parameters
     session[:last_search_type] = 'course'

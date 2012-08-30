@@ -30,6 +30,12 @@ body {
   background-position: top left;
 }
 
+::-moz-selection{
+background:#7ED2B6;color:#fff
+}
+::selection{
+background:#7ED2B6;color:#fff
+}
 
 header {
   padding-top: 20px;

@@ -7,7 +7,7 @@
 	  <% unless Rails.env.production?%>
 		  <div><h3>[This is a test email from the 5CBookExchange!]</h3></div>
 		<%end%>
-    <h3><%= @buyer.name %>, you bought a book on the 5C Book Exchange!</h3>
+    <h3><%= @buyer.name.split(' ')[0] %>, you bought a book on the 5C Book Exchange!</h3>
     <p>
       This is just a notice that <%= @seller.name %> has confirmed that you purchased <i><%=@transaction.listing.title%></i> for $<%=@transaction.listing.price_dollars%>.<%=@transaction.listing.price_cents%>. Enjoy your book, and thanks for using the <a href="<%= @url %>">5C Book Exchange</a>.</br>
     </p>

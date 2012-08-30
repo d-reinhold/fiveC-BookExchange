@@ -1,7 +1,7 @@
 <% unless Rails.env.production?%>
   [This is a test email from the 5CBookExchange!]
 <%end%>
-<%= @buyer.name %>, you bought a book on the 5C Book Exchange!
+<%= @buyer.name.split(' ')[0] %>, you bought a book on the 5C Book Exchange!
 
   This is just a notice that <%= @seller.name %> has confirmed that you purchased <%=@transaction.listing.title%> for $<%=@transaction.listing.price_dollars%>.<%=@transaction.listing.price_cents%>. Enjoy your book!
 
