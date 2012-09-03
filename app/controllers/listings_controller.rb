@@ -149,21 +149,29 @@ class ListingsController < ApplicationController
       @matching_courses = @course
     else
       @course = parameters[:search_courses]
-      #@matching_courses = Course.where("lower(name) LIKE ? OR lower(number) LIKE ? OR lower(department) LIKE ?", "%#{@course}%","%#{@course}%","%#{@course}%").order("number")
-      #if parameters[:school]
-        @keywords = '%'+@course.gsub(' ', '% %')+'%'
-        puts @keywords
-        #@matching_courses = Course.search_by_course_keywords(@course).where('school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ?', params[:school][0],params[:school][1],params[:school][2],params[:school][3],params[:school][4],params[:school][5]).order('number').order('section').page(params[:page]).per(5)
-        #@matching_courses = Course.search_by_name_or_prof_or_department_or_number(params[:search_courses],params[:search_courses],params[:search_courses],params[:search_courses]).where('school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ? OR school LIKE ?', params[:school][0],params[:school][1],params[:school][2],params[:school][3],params[:school][4],params[:school][5]).order('number').order('section').page(params[:page]).per(5)
-        if session[:returning_to_search] == true
-          puts "PAGE NUM2: #{page_num}"
-          @matching_courses = Course.where('name ILIKE ? OR prof ILIKE ? OR department ILIKE ? OR number ILIKE ?',@keywords,@keywords,@keywords,@keywords).order('number').order('section').page(page_num).per(5)
-        else
-          @matching_courses = Course.where('name ILIKE ? OR prof ILIKE ? OR department ILIKE ? OR number ILIKE ?',@keywords,@keywords,@keywords,@keywords).order('number').order('section').page(params[:page]).per(5)
-        end
-      #else
-      #  @matching_courses = Array.new
-      #end
+      @keywords = '%'+@course.gsub(' ', '% %')+'%'
+      puts @keywords
+      schools = Array.new
+      schools << "PO" if params[:school_po] == "PO"
+      schools << "CM" if params[:school_cm] == "CM"
+      schools << "HM" if params[:school_hm] == "HM"
+      schools << "SC" if params[:school_sc] == "SC"
+      schools << "PZ" if params[:school_pz] == "PZ"
+      schools << "JS" if params[:school_js] == "JS"
+      args = [@keywords,@keywords,@keywords,@keywords]
+      where_clause = '(name ILIKE ? OR prof ILIKE ? OR department ILIKE ? OR number ILIKE ?)'
+      if schools.any?
+        schools_restrict = "(" + schools.map{|s| 'school_symbol ILIKE ? '}.join("or ") + ")"
+        where_clause += " and #{schools_restrict}"
+        schools.map{|s| args << s}
+      end
+      args.insert(0,where_clause)
+      if session[:returning_to_search] == true
+        puts "PAGE NUM2: #{page_num}"
+        @matching_courses = Course.where(args).order('number').order('section').page(page_num).per(5)
+      else
+        @matching_courses = Course.where(args).order('number').order('section').page(params[:page]).per(5)
+      end
     end
     session[:last_search] = parameters
     session[:last_search_type] = 'course'
