@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:/d-reinhold/rails3-jquery-autocomplete.git
+  remote: git://github.com/d-reinhold/rails3-jquery-autocomplete.git
   revision: 689c2785779b3b42eb68f2e534bc802f7d8b3a7c
   specs:
     rails3-jquery-autocomplete (1.0.5)
@@ -68,10 +68,9 @@ GEM
     json (1.7.5)
     jwt (0.1.5)
       multi_json (>= 1.0)
-    kaminari (0.13.0)
+    kaminari (0.14.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-      railties (>= 3.0.0)
     mail (2.3.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -95,7 +94,7 @@ GEM
     omniauth-oauth2 (1.1.0)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
-    pg (0.14.0)
+    pg (0.14.1)
     polyglot (0.3.3)
     rack (1.3.6)
     rack-cache (1.2)
@@ -148,9 +147,9 @@ GEM
     turn (0.9.6)
       ansi
     tzinfo (0.3.33)
-    uglifier (1.2.7)
+    uglifier (1.3.0)
       execjs (>= 0.3.0)
-      multi_json (~> 1.3)
+      multi_json (~> 1.0, >= 1.0.2)
 
 PLATFORMS
   ruby
