@@ -27,7 +27,7 @@ namespace :db do
       puts 'Name: ' + course.name
       puts 'Prof: ' + course.prof
       puts 'Section: ' + course.section
-      #begin
+      begin
         puts huntley_base_url+'&div-1='+course.school_symbol+'&dept-1='+course.department+'&course-1='+course.number+'&section-1='+course.section+'#content'
         bookstore = Nokogiri::HTML(open(huntley_base_url+'&div-1='+course.school_symbol+'&dept-1='+course.department+'&course-1='+course.number+'&section-1='+course.section+'#content'))
         if bookstore.css('.results h2.error')[0]
@@ -97,10 +97,10 @@ namespace :db do
         if course.books.empty?
           course.books << no_course_book
         end
-      #rescue
-      #  puts "SKIPPING #{course.name}"
-      #  next
-      #end                                            
+      rescue
+        puts "SKIPPING #{course.name}"
+        next
+      end                                            
     end
   end 
 end

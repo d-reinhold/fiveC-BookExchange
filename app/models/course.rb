@@ -1,9 +1,10 @@
+# Encoding: utf-8
 class Course < ActiveRecord::Base
   has_and_belongs_to_many :books
   belongs_to :school
 
   def autocomplete_display
-    "#{self.department} #{self.number} #{self.school_symbol} -- #{self.name} with #{self.prof}"
+    "#{self.department} #{self.number} #{self.school_symbol} — #{self.name} with #{self.prof}"
   end
 
 

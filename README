@@ -76,3 +76,6 @@ curl -o 8-29-12.dump `heroku pgbackups:url --remote production`
 pg_dump -Fc -U rails book_exchange_dev > ./db/backups/updated-courses-8-29.dump
 
 heroku pgbackups:restore SHARED_DATABASE 'https://s3-us-west-1.amazonaws.com/book-exchange-databases/updated-courses-8-29.dump' --remote production
+
+pg_restore --verbose --clean --no-acl --no-owner -U rails -d book_exchange_dev ./db/backups/8-29-12.dump
+

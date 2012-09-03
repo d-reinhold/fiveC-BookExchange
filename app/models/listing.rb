@@ -1,6 +1,6 @@
 class Listing < ActiveRecord::Base
                 
-  attr_accessible :id, :user_id, :title, :price_dollars, :price_cents, :author, :edition, :isbn, :description, :condition, :book_id
+  attr_accessible :user_id, :title, :price_dollars, :price_cents, :author, :edition, :isbn, :description, :condition, :book_id
   belongs_to :user
   belongs_to :book
   belongs_to :school

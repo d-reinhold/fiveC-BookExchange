@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   
   def current_user
     if User.all.empty?
+      puts "Users: #{User.all}"
       session[:user_id] = nil
       @current_user = nil
     elsif session[:user_id]

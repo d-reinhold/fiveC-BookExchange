@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :schools, :uniq => true
   has_many :listings, :dependent => :destroy
   has_many :requests
-  attr_accessible :name, :email, :uid # PROTECT UID BEFORE PUBLIC LAUNCH!!
+  attr_accessible :name, :email #, :uid # PROTECT UID BEFORE PUBLIC LAUNCH!!
   
   validates :name, :presence => true, 
                    :length => { :maximum => 50 }

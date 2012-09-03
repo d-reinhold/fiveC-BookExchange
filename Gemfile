@@ -10,7 +10,11 @@ gem 'kaminari'
 gem 'omniauth-facebook'
 
 gem "awesome_print"
-gem 'rails3-jquery-autocomplete', :git => "git@github.com:/slash4/rails3-jquery-autocomplete.git"
+#gem 'rails3-jquery-autocomplete', :git => "git@github.com:/slash4/rails3-jquery-autocomplete.git"
+gem 'rails3-jquery-autocomplete', :git => "git@github.com:/d-reinhold/rails3-jquery-autocomplete.git"
+#gem 'rails3-jquery-autocomplete',  :path=> "/Users/dominick/code/rails3-jquery-autocomplete"
+
+
 gem 'bcrypt-ruby'
 
 gem "nifty-generators", :group => :development

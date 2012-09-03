@@ -5,23 +5,24 @@
     <%= text_field_tag :search_keywords, params[:search_keywords], :placeholder => "Enter a title, author or ISBN!" %> 
   </div>
 	<div class="searchbar" id="searchbar-courses">
-	<%= autocomplete_field_tag :search_courses, params[:search_courses], '/listings/autocomplete_course_prof', :placeholder => 'Enter a course or professor!', :class => 'course_searchbar', :update_elements => {:id => '#id'}%>
+	<%= autocomplete_field_tag :search_courses, params[:search_courses], '/listings/autocomplete_course_prof', :fields => {:school_symbol => '#school_symbol_'}, :placeholder => 'Enter a course or professor!', :class => 'course_searchbar', :update_elements => {:id => '#id'}%>
 	</div>
 <br>
 <div id="radios">
 	<div class="field centered">Search by course name or professor <%= radio_button_tag :search_type, :courses, true %>
 </div><br>
   <div class="field centered">Search by book title, author or ISBN <%= radio_button_tag :search_type, :keywords, false %></div><br>
-<!--
+
+
 	<div class="checkboxes centered"><p class="centered" style="font-size:9pt;">Filter courses by school:<br>
-	  <%= check_box_tag "school[]", 'PO', true %>Pomona | 
-  	<%= check_box_tag "school[]", 'CM', true %>CMC | 
-    <%= check_box_tag "school[]", 'SC', true %>Scripps | 
-    <%= check_box_tag "school[]", 'HM', true %>Harvey Mudd | 
-    <%= check_box_tag "school[]", 'PZ', true %>Pitzer | 
-    <%= check_box_tag "school[]", 'JS', true %>Joint Science
+	  <%= check_box_tag "school_po", 'PO', true %>Pomona | 
+  	<%= check_box_tag "school_cm", 'CM', true %>CMC | 
+    <%= check_box_tag "school_sc", 'SC', true %>Scripps | 
+    <%= check_box_tag "school_hm", 'HM', true %>Harvey Mudd | 
+    <%= check_box_tag "school_pz", 'PZ', true %>Pitzer | 
+    <%= check_box_tag "school_js", 'JS', true %>Joint Science
 	</p></div>
-	-->
+
 </div>
 
 
