@@ -18,33 +18,11 @@ This is a web app i created to simplify the process of buying and selling textbo
 TODO list:
 
 When Huntley updates courses for Fall 2012, KEEP old books database, DROP old courses database. Rerun script.  
-
-
-Before merge to master and push to 5CBookExchange.com:
-	- Update user facebook info each time they login 
-	- Make facebook redirection consistent in the session
-	- Set up basic network structure:
-		- Ensure there is a proper error page if a user has no facebook schools
-		- Restrict search to current user network
-		- If not signed in, allow users to choose what college to look at (original landing page with searchbar)! Once they sign up, they are locked into their Facebook schools.
-		
-BUG LIST:
-  -logout, create request, logout, create listing, request not satisfied
-
-
-
-
-Later:
-	- Refactor out transactions for much faster request processing
-	
-
+Refactor out transactions for faster request processing
 
 For future:
 Try postgres 9.1 shared!
-Implement fun features in 5CBE
-  - Add email for when a book doesnt match (to me)
 Send email to users asking for feedback
-
 
 Courses and Books data (5-21-2012):
 Total Courses: 1566
@@ -62,20 +40,13 @@ Total Courses: 1566
 Total Books: 848
 
 
-
-
-BUG LIST:
-when a book exists but is unavailable, searching for it will display an empty table.
-Should listing id be attr_accessible?
-search by prof, course number/department could be much improved with substrings)
-
 Useful Heroku DB Commands:
 
-curl -o 8-29-12.dump `heroku pgbackups:url --remote production`
+curl -o mydb.dump `heroku pgbackups:url --remote production`
 
-pg_dump -Fc -U rails book_exchange_dev > ./db/backups/updated-courses-8-29.dump
+pg_dump -Fc -U rails book_exchange_dev > ./db/backups/mydb.dump
 
-heroku pgbackups:restore SHARED_DATABASE 'https://s3-us-west-1.amazonaws.com/book-exchange-databases/updated-courses-8-29.dump' --remote production
+heroku pgbackups:restore SHARED_DATABASE 'https://s3-us-west-1.amazonaws.com/path/to/uploaded/db/mydb.dump' --remote production
 
-pg_restore --verbose --clean --no-acl --no-owner -U rails -d book_exchange_dev ./db/backups/8-29-12.dump
+pg_restore --verbose --clean --no-acl --no-owner -U rails -d book_exchange_dev ./db/backups/mydb.dump
 

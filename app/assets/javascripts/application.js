@@ -13,6 +13,7 @@
 
 
 $(document).ready(function() {
+
 	window.fbAsyncInit = function() {
     FB.init({
       appId      : 274758929266415,
